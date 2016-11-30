@@ -97,6 +97,19 @@ return [
 				'view' => 'View User',
             ],
         ],
+
+        'institutes' => [
+            'all' => 'All Institutes',
+            'active' => 'Active Institutes',
+            'inactive' => 'Inactive Institutes',
+            'management' => 'User Management',
+
+            'table' => [
+                'id' => 'ID',
+                'code' => 'Code',
+                'name' => 'Name',
+            ],
+        ],
     ],
 
     'frontend' => [
