@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="{{ config('app.locale') }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,18 +14,17 @@
         @yield('meta')
 
         <!-- Styles -->
-        @yield('before-styles-end')
+        @yield('before-styles')
 
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(elixir('css/backend-rtl.css')) }}
-            {{ Html::style(elixir('css/rtl.css')) }}
+            {{ Html::style(getRtlCss(mix('css/backend.css'))) }}
         @else
-            {{ Html::style(elixir('css/backend.css')) }}
+            {{ Html::style(mix('css/backend.css')) }}
         @endif
 
-        @yield('after-styles-end')
+        @yield('after-styles')
 
         <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,8 +68,8 @@
         </div><!-- ./wrapper -->
 
         <!-- JavaScripts -->
-        @yield('before-scripts-end')
-        {{ Html::script(elixir('js/backend.js')) }}
-        @yield('after-scripts-end')
+        @yield('before-scripts')
+        {{ Html::script(mix('js/backend.js')) }}
+        @yield('after-scripts')
     </body>
 </html>

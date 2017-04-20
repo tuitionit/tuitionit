@@ -6,8 +6,7 @@ use App\Http\Requests\Request;
 use Illuminate\Validation\Rule;
 
 /**
- * Class StoreUserRequest
- * @package App\Http\Requests\Backend\Access\User
+ * Class StoreUserRequest.
  */
 class StoreUserRequest extends Request
 {
@@ -18,7 +17,7 @@ class StoreUserRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('manage-users');
+        return access()->hasRole(1);
     }
 
     /**
@@ -30,7 +29,7 @@ class StoreUserRequest extends Request
     {
         return [
             'name'     => 'required|max:255',
-            'email'    =>  ['required', 'email', 'max:255', Rule::unique('users')],
+            'email'    => ['required', 'email', 'max:255', Rule::unique('users')],
             'password' => 'required|min:6|confirmed',
         ];
     }

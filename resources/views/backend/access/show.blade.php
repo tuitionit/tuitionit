@@ -15,7 +15,7 @@
             <h3 class="box-title">{{ trans('labels.backend.access.users.view') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.access.includes.partials.header-buttons')
+                @include('backend.access.includes.partials.user-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -50,4 +50,4 @@
 
         </div><!-- /.box-body -->
     </div><!--box-->
-@stop
+@endsection

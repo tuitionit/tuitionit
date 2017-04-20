@@ -14,10 +14,9 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(elixir('css/backend-rtl.css')) }}
-            {{ Html::style(elixir('css/rtl.css')) }}
+            {{ Html::style(getRtlCss(mix('css/backend.css'))) }}
         @else
-            {{ Html::style(elixir('css/backend.css')) }}
+            {{ Html::style(mix('css/backend.css')) }}
         @endif
 
         @yield('after-styles-end')
@@ -68,16 +67,18 @@
 
         <!-- JavaScripts -->
         @yield('before-scripts-end')
-        {{ Html::script(elixir('js/backend.js')) }}
+        {{ Html::script(mix('js/backend.js')) }}
         @yield('after-scripts-end')
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment-with-locales.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.min.js"></script>
         <script>
             Chart.defaults.global.responsive      = true;
             Chart.defaults.global.scaleFontFamily = "'Source Sans Pro'";
             Chart.defaults.global.animationEasing = "easeOutQuart";
         </script>
+        @yield('modals')
+        @yield('scripts')
     </body>
 </html>
