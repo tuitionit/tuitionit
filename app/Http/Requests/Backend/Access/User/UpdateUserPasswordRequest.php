@@ -5,8 +5,7 @@ namespace App\Http\Requests\Backend\Access\User;
 use App\Http\Requests\Request;
 
 /**
- * Class UpdateUserPasswordRequest
- * @package App\Http\Requests\Backend\Access\User
+ * Class UpdateUserPasswordRequest.
  */
 class UpdateUserPasswordRequest extends Request
 {
@@ -17,7 +16,7 @@ class UpdateUserPasswordRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('manage-users');
+        return access()->hasRole(1);
     }
 
     /**

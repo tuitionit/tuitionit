@@ -5,8 +5,7 @@ namespace App\Http\Requests\Backend\Access\Role;
 use App\Http\Requests\Request;
 
 /**
- * Class StoreRoleRequest
- * @package App\Http\Requests\Backend\Access\Role
+ * Class StoreRoleRequest.
  */
 class StoreRoleRequest extends Request
 {
@@ -17,7 +16,7 @@ class StoreRoleRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('manage-roles');
+        return access()->hasRole(1);
     }
 
     /**
