@@ -32,15 +32,43 @@
 
             <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
                 <a href="{{ route('admin.dashboard') }}">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-bar-chart"></i>
                     <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
                 </a>
             </li>
 
             <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
                 <a href="{{ route('admin.dashboard') }}">
-                    <i class="fa fa-dashboard"></i>
-                    <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
+                    <i class="fa fa-user-o"></i>
+                    <span>{{ trans('menus.backend.sidebar.students') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>{{ trans('menus.backend.sidebar.teachers') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-circle-o"></i>
+                    <span>{{ trans('menus.backend.sidebar.classes') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-clone"></i>
+                    <span>{{ trans('menus.backend.sidebar.courses') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-flask"></i>
+                    <span>{{ trans('menus.backend.sidebar.subjects') }}</span>
                 </a>
             </li>
 
@@ -49,23 +77,16 @@
             @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/location/*')) }} treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span>{{ trans('menus.backend.organization.title') }}</span>
+                    <i class="fa fa-institution"></i>
+                    <span>{{ trans('menus.backend.institute.management') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
 
                 <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/access/*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/access/*'), 'display: block;') }}">
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
-                        <a href="{{ route('admin.access.user.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.access.users.management') }}</span>
-                        </a>
-                    </li>
-
-                    <li class="{{ active_class(Active::checkUriPattern('admin/access/role*')) }}">
-                        <a href="{{ route('admin.access.role.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.access.roles.management') }}</span>
+                        <a href="{{ route('admin.locations.index') }}">
+                            <i class="fa fa-map-marker"></i>
+                            <span>{{ trans('labels.backend.locations.management') }}</span>
                         </a>
                     </li>
                 </ul>

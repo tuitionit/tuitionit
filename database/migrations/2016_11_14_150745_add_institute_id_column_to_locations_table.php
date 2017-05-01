@@ -14,14 +14,7 @@ class AddInstituteIdColumnToLocationsTable extends Migration
     public function up()
     {
         Schema::table('locations', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->integer('institute_id')->unsigned();
-        });
-
-        Schema::table('locations', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
+            $table->integer('institute_id')->unsigned()->default(0);
             $table->foreign('institute_id')->references('id')->on('institutes');
         });
     }

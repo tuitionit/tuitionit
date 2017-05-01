@@ -37,6 +37,10 @@ return [
             ],
         ],
 
+        'institute' => [
+            'management' => 'Institute',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',
@@ -44,9 +48,14 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard' => 'Dashboard',
+            'dashboard' => 'Overview',
             'general'   => 'General',
             'system'    => 'System',
+            'students'    => 'Students',
+            'teachers'    => 'Teachers',
+            'classes'    => 'Classes',
+            'courses'    => 'Courses',
+            'subjects'    => 'Subjects',
         ],
     ],
 

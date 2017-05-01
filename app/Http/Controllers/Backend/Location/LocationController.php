@@ -1,19 +1,38 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Institute;
+namespace App\Http\Controllers\Backend\Location;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Location\ManageLocationRequest;
+use App\Http\Requests\Backend\Location\StoreLocationRequest;
+use App\Models\Location\Location;
+use App\Repositories\Backend\Location\LocationRepository;
 
 class LocationController extends Controller
 {
+    /**
+     * @var LocationRepository
+     */
+    protected $locations;
+
+    /**
+     * @param UserRepository $users
+     * @param RoleRepository $roles
+     */
+    public function __construct(LocationRepository $locations)
+    {
+        $this->locations = $locations;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ManageLocationRequest $request)
     {
-        //
+        return view('backend.location.index');
     }
 
     /**

@@ -98,17 +98,28 @@ return [
             ],
         ],
 
+        'institute' => [
+            'title' => 'Institute',
+        ],
+
         'institutes' => [
             'all' => 'All Institutes',
             'active' => 'Active Institutes',
             'inactive' => 'Inactive Institutes',
-            'management' => 'User Management',
+            'management' => 'Institutes Management',
 
             'table' => [
                 'id' => 'ID',
                 'code' => 'Code',
                 'name' => 'Name',
+                'city' => 'City',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
             ],
+        ],
+
+        'locations' => [
+            'management' => 'Locations',
         ],
     ],
 
