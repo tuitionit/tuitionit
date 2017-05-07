@@ -1,7 +1,14 @@
 <?php
 
 use Faker\Generator;
+use App\Models\Class\Class;
+use App\Models\Course\Course;
 use App\Models\Institute\Institute;
+use App\Models\Room\Room;
+use App\Models\Student\Student;
+use App\Models\Subject\Subject;
+use App\Models\Location\Location;
+use App\Models\Location\Location;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
 
@@ -73,6 +80,18 @@ $factory->state(Role::class, 'admin', function () {
  * Institute
  */
 $factory->define(Institute::class, function (Generator $faker) {
+     return [
+         'name'     => $faker->name,
+         'code'     => str_random(8),
+         'domain'   => str_random(10),
+         'status'   => 1,
+     ];
+ });
+
+/*
+ * Student
+ */
+$factory->define(Student::class, function (Generator $faker) {
      return [
          'name'     => $faker->name,
          'code'     => str_random(8),

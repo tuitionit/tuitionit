@@ -14,17 +14,13 @@ class CreateInstituteUserTable extends Migration
     public function up()
     {
         Schema::create('institute_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('institute_id')->unsigned();
             $table->integer('user_id')->unsigned();
         });
 
         Schema::table('institute_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('institute_id')->references('id')->on('institutes');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
     }
 

@@ -13,8 +13,6 @@ class CreateAppTables extends Migration
     public function up()
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('name', 255);
             $table->string('code', 40)->nullable();
@@ -35,8 +33,6 @@ class CreateAppTables extends Migration
         });
 
         Schema::create('subjects', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('name', 255);
             $table->text('description')->nullable();
@@ -48,8 +44,6 @@ class CreateAppTables extends Migration
         });
 
         Schema::create('courses', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('name', 255)->nullable();
             $table->text('description')->nullable();
@@ -60,8 +54,6 @@ class CreateAppTables extends Migration
         });
 
         Schema::create('batches', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('name', 255);
             $table->text('description')->nullable();
@@ -79,15 +71,11 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('batches', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('location_id')->references('id')->on('locations');
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('no action');
         });
 
         Schema::create('rooms', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('name', 255);
             $table->text('description')->nullable();
@@ -104,14 +92,10 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('rooms', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('location_id')->references('id')->on('locations');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('no action');
         });
 
         Schema::create('teachers', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('user_id')->unsigned();
             $table->string('short_name', 40)->nullable();
             $table->string('title', 255)->nullable();
@@ -125,15 +109,11 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('teachers', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->primary('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('sessions', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('name', 255);
             $table->text('description')->nullable();
@@ -155,19 +135,15 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('sessions', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('teacher_id')->references('user_id')->on('teachers');
-            $table->foreign('batch_id')->references('id')->on('batches');
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('original_id')->references('id')->on('sessions');
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('original_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null')->onUpdate('no action');
         });
 
         Schema::create('settings', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->string('id', 255);
             $table->text('value')->nullable();
             $table->string('name', 255)->nullable();
@@ -176,8 +152,6 @@ class CreateAppTables extends Migration
         });
 
         Schema::create('trackers', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('name', 255);
             $table->text('description')->nullable();
@@ -186,113 +160,81 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('trackers', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('batch_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('batch_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->tinyInteger('status')->nullable();
         });
 
         Schema::table('batch_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('batch_id')->references('id')->on('batches');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('course_tracker', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('course_id')->unsigned();
             $table->integer('tracker_id')->unsigned();
         });
 
         Schema::table('course_tracker', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('tracker_id')->references('id')->on('trackers');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('tracker_id')->references('id')->on('trackers')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('batch_tracker', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('batch_id')->unsigned();
             $table->integer('tracker_id')->unsigned();
         });
 
         Schema::table('batch_tracker', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('batch_id')->references('id')->on('batches');
-            $table->foreign('tracker_id')->references('id')->on('trackers');
+            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('tracker_id')->references('id')->on('trackers')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('tracker_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('user_id')->unsigned();
             $table->integer('tracker_id')->unsigned();
         });
 
         Schema::table('tracker_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('tracker_id')->references('id')->on('trackers');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('tracker_id')->references('id')->on('trackers')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('location_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('location_id')->unsigned();
             $table->integer('user_id')->unsigned();
         });
 
         Schema::table('location_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('location_id')->references('id')->on('locations');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('subject_teacher', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('subject_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
         });
 
         Schema::table('subject_teacher', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('subject_id')->references('id')->on('subjects');
-            $table->foreign('teacher_id')->references('user_id')->on('teachers');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('location_teacher', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('location_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
         });
 
         Schema::table('location_teacher', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('location_id')->references('id')->on('locations');
-            $table->foreign('teacher_id')->references('user_id')->on('teachers');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('messages', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('subject', 255);
             $table->text('body');
@@ -306,29 +248,21 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('messages', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('reply_to')->references('id')->on('messages');
+            $table->foreign('reply_to')->references('id')->on('messages')->onDelete('set null')->onUpdate('no action');
         });
 
         Schema::create('message_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->integer('message_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamp('seen_at')->nullable();
         });
 
         Schema::table('message_user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('message_id')->references('id')->on('messages');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
 
-        Schema::create('payment', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('amount', 10, 2);
             $table->string('type', 20)->nullable();
@@ -336,26 +270,21 @@ class CreateAppTables extends Migration
             $table->date('month')->nullable();
             $table->timestamp('paid_at')->nullable();
             $table->integer('paid_by')->unsigned();
-            $table->integer('paid_to')->unsigned();
-            $table->integer('batch_id')->unsigned();
+            $table->integer('paid_to')->nullable()->unsigned();
+            $table->integer('batch_id')->nullable()->unsigned();
             $table->string('payment_method', 20)->nullable()->default('cash');
 
             $table->timestamps();
             $table->softDeletes();
         });
 
-        Schema::table('payment', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('paid_by')->references('id')->on('users');
-            $table->foreign('paid_to')->references('id')->on('users');
-            $table->foreign('batch_id')->references('id')->on('batches');
-
+        Schema::table('payments', function (Blueprint $table) {
+            $table->foreign('paid_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('paid_to')->references('id')->on('users')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('no action');
         });
 
         Schema::create('posts', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->text('content');
             $table->string('type', 20)->nullable()->default('text');
@@ -371,14 +300,10 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('posts', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('posted_by')->references('id')->on('users');
+            $table->foreign('posted_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('comments', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->text('content');
             $table->integer('posted_by')->unsigned();
@@ -391,11 +316,9 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('comments', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->foreign('posted_by')->references('id')->on('users');
-            $table->foreign('reply_to')->references('id')->on('comments');
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('posted_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('reply_to')->references('id')->on('comments')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('no action');
         });
 
     }
