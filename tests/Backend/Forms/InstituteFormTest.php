@@ -2,7 +2,6 @@
 
 use Tests\BrowserKitTestCase;
 use App\Models\Institute\Institute;
-use App\Models\Institute\Institute;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Institute\InstituteCreated;
@@ -17,13 +16,13 @@ class InstituteFormTest extends BrowserKitTestCase
     public function testCreateInstituteRequiredFields()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/institute/create')
+             ->visit('/admin/institutes/create')
              ->type('', 'name')
              ->type('', 'code')
              ->type('', 'domain')
              ->press('Create')
              ->see('The name field is required.')
-             ->see('The code field is required.');
+             ->see('The code field is required.')
              ->see('The domain field is required.');
     }
 
@@ -51,7 +50,7 @@ class InstituteFormTest extends BrowserKitTestCase
              ->see('The domain has already been taken.');
     }
 
-    public function testUpdateUserRequiredFields()
+    public function testUpdateInstituteRequiredFields()
     {
         $this->actingAs($this->admin)
              ->visit('/admin/institutes/1/edit')
@@ -60,11 +59,40 @@ class InstituteFormTest extends BrowserKitTestCase
              ->type('', 'domain')
              ->press('Update')
              ->see('The name field is required.')
-             ->see('The code field is required.');
+             ->see('The code field is required.')
              ->see('The domain field is required.');
     }
 
-    public function testUpdateUserForm()
+    public function testUpdateInstituteFailsIfCodeExists()
+    {
+        $institute = factory(Institute::class)->create();
+        $editUrl = '/admin/institutes/' . $institute->id . '/edit';
+        $this->actingAs($this->admin)
+             ->visit($editUrl)
+             ->type('Tuitionix', 'name')
+             ->type('TUITIONIX', 'code')
+             ->type('tuitionix', 'domain')
+             ->press('Update')
+             ->seePageIs($editUrl)
+             ->see('The code has already been taken.');
+    }
+
+    public function testUpdateInstituteFailsIfDomainExists()
+    {
+        $institute = factory(Institute::class)->create();
+        $editUrl = '/admin/institutes/' . $institute->id . '/edit';
+        $this->actingAs($this->admin)
+             ->visit($editUrl)
+             ->type('Tuitionix', 'name')
+             ->type('TUITIONIX', 'code')
+             ->type('tuitionix', 'domain')
+             ->press('Update')
+             ->seePageIs($editUrl)
+             ->see('The domain has already been taken.');
+    }
+
+/*
+    public function testUpdateInstituteForm()
     {
         // Make sure our events are fired
         Event::fake();
@@ -96,7 +124,7 @@ class InstituteFormTest extends BrowserKitTestCase
         Event::assertDispatched(InstituteUpdated::class);
     }
 
-    public function testDeleteUserForm()
+    public function testDeleteInstituteForm()
     {
         // Make sure our events are fired
         Event::fake();
@@ -108,14 +136,5 @@ class InstituteFormTest extends BrowserKitTestCase
 
         Event::assertDispatched(InstituteDeleted::class);
     }
-
-    public function testUserCanNotDeleteSelf()
-    {
-        $this->actingAs($this->admin)
-             ->visit('/admin/access/user')
-             ->delete('/admin/access/user/'.$this->admin->id)
-             ->assertRedirectedTo('/admin/access/user')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->admin->id, 'deleted_at' => null])
-             ->seeInSession(['flash_danger' => 'You can not delete yourself.']);
-    }
+*/
 }

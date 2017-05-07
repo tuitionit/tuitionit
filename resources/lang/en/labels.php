@@ -100,10 +100,14 @@ return [
 
         'institute' => [
             'title' => 'Institute',
+            'overview' => 'Overview',
+            'locations' => 'Locations',
         ],
 
         'institutes' => [
             'all' => 'All Institutes',
+            'create' => 'New Institute',
+            'edit' => 'Edit Institute',
             'active' => 'Active Institutes',
             'inactive' => 'Inactive Institutes',
             'management' => 'Institutes Management',

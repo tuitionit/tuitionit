@@ -151,6 +151,13 @@ return [
                     'send_confirmation_email' => 'Send Confirmation E-mail',
                 ],
             ],
+            'institutes' => [
+                'name' => 'Name',
+                'code' => 'Code',
+                'domain' => 'Domain',
+                'status' => 'Status',
+                'active' => 'Active',
+            ],
         ],
 
         'frontend' => [

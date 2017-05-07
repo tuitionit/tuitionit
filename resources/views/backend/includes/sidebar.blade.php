@@ -75,10 +75,17 @@
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
             @role(1)
+            <li class="{{ active_class(Active::checkUriPattern('admin/institutes')) }}">
+                <a href="{{ route('admin.institutes.index') }}">
+                    <i class="fa fa-institution"></i>
+                    <span>{{ trans('menus.backend.sidebar.institutes') }}</span>
+                </a>
+            </li>
+
             <li class="{{ active_class(Active::checkUriPattern('admin/location/*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-institution"></i>
-                    <span>{{ trans('menus.backend.institute.management') }}</span>
+                    <span>{{ trans('menus.backend.institutes.management') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
 

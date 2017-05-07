@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator;
+use App\Models\Institute\Institute;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
 
@@ -67,3 +68,15 @@ $factory->state(Role::class, 'admin', function () {
         'all' => 1,
     ];
 });
+
+/*
+ * Institute
+ */
+$factory->define(Institute::class, function (Generator $faker) {
+     return [
+         'name'     => $faker->name,
+         'code'     => str_random(8),
+         'domain'   => str_random(10),
+         'status'   => 1,
+     ];
+ });

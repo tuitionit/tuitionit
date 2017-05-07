@@ -2,7 +2,7 @@
 
 @section ('title', trans('labels.backend.institutes.management'))
 
-@section('after-styles-end')
+@section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @stop
 
@@ -18,6 +18,7 @@
             <h3 class="box-title">{{ trans('labels.backend.institutes.all') }}</h3>
 
             <div class="box-tools pull-right">
+                @include('backend.includes.partials.institutes-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 

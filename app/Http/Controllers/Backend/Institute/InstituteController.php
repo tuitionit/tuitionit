@@ -41,52 +41,55 @@ class InstituteController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.institute.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Backend\Institute\StoreInstituteRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreInstituteRequest $request)
     {
-        //
+        $institute = Institute::create($request->all());
+
+        return redirect()->route('admin.institutes.index')->withFlashSuccess(trans('alerts.backend.institutes.created'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Institute\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Institute $institute)
     {
-        //
+        return view('backend.institute.show')->withInstitute($institute);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Institute\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Institute $institute)
     {
-        //
+        return view('backend.institute.edit')->withInstitute($institute);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\Backend\Institute\StoreInstituteRequest  $request
+     * @param  \App\Models\Institute\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreInstituteRequest $request, Institute $institute)
     {
-        //
+        $institute->update($request->all());
+        return redirect()->route('admin.institutes.index')->withFlashSuccess(trans('alerts.backend.institutes.updated'));
     }
 
     /**
@@ -98,5 +101,19 @@ class InstituteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param Institute $institute
+     * @param $status
+     * @param ManageInstituteRequest $request
+     *
+     * @return mixed
+     */
+    public function mark(Institute $institute, $status, ManageInstituteRequest $request)
+    {
+        $institute->update(['status' => $status]);
+
+        return redirect()->route('admin.institutes.index')->withFlashSuccess(trans('alerts.backend.institutes.updated'));
     }
 }

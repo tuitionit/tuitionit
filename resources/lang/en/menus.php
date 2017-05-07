@@ -37,8 +37,10 @@ return [
             ],
         ],
 
-        'institute' => [
-            'management' => 'Institute',
+        'institutes' => [
+            'management' => 'Institutes',
+            'all' => 'All Institutes',
+            'create' => 'New Institute',
         ],
 
         'log-viewer' => [
@@ -48,14 +50,15 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard' => 'Overview',
-            'general'   => 'General',
-            'system'    => 'System',
-            'students'    => 'Students',
-            'teachers'    => 'Teachers',
-            'classes'    => 'Classes',
-            'courses'    => 'Courses',
-            'subjects'    => 'Subjects',
+            'dashboard'     => 'Overview',
+            'general'       => 'General',
+            'system'        => 'System',
+            'institutes'    => 'Institutes',
+            'students'      => 'Students',
+            'teachers'      => 'Teachers',
+            'classes'       => 'Classes',
+            'courses'       => 'Courses',
+            'subjects'      => 'Subjects',
         ],
     ],
 

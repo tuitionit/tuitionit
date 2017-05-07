@@ -30,5 +30,13 @@ return [
             'updated'             => 'The user was successfully updated.',
             'updated_password'    => "The user's password was successfully updated.",
         ],
+
+        'institutes' => [
+            'created' => 'The institute was successfully created.',
+            'deleted' => 'The institute was successfully deleted.',
+            'deleted_permanently' => 'The institute was deleted permanently.',
+            'restored' => 'The institute was successfully restored.',
+            'updated' => 'The institute was successfully updated.',
+        ],
     ],
 ];
