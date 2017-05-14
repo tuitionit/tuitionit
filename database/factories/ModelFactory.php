@@ -1,13 +1,12 @@
 <?php
 
 use Faker\Generator;
-use App\Models\Class\Class;
+use App\Models\Session\Session;
 use App\Models\Course\Course;
 use App\Models\Institute\Institute;
 use App\Models\Room\Room;
 use App\Models\Student\Student;
 use App\Models\Subject\Subject;
-use App\Models\Location\Location;
 use App\Models\Location\Location;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;

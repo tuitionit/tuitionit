@@ -125,6 +125,24 @@ return [
         'locations' => [
             'management' => 'Locations',
         ],
+
+        'students' => [
+            'all' => 'All Students',
+            'create' => 'New Student',
+            'edit' => 'Edit Student',
+            'active' => 'Active Students',
+            'inactive' => 'Inactive Students',
+            'management' => 'Students Management',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
     ],
 
     'frontend' => [

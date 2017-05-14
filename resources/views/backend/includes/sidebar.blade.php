@@ -38,7 +38,7 @@
             </li>
 
             <li class="{{ active_class(Active::checkUriPattern('admin/students')) }}">
-                <a href="{{ route('admin.students') }}">
+                <a href="{{ route('admin.students.index') }}">
                     <i class="fa fa-user-o"></i>
                     <span>{{ trans('menus.backend.sidebar.students') }}</span>
                 </a>
