@@ -30,9 +30,8 @@ class StudentRepository extends BaseRepository
         $dataTableQuery = $this->query()
             ->select([
                 'students.id',
+                'students.index_number',
                 'students.name',
-                'students.code',
-                'students.city',
                 'students.phone',
                 'students.status',
                 'students.created_at',

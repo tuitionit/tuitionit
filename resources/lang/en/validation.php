@@ -158,6 +158,13 @@ return [
                 'status' => 'Status',
                 'active' => 'Active',
             ],
+            'students' => [
+                'index_number' => 'Index No.',
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'status' => 'Status',
+                'active' => 'Active',
+            ],
         ],
 
         'frontend' => [

@@ -43,6 +43,12 @@ return [
             'create' => 'New Institute',
         ],
 
+        'students' => [
+            'management' => 'Students',
+            'all' => 'All Students',
+            'create' => 'New Student',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',

@@ -38,5 +38,13 @@ return [
             'restored' => 'The institute was successfully restored.',
             'updated' => 'The institute was successfully updated.',
         ],
+
+        'students' => [
+            'created' => 'The student was successfully created.',
+            'deleted' => 'The student was successfully deleted.',
+            'deleted_permanently' => 'The student was deleted permanently.',
+            'restored' => 'The student was successfully restored.',
+            'updated' => 'The student was successfully updated.',
+        ],
     ],
 ];

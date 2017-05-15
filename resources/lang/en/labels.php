@@ -136,6 +136,7 @@ return [
 
             'table' => [
                 'id' => 'ID',
+                'index_number' => 'Index No.',
                 'name' => 'Name',
                 'phone' => 'Phone',
                 'status' => 'Status',

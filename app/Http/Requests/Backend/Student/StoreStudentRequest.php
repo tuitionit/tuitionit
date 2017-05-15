@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Backend\Institute;
+namespace App\Http\Requests\Backend\Student;
 
 use App\Http\Requests\Request;
 
 /**
- * Class StoreInstituteRequest
+ * Class StoreStudentRequest
  * @package App\Http\Requests\Backend\Access\User
  */
-class StoreInstituteRequest extends Request
+class StoreStudentRequest extends Request
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class StoreInstituteRequest extends Request
 	 */
 	public function authorize()
 	{
-		return access()->allow('manage-institutes');
+		return access()->allow('manage-students');
 	}
 
 	/**
@@ -28,9 +28,8 @@ class StoreInstituteRequest extends Request
 	public function rules()
 	{
 		return [
+            'index_number' => 'required',
 			'name' => 'required',
-			'code' => 'required|unique:institutes',
-			'domain' => 'required|unique:institutes',
 		];
 	}
 }
