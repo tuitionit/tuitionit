@@ -37,6 +37,7 @@ return [
             'deleted_permanently' => 'The institute was deleted permanently.',
             'restored' => 'The institute was successfully restored.',
             'updated' => 'The institute was successfully updated.',
+            'not_linked' => 'You are not assigned to any institute yet. Please contact the admin.',
         ],
 
         'students' => [

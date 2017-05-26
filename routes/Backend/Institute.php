@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Institute Management
+ * Institute Management for Admin
  */
 Route::group([
-    'middleware' => 'access.routeNeedsPermission:manage-users',
+    'middleware' => 'access.routeNeedsPermission:manage-institutes',
 ], function() {
     Route::group(['namespace' => 'Institute'], function() {
         /*
@@ -19,5 +19,17 @@ Route::group([
          * Institute CRUD
          */
         Route::resource('institutes', 'InstituteController');
+    });
+});
+
+/**
+ * Institute Management for Admin
+ */
+Route::group([
+    'middleware' => 'access.routeNeedsPermission:manage-institute',
+], function() {
+    Route::group(['namespace' => 'Institute'], function() {
+        // Institute
+        Route::get('institute', 'InstituteController@overview')->name('institute');
     });
 });

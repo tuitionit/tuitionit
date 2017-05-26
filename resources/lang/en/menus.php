@@ -37,6 +37,10 @@ return [
             ],
         ],
 
+        'institute' => [
+            'management' => 'Institute',
+        ],
+
         'institutes' => [
             'management' => 'Institutes',
             'all' => 'All Institutes',

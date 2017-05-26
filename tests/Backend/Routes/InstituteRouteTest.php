@@ -16,4 +16,9 @@ class InstituteRouteTest extends BrowserKitTestCase
     {
         $this->actingAs($this->executive)->visit('/admin/institute')->see('Institute Details')->see($this->executive->name);
     }
+
+    public function testCreateInstitute()
+    {
+        $this->actingAs($this->admin)->visit('/admin/access/user/create')->see('Create User');
+    }
 }

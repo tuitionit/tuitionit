@@ -69,6 +69,22 @@ class InstituteController extends Controller
     }
 
     /**
+     * Display the institute of the currently logged in user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function overview()
+    {
+        $institute = auth()->user()->institute;
+
+        if(!$institute) {
+            return redirect()->route('admin.dashboard')->withFlashSuccess(trans('alerts.backend.institutes.not_linked'));
+        }
+
+        return view('backend.institute.show')->withInstitute($institute);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Institute\Institute  $institute

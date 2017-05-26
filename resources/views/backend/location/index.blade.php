@@ -1,36 +1,39 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.institutes.management'))
+@section ('title', trans('labels.backend.locations.management'))
 
-@section('after-styles-end')
+@section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @stop
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.institutes.management') }}
+        {{ trans('labels.backend.locations.management') }}
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.institutes.all') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.locations.all') }}</h3>
 
             <div class="box-tools pull-right">
+                @include('backend.includes.partials.locations-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
         <div class="box-body">
             <div class="table-responsive">
-                <table id="institutes-table" class="table table-condensed table-hover">
+                <table id="locations-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.institutes.table.id') }}</th>
-                            <th>{{ trans('labels.backend.institutes.table.name') }}</th>
-                            <th>{{ trans('labels.backend.institutes.table.code') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                            <th>{{ trans('labels.backend.locations.table.id') }}</th>
+                            <th>{{ trans('labels.backend.locations.table.index_number') }}</th>
+                            <th>{{ trans('labels.backend.locations.table.name') }}</th>
+                            <th>{{ trans('labels.backend.locations.table.phone') }}</th>
+                            <th>{{ trans('labels.backend.locations.table.status') }}</th>
+                            <th>{{ trans('labels.backend.locations.table.created') }}</th>
+                            <th>{{ trans('labels.backend.locations.table.last_updated') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -40,26 +43,28 @@
     </div><!--box-->
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
 
     <script>
         $(function() {
-            $('#institutes-table').DataTable({
+            $('#locations-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route("admin.institute.get") }}',
+                    url: '{{ route("admin.locations.get") }}',
                     type: 'post',
-                    data: {status: 1, trashed: false}
+                    data: {status: 1}
                 },
                 columns: [
-                    {data: 'id', name: '{{institutes}}.id'},
-                    {data: 'name', name: '{{institutes}}.name', render: $.fn.dataTable.render.text()},
-                    {data: 'code', name: '{{institutes}}.code', render: $.fn.dataTable.render.text()},
-                    {data: 'created_at', name: '{{institutes}}.created_at'},
-                    {data: 'updated_at', name: '{{institutes}}.updated_at'},
+                    {data: 'id', name: 'locations.id'},
+                    {data: 'index_number', name: 'locations.index_number'},
+                    {data: 'name', name: 'locations.name', render: $.fn.dataTable.render.text()},
+                    {data: 'phone', name: 'locations.phone', render: $.fn.dataTable.render.text()},
+                    {data: 'status', name: 'locations.status', render: $.fn.dataTable.render.text()},
+                    {data: 'created_at', name: 'locations.created_at'},
+                    {data: 'updated_at', name: 'locations.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

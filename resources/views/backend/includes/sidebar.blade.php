@@ -74,6 +74,15 @@
 
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
+            @role(2)
+            <li class="{{ active_class(Active::checkUriPattern('admin/institute')) }} treeview">
+                <a href="{{ route('admin.institute') }}">
+                    <i class="fa fa-institution"></i>
+                    <span>{{ trans('menus.backend.institute.management') }}</span>
+                </a>
+            </li>
+            @endauth
+
             @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/institutes')) }}">
                 <a href="{{ route('admin.institutes.index') }}">
@@ -82,22 +91,6 @@
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/location/*')) }} treeview">
-                <a href="#">
-                    <i class="fa fa-institution"></i>
-                    <span>{{ trans('menus.backend.institutes.management') }}</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-
-                <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/access/*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/access/*'), 'display: block;') }}">
-                    <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
-                        <a href="{{ route('admin.locations.index') }}">
-                            <i class="fa fa-map-marker"></i>
-                            <span>{{ trans('labels.backend.locations.management') }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
