@@ -7,8 +7,12 @@ use Tests\BrowserKitTestCase;
  */
 class LocationRouteTest extends BrowserKitTestCase
 {
-    public function testAdminLocations()
+    public function testCreateLocation()
     {
-        $this->actingAs($this->admin)->visit('/admin/locations')->see('Locations')->see($this->admin->name);
+        $this->actingAs($this->executive)
+            ->visit('/admin/institute/1/locations/create')
+            ->see('Tuitionix')
+            ->see('Add New Location')
+            ->see($this->executive->name);
     }
 }

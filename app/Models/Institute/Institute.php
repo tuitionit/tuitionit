@@ -4,11 +4,13 @@ namespace App\Models\Institute;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Institute\Traits\InstituteAttribute;
+use App\Models\Institute\Traits\InstituteRelationship;
 
 class Institute extends Model
 {
-    use InstituteAttribute;
-    
+    use InstituteAttribute,
+        InstituteRelationship;
+
     /**
      * The database table used by the model.
      *

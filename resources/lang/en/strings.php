@@ -68,6 +68,10 @@ return [
 <p>Hope you enjoy all of the work I have put into this. Please visit the <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> page for more information and report any <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">issues here</a>.</p>
 <p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
 <p>- Anthony Rappa</p>',
+
+        'locations' => [
+            'empty' => 'Add locations where your institute has branches. There should be at least one location.',
+        ],
     ],
 
     'emails' => [

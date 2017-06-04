@@ -124,6 +124,12 @@ return [
 
         'locations' => [
             'management' => 'Locations',
+            'create' => 'Add New Location',
+            'edit' => 'Edit Details',
+            'general' => 'General Details',
+            'contact' => 'Contact Details',
+            'overview' => 'Overview',
+            'rooms' => 'Rooms',
         ],
 
         'students' => [

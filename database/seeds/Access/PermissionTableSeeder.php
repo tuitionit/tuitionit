@@ -50,21 +50,30 @@ class PermissionTableSeeder extends Seeder
         $viewBackend->updated_at = Carbon::now();
         $viewBackend->save();*/
 
-
         /**
          * Institute permissions
          */
         $permissions[] = [
             'name' => 'manage-institute',
             'display_name' => 'Manage Institute',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
         ];
 
-        array_walk($permissions, function(&$permission, $key)
+        /**
+         * Location permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-locations',
+            'display_name' => 'Manage Locations',
+        ];
+
+        $now = Carbon::now();
+
+        array_walk($permissions, function(&$permission, $key, $now)
         {
             $permission['sort'] = ++$key;
-        });
+            $permission['created_at'] = $now;
+            $permission['updated_at'] = $now;
+        }, $now);
 
         DB::table(config('access.permissions_table'))->insert($permissions);
 

@@ -40,6 +40,14 @@ return [
             'not_linked' => 'You are not assigned to any institute yet. Please contact the admin.',
         ],
 
+        'locations' => [
+            'created' => 'The location was successfully created.',
+            'deleted' => 'The location was successfully deleted.',
+            'deleted_permanently' => 'The location was deleted permanently.',
+            'restored' => 'The location was successfully restored.',
+            'updated' => 'The location was successfully updated.',
+        ],
+
         'students' => [
             'created' => 'The student was successfully created.',
             'deleted' => 'The student was successfully deleted.',

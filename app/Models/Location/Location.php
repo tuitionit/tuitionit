@@ -3,9 +3,12 @@
 namespace App\Models\Location;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Location\Traits\LocationRelationship;
 
 class Location extends Model
 {
+    use LocationRelationship;
+    
     /**
      * The database table used by the model.
      *

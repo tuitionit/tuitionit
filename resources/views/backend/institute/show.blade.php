@@ -9,7 +9,7 @@
 @section('page-header')
     <h1>
         {{ $institute->name }}
-        <small>{{ $institute->name }}</small>
+        <small>[{{ $institute->code }}]</small>
     </h1>
 @endsection
 
@@ -19,7 +19,8 @@
             <h3 class="box-title">{{ trans('labels.backend.institute.overview') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.includes.partials.institutes-header-buttons')
+                <div class="pull-right mb-10">
+                </div><!--pull right-->
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -36,14 +37,36 @@
 
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
-                            {{ link_to_route('admin.institutes.index', trans('menus.backend.institutes.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
-                            {{ link_to_route('admin.locations.create', trans('menus.backend.institutes.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+                            <a href="{{ route('admin.institute.locations.new', ['institute' => $institute->id]) }}" class="btn btn-sm btn-success">
+                                <i class="fa fa-plus"></i>
+                                {{ trans('labels.backend.locations.create') }}
+                            </a>
                         </div><!--pull right-->
                     </div><!--box-tools pull-right-->
                 </div><!-- /.box-header -->
 
-                <div class="box-body">
-
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        @forelse($institute->locations as $location)
+                        <li>
+                            <a href="{{ route('admin.locations.show', $location) }}">
+                                <i class="fa fa-map-marker"></i>
+                                <span>{{ $location->name }}</span>
+                                <span class="pull-right text-muted small">{{ $location->phone }}</span>
+                            </a>
+                        </li>
+                        @empty
+                            <div class="text-center">
+                                <p>
+                                    {{ trans('strings.backend.locations.empty') }}
+                                </p>
+                                <a href="{{ route('admin.institute.locations.new', ['institute' => $institute->id]) }}" class="btn btn-success">
+                                    <i class="fa fa-plus"></i>
+                                    {{ trans('labels.backend.locations.create') }}
+                                </a>
+                            </div>
+                        @endforelse
+                    </ul>
                 </div><!-- /.box-body -->
             </div><!--box-->
         </div>
