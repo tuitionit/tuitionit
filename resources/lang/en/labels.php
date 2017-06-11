@@ -150,6 +150,24 @@ return [
                 'last_updated' => 'Last Updated',
             ],
         ],
+
+        'subjects' => [
+            'all' => 'All Subjects',
+            'create' => 'New Subject',
+            'edit' => 'Edit Subject',
+            'active' => 'Active Subjects',
+            'inactive' => 'Inactive Subjects',
+            'management' => 'Subjects Management',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
     ],
 
     'frontend' => [

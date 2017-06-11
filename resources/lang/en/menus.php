@@ -53,6 +53,30 @@ return [
             'create' => 'New Student',
         ],
 
+        'sessions' => [
+            'management' => 'Sessions',
+            'all' => 'All Sessions',
+            'create' => 'New Session',
+        ],
+
+        'courses' => [
+            'management' => 'Courses',
+            'all' => 'All Courses',
+            'create' => 'New Course',
+        ],
+
+        'batches' => [
+            'management' => 'Batches',
+            'all' => 'All Batches',
+            'create' => 'New Batch',
+        ],
+
+        'subjects' => [
+            'management' => 'Subjects',
+            'all' => 'All Subjects',
+            'create' => 'New Subject',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',
@@ -66,7 +90,8 @@ return [
             'institutes'    => 'Institutes',
             'students'      => 'Students',
             'teachers'      => 'Teachers',
-            'classes'       => 'Classes',
+            'batches'       => 'Batches',
+            'sessions'       => 'Sessions',
             'courses'       => 'Courses',
             'subjects'      => 'Subjects',
         ],

@@ -44,17 +44,24 @@
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
-                <a href="{{ route('admin.dashboard') }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/teachers')) }}">
+                <a href="{{ route('admin.teachers.index') }}">
                     <i class="fa fa-graduation-cap"></i>
                     <span>{{ trans('menus.backend.sidebar.teachers') }}</span>
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
-                <a href="{{ route('admin.dashboard') }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/sessions')) }}">
+                <a href="{{ route('admin.sessions.index') }}">
                     <i class="fa fa-circle-o"></i>
-                    <span>{{ trans('menus.backend.sidebar.classes') }}</span>
+                    <span>{{ trans('menus.backend.sidebar.sessions') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/batches')) }}">
+                <a href="{{ route('admin.batches.index') }}">
+                    <i class="fa fa-users"></i>
+                    <span>{{ trans('menus.backend.sidebar.batches') }}</span>
                 </a>
             </li>
 
@@ -65,8 +72,8 @@
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
-                <a href="{{ route('admin.dashboard') }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/subjects')) }}">
+                <a href="{{ route('admin.subjects.index') }}">
                     <i class="fa fa-flask"></i>
                     <span>{{ trans('menus.backend.sidebar.subjects') }}</span>
                 </a>

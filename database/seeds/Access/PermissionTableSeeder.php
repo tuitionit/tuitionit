@@ -66,6 +66,54 @@ class PermissionTableSeeder extends Seeder
             'display_name' => 'Manage Locations',
         ];
 
+        /**
+         * Student permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-students',
+            'display_name' => 'Manage Students',
+        ];
+
+        /**
+         * Teacher permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-teachers',
+            'display_name' => 'Manage Teachers',
+        ];
+
+        /**
+         * Subject permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-subjects',
+            'display_name' => 'Manage Subjects',
+        ];
+
+        /**
+         * Session permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-sessions',
+            'display_name' => 'Manage Sessions',
+        ];
+
+        /**
+         * Course permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-courses',
+            'display_name' => 'Manage Courses',
+        ];
+
+        /**
+         * Batch permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-batches',
+            'display_name' => 'Manage Batches',
+        ];
+
         $now = Carbon::now();
 
         array_walk($permissions, function(&$permission, $key, $now)

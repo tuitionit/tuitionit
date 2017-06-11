@@ -194,6 +194,27 @@ return [
                 'status' => 'Status',
                 'active' => 'Active',
             ],
+
+            'subjects' => [
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'active' => 'Active',
+            ],
+
+            'sessions' => [
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'active' => 'Active',
+            ],
+
+            'courses' => [
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'active' => 'Active',
+            ],
         ],
 
         'frontend' => [

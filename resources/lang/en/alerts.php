@@ -55,5 +55,29 @@ return [
             'restored' => 'The student was successfully restored.',
             'updated' => 'The student was successfully updated.',
         ],
+
+        'subjects' => [
+            'created' => 'The subject was successfully created.',
+            'deleted' => 'The subject was successfully deleted.',
+            'deleted_permanently' => 'The subject was deleted permanently.',
+            'restored' => 'The subject was successfully restored.',
+            'updated' => 'The subject was successfully updated.',
+        ],
+
+        'sessions' => [
+            'created' => 'The session was successfully created.',
+            'deleted' => 'The session was successfully deleted.',
+            'deleted_permanently' => 'The session was deleted permanently.',
+            'restored' => 'The session was successfully restored.',
+            'updated' => 'The session was successfully updated.',
+        ],
+
+        'courses' => [
+            'created' => 'The course was successfully created.',
+            'deleted' => 'The course was successfully deleted.',
+            'deleted_permanently' => 'The course was deleted permanently.',
+            'restored' => 'The course was successfully restored.',
+            'updated' => 'The course was successfully updated.',
+        ],
     ],
 ];

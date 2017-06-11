@@ -18,7 +18,9 @@ class Session extends Model
     protected $table = 'sessions';
 
     /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
-    protected $guarded = ['*'];
+    protected $fillable = ['index_number', 'name', 'phone', 'status'];
 }
