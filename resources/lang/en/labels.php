@@ -132,6 +132,18 @@ return [
             'rooms' => 'Rooms',
         ],
 
+        'student' => [
+            'title' => 'Student',
+            'overview' => 'Overview',
+            'batches' => 'Batches',
+            'cources' => 'Cources',
+            'sessions' => 'Sessions',
+            'payments' => 'Payments',
+            'settings' => 'Settings',
+            'upcoming_sessions' => 'Upcoming Sessions',
+            'past_sessions' => 'Past Sessions',
+        ],
+
         'students' => [
             'all' => 'All Students',
             'create' => 'New Student',
@@ -146,8 +158,8 @@ return [
                 'name' => 'Name',
                 'phone' => 'Phone',
                 'status' => 'Status',
-                'created' => 'Created',
-                'last_updated' => 'Last Updated',
+                'created' => 'Joined',
+                'last_updated' => 'Updated',
             ],
         ],
 
@@ -158,6 +170,24 @@ return [
             'active' => 'Active Subjects',
             'inactive' => 'Inactive Subjects',
             'management' => 'Subjects Management',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'courses' => [
+            'all' => 'All Courses',
+            'create' => 'New Course',
+            'edit' => 'Edit Course',
+            'active' => 'Active Courses',
+            'inactive' => 'Inactive Courses',
+            'management' => 'Courses Management',
 
             'table' => [
                 'id' => 'ID',

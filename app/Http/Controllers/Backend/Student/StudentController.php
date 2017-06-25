@@ -52,7 +52,9 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        $student = Student::create($request->all());
+        $data = $request->all();
+        $data['status'] = $request->has('status') ? 1 : 0;
+        $student = Student::create($data);
 
         return redirect()->route('admin.students.index')->withFlashSuccess(trans('alerts.backend.students.created'));
     }
@@ -88,7 +90,9 @@ class StudentController extends Controller
      */
     public function update(StoreStudentRequest $request, Student $student)
     {
-        $student->update($request->all());
+        $data = $request->all();
+        $data['status'] = $request->has('status') ? 1 : 0;
+        $student->update($data);
         return redirect()->route('admin.students.index')->withFlashSuccess(trans('alerts.backend.students.updated'));
     }
 

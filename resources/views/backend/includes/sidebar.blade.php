@@ -37,7 +37,7 @@
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/students')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/students*')) }}">
                 <a href="{{ route('admin.students.index') }}">
                     <i class="fa fa-user-o"></i>
                     <span>{{ trans('menus.backend.sidebar.students') }}</span>
@@ -53,7 +53,7 @@
 
             <li class="{{ active_class(Active::checkUriPattern('admin/sessions')) }}">
                 <a href="{{ route('admin.sessions.index') }}">
-                    <i class="fa fa-circle-o"></i>
+                    <i class="fa fa-clock-o"></i>
                     <span>{{ trans('menus.backend.sidebar.sessions') }}</span>
                 </a>
             </li>
@@ -65,8 +65,8 @@
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
-                <a href="{{ route('admin.dashboard') }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/courses')) }}">
+                <a href="{{ route('admin.courses.index') }}">
                     <i class="fa fa-clone"></i>
                     <span>{{ trans('menus.backend.sidebar.courses') }}</span>
                 </a>

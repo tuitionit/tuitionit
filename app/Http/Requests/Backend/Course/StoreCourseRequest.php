@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Backend\Batch;
+namespace App\Http\Requests\Backend\Course;
 
 use App\Http\Requests\Request;
 
 /**
- * Class StoreBatchRequest
+ * Class StoreCourseRequest
  * @package App\Http\Requests\Backend\Access\User
  */
-class StoreBatchRequest extends Request
+class StoreCourseRequest extends Request
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class StoreBatchRequest extends Request
 	 */
 	public function authorize()
 	{
-		return access()->allow('manage-batches');
+		return access()->allow('manage-courses');
 	}
 
 	/**
@@ -30,6 +30,7 @@ class StoreBatchRequest extends Request
 		return [
 			'name' => 'required',
 			'description' => 'max:500',
+            'status' => 'required',
 		];
 	}
 }

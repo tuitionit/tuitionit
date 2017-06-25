@@ -34,6 +34,9 @@ class StudentTableController extends Controller
     {
         return Datatables::of($this->students->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'email'])
+            ->editColumn('status', function ($user) {
+                return $user->status_label;
+            })
             ->addColumn('actions', function ($student) {
                 return $student->action_buttons;
             })

@@ -18,7 +18,24 @@
             <h3 class="box-title">{{ trans('labels.backend.students.all') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.includes.partials.students-header-buttons')
+                <div class="pull-right mb-10 hidden-sm hidden-xs">
+                    {{ link_to_route('admin.students.create', trans('menus.backend.students.create'), [], ['class' => 'btn btn-success btn-sm']) }}
+                </div><!--pull right-->
+
+                <div class="pull-right mb-10 hidden-lg hidden-md">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            {{ trans('menus.backend.students.main') }} <span class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>{{ link_to_route('admin.students.create', trans('menus.backend.students.create')) }}</li>
+                            <li class="divider"></li>
+                        </ul>
+                    </div><!--btn group-->
+                </div><!--pull right-->
+
+                <div class="clearfix"></div>
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -62,12 +79,13 @@
                     {data: 'index_number', name: 'students.index_number'},
                     {data: 'name', name: 'students.name', render: $.fn.dataTable.render.text()},
                     {data: 'phone', name: 'students.phone', render: $.fn.dataTable.render.text()},
-                    {data: 'status', name: 'students.status', render: $.fn.dataTable.render.text()},
+                    {data: 'status', name: 'students.status'},
                     {data: 'created_at', name: 'students.created_at'},
                     {data: 'updated_at', name: 'students.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],
+                select: true,
                 searchDelay: 500
             });
         });
