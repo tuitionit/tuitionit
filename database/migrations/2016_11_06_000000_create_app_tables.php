@@ -12,6 +12,31 @@ class CreateAppTables extends Migration
  */
     public function up()
     {
+        Schema::create('institutes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 255);
+            $table->string('code', 40)->unique();
+            $table->text('description')->nullable();
+            $table->string('domain')->unique();
+            $table->text('logo')->nullable();
+            $table->text('address')->nullable();
+            $table->string('city', 255)->nullable();
+            $table->string('state_province', 255)->nullable();
+            $table->string('country', 255)->nullable();
+            $table->string('postal_code', 255)->nullable();
+            $table->string('email', 255)->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('fax', 20)->nullable();
+            $table->text('web')->nullable();
+            $table->text('linkedin')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('twitter')->nullable();
+            $table->tinyInteger('status')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
@@ -26,10 +51,15 @@ class CreateAppTables extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('fax', 20)->nullable();
             $table->text('web')->nullable();
+            $table->integer('institute_id')->unsigned()->nullable();
             $table->tinyInteger('status')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('locations', function (Blueprint $table) {
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('subjects', function (Blueprint $table) {
@@ -60,6 +90,7 @@ class CreateAppTables extends Migration
             $table->string('type', 20)->nullable();
             $table->integer('location_id')->nullable()->unsigned();
             $table->integer('course_id')->nullable()->unsigned();
+            $table->integer('subject_id')->nullable()->unsigned();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->integer('max_students')->nullable();
@@ -71,8 +102,9 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('batches', function (Blueprint $table) {
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null')->onUpdate('cascade');
         });
 
         Schema::create('rooms', function (Blueprint $table) {
@@ -102,6 +134,7 @@ class CreateAppTables extends Migration
             $table->tinyInteger('level')->nullable();
             $table->text('cv')->nullable();
             $table->text('bio')->nullable();
+            $table->integer('institute_id')->unsigned()->nullable();
             $table->tinyInteger('status')->nullable();
 
             $table->timestamps();
@@ -110,8 +143,29 @@ class CreateAppTables extends Migration
 
         Schema::table('teachers', function (Blueprint $table) {
             $table->primary('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        Schema::create('students', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('index_number')->nullable();
+            $table->string('name');
+            $table->string('phone')->nullable();
+            $table->text('address')->nullable();
+            $table->text('notes')->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('institute_id')->unsigned()->nullable();
+            $table->tinyInteger('status')->default(1);
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::table('students', function(Blueprint $table) {
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('set null')->onUpdate('cascade');
+ 		    $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+         });
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->increments('id');
@@ -163,6 +217,77 @@ class CreateAppTables extends Migration
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
 
+        Schema::create('payments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->decimal('amount', 10, 2);
+            $table->string('type', 20)->nullable();
+            $table->integer('installment')->nullable();
+            $table->date('month')->nullable();
+            $table->timestamp('paid_at')->nullable();
+            $table->integer('paid_by')->unsigned()->nullable();
+            $table->integer('paid_to')->nullable()->unsigned();
+            $table->integer('batch_id')->nullable()->unsigned();
+            $table->integer('session_id')->nullable()->unsigned();
+            $table->string('payment_method', 20)->nullable()->default('cash');
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::table('payments', function (Blueprint $table) {
+            $table->foreign('paid_by')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('paid_to')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('session_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('cascade');
+        });
+
+        Schema::create('posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('content');
+            $table->string('type', 20)->nullable()->default('text');
+            $table->text('link')->nullable();
+            $table->string('link_title', 255)->nullable();
+            $table->text('link_description')->nullable();
+            $table->text('link_image')->nullable();
+            $table->integer('posted_by')->unsigned();
+            $table->tinyInteger('status')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::table('posts', function (Blueprint $table) {
+            $table->foreign('posted_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+        Schema::create('comments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('content');
+            $table->integer('posted_by')->unsigned();
+            $table->integer('post_id')->unsigned();
+            $table->integer('reply_to')->nullable()->unsigned();
+            $table->tinyInteger('status')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreign('posted_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('reply_to')->references('id')->on('comments')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+        Schema::create('institute_user', function (Blueprint $table) {
+            $table->integer('institute_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+        });
+
+        Schema::table('institute_user', function (Blueprint $table) {
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+        });
+
         Schema::create('batch_user', function (Blueprint $table) {
             $table->integer('batch_id')->unsigned();
             $table->integer('user_id')->unsigned();
@@ -172,6 +297,16 @@ class CreateAppTables extends Migration
         Schema::table('batch_user', function (Blueprint $table) {
             $table->foreign('batch_id')->references('id')->on('batches')->onDelete('cascade')->onUpdate('no action');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
+        });
+
+        Schema::create('batch_student', function (Blueprint $table) {
+            $table->integer('batch_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+        });
+
+        Schema::table('batch_student', function (Blueprint $table) {
+            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('course_tracker', function (Blueprint $table) {
@@ -212,6 +347,16 @@ class CreateAppTables extends Migration
         Schema::table('location_user', function (Blueprint $table) {
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->onUpdate('no action');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
+        });
+
+        Schema::create('location_student', function (Blueprint $table) {
+            $table->integer('location_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+        });
+
+        Schema::table('location_student', function (Blueprint $table) {
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('subject_teacher', function (Blueprint $table) {
@@ -261,66 +406,6 @@ class CreateAppTables extends Migration
             $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade')->onUpdate('no action');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
         });
-
-        Schema::create('payments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->decimal('amount', 10, 2);
-            $table->string('type', 20)->nullable();
-            $table->integer('installment')->nullable();
-            $table->date('month')->nullable();
-            $table->timestamp('paid_at')->nullable();
-            $table->integer('paid_by')->unsigned();
-            $table->integer('paid_to')->nullable()->unsigned();
-            $table->integer('batch_id')->nullable()->unsigned();
-            $table->string('payment_method', 20)->nullable()->default('cash');
-
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::table('payments', function (Blueprint $table) {
-            $table->foreign('paid_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
-            $table->foreign('paid_to')->references('id')->on('users')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('no action');
-        });
-
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('content');
-            $table->string('type', 20)->nullable()->default('text');
-            $table->text('link')->nullable();
-            $table->string('link_title', 255)->nullable();
-            $table->text('link_description')->nullable();
-            $table->text('link_image')->nullable();
-            $table->integer('posted_by')->unsigned();
-            $table->tinyInteger('status')->nullable();
-
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreign('posted_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
-        });
-
-        Schema::create('comments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('content');
-            $table->integer('posted_by')->unsigned();
-            $table->integer('post_id')->unsigned();
-            $table->integer('reply_to')->nullable()->unsigned();
-            $table->tinyInteger('status')->nullable();
-
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::table('comments', function (Blueprint $table) {
-            $table->foreign('posted_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('no action');
-            $table->foreign('reply_to')->references('id')->on('comments')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('no action');
-        });
-
     }
 
 /**
@@ -330,20 +415,25 @@ class CreateAppTables extends Migration
  */
     public function down()
     {
+        Schema::drop('institutes');
         Schema::drop('subjects');
         Schema::drop('courses');
         Schema::drop('batches');
         Schema::drop('locations');
         Schema::drop('rooms');
         Schema::drop('teachers');
+        Schema::drop('students');
         Schema::drop('sessions');
         Schema::drop('settings');
         Schema::drop('trackers');
+        Schema::drop('institute_user');
         Schema::drop('batch_user');
+        Schema::drop('batch_student');
         Schema::drop('course_tracker');
         Schema::drop('batch_tracker');
         Schema::drop('tracker_user');
         Schema::drop('location_user');
+        Schema::drop('location_student');
         Schema::drop('subject_teacher');
         Schema::drop('location_teacher');
         Schema::drop('messages');

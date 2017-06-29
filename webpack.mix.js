@@ -12,7 +12,9 @@ const WebpackRTLPlugin = require('webpack-rtl-plugin');
  |
  */
 
-mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
+mix.copyDirectory('node_modules/fullcalendar/dist', 'public/js/plugins/fullcalendar')
+    .copyDirectory('node_modules/moment/min', 'public/js/plugins/moment')
+    .sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
     .sass('resources/assets/sass/backend/app.scss', 'public/css/backend.css')
     .js([
         'resources/assets/js/frontend/app.js',

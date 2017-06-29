@@ -34,6 +34,9 @@ class SubjectTableController extends Controller
     {
         return Datatables::of($this->subjects->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'description'])
+            ->editColumn('status', function ($user) {
+                return $user->status_label;
+            })
             ->addColumn('actions', function ($subject) {
                 return $subject->action_buttons;
             })

@@ -62,7 +62,7 @@
                     {data: 'id', name: 'courses.id'},
                     {data: 'name', name: 'courses.name', render: $.fn.dataTable.render.text()},
                     {data: 'description', name: 'courses.description', render: $.fn.dataTable.render.text()},
-                    {data: 'status', name: 'courses.status', render: $.fn.dataTable.render.text()},
+                    {data: 'status', name: 'courses.status'},
                     {data: 'created_at', name: 'courses.created_at'},
                     {data: 'updated_at', name: 'courses.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}

@@ -14,7 +14,7 @@ class Course extends Model
      *
      * @var string
      */
-    protected $table = 'subjects';
+    protected $table = 'courses';
 
     /**
      * The attributes that are mass assignable.

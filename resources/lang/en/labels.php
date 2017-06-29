@@ -137,6 +137,7 @@ return [
             'overview' => 'Overview',
             'batches' => 'Batches',
             'cources' => 'Cources',
+            'reports' => 'Reports',
             'sessions' => 'Sessions',
             'payments' => 'Payments',
             'settings' => 'Settings',
@@ -188,6 +189,24 @@ return [
             'active' => 'Active Courses',
             'inactive' => 'Inactive Courses',
             'management' => 'Courses Management',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'batches' => [
+            'all' => 'All Batches',
+            'create' => 'New Batch',
+            'edit' => 'Edit Batch',
+            'active' => 'Active Batches',
+            'inactive' => 'Inactive Batches',
+            'management' => 'Batches Management',
 
             'table' => [
                 'id' => 'ID',

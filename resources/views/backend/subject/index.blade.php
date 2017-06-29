@@ -59,8 +59,8 @@
                 columns: [
                     {data: 'id', name: 'subjects.id'},
                     {data: 'name', name: 'subjects.name', render: $.fn.dataTable.render.text()},
-                    {data: 'phone', name: 'subjects.phone', render: $.fn.dataTable.render.text()},
-                    {data: 'status', name: 'subjects.status', render: $.fn.dataTable.render.text()},
+                    {data: 'description', name: 'subjects.description', render: $.fn.dataTable.render.text()},
+                    {data: 'status', name: 'subjects.status'},
                     {data: 'created_at', name: 'subjects.created_at'},
                     {data: 'updated_at', name: 'subjects.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}

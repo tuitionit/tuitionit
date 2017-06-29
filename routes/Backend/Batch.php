@@ -10,7 +10,7 @@ Route::group([
         /*
          * For DataTables
          */
-        Route::post('batchs/get', 'BatchTableController')->name('batches.get');
+        Route::post('batches/get', 'BatchTableController')->name('batches.get');
 
         // Status
         Route::get('mark/{status}', 'BatchController@mark')->name('batches.mark')->where(['status' => '[0,1]']);

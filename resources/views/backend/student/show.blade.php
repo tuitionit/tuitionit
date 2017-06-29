@@ -4,6 +4,8 @@
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("js/plugins/fullcalendar/fullcalendar.min.css") }}
 @stop
 
 @section('page-header')
@@ -27,29 +29,30 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a href="#sessions"><i class="fa fa-clock-o"></i> {{ trans('labels.backend.student.sessions')}}</a>
+                    <a href="#sessions" data-toggle="tab"><i class="fa fa-clock-o"></i> {{ trans('labels.backend.student.sessions')}}</a>
                 </li>
                 <li class="">
-                    <a href="#batches"><i class="fa fa-users"></i> {{ trans('labels.backend.student.batches')}}</a>
+                    <a href="#reports" data-toggle="tab"><i class="fa fa-clone"></i> {{ trans('labels.backend.student.reports')}}</a>
                 </li>
                 <li class="">
-                    <a href="#payments"><i class="fa fa-money"></i> {{ trans('labels.backend.student.payments')}}</a>
+                    <a href="#batches" data-toggle="tab"><i class="fa fa-users"></i> {{ trans('labels.backend.student.batches')}}</a>
                 </li>
                 <li class="">
-                    <a href="#settings"><i class="fa fa-gears"></i> {{ trans('labels.backend.student.settings')}}</a>
+                    <a href="#payments" data-toggle="tab"><i class="fa fa-money"></i> {{ trans('labels.backend.student.payments')}}</a>
+                </li>
+                <li class="">
+                    <a href="#settings" data-toggle="tab"><i class="fa fa-gears"></i> {{ trans('labels.backend.student.settings')}}</a>
                 </li>
             </ul>
 
             <div class="tab-content">
                 <div class="tab-pane active" id="sessions">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3>{{ trans('labels.backend.student.upcoming_sessions')}}</h3>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>{{ trans('labels.backend.student.past_sessions')}}</h3>
-                        </div>
+                    <div id="sessions-calendar">
+
                     </div>
+                </div>
+                <div class="tab-pane" id="reports">
+
                 </div>
                 <div class="tab-pane" id="batches">
 
@@ -64,4 +67,23 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('after-scripts')
+    {{ Html::script("js/plugins/moment/moment.min.js") }}
+    {{ Html::script("js/plugins/fullcalendar/fullcalendar.min.js") }}
+
+    <script>
+        $(function() {
+            $('#sessions-calendar').fullCalendar({
+                header: {
+    				left: 'prev,next today',
+    				center: 'title',
+    				right: 'month,agendaWeek,agendaDay'
+    			},
+    			defaultView: 'agendaWeek',
+    			editable: true,
+            });
+        });
+    </script>
 @stop
