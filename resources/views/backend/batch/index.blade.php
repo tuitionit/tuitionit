@@ -18,6 +18,9 @@
             <h3 class="box-title">{{ trans('labels.backend.batches.all') }}</h3>
 
             <div class="box-tools pull-right">
+                <div class="pull-right mb-10 hidden-sm hidden-xs">
+                    {{ link_to_route('admin.batches.create', trans('menus.backend.batches.create'), [], ['class' => 'btn btn-success btn-sm']) }}
+                </div><!--pull right-->
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 

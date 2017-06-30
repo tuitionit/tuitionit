@@ -19,7 +19,7 @@
 
             <div class="box-tools pull-right">
                 <div class="pull-right mb-10 hidden-sm hidden-xs">
-                    {{ link_to_route('admin.courses.create', trans('menus.backend.courses.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+                    {{ link_to_route('admin.courses.create', trans('menus.backend.courses.create'), [], ['class' => 'btn btn-success btn-sm']) }}
                 </div><!--pull right-->
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->

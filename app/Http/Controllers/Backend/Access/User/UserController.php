@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
+use App\Repositories\Backend\Institute\InstituteRepository;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
@@ -26,13 +27,19 @@ class UserController extends Controller
     protected $roles;
 
     /**
+     * @var InstituteRepository
+     */
+    protected $institutes;
+
+    /**
      * @param UserRepository $users
      * @param RoleRepository $roles
      */
-    public function __construct(UserRepository $users, RoleRepository $roles)
+    public function __construct(UserRepository $users, RoleRepository $roles, InstituteRepository $institutes)
     {
         $this->users = $users;
         $this->roles = $roles;
+        $this->institutes = $institutes;
     }
 
     /**
@@ -91,7 +98,8 @@ class UserController extends Controller
         return view('backend.access.edit')
             ->withUser($user)
             ->withUserRoles($user->roles->pluck('id')->all())
-            ->withRoles($this->roles->getAll());
+            ->withRoles($this->roles->getAll())
+            ->withInstitutes($this->institutes->getAll());
     }
 
     /**

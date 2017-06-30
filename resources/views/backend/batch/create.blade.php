@@ -39,7 +39,6 @@
                             </div><!--col-lg-10-->
                         </div><!--form control-->
 
-
                         <div class="form-group">
                             {{ Form::label('status', trans('validation.attributes.backend.subjects.active'), ['class' => 'col-lg-2 control-label']) }}
 

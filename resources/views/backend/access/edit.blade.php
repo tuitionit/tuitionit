@@ -38,6 +38,14 @@
                     </div><!--col-lg-10-->
                 </div><!--form control-->
 
+                <div class="form-group">
+                    {{ Form::label('institute_id', trans('validation.attributes.backend.access.users.institute_id'), ['class' => 'col-lg-2 control-label']) }}
+
+                    <div class="col-lg-10">
+                        {{ Form::select('institute_id', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.email')]) }}
+                    </div><!--col-lg-10-->
+                </div><!--form control-->
+
                 @if ($user->id != 1)
                     <div class="form-group">
                         {{ Form::label('status', trans('validation.attributes.backend.access.users.active'), ['class' => 'col-lg-2 control-label']) }}
