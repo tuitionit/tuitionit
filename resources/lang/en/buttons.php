@@ -26,6 +26,12 @@ return [
                 'restore_user'       => 'Restore User',
             ],
         ],
+
+        'batch' => [
+            'add_students' => 'Add Students',
+            'add_selected_students' => 'Add Selected Students',
+            'new_student' => 'Add New Student',
+        ],
     ],
 
     'emails' => [
@@ -36,6 +42,7 @@ return [
     ],
 
     'general' => [
+        'add' => 'Add',
         'cancel' => 'Cancel',
         'continue' => 'Continue',
 

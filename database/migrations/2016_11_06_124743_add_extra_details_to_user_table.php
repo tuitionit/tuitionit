@@ -44,6 +44,8 @@ class AddExtraDetailsToUserTable extends Migration
     public function down()
     {
         Schema::table('users', function ($table) {
+            $table->dropForeign('users_institute_id_foreign');
+
             $table->dropColumn([
                 'type',
                 'status',

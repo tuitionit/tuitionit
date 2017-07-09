@@ -79,5 +79,14 @@ return [
             'restored' => 'The course was successfully restored.',
             'updated' => 'The course was successfully updated.',
         ],
+
+        'batches' => [
+            'created' => 'The batch was successfully created.',
+            'deleted' => 'The batch was successfully deleted.',
+            'deleted_permanently' => 'The batch was deleted permanently.',
+            'restored' => 'The batch was successfully restored.',
+            'updated' => 'The batch was successfully updated.',
+            'students_added' => '{0} No students added.|{1} One student added successfully.|[2,*] :n students added successfully.',
+        ],
     ],
 ];

@@ -54,6 +54,11 @@ class StudentController extends Controller
     {
         $data = $request->all();
         $data['status'] = $request->has('status') ? 1 : 0;
+
+        if(!access()->allow('manage-institutes')) {
+            $data['institute_id'] = access()->user()->institute_id;
+        }
+
         $student = Student::create($data);
 
         return redirect()->route('admin.students.index')->withFlashSuccess(trans('alerts.backend.students.created'));

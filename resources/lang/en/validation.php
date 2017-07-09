@@ -215,6 +215,24 @@ return [
                 'status' => 'Status',
                 'active' => 'Active',
             ],
+
+            'batches' => [
+                'name' => 'Name',
+                'description' => 'Description',
+                'type' => 'Type',
+                'location' => 'Location',
+                'course' => 'Course',
+                'subject' => 'Subject',
+                'start_date' => 'Start Date',
+                'end_date' => 'End Date',
+                'status' => 'Status',
+                'active' => 'Active',
+
+                'help' => [
+                    'start_date' => 'Eg: 15/01/2017',
+                    'end_date' => 'Eg: 25/12/2017',
+                ],
+            ],
         ],
 
         'frontend' => [

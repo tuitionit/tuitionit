@@ -31,6 +31,17 @@ return [
         'toggle_navigation' => 'Toggle Navigation',
     ],
 
+    'batch' => [
+        'type' => [
+            'standard' => 'Standard',
+            'group' => 'Group',
+            'individual' => 'Individual',
+            'seminar' => 'Seminar',
+            'test' => 'Test',
+            'other' => 'Other',
+        ]
+    ],
+
     'backend' => [
         'access' => [
             'roles' => [
@@ -132,6 +143,8 @@ return [
             'rooms' => 'Rooms',
         ],
 
+        'batches' => [],
+
         'student' => [
             'title' => 'Student',
             'overview' => 'Overview',
@@ -198,6 +211,12 @@ return [
                 'created' => 'Created',
                 'last_updated' => 'Last Updated',
             ],
+        ],
+
+        'batch' => [
+            'overview' => 'Overview',
+            'students' => 'Students',
+            'add_students' => 'Add Students',
         ],
 
         'batches' => [

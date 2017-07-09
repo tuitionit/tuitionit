@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Batch;
 
+use Carbon\Carbon as Carbon;
 use App\Models\Batch\Batch;
 use App\Repositories\Backend\Batch\BatchRepository;
 use App\Http\Controllers\Controller;
@@ -41,7 +42,12 @@ class BatchController extends Controller
      */
     public function create()
     {
-        return view('backend.batch.create');
+        $batch = new Batch();
+        $locations = isset(access()->user()->institute) ? access()->user()->institute->locations()->pluck('name', 'id') : [];
+        $courses = isset(access()->user()->institute) ? access()->user()->institute->courses()->pluck('name', 'id') : [];
+        $subjects = isset(access()->user()->institute) ? access()->user()->institute->subjects()->pluck('name', 'id') : [];
+
+        return view('backend.batch.create')->with(compact('locations', 'courses', 'subjects', 'batch'));
     }
 
     /**
@@ -52,7 +58,10 @@ class BatchController extends Controller
      */
     public function store(StoreBatchRequest $request)
     {
-        $batch = Batch::create($request->all());
+        $data = $request->all();
+        $data['start_date'] = Carbon::createFromFormat('d/m/Y', $data['start_date']);
+        $data['end_date'] = Carbon::createFromFormat('d/m/Y', $data['end_date']);
+        $batch = Batch::create($data);
 
         return redirect()->route('admin.batches.index')->withFlashSuccess(trans('alerts.backend.batches.created'));
     }

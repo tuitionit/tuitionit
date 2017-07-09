@@ -1,25 +1,26 @@
 @extends ('backend.layouts.app')
 
-@section ('title', $institute->name)
+@section ('title', $batch->name)
 
 @section('after-styles')
-    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("css/backend/plugin/select2/select2.min.css") }}
+    {{ Html::style("css/backend/plugin/select2/select2-bootstrap.min.css") }}
 @stop
 
 @section('page-header')
     <h1>
-        {{ $institute->name }}
-        <small>{{ $institute->name }}</small>
+        {{ $batch->name }}
+        <small>{{ $batch->name }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.institute.overview') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.batch.overview') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.includes.partials.institutes-header-buttons')
+
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -32,12 +33,12 @@
         <div class="col-sm-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('labels.backend.institute.locations') }}</h3>
+                    <h3 class="box-title">{{ trans('labels.backend.batch.students') }}</h3>
 
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
-                            {{ link_to_route('admin.institutes.index', trans('menus.backend.institutes.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
-                            {{ link_to_route('admin.locations.create', trans('menus.backend.institutes.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+                            <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-sm btn-primary">{{ trans('buttons.backend.batch.add_students') }}</a>
+                            {{ link_to_route('admin.batches.index', trans('buttons.backend.batch.new_student'), [], ['class' => 'btn btn-success btn-sm']) }}
                         </div><!--pull right-->
                     </div><!--box-tools pull-right-->
                 </div><!-- /.box-header -->
@@ -48,4 +49,61 @@
             </div><!--box-->
         </div>
     </div>
+
+    <div class="modal fade" id="add-students-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{ trans('labels.backend.batch.add_students') }}</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="">
+                        <div class="form-group">
+                            <p class="help-block small text-muted">{{ trans('strings.backend.batches.select_students') }}</p>
+                            <select id="student-selector" class="form-control" placeholder="{{ trans('strings.backend.search.type') }}"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-primary">{{ trans('buttons.backend.batch.add_selected_students') }}</a>
+                    <a href="#" data-dismiss="modal" data-target="#add-students-modal" class="btn btn-default">{{ trans('buttons.general.cancel') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
+
+@section('after-scripts')
+    {{ Html::script("js/backend/plugin/select2/select2.full.min.js") }}
+
+    <script>
+        $.fn.modal.Constructor.prototype.enforceFocus = function() {};
+
+        $(function() {
+            $('#student-selector').select2({
+                theme: 'bootstrap',
+                multiple: true,
+                ajax: {
+                    url: "{{ route('admin.students.list') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            name: params.term,
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        return {
+                            results: data
+                        };
+                    },
+                },
+                width: '100%'
+            });
+        });
+    </script>
+@endsection

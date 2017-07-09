@@ -67,20 +67,30 @@ class CreateAppTables extends Migration
             $table->string('name', 255);
             $table->text('description')->nullable();
             $table->string('color', 10)->nullable();
+            $table->integer('institute_id')->unsigned()->nullable();
             $table->tinyInteger('status')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
         });
 
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('cascade');
+        });
+
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255)->nullable();
             $table->text('description')->nullable();
+            $table->integer('institute_id')->unsigned()->nullable();
             $table->string('status', 20)->nullable();
 
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('courses', function (Blueprint $table) {
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('batches', function (Blueprint $table) {
@@ -415,17 +425,7 @@ class CreateAppTables extends Migration
  */
     public function down()
     {
-        Schema::drop('institutes');
-        Schema::drop('subjects');
-        Schema::drop('courses');
-        Schema::drop('batches');
-        Schema::drop('locations');
-        Schema::drop('rooms');
-        Schema::drop('teachers');
-        Schema::drop('students');
-        Schema::drop('sessions');
-        Schema::drop('settings');
-        Schema::drop('trackers');
+        // Schema::drop('settings');
         Schema::drop('institute_user');
         Schema::drop('batch_user');
         Schema::drop('batch_student');
@@ -436,11 +436,20 @@ class CreateAppTables extends Migration
         Schema::drop('location_student');
         Schema::drop('subject_teacher');
         Schema::drop('location_teacher');
-        Schema::drop('messages');
         Schema::drop('message_user');
-        Schema::drop('payment');
+        Schema::drop('messages');
+        Schema::drop('payments');
         Schema::drop('posts');
         Schema::drop('comments');
-
+        Schema::drop('trackers');
+        Schema::drop('sessions');
+        Schema::drop('students');
+        Schema::drop('teachers');
+        Schema::drop('batches');
+        Schema::drop('courses');
+        Schema::drop('subjects');
+        Schema::drop('rooms');
+        Schema::drop('locations');
+        Schema::drop('institutes');
     }
 }

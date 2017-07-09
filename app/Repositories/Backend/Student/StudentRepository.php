@@ -42,4 +42,22 @@ class StudentRepository extends BaseRepository
         // active() is a scope on the UserScope trait
         return $dataTableQuery;
     }
+
+    /**
+     * @param string  $query
+     *
+     * @return mixed
+     */
+    public function searchByName($query)
+    {
+        $searchQuery = $this->query()
+            ->select([
+                'students.id',
+                'students.index_number',
+                'students.name',
+            ])
+            ->where('name', 'LIKE', '%' . $query . '%');
+
+        return $searchQuery;
+    }
 }

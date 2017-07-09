@@ -34,6 +34,9 @@ class BatchTableController extends Controller
     {
         return Datatables::of($this->batches->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'description'])
+            ->editColumn('status', function ($user) {
+                return $user->status_label;
+            })
             ->addColumn('actions', function ($batch) {
                 return $batch->action_buttons;
             })
