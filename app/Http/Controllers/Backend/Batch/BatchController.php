@@ -6,11 +6,14 @@ use Carbon\Carbon as Carbon;
 use App\Models\Batch\Batch;
 use App\Repositories\Backend\Batch\BatchRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\Batch\Traits\BatchStudents;
 use App\Http\Requests\Backend\Batch\ManageBatchRequest;
 use App\Http\Requests\Backend\Batch\StoreBatchRequest;
 
 class BatchController extends Controller
 {
+    use BatchStudents;
+    
     /**
      * @var BatchRepository
      */

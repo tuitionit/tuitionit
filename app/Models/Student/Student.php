@@ -21,5 +21,5 @@ class Student extends Model
      *
      * @var array
      */
-    protected $fillable = ['index_number', 'name', 'phone', 'status'];
+    protected $fillable = ['index_number', 'name', 'phone', 'institute_id', 'status'];
 }

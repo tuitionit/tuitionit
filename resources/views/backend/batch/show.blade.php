@@ -38,7 +38,7 @@
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
                             <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-sm btn-primary">{{ trans('buttons.backend.batch.add_students') }}</a>
-                            {{ link_to_route('admin.batches.index', trans('buttons.backend.batch.new_student'), [], ['class' => 'btn btn-success btn-sm']) }}
+                            {{ link_to_route('admin.students.create', trans('buttons.backend.batch.new_student'), [], ['class' => 'btn btn-success btn-sm']) }}
                         </div><!--pull right-->
                     </div><!--box-tools pull-right-->
                 </div><!-- /.box-header -->
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-primary">{{ trans('buttons.backend.batch.add_selected_students') }}</a>
+                    <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-primary disabled">{{ trans('buttons.backend.batch.add_selected_students') }}</a>
                     <a href="#" data-dismiss="modal" data-target="#add-students-modal" class="btn btn-default">{{ trans('buttons.general.cancel') }}</a>
                 </div>
             </div>
