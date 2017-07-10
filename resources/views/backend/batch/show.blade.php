@@ -68,8 +68,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-primary disabled">{{ trans('buttons.backend.batch.add_selected_students') }}</a>
-                    <a href="#" data-dismiss="modal" data-target="#add-students-modal" class="btn btn-default">{{ trans('buttons.general.cancel') }}</a>
+                    <button type="button" id="add-students" class="btn btn-primary">{{ trans('buttons.backend.batch.add_selected_students') }}</button>
+                    <button type="button" data-dismiss="modal" data-target="#add-students-modal" class="btn btn-default">{{ trans('buttons.general.cancel') }}</button>
                 </div>
             </div>
         </div>
@@ -81,6 +81,7 @@
 
     <script>
         $.fn.modal.Constructor.prototype.enforceFocus = function() {};
+        $('#add-students').prop('disabled', true);
 
         $(function() {
             $('#student-selector').select2({
@@ -103,6 +104,15 @@
                     },
                 },
                 width: '100%'
+            });
+
+            $('#student-selector').on('change', function(evt) {
+                var val = $(this).val();
+                $('#add-students').prop('disabled', val.length == 0);
+            });
+
+            $('#add-students').on('click', function() {
+                
             });
         });
     </script>
