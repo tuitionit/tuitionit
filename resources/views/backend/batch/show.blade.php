@@ -60,10 +60,12 @@
 
                 <div class="modal-body">
                     <div class="">
+                        {{ Form::open(['route' => ['admin.batches.students.add', 'id' => $batch->id], 'id' => 'add-students-form','class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
                         <div class="form-group">
                             <p class="help-block small text-muted">{{ trans('strings.backend.batches.select_students') }}</p>
                             <select id="student-selector" class="form-control" placeholder="{{ trans('strings.backend.search.type') }}"></select>
                         </div>
+                        {{ Form::close() }}
                     </div>
                 </div>
 
@@ -112,7 +114,7 @@
             });
 
             $('#add-students').on('click', function() {
-                
+                $('#add-students-form').submit();
             });
         });
     </script>

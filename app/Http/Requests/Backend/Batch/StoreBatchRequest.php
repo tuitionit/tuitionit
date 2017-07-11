@@ -31,7 +31,7 @@ class StoreBatchRequest extends Request
 			'name' => 'required',
 			'description' => 'max:500',
 			'type' => 'required',
-			'location' => 'required',
+			'location_id' => 'required',
 			'start_date' => 'date_format:d/m/Y',
 			'end_date' => 'date_format:d/m/Y|after_or_equal:start_date',
 		];

@@ -18,10 +18,10 @@ trait BatchStudents
      * @param \App\Models\Batch\Batch
      *
      */
-    function addStudents(Batch $batch, AddStudentsReqeuest $request)
+    function addStudents(Batch $batch, AddStudentsRequest $request)
     {
         dd($request->input('students'));
-        
+
         $students = $batch->students()->syncWithoutDetaching($request->input('students'));
 
         return redirect()->route('admin.batch.show', ['id' => $batch->id])->withFlashSuccess(trans_choice('alerts.backend.batch.students_added', count($students)));

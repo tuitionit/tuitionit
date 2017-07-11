@@ -13,7 +13,7 @@ use App\Http\Requests\Backend\Batch\StoreBatchRequest;
 class BatchController extends Controller
 {
     use BatchStudents;
-    
+
     /**
      * @var BatchRepository
      */

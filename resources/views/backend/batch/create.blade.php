@@ -54,11 +54,11 @@
                                 </div><!--form control-->
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('location', 'has-error') }}">
-                                    {{ Form::label('location', trans('validation.attributes.backend.batches.location'), ['class' => 'col-lg-4 control-label']) }}
+                                <div class="form-group {{ $errors->first('location_id', 'has-error') }}">
+                                    {{ Form::label('location_id', trans('validation.attributes.backend.batches.location'), ['class' => 'col-lg-4 control-label']) }}
 
                                     <div class="col-lg-8">
-                                        {{ Form::select('location', $locations, 'standard', ['class' => 'form-control']) }}
+                                        {{ Form::select('location_id', $locations, 'standard', ['class' => 'form-control']) }}
                                     </div><!--col-lg-10-->
                                 </div><!--form control-->
                             </div>
