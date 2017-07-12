@@ -44,10 +44,10 @@
                 </div><!-- /.box-header -->
 
                 <div class="box-body">
-                    <ul class="list">
+                    <ul class="nav nav-stacked full-width list">
                         @foreach($batch->students as $student)
                         <li>
-                            <h4 class="name">{{ $student->name }}</h4>
+                            <h5 class="name">{{ $student->name }}</h5>
                         </li>
                         @endforeach
                     </ul>
@@ -86,6 +86,7 @@
 
 @section('after-scripts')
     {{ Html::script("js/backend/plugin/select2/select2.full.min.js") }}
+    {{ Html::script("js/plugins/list.js/list.min.js") }}
 
     <script>
         $.fn.modal.Constructor.prototype.enforceFocus = function() {};

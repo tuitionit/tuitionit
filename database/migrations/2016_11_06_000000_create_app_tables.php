@@ -427,7 +427,7 @@ class CreateAppTables extends Migration
  */
     public function down()
     {
-        // Schema::drop('settings');
+        Schema::drop('settings');
         Schema::drop('institute_user');
         Schema::drop('batch_user');
         Schema::drop('batch_student');
@@ -441,8 +441,8 @@ class CreateAppTables extends Migration
         Schema::drop('message_user');
         Schema::drop('messages');
         Schema::drop('payments');
-        Schema::drop('posts');
         Schema::drop('comments');
+        Schema::drop('posts');
         Schema::drop('trackers');
         Schema::drop('sessions');
         Schema::drop('students');

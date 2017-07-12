@@ -26,6 +26,9 @@ mix.copyDirectory('node_modules/fullcalendar/dist', 'public/js/plugins/fullcalen
     .copyDirectory('node_modules/select2/dist/css', 'public/css/backend/plugin/select2')
     .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css', 'public/css/backend/plugin/select2')
 
+    // List.js
+    .copy('node_modules/list.js/dist/list.min.js', 'public/js/plugins/list.js/list.min.js')
+
     .sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
     .sass('resources/assets/sass/backend/app.scss', 'public/css/backend.css')
     .js([

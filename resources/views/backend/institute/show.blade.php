@@ -45,8 +45,8 @@
                     </div><!--box-tools pull-right-->
                 </div><!-- /.box-header -->
 
-                <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
+                <div class="box-body">
+                    <ul class="nav nav-pills nav-stacked full-width">
                         @forelse($institute->locations as $location)
                         <li>
                             <a href="{{ route('admin.locations.show', $location) }}">

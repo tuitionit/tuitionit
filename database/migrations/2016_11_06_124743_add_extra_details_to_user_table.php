@@ -48,7 +48,6 @@ class AddExtraDetailsToUserTable extends Migration
 
             $table->dropColumn([
                 'type',
-                'status',
                 'gender',
                 'dob',
                 'avatar',
