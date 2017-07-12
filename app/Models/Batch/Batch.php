@@ -34,6 +34,7 @@ class Batch extends Model
         'name',
         'description',
         'type',
+        'institute_id',
         'location_id',
         'course_id',
         'subject_id',

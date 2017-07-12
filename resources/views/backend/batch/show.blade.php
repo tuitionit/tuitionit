@@ -44,7 +44,13 @@
                 </div><!-- /.box-header -->
 
                 <div class="box-body">
-
+                    <ul class="list">
+                        @foreach($batch->students as $student)
+                        <li>
+                            <h4 class="name">{{ $student->name }}</h4>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div><!-- /.box-body -->
             </div><!--box-->
         </div>
@@ -60,10 +66,10 @@
 
                 <div class="modal-body">
                     <div class="">
-                        {{ Form::open(['route' => ['admin.batches.students.add', 'id' => $batch->id], 'id' => 'add-students-form','class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+                        {{ Form::open(['route' => ['admin.batches.students.add', 'id' => $batch->id], 'id' => 'add-students-form','class' => 'form', 'role' => 'form', 'method' => 'post']) }}
                         <div class="form-group">
                             <p class="help-block small text-muted">{{ trans('strings.backend.batches.select_students') }}</p>
-                            <select id="student-selector" class="form-control" placeholder="{{ trans('strings.backend.search.type') }}"></select>
+                            <select id="student-selector" class="form-control" placeholder="{{ trans('strings.backend.search.type') }}" name="students[]"></select>
                         </div>
                         {{ Form::close() }}
                     </div>

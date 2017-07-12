@@ -98,6 +98,7 @@ class CreateAppTables extends Migration
             $table->string('name', 255);
             $table->text('description')->nullable();
             $table->string('type', 20)->nullable();
+            $table->integer('institute_id')->unsigned();
             $table->integer('location_id')->nullable()->unsigned();
             $table->integer('course_id')->nullable()->unsigned();
             $table->integer('subject_id')->nullable()->unsigned();
@@ -112,6 +113,7 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('batches', function (Blueprint $table) {
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null')->onUpdate('cascade');

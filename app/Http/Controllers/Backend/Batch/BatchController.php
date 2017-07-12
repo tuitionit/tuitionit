@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Batch;
 
 use Carbon\Carbon as Carbon;
 use App\Models\Batch\Batch;
+use App\Models\Location\Location;
 use App\Repositories\Backend\Batch\BatchRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Backend\Batch\Traits\BatchStudents;
@@ -64,6 +65,9 @@ class BatchController extends Controller
         $data = $request->all();
         $data['start_date'] = Carbon::createFromFormat('d/m/Y', $data['start_date']);
         $data['end_date'] = Carbon::createFromFormat('d/m/Y', $data['end_date']);
+        if($location = Location::find($data['location_id'])) {
+            $data['institute_id'] = $location->institute_id;
+        }
         $batch = Batch::create($data);
 
         return redirect()->route('admin.batches.index')->withFlashSuccess(trans('alerts.backend.batches.created'));

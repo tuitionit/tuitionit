@@ -86,7 +86,7 @@ return [
             'deleted_permanently' => 'The batch was deleted permanently.',
             'restored' => 'The batch was successfully restored.',
             'updated' => 'The batch was successfully updated.',
-            'students_added' => '{0} No students added.|{1} One student added successfully.|[2,*] :n students added successfully.',
+            'students_added' => '{0} No students added or all selected students are already in the batch.|{1} One student added successfully.|[2,*] :count students added successfully.',
         ],
     ],
 ];

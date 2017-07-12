@@ -42,7 +42,7 @@ class BatchPolicy
      */
     public function update(User $user, Batch $batch)
     {
-        return $user->institute_id == $batch->institute_id;
+        return isset($batch->institute) && $user->institute_id == $batch->institute_id;
     }
 
     /**

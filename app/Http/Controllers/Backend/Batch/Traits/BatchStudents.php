@@ -20,11 +20,9 @@ trait BatchStudents
      */
     function addStudents(Batch $batch, AddStudentsRequest $request)
     {
-        dd($request->input('students'));
+        $result = $batch->students()->syncWithoutDetaching($request->input('students'));
 
-        $students = $batch->students()->syncWithoutDetaching($request->input('students'));
-
-        return redirect()->route('admin.batch.show', ['id' => $batch->id])->withFlashSuccess(trans_choice('alerts.backend.batch.students_added', count($students)));
+        return redirect()->route('admin.batches.show', ['id' => $batch->id])->withFlashSuccess(trans_choice('alerts.backend.batches.students_added', count($result['attached'])));
     }
 
     /**
@@ -35,8 +33,8 @@ trait BatchStudents
      */
     function removeStudents(Batch $batch, RemoveStudentsReqeuest $request)
     {
-        $students = $batch->students()->detach($request->input('students'));
+        $result = $batch->students()->detach($request->input('students'));
 
-        return redirect()->route('admin.batch.show', ['id' => $batch->id])->withFlashSuccess(trans_choice('alerts.backend.batch.students_added', count($students)));
+        return redirect()->route('admin.batch.show', ['id' => $batch->id])->withFlashSuccess(trans_choice('alerts.backend.batch.students_added', count($result['attached'])));
     }
 }
