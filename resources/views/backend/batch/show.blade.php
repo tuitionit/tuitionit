@@ -38,19 +38,19 @@
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
                             <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-sm btn-primary">{{ trans('buttons.backend.batch.add_students') }}</a>
-                            {{ link_to_route('admin.students.create', trans('buttons.backend.batch.new_student'), [], ['class' => 'btn btn-success btn-sm']) }}
+                            {{ link_to_route('admin.students.create', trans('buttons.backend.batch.new_student'), ['batch' => $batch->id], ['class' => 'btn btn-success btn-sm']) }}
                         </div><!--pull right-->
                     </div><!--box-tools pull-right-->
                 </div><!-- /.box-header -->
 
                 <div class="box-body">
                     <div id="students">
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-xs-6 col-sm-8">
-                                <input type="text" class="form-control search" placeholder="{{ trans('strings.backend.general.search_placeholder') }}" >
+                                <input type="text" class="form-control input-sm search" placeholder="{{ trans('strings.backend.general.search_placeholder') }}" >
                             </div>
                             <div class="col-xs-6 col-sm-4">
-                                <button type="button" class="btn btn-default btn-block sort" data-sort="name">
+                                <button type="button" class="btn btn-sm btn-default btn-block sort" data-sort="name">
                                     <i class="fa fa-sort-alpha-asc asc"></i>
                                     <i class="fa fa-sort-alpha-desc desc"></i>
                                     {{ trans('buttons.backend.batch.students.sort.name') }}
@@ -61,7 +61,7 @@
                         <ul class="nav nav-stacked list">
                             @foreach($batch->students as $student)
                             <li>
-                                <h5 class="name">{{ $student->name }}</h5>
+                                <h5 class="name"><a href="{{ route('admin.students.show', ['id' => $student->id]) }}"><i class="fa fa-user"></i> {{ $student->name }}</a></h5>
                             </li>
                             @endforeach
                         </ul>

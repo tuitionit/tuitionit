@@ -59,6 +59,10 @@
                     <div class="col-lg-10 col-lg-offset-2">
                         <div class="pull-left">
                             {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success']) }}
+
+                            @if(isset($batch))
+                                <input type="hidden" name="batch_id" value="{{ $batch }}">
+                            @endif
                         </div><!--pull-left-->
 
                         <div class="pull-right">

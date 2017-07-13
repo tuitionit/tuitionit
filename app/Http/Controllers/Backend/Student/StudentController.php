@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Student;
 
+use Illuminate\Http\Request;
 use App\Models\Student\Student;
 use App\Repositories\Backend\Student\StudentRepository;
 use App\Http\Controllers\Controller;
@@ -39,9 +40,10 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('backend.student.create');
+        $batchId = $request->has('batch') ? $request->input('batch') : null;
+        return view('backend.student.create')->withBatch($batchId);
     }
 
     /**
@@ -60,6 +62,11 @@ class StudentController extends Controller
         }
 
         $student = Student::create($data);
+
+        if($request->has('batch_id')) {
+            $student->fresh()->batches()->syncWithoutDetaching([$request->input('batch_id')]);
+            return redirect()->route('admin.batches.show', ['id' => $request->input('batch_id')])->withFlashSuccess(trans('alerts.backend.students.created'));
+        }
 
         return redirect()->route('admin.students.index')->withFlashSuccess(trans('alerts.backend.students.created'));
     }

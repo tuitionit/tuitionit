@@ -1,7 +1,11 @@
 .sort {
+    i.asc, i.desc {
+        display: none;
+    }
+
     &.asc {
         i.asc {
-            display: inline;
+            display: inline-block;
         }
 
         i.desc {
@@ -15,7 +19,13 @@
         }
 
         i.desc {
-            display: inline;
+            display: inline-block;
         }
+    }
+}
+
+.list {
+    i.fa {
+        color: darken($gray, 5%);
     }
 }

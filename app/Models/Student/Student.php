@@ -4,10 +4,12 @@ namespace App\Models\Student;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Student\Traits\StudentAttribute;
+use App\Models\Student\Traits\StudentRelationship;
 
 class Student extends Model
 {
-    use StudentAttribute;
+    use StudentAttribute,
+        StudentRelationship;
 
     /**
      * The database table used by the model.
