@@ -31,6 +31,11 @@ return [
             'add_students' => 'Add Students',
             'add_selected_students' => 'Add Selected Students',
             'new_student' => 'Add New Student',
+            'students' => [
+                'sort' => [
+                    'name' => 'Sort by name',
+                ],
+            ],
         ],
     ],
 

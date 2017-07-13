@@ -44,13 +44,28 @@
                 </div><!-- /.box-header -->
 
                 <div class="box-body">
-                    <ul class="nav nav-stacked full-width list">
-                        @foreach($batch->students as $student)
-                        <li>
-                            <h5 class="name">{{ $student->name }}</h5>
-                        </li>
-                        @endforeach
-                    </ul>
+                    <div id="students">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control search" placeholder="{{ trans('strings.backend.general.search_placeholder') }}" >
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <button type="button" class="btn btn-default btn-block sort" data-sort="name">
+                                    <i class="fa fa-sort-alpha-asc asc"></i>
+                                    <i class="fa fa-sort-alpha-desc desc"></i>
+                                    {{ trans('buttons.backend.batch.students.sort.name') }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <ul class="nav nav-stacked list">
+                            @foreach($batch->students as $student)
+                            <li>
+                                <h5 class="name">{{ $student->name }}</h5>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div><!-- /.box-body -->
             </div><!--box-->
         </div>
@@ -92,7 +107,7 @@
         $.fn.modal.Constructor.prototype.enforceFocus = function() {};
         $('#add-students').prop('disabled', true);
 
-        $(function() {
+        $(document).ready(function() {
             $('#student-selector').select2({
                 theme: 'bootstrap',
                 multiple: true,
@@ -122,6 +137,10 @@
 
             $('#add-students').on('click', function() {
                 $('#add-students-form').submit();
+            });
+
+            var studentsList = new List('students', {
+                valueNames: ['name']
             });
         });
     </script>

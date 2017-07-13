@@ -1,0 +1,21 @@
+.sort {
+    &.asc {
+        i.asc {
+            display: inline;
+        }
+
+        i.desc {
+            display: none;
+        }
+    }
+
+    &.desc {
+        i.asc {
+            display: none;
+        }
+
+        i.desc {
+            display: inline;
+        }
+    }
+}
