@@ -47,9 +47,20 @@ class BatchController extends Controller
     public function create()
     {
         $batch = new Batch();
-        $locations = isset(access()->user()->institute) ? access()->user()->institute->locations()->pluck('name', 'id') : [];
-        $courses = isset(access()->user()->institute) ? access()->user()->institute->courses()->pluck('name', 'id') : [];
-        $subjects = isset(access()->user()->institute) ? access()->user()->institute->subjects()->pluck('name', 'id') : [];
+        $locations = [];
+        $courses = [];
+        $subjects = [];
+
+        $user = access()->user();
+        if(access()->allow('manage-institutes')) {
+            $locations = Location::all();
+            $courses = Course::all();
+            $subjects = Subject::all();
+        } else if($user->institute) {
+            $locations = $ser->institute->locations()->pluck('name', 'id');
+            $courses = $user->institute->courses()->pluck('name', 'id');
+            $subjects = $user->institute->subjects()->pluck('name', 'id');
+        }
 
         return view('backend.batch.create')->with(compact('locations', 'courses', 'subjects', 'batch'));
     }

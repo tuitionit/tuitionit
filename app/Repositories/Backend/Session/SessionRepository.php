@@ -27,16 +27,18 @@ class SessionRepository extends BaseRepository
          * Note: You must return deleted_at or the User getActionButtonsAttribute won't
          * be able to differentiate what buttons to show for each row.
          */
-        $dataTableQuery = $this->query()
-            ->select([
+        $dataTableQuery = $this->query();
+            /*->select([
                 'sessions.id',
                 'sessions.name',
                 'sessions.description',
+                'sessions.start_time',
+                'sessions.end_time',
                 'sessions.status',
                 'sessions.created_at',
                 'sessions.updated_at',
                 'sessions.deleted_at',
-            ]);
+            ]);*/
 
         // active() is a scope on the UserScope trait
         return $dataTableQuery;

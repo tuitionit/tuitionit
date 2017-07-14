@@ -188,6 +188,7 @@ class CreateAppTables extends Migration
             $table->timestamp('end_time')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('subject_id')->nullable()->unsigned();
             $table->integer('room_id')->nullable()->unsigned();
+            $table->integer('location_id')->nullable()->unsigned();
             $table->integer('teacher_id')->nullable()->unsigned();
             $table->integer('batch_id')->nullable()->unsigned();
             $table->integer('course_id')->nullable()->unsigned();
@@ -201,12 +202,13 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('sessions', function (Blueprint $table) {
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('original_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('no action');
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null')->onUpdate('no action');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('original_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null')->onUpdate('cascade');
         });
 
         Schema::create('settings', function (Blueprint $table) {

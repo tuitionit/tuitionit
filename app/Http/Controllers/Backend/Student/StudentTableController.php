@@ -33,9 +33,12 @@ class StudentTableController extends Controller
     public function __invoke(ManageStudentRequest $request)
     {
         return Datatables::of($this->students->getForDataTable($request->get('status')))
-            ->escapeColumns(['name', 'email'])
-            ->editColumn('status', function ($user) {
-                return $user->status_label;
+            ->escapeColumns(['email'])
+            ->editColumn('name', function($student) {
+                return link_to_route('admin.students.show', $student->name, ['id' => $student->id]);
+            })
+            ->editColumn('status', function ($student) {
+                return $student->status_label;
             })
             ->addColumn('actions', function ($student) {
                 return $student->action_buttons;

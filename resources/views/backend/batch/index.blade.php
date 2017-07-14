@@ -60,7 +60,7 @@
                 },
                 columns: [
                     {data: 'id', name: 'batches.id'},
-                    {data: 'name', name: 'batches.name', render: $.fn.dataTable.render.text()},
+                    {data: 'name', name: 'batches.name'},
                     {data: 'description', name: 'batches.description', render: $.fn.dataTable.render.text()},
                     {data: 'status', name: 'batches.status'},
                     {data: 'created_at', name: 'batches.created_at'},

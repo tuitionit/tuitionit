@@ -6,7 +6,9 @@ use App\Models\Access\User\User;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
+use App\Models\Room\Room;
 use App\Models\Subject\Subject;
+use App\Models\Teacher\Teacher;
 
 /**
  * Class InstituteRelationship.
@@ -19,6 +21,14 @@ trait InstituteRelationship
     public function locations()
     {
         return $this->hasMany(Location::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rooms()
+    {
+        return $this->hasManyThrough(Room::class, Location::class);
     }
 
     /**
@@ -43,5 +53,13 @@ trait InstituteRelationship
     public function subjects()
     {
         return $this->hasMany(Subject::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class);
     }
 }

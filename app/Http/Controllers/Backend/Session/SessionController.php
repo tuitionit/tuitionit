@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Backend\Session;
 
+use App\Models\Batch\Batch;
+use App\Models\Course\Course;
+use App\Models\Location\Location;
+use App\Models\Room\Room;
 use App\Models\Session\Session;
+use App\Models\Teacher\Teacher;
 use App\Repositories\Backend\Session\SessionRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Session\ManageSessionRequest;
@@ -41,7 +46,33 @@ class SessionController extends Controller
      */
     public function create()
     {
-        return view('backend.session.create');
+        $session = new Session();
+        $locations = [];
+        $rooms = [];
+        $batches = [];
+        $courses = [];
+        $subjects = [];
+        $teacher = [];
+
+dd($session->isActive());
+        $user = access()->user();
+        if(access()->allow('manage-institutes')) {
+            $locations = Location::all();
+            $rooms = Room::all();
+            $batches = Batch::all();
+            $courses = Course::all();
+            $subjects = Subject::all();
+            $teachers = Teacher::all();
+        } else if($user->institute) {
+            $locations = $user->institute->locations()->pluck('name', 'id');
+            $rooms = $user->institute->rooms()->pluck('rooms.name', 'rooms.id');
+            $batches = $user->institute->batches()->pluck('batches.name', 'batches.id');
+            $courses = $user->institute->courses()->pluck('name', 'id');
+            $subjects = $user->institute->subjects()->pluck('name', 'id');
+            $teachers = $user->institute->teachers()->pluck('short_name', 'user_id');
+        }
+
+        return view('backend.session.create')->with(compact('session', 'locations', 'rooms', 'batches', 'courses', 'subjects', 'teachers'));
     }
 
     /**

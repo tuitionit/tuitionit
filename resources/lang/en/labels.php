@@ -236,6 +236,38 @@ return [
                 'last_updated' => 'Last Updated',
             ],
         ],
+
+        'session' => [
+            'overview' => 'Overview',
+            'students' => 'Students',
+            'attending_students' => 'Attending Students',
+        ],
+
+        'sessions' => [
+            'all' => 'All Sessions',
+            'create' => 'New Session',
+            'edit' => 'Edit Session',
+            'active' => 'Active Sessions',
+            'inactive' => 'Inactive Sessions',
+            'management' => 'Sessions Management',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'start_time' => 'Start',
+                'end_time' => 'End',
+                'subject' => 'Subject',
+                'room' => 'Room',
+                'location' => 'Location',
+                'teacher' => 'Teacher',
+                'batch' => 'Batch',
+                'course' => 'Course',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
     ],
 
     'frontend' => [
