@@ -187,6 +187,19 @@ return [
                 'institute' => 'Institute',
             ],
 
+            'rooms' => [
+                'name' => 'Name',
+                'description' => 'Description',
+                'capacity' => 'Capacity',
+                'has_blackboard' => 'Blackboard',
+                'has_whiteboard' => 'Whiteboard',
+                'has_projector' => 'Projector',
+                'is_airconditioned' => 'Air-conditioned',
+                'location_id' => 'Location',
+                'status' => 'Status',
+                'active' => 'Active',
+            ],
+
             'students' => [
                 'index_number' => 'Index No.',
                 'name' => 'Name',
@@ -205,8 +218,24 @@ return [
             'sessions' => [
                 'name' => 'Name',
                 'description' => 'Description',
+                'type' => 'Type',
+                'start_time' => 'Start Time',
+                'end_time' => 'End Time',
+                'location_id' => 'Location',
+                'subject_id' => 'Subject',
+                'room_id' => 'Room',
+                'teacher_id' => 'Teacher',
+                'batch_id' => 'Batch',
+                'course_id' => 'Course',
+                'is_template' => 'Template?',
+                'teacher_comment' => 'Teacher\'s Comments',
                 'status' => 'Status',
                 'active' => 'Active',
+
+                'help' => [
+                    'start_time' => 'Eg: 15/01/2017 09:00',
+                    'end_time' => 'Eg: 25/12/2017 13:00',
+                ],
             ],
 
             'courses' => [
@@ -220,7 +249,7 @@ return [
                 'name' => 'Name',
                 'description' => 'Description',
                 'type' => 'Type',
-                'location' => 'Location',
+                'location_id' => 'Location',
                 'course' => 'Course',
                 'subject' => 'Subject',
                 'start_date' => 'Start Date',

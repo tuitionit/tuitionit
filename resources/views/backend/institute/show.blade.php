@@ -20,6 +20,12 @@
 
             <div class="box-tools pull-right">
                 <div class="pull-right mb-10">
+                    @can('update', $institute)
+                    <a href="{{ route('admin.institute.edit')}}" class="btn btn-primary btn-sm">
+                        <i class="fa fa-pencil"></i>
+                        {{ trans('buttons.general.crud.edit') }}
+                    </a>
+                    @endcan
                 </div><!--pull right-->
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
@@ -37,7 +43,7 @@
 
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
-                            <a href="{{ route('admin.institute.locations.new', ['institute' => $institute->id]) }}" class="btn btn-sm btn-success">
+                            <a href="{{ route('admin.institutes.locations.new', ['institute' => $institute->id]) }}" class="btn btn-sm btn-success">
                                 <i class="fa fa-plus"></i>
                                 {{ trans('labels.backend.locations.create') }}
                             </a>
@@ -60,7 +66,7 @@
                                 <p>
                                     {{ trans('strings.backend.locations.empty') }}
                                 </p>
-                                <a href="{{ route('admin.institute.locations.new', ['institute' => $institute->id]) }}" class="btn btn-success">
+                                <a href="{{ route('admin.institutes.locations.new', ['institute' => $institute->id]) }}" class="btn btn-default">
                                     <i class="fa fa-plus"></i>
                                     {{ trans('labels.backend.locations.create') }}
                                 </a>

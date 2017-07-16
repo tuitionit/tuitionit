@@ -143,6 +143,16 @@ return [
             'rooms' => 'Rooms',
         ],
 
+        'rooms' => [
+            'management' => 'Rooms',
+            'create' => 'Add New Room',
+            'edit' => 'Edit Details',
+            'general' => 'General Details',
+            'contact' => 'Contact Details',
+            'overview' => 'Overview',
+            'rooms' => 'Rooms',
+        ],
+
         'batches' => [],
 
         'student' => [

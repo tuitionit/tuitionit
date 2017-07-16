@@ -54,7 +54,6 @@ class SessionController extends Controller
         $subjects = [];
         $teacher = [];
 
-dd($session->isActive());
         $user = access()->user();
         if(access()->allow('manage-institutes')) {
             $locations = Location::all();

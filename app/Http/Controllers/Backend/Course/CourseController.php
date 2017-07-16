@@ -52,7 +52,13 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        $course = Course::create($request->all());
+        $data = $request->all();
+
+        if(!access()->allow('manage-institutes')) {
+            $data['institute_id'] = access()->user()->institute_id;
+        }
+
+        $course = Course::create($data);
 
         return redirect()->route('admin.courses.index')->withFlashSuccess(trans('alerts.backend.courses.created'));
     }

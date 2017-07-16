@@ -62,7 +62,11 @@
                         </div><!--pull-left-->
 
                         <div class="pull-right">
-                            {{ link_to_route('admin.institutes.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
+                            @if(access()->allow('manage-institutes'))
+                                {{ link_to_route('admin.institutes.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
+                            @else
+                                {{ link_to_route('admin.institute', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
+                            @endif
                         </div><!--pull-right-->
 
                         <div class="clearfix"></div>

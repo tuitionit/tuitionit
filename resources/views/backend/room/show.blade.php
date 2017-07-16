@@ -39,36 +39,13 @@
 
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
-                            <a href="{{ route('admin.locations.rooms.new', ['location' => $location->id]) }}" class="btn btn-sm btn-success">
-                                <i class="fa fa-plus"></i>
-                                {{ trans('labels.backend.rooms.create') }}
-                            </a>
+
                         </div><!--pull right-->
                     </div><!--box-tools pull-right-->
                 </div><!-- /.box-header -->
 
                 <div class="box-body">
-                    <ul class="nav nav-pills nav-stacked full-width">
-                        @forelse($location->rooms as $room)
-                        <li>
-                            <a href="{{ route('admin.rooms.edit', $location) }}">
-                                <i class="fa fa-map-marker"></i>
-                                <span>{{ $location->name }}</span>
-                                <span class="pull-right text-muted small">{{ $location->phone }}</span>
-                            </a>
-                        </li>
-                        @empty
-                            <div class="text-center">
-                                <p>
-                                    {{ trans('strings.backend.rooms.empty') }}
-                                </p>
-                                <a href="{{ route('admin.locations.rooms.new', ['location' => $location->id]) }}" class="btn btn-default">
-                                    <i class="fa fa-plus"></i>
-                                    {{ trans('labels.backend.rooms.create') }}
-                                </a>
-                            </div>
-                        @endforelse
-                    </ul>
+
                 </div><!-- /.box-body -->
             </div><!--box-->
         </div>

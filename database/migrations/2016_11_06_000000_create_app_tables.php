@@ -179,6 +179,18 @@ class CreateAppTables extends Migration
  		    $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
          });
 
+        Schema::create('session_groups', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamp('start_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('end_date')->nullable()->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->tinyInteger('repeat_type')->nullable(); // daily, weekly, monthly, yearly
+            $table->tinyInteger('frequency')->nullable()->unsigned();
+            $table->string('repeat_on')->nullable();
+            $table->string('repeat_by')->nullable();
+            $table->integer('count')->nullable()->unsigned();
+            $table->timestamps();
+        });
+
         Schema::create('sessions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
@@ -192,9 +204,11 @@ class CreateAppTables extends Migration
             $table->integer('teacher_id')->nullable()->unsigned();
             $table->integer('batch_id')->nullable()->unsigned();
             $table->integer('course_id')->nullable()->unsigned();
-            $table->tinyInteger('is_template')->nullable();
             $table->text('teacher_comment')->nullable();
+            $table->tinyInteger('is_template')->nullable();
+            $table->tinyInteger('is_repeating')->nullable();
             $table->integer('original_id')->nullable()->unsigned();
+            $table->integer('session_group_id')->nullable()->unsigned();
             $table->tinyInteger('status')->nullable();
 
             $table->timestamps();
@@ -208,6 +222,7 @@ class CreateAppTables extends Migration
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('original_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('session_group_id')->references('id')->on('session_groups')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null')->onUpdate('cascade');
         });
 
@@ -447,6 +462,7 @@ class CreateAppTables extends Migration
         Schema::drop('posts');
         Schema::drop('trackers');
         Schema::drop('sessions');
+        Schema::drop('session_groups');
         Schema::drop('students');
         Schema::drop('teachers');
         Schema::drop('batches');

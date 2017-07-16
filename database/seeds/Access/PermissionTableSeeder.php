@@ -67,6 +67,14 @@ class PermissionTableSeeder extends Seeder
         ];
 
         /**
+         * Location permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-rooms',
+            'display_name' => 'Manage Rooms',
+        ];
+
+        /**
          * Student permissions
          */
         $permissions[] = [

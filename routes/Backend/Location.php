@@ -8,8 +8,8 @@ Route::group([
 ], function() {
     Route::group(['namespace' => 'Location'], function() {
         // creating locations is done as a part of the institute management
-        Route::get('institute/{institute}/locations/new', ['as' => 'institute.locations.new', 'uses' => 'LocationController@create']);
-        Route::post('institute/{institute}/locations/store', ['as' => 'institute.locations.store', 'uses' => 'LocationController@store']);
+        Route::get('institutes/{institute}/locations/new', ['as' => 'institutes.locations.new', 'uses' => 'LocationController@create']);
+        Route::post('institutes/{institute}/locations/store', ['as' => 'institutes.locations.store', 'uses' => 'LocationController@store']);
 
         /**
          * Location CRUD

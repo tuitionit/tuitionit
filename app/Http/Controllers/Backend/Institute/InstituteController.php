@@ -92,6 +92,10 @@ class InstituteController extends Controller
      */
     public function edit(Institute $institute)
     {
+        if(!access()->allow('manage-institutes') && access()->user()->can('update', access()->user()->institute)) {
+            $institute = access()->user()->institute;
+        }
+
         return view('backend.institute.edit')->withInstitute($institute);
     }
 

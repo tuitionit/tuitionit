@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Models\Batch\Traits;
+namespace App\Models\Session\Traits;
 
 use App\Models\Access\User\User;
-use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Institute\Institute;
 use App\Models\Location\Location;
 use App\Models\Student\Student;
+use App\Models\Session\Session;
 use App\Models\Subject\Subject;
 
 /**
- * Class BatchRelationship.
+ * Class SessionRelationship.
  */
-trait BatchRelationship
+trait SessionRelationship
 {
     /**
-     * Batch can be belong to only one Institute.
+     * Session can be belong to only one Institute.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
@@ -47,13 +47,5 @@ trait BatchRelationship
     public function subject()
     {
         return $this->belongsTo(Subject::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function students()
-    {
-        return $this->belongsToMany(Student::class, 'batch_student', 'batch_id', 'student_id');
     }
 }

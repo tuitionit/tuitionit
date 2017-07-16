@@ -8,7 +8,7 @@ use App\Models\Subject\Traits\SubjectAttribute;
 class Subject extends Model
 {
     use SubjectAttribute;
-    
+
     /**
      * The database table used by the model.
      *
@@ -21,5 +21,5 @@ class Subject extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'color', 'status'];
+    protected $fillable = ['name', 'description', 'color', 'institute_id', 'status'];
 }

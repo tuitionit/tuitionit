@@ -45,6 +45,43 @@
 
                         <div class="row">
                             <div class="col-md-6">
+                                <div class="form-group {{ $errors->first('start_time', 'has-error') }}">
+                                    {{ Form::label('start_time', trans('validation.attributes.backend.sessions.start_time'), ['class' => 'col-lg-4 control-label']) }}
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group date" id="start-date-picker">
+                                            {{ Form::text('start_time', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <p class="small help-block">
+                                            {{ trans('validation.attributes.backend.sessions.help.end_time') }}
+                                        </p>
+                                    </div><!--col-lg-10-->
+                                </div><!--form control-->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group {{ $errors->first('end_time', 'has-error') }}">
+                                    {{ Form::label('end_time', trans('validation.attributes.backend.sessions.end_time'), ['class' => 'col-lg-4 control-label']) }}
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group date" id="end-date-picker">
+                                            {{ Form::text('end_time', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <p class="small help-block">
+                                            {{ trans('validation.attributes.backend.sessions.help.end_time') }}
+                                        </p>
+                                    </div><!--col-lg-10-->
+                                </div><!--form control-->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group {{ $errors->first('type', 'has-error') }}">
                                     {{ Form::label('type', trans('validation.attributes.backend.sessions.type'), ['class' => 'col-lg-4 control-label']) }}
 
@@ -54,20 +91,14 @@
                                 </div><!--form control-->
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('location_id', 'has-error') }}">
-                                    {{ Form::label('location_id', trans('validation.attributes.backend.sessions.location'), ['class' => 'col-lg-4 control-label']) }}
 
-                                    <div class="col-lg-8">
-                                        {{ Form::select('location_id', $locations, 'standard', ['class' => 'form-control']) }}
-                                    </div><!--col-lg-10-->
-                                </div><!--form control-->
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('course', 'has-error') }}">
-                                    {{ Form::label('course', trans('validation.attributes.backend.sessions.course'), ['class' => 'col-lg-4 control-label']) }}
+                                <div class="form-group {{ $errors->first('course_id', 'has-error') }}">
+                                    {{ Form::label('course', trans('validation.attributes.backend.sessions.course_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                     <div class="col-lg-8">
                                         {{ Form::select('course', $courses, 'standard', ['class' => 'form-control']) }}
@@ -75,11 +106,11 @@
                                 </div><!--form control-->
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('subject', 'has-error') }}">
-                                    {{ Form::label('subject', trans('validation.attributes.backend.sessions.subject'), ['class' => 'col-lg-4 control-label']) }}
+                                <div class="form-group {{ $errors->first('subject_id', 'has-error') }}">
+                                    {{ Form::label('subject_id', trans('validation.attributes.backend.sessions.subject_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                     <div class="col-lg-8">
-                                        {{ Form::select('subject', $subjects, 'standard', ['class' => 'form-control']) }}
+                                        {{ Form::select('subject_id', $subjects, 'standard', ['class' => 'form-control']) }}
                                     </div><!--col-lg-10-->
                                 </div><!--form control-->
                             </div>
@@ -87,36 +118,41 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('start_date', 'has-error') }}">
-                                    {{ Form::label('start_date', trans('validation.attributes.backend.sessions.start_date'), ['class' => 'col-lg-4 control-label']) }}
+                                <div class="form-group {{ $errors->first('location_id', 'has-error') }}">
+                                    {{ Form::label('location_id', trans('validation.attributes.backend.sessions.location_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                     <div class="col-lg-8">
-                                        <div class="input-group date" id="start-date-picker">
-                                            {{ Form::text('start_date', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </span>
-                                        </div>
-                                        <p class="small help-block">
-                                            {{ trans('validation.attributes.backend.sessions.help.end_date') }}
-                                        </p>
+                                        {{ Form::select('location_id', $locations, 'standard', ['class' => 'form-control']) }}
                                     </div><!--col-lg-10-->
                                 </div><!--form control-->
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('end_date', 'has-error') }}">
-                                    {{ Form::label('end_date', trans('validation.attributes.backend.sessions.end_date'), ['class' => 'col-lg-4 control-label']) }}
+                                <div class="form-group {{ $errors->first('room_id', 'has-error') }}">
+                                    {{ Form::label('room_id', trans('validation.attributes.backend.sessions.room_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                     <div class="col-lg-8">
-                                        <div class="input-group date" id="end-date-picker">
-                                            {{ Form::text('end_date', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </span>
-                                        </div>
-                                        <p class="small help-block">
-                                            {{ trans('validation.attributes.backend.sessions.help.end_date') }}
-                                        </p>
+                                        {{ Form::select('room_id', $rooms, 'standard', ['class' => 'form-control']) }}
+                                    </div><!--col-lg-10-->
+                                </div><!--form control-->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group {{ $errors->first('batch_id', 'has-error') }}">
+                                    {{ Form::label('batch_id', trans('validation.attributes.backend.sessions.batch_id'), ['class' => 'col-lg-4 control-label']) }}
+
+                                    <div class="col-lg-8">
+                                        {{ Form::select('batch_id', $batches, 'standard', ['class' => 'form-control']) }}
+                                    </div><!--col-lg-10-->
+                                </div><!--form control-->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group {{ $errors->first('teacher_id', 'has-error') }}">
+                                    {{ Form::label('teacher_id', trans('validation.attributes.backend.sessions.teacher_id'), ['class' => 'col-lg-4 control-label']) }}
+
+                                    <div class="col-lg-8">
+                                        {{ Form::select('teacher_id', $teachers, 'standard', ['class' => 'form-control']) }}
                                     </div><!--col-lg-10-->
                                 </div><!--form control-->
                             </div>

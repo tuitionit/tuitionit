@@ -31,5 +31,7 @@ Route::group([
     Route::group(['namespace' => 'Institute'], function() {
         // Institute
         Route::get('institute', 'InstituteController@overview')->name('institute');
+        Route::get('institute/edit', 'InstituteController@edit')->name('institute.edit');
+        Route::post('institute/update', 'InstituteController@update')->name('institute.update');
     });
 });

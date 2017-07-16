@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Room\ManageRoomRequest;
 use App\Http\Requests\Backend\Room\StoreRoomRequest;
+use App\Models\Location\Location ;
 use App\Models\Room\Room;
 use App\Repositories\Backend\Room\RoomRepository;
 
@@ -40,9 +41,9 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Location $location, Request $request)
     {
-        return view('backend.room.create');
+        return view('backend.room.create')->withLocation($location);
     }
 
     /**

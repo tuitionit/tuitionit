@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\System;
+namespace App\Models\Session;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Session\Traits\SessionAttribute;

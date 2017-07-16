@@ -21,5 +21,5 @@ class Course extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'color', 'status'];
+    protected $fillable = ['name', 'description', 'institute_id', 'status'];
 }

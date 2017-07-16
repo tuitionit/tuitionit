@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Models\Batch\Batch;
-use App\Policies\BatchPolicy;
 
 /**
  * Class AuthServiceProvider.
@@ -17,7 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Batch::class => BatchPolicy::class,
+        \App\Models\Batch\Batch::class => \App\Policies\BatchPolicy::class,
+        \App\Models\Institute\Institute::class => \App\Policies\InstitutePolicy::class,
     ];
 
     /**
