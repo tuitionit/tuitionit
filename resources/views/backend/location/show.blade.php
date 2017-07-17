@@ -4,6 +4,12 @@
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+
+    <style media="screen">
+        .rooms .room .properties .icon {
+            margin-left: 10px;
+        }
+    </style>
 @stop
 
 @section('page-header')
@@ -48,24 +54,28 @@
                 </div><!-- /.box-header -->
 
                 <div class="box-body">
-                    <ul class="nav nav-pills nav-stacked full-width">
+                    <ul class="nav nav-pills nav-stacked full-width rooms">
                         @forelse($location->rooms as $room)
-                        <li>
+                        <li class="room">
                             <a href="{{ route('admin.rooms.edit', $location) }}">
                                 <i class="fa fa-building-o"></i>
                                 <span>{{ $room->name }}</span>
-                                <span class="pull-right">
+                                <span class="pull-right properties">
+                                    <span class="capacity"  title="{{ trans('validation.attributes.backend.rooms.capacity') }}">
+                                        <img src="{{ URL::to('/') }}/img/icons/users.svg" class="icon icon-16">
+                                        {{ $room->capacity }}
+                                    </span>
                                     @if($room->has_blackboard)
-                                        <i class="fa fa-square" title="{{ trans('validation.attributes.backend.rooms.has_blackboard') }}"></i>
+                                        <img src="{{ URL::to('/') }}/img/icons/blackboard.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.has_blackboard') }}">
                                     @endif
                                     @if($room->has_whiteboard)
-                                        <i class="fa fa-square-o" title="{{ trans('validation.attributes.backend.rooms.has_whiteboard') }}"></i>
+                                        <img src="{{ URL::to('/') }}/img/icons/whiteboard.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.has_whiteboard') }}">
                                     @endif
                                     @if($room->has_projector)
-                                        <i class="fa fa-tv" title="{{ trans('validation.attributes.backend.rooms.has_projector') }}"></i>
+                                        <img src="{{ URL::to('/') }}/img/icons/projector.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.has_projector') }}">
                                     @endif
                                     @if($room->is_airconditioned)
-                                        <i class="fa fa-snowflake-o" title="{{ trans('validation.attributes.backend.rooms.is_airconditioned') }}"></i>
+                                        <img src="{{ URL::to('/') }}/img/icons/ac.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.is_airconditioned') }}">
                                     @endif
                                 </span>
                             </a>
