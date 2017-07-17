@@ -52,11 +52,13 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRoomRequest $request)
+    public function store(Location $location, StoreRoomRequest $request)
     {
-        $room = Room::create($request->all());
+        $data = $request->all();
+        $data['location_id'] = $location->id;
+        $room = Room::create($data);
 
-        return redirect()->route('admin.institutes.show', $room->institute_id)->withFlashSuccess(trans('alerts.backend.rooms.created'));
+        return redirect()->route('admin.locations.show', $location->id)->withFlashSuccess(trans('alerts.backend.rooms.created'));
     }
 
     /**

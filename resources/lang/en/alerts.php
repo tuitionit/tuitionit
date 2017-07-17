@@ -48,6 +48,14 @@ return [
             'updated' => 'The location was successfully updated.',
         ],
 
+        'rooms' => [
+            'created' => 'The room was successfully created.',
+            'deleted' => 'The room was successfully deleted.',
+            'deleted_permanently' => 'The room was deleted permanently.',
+            'restored' => 'The room was successfully restored.',
+            'updated' => 'The room was successfully updated.',
+        ],
+
         'students' => [
             'created' => 'The student was successfully created.',
             'deleted' => 'The student was successfully deleted.',

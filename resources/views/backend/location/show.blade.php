@@ -52,9 +52,22 @@
                         @forelse($location->rooms as $room)
                         <li>
                             <a href="{{ route('admin.rooms.edit', $location) }}">
-                                <i class="fa fa-map-marker"></i>
-                                <span>{{ $location->name }}</span>
-                                <span class="pull-right text-muted small">{{ $location->phone }}</span>
+                                <i class="fa fa-building-o"></i>
+                                <span>{{ $room->name }}</span>
+                                <span class="pull-right">
+                                    @if($room->has_blackboard)
+                                        <i class="fa fa-square" title="{{ trans('validation.attributes.backend.rooms.has_blackboard') }}"></i>
+                                    @endif
+                                    @if($room->has_whiteboard)
+                                        <i class="fa fa-square-o" title="{{ trans('validation.attributes.backend.rooms.has_whiteboard') }}"></i>
+                                    @endif
+                                    @if($room->has_projector)
+                                        <i class="fa fa-tv" title="{{ trans('validation.attributes.backend.rooms.has_projector') }}"></i>
+                                    @endif
+                                    @if($room->is_airconditioned)
+                                        <i class="fa fa-snowflake-o" title="{{ trans('validation.attributes.backend.rooms.is_airconditioned') }}"></i>
+                                    @endif
+                                </span>
                             </a>
                         </li>
                         @empty
