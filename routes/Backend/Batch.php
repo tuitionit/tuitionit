@@ -13,7 +13,7 @@ Route::group([
         Route::post('batches/get', 'BatchTableController')->name('batches.get');
 
         // Status
-        Route::get('mark/{status}', 'BatchController@mark')->name('batches.mark')->where(['status' => '[0,1]']);
+        Route::get('batches/{batch}/mark/{status}', 'BatchController@mark')->name('batches.mark')->where(['status' => '[0,1]']);
 
         /*
          * Batch Students

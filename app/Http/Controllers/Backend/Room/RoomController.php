@@ -78,9 +78,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Room $room)
     {
-        //
+        return view('backend.room.edit')->withRoom($room);
     }
 
     /**
@@ -90,9 +90,12 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Room $room)
     {
-        //
+        $data = $request->all();
+
+        $room->update($data);
+        return redirect()->route('admin.locations.show', $room->location_id)->withFlashSuccess(trans('alerts.backend.rooms.updated'));
     }
 
     /**

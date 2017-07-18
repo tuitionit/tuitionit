@@ -143,11 +143,7 @@
                     </div><!--pull-left-->
 
                     <div class="pull-right">
-                        @if($logged_in_user->allow('manage-institutes'))
-                            {{ link_to_route('admin.institutes.show', trans('buttons.general.cancel'), ['institute' => $location->institute], ['class' => 'btn btn-danger']) }}
-                        @else
-                            {{ link_to_route('admin.institute', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
-                        @endif
+                        {{ link_to_route('admin.locations.show', trans('buttons.general.cancel'), ['id' => $location->id], ['class' => 'btn btn-danger']) }}
                     </div><!--pull-right-->
 
                     <div class="clearfix"></div>

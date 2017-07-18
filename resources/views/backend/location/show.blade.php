@@ -20,25 +20,69 @@
 @endsection
 
 @section('content')
-    <div class="box box-success">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.locations.overview') }}</h3>
-
-            <div class="box-tools pull-right">
-                <a href="{{ route('admin.locations.edit', [$location->id])}}" class="btn btn-primary btn-sm">
-                    <i class="fa fa-pencil"></i>
-                    {{ trans('buttons.general.crud.edit') }}
-                </a>
-            </div><!--box-tools pull-right-->
-        </div><!-- /.box-header -->
-
-        <div class="box-body">
-
-        </div><!-- /.box-body -->
-    </div><!--box-->
-
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-md-4">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('labels.backend.locations.overview') }}</h3>
+
+                    <div class="box-tools pull-right">
+                        <a href="{{ route('admin.locations.edit', [$location->id])}}" class="btn btn-primary btn-sm">
+                            <i class="fa fa-pencil"></i>
+                            {{ trans('buttons.general.crud.edit') }}
+                        </a>
+                    </div><!--box-tools pull-right-->
+                </div><!-- /.box-header -->
+
+                <div class="box-body">
+                    <p class="description">{{ $location-> description }}</p>
+
+                    <div class="contact-details">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>{{ trans('validation.attributes.backend.locations.address') }}</th>
+                                    <td>{{ $location->address }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ trans('validation.attributes.backend.locations.city') }}</th>
+                                    <td>{{ $location->city }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ trans('validation.attributes.backend.locations.state_province') }}</th>
+                                    <td>{{ $location->state_province }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ trans('validation.attributes.backend.locations.country') }}</th>
+                                    <td>{{ $location->country }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ trans('validation.attributes.backend.locations.postal_code') }}</th>
+                                    <td>{{ $location->postal_code }}</td>
+                                </tr>
+                                <tr>
+                                    <th><i class="fa fa-envelope fw"></i> {{ trans('validation.attributes.backend.locations.email') }}</th>
+                                    <td>{{ $location->email }}</td>
+                                </tr>
+                                <tr>
+                                    <th><i class="fa fa-phone fw"></i> {{ trans('validation.attributes.backend.locations.phone') }}</th>
+                                    <td>{{ $location->phone }}</td>
+                                </tr>
+                                <tr>
+                                    <th><i class="fa fa-fax fw"></i> {{ trans('validation.attributes.backend.locations.fax') }}</th>
+                                    <td>{{ $location->fax }}</td>
+                                </tr>
+                                <tr>
+                                    <th><i class="fa fa-globe fw"></i> {{ trans('validation.attributes.backend.locations.web') }}</th>
+                                    <td>{{ $location->web }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!--box-->
+        </div>
+        <div class="col-sm-6 col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('labels.backend.locations.rooms') }}</h3>
@@ -57,7 +101,7 @@
                     <ul class="nav nav-pills nav-stacked full-width rooms">
                         @forelse($location->rooms as $room)
                         <li class="room">
-                            <a href="{{ route('admin.rooms.edit', $location) }}">
+                            <a href="{{ route('admin.rooms.edit', $room) }}">
                                 <i class="fa fa-building-o"></i>
                                 <span>{{ $room->name }}</span>
                                 <span class="pull-right properties">

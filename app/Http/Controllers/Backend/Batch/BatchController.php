@@ -57,7 +57,7 @@ class BatchController extends Controller
             $courses = Course::all();
             $subjects = Subject::all();
         } else if($user->institute) {
-            $locations = $ser->institute->locations()->pluck('name', 'id');
+            $locations = $user->institute->locations()->pluck('name', 'id');
             $courses = $user->institute->courses()->pluck('name', 'id');
             $subjects = $user->institute->subjects()->pluck('name', 'id');
         }

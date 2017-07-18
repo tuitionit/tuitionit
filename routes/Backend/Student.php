@@ -18,7 +18,7 @@ Route::group([
         Route::get('students/list', 'StudentListController')->name('students.list');
 
         // Status
-        Route::get('mark/{status}', 'StudentController@mark')->name('students.mark')->where(['status' => '[0,1]']);
+        Route::get('students/{student}/mark/{status}', 'StudentController@mark')->name('students.mark')->where(['status' => '[0,1]']);
 
         /**
          * Student CRUD

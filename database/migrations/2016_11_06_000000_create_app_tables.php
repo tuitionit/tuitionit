@@ -140,13 +140,15 @@ class CreateAppTables extends Migration
         });
 
         Schema::create('teachers', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->increments('id');
+            $table->string('name');
             $table->string('short_name', 40)->nullable();
-            $table->string('title', 255)->nullable();
+            $table->string('title')->nullable();
             $table->tinyInteger('level')->nullable();
             $table->text('cv')->nullable();
             $table->text('bio')->nullable();
-            $table->integer('institute_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('institute_id')->unsigned();
             $table->tinyInteger('status')->nullable();
 
             $table->timestamps();
@@ -154,8 +156,7 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('teachers', function (Blueprint $table) {
-            $table->primary('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade')->onUpdate('cascade');
         });
 
@@ -217,7 +218,7 @@ class CreateAppTables extends Migration
 
         Schema::table('sessions', function (Blueprint $table) {
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');
@@ -395,7 +396,7 @@ class CreateAppTables extends Migration
 
         Schema::table('subject_teacher', function (Blueprint $table) {
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade')->onUpdate('no action');
-            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('location_teacher', function (Blueprint $table) {
@@ -405,7 +406,7 @@ class CreateAppTables extends Migration
 
         Schema::table('location_teacher', function (Blueprint $table) {
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->onUpdate('no action');
-            $table->foreign('teacher_id')->references('user_id')->on('teachers')->onDelete('cascade')->onUpdate('no action');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade')->onUpdate('no action');
         });
 
         Schema::create('messages', function (Blueprint $table) {

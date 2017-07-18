@@ -13,7 +13,7 @@ Route::group([
         Route::post('subjects/get', 'SubjectTableController')->name('subjects.get');
 
         // Status
-        Route::get('mark/{status}', 'SubjectController@mark')->name('subjects.mark')->where(['status' => '[0,1]']);
+        Route::get('subjects/{subject}/mark/{status}', 'SubjectController@mark')->name('subjects.mark')->where(['status' => '[0,1]']);
 
         /**
          * Subject CRUD

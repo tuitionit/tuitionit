@@ -10,10 +10,10 @@ Route::group([
         /*
          * For DataTables
          */
-        Route::post('batchs/get', 'CourseTableController')->name('courses.get');
+        Route::post('courses/get', 'CourseTableController')->name('courses.get');
 
         // Status
-        Route::get('mark/{status}', 'CourseController@mark')->name('courses.mark')->where(['status' => '[0,1]']);
+        Route::get('courses/{course}/mark/{status}', 'CourseController@mark')->name('courses.mark')->where(['status' => '[0,1]']);
 
         /**
          * Course CRUD

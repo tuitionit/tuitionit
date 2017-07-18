@@ -58,7 +58,10 @@
                             <a href="{{ route('admin.locations.show', $location) }}">
                                 <i class="fa fa-map-marker"></i>
                                 <span>{{ $location->name }}</span>
-                                <span class="pull-right text-muted small">{{ $location->phone }}</span>
+                                <span class="pull-right text-muted small">
+                                    <i class="fa fa-phone"></i>
+                                    {{ $location->phone }}
+                                </span>
                             </a>
                         </li>
                         @empty

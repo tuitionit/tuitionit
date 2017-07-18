@@ -26,7 +26,7 @@ class UpdateLocationRequest extends Request
 	 *
 	 * @return array
 	 */
-	public function rules($id)
+	public function rules()
 	{
 		return [
 			'name' => 'required',
@@ -36,7 +36,7 @@ class UpdateLocationRequest extends Request
                     if(!access()->allow('manage-institutes')) {
                         $query->where('institute_id', access()->user()->institute_id);
                     }
-                })->ignore($id),
+                })->ignore($this->location->id),
             ],
 			'web' => 'nullable|url',
             'institute_id' => 'manageable_institute',
