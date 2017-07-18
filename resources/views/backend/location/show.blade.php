@@ -41,39 +41,39 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th>{{ trans('validation.attributes.backend.locations.address') }}</th>
+                                    <th><i class="fa fa-home fa-fw"></i> {{ trans('validation.attributes.backend.locations.address') }}</th>
                                     <td>{{ $location->address }}</td>
                                 </tr>
                                 <tr>
-                                    <th>{{ trans('validation.attributes.backend.locations.city') }}</th>
+                                    <th><i class="fa fa-map-marker fa-fw"></i> {{ trans('validation.attributes.backend.locations.city') }}</th>
                                     <td>{{ $location->city }}</td>
                                 </tr>
                                 <tr>
-                                    <th>{{ trans('validation.attributes.backend.locations.state_province') }}</th>
+                                    <th><i class="fa fa-map-marker fa-fw"></i> {{ trans('validation.attributes.backend.locations.state_province') }}</th>
                                     <td>{{ $location->state_province }}</td>
                                 </tr>
                                 <tr>
-                                    <th>{{ trans('validation.attributes.backend.locations.country') }}</th>
+                                    <th><i class="fa fa-map-marker fa-fw"></i> {{ trans('validation.attributes.backend.locations.country') }}</th>
                                     <td>{{ $location->country }}</td>
                                 </tr>
                                 <tr>
-                                    <th>{{ trans('validation.attributes.backend.locations.postal_code') }}</th>
+                                    <th><i class="fa fa-map-marker fa-fw"></i> {{ trans('validation.attributes.backend.locations.postal_code') }}</th>
                                     <td>{{ $location->postal_code }}</td>
                                 </tr>
                                 <tr>
-                                    <th><i class="fa fa-envelope fw"></i> {{ trans('validation.attributes.backend.locations.email') }}</th>
+                                    <th><i class="fa fa-envelope fa-fw"></i> {{ trans('validation.attributes.backend.locations.email') }}</th>
                                     <td>{{ $location->email }}</td>
                                 </tr>
                                 <tr>
-                                    <th><i class="fa fa-phone fw"></i> {{ trans('validation.attributes.backend.locations.phone') }}</th>
+                                    <th><i class="fa fa-phone fa-fw"></i> {{ trans('validation.attributes.backend.locations.phone') }}</th>
                                     <td>{{ $location->phone }}</td>
                                 </tr>
                                 <tr>
-                                    <th><i class="fa fa-fax fw"></i> {{ trans('validation.attributes.backend.locations.fax') }}</th>
+                                    <th><i class="fa fa-fax fa-fw"></i> {{ trans('validation.attributes.backend.locations.fax') }}</th>
                                     <td>{{ $location->fax }}</td>
                                 </tr>
                                 <tr>
-                                    <th><i class="fa fa-globe fw"></i> {{ trans('validation.attributes.backend.locations.web') }}</th>
+                                    <th><i class="fa fa-globe fa-fw"></i> {{ trans('validation.attributes.backend.locations.web') }}</th>
                                     <td>{{ $location->web }}</td>
                                 </tr>
                             </tbody>
