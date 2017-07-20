@@ -29,14 +29,13 @@
 
                 <div class="box-body">
                     <div class="form-group {{ $errors->first('name', 'has-error') }}">
-                        {{ Form::label('user_id', trans('validation.attributes.backend.teachers.user_id'), ['class' => 'col-lg-2 control-label']) }}
-
+                        <div class="col-lg-2"></div>
                         <div class="col-lg-10">
                             <a href="#show-users" id="show-users">{{ trans('strings.backend.teachers.select_user') }}</a>
                         </div><!--col-lg-10-->
                     </div><!--form control-->
 
-                    <div class="form-group {{ $errors->first('name', 'has-error') }}">
+                    <div class="form-group {{ $errors->first('name', 'has-error') }} hidden" id="users">
                         {{ Form::label('user_id', trans('validation.attributes.backend.teachers.user_id'), ['class' => 'col-lg-2 control-label']) }}
 
                         <div class="col-lg-10">
@@ -115,7 +114,7 @@
             $('#user-selector').select2({
                 theme: 'bootstrap',
                 ajax: {
-                    url: "{{ route('admin.access.users.list', ['type' => 'teacher']) }}",
+                    url: "{{ route('admin.users.list', ['type' => 'teacher']) }}",
                     dataType: 'json',
                     delay: 250,
                     data: function(params) {
@@ -136,6 +135,11 @@
             $('#user-selector').on('change', function(evt) {
                 var val = $(this).val();
                 $('#add-students').prop('disabled', val.length == 0);
+            });
+
+            $('#show-users').click(function() {
+                $('#users').removeClass('hidden');
+                $(this).hide();
             });
         });
     </script>

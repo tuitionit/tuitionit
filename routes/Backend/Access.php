@@ -22,11 +22,6 @@ Route::group([
             Route::post('user/get', 'UserTableController')->name('user.get');
 
             /*
-             * For Select2
-             */
-            Route::get('users/list', 'UserListController')->name('users.list');
-
-            /*
              * User Status'
              */
             Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');

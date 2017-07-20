@@ -50,8 +50,8 @@ class UserRepository extends BaseRepository
     {
         $searchQuery = $this->query()
             ->select([
-                'students.id',
-                'students.name',
+                'users.id',
+                'users.name',
             ])
             ->where('name', 'LIKE', '%' . $query . '%');
 
