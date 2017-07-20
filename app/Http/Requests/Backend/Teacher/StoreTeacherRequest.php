@@ -28,7 +28,7 @@ class StoreTeacherRequest extends Request
 	public function rules()
 	{
 		return [
-            'index_number' => 'required',
+            'title' => 'required',
 			'name' => 'required',
 		];
 	}

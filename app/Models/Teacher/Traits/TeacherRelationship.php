@@ -16,6 +16,16 @@ use App\Models\Subject\Subject;
 trait TeacherRelationship
 {
     /**
+     * Teacher can be linked with a user account.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Teacher can be belong to only one Institute.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo

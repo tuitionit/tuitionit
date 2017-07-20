@@ -200,6 +200,18 @@ return [
                 'active' => 'Active',
             ],
 
+            'teachers' => [
+                'name' => 'Name',
+                'short_name' => 'Short Name',
+                'title' => 'Title',
+                'level' => 'Level',
+                'cv' => 'CV',
+                'bio' => 'Bio',
+                'user_id' => 'User',
+                'status' => 'Status',
+                'active' => 'Active',
+            ],
+
             'students' => [
                 'index_number' => 'Index No.',
                 'name' => 'Name',

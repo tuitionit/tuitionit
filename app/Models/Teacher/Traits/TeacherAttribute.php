@@ -7,6 +7,29 @@ namespace App\Models\Teacher\Traits;
  */
 trait TeacherAttribute
 {
+    /**
+     * @return string
+     */
+    public function getTitles()
+    {
+        return [
+            self::TITLE_MR => trans('labels.teacher.title.mr'),
+            self::TITLE_MRS => trans('labels.teacher.title.mrs'),
+            self::TITLE_MS => trans('labels.teacher.title.ms'),
+            self::TITLE_MX => trans('labels.teacher.title.mx'),
+            self::TITLE_DR => trans('labels.teacher.title.dr'),
+            self::TITLE_PROF => trans('labels.teacher.title.prof'),
+            self::TITLE_REV => trans('labels.teacher.title.rev'),
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitleLabel()
+    {
+        return $this->getTitles()[$this->title];
+    }
 
     /**
      * @return string

@@ -18,6 +18,7 @@
             <h3 class="box-title">{{ trans('labels.backend.teachers.all') }}</h3>
 
             <div class="box-tools pull-right">
+                {{ link_to_route('admin.teachers.create', trans('menus.backend.teachers.create'), [], ['class' => 'btn btn-success btn-sm']) }}
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -27,12 +28,10 @@
                     <thead>
                         <tr>
                             <th>{{ trans('labels.backend.teachers.table.id') }}</th>
-                            <th>{{ trans('labels.backend.teachers.table.index_number') }}</th>
                             <th>{{ trans('labels.backend.teachers.table.name') }}</th>
-                            <th>{{ trans('labels.backend.teachers.table.phone') }}</th>
+                            <th>{{ trans('labels.backend.teachers.table.short_name') }}</th>
+                            <th>{{ trans('labels.backend.teachers.table.level') }}</th>
                             <th>{{ trans('labels.backend.teachers.table.status') }}</th>
-                            <th>{{ trans('labels.backend.teachers.table.created') }}</th>
-                            <th>{{ trans('labels.backend.teachers.table.last_updated') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -58,12 +57,10 @@
                 },
                 columns: [
                     {data: 'id', name: 'teachers.id'},
-                    {data: 'index_number', name: 'teachers.index_number'},
                     {data: 'name', name: 'teachers.name', render: $.fn.dataTable.render.text()},
-                    {data: 'phone', name: 'teachers.phone', render: $.fn.dataTable.render.text()},
+                    {data: 'short_name', name: 'teachers.short_name', render: $.fn.dataTable.render.text()},
+                    {data: 'level', name: 'teachers.level', render: $.fn.dataTable.render.text()},
                     {data: 'status', name: 'teachers.status', render: $.fn.dataTable.render.text()},
-                    {data: 'created_at', name: 'teachers.created_at'},
-                    {data: 'updated_at', name: 'teachers.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

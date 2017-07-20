@@ -11,6 +11,14 @@ class Teacher extends Model
     use TeacherAttribute,
         TeacherRelationship;
 
+    const TITLE_MR = 'mr';
+    const TITLE_MRS = 'mrs';
+    const TITLE_MS = 'ms';
+    const TITLE_MX = 'mx';
+    const TITLE_DR = 'dr';
+    const TITLE_PROF = 'prof';
+    const TITLE_REV = 'rev';
+
     /**
      * The database table used by the model.
      *
@@ -23,5 +31,15 @@ class Teacher extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'short_name', 'title', 'level', 'cv', 'bio', 'institute_id', 'status'];
+    protected $fillable = [
+        'name',
+        'short_name',
+        'title',
+        'level',
+        'cv',
+        'bio',
+        'user_id',
+        'institute_id',
+        'status'
+    ];
 }

@@ -30,9 +30,9 @@ class TeacherRepository extends BaseRepository
         $dataTableQuery = $this->query()
             ->select([
                 'teachers.id',
-                'teachers.index_number',
                 'teachers.name',
-                'teachers.phone',
+                'teachers.short_name',
+                'teachers.level',
                 'teachers.status',
                 'teachers.created_at',
                 'teachers.updated_at',

@@ -41,7 +41,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('backend.teacher.create');
+        $teacher = new Teacher();
+        return view('backend.teacher.create')->withTeacher($teacher);
     }
 
     /**

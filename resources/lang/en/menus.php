@@ -47,6 +47,12 @@ return [
             'create' => 'New Institute',
         ],
 
+        'teachers' => [
+            'management' => 'Teachers',
+            'all' => 'All Teachers',
+            'create' => 'New Teacher',
+        ],
+
         'students' => [
             'management' => 'Students',
             'all' => 'All Students',

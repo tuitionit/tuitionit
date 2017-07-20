@@ -31,6 +31,18 @@ return [
         'toggle_navigation' => 'Toggle Navigation',
     ],
 
+    'teacher' => [
+        'title' => [
+            'mr' => 'Mr.',
+            'mrs' => 'Mrs.',
+            'ms' => 'Ms',
+            'mx' => 'Mx.',
+            'dr' => 'Dr.',
+            'prof' => 'Prof.',
+            'rev' => 'Rev.',
+        ]
+    ],
+
     'batch' => [
         'type' => [
             'standard' => 'Standard',
@@ -153,8 +165,6 @@ return [
             'rooms' => 'Rooms',
         ],
 
-        'batches' => [],
-
         'student' => [
             'title' => 'Student',
             'overview' => 'Overview',
@@ -166,6 +176,29 @@ return [
             'settings' => 'Settings',
             'upcoming_sessions' => 'Upcoming Sessions',
             'past_sessions' => 'Past Sessions',
+        ],
+
+        'teachers' => [
+            'all' => 'All Teachers',
+            'create' => 'New Teacher',
+            'edit' => 'Edit Teacher',
+            'active' => 'Active Teachers',
+            'inactive' => 'Inactive Teachers',
+            'management' => 'Teachers Management',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'short_name' => 'Short Name',
+                'title' => 'Title',
+                'level' => 'Level',
+                'cv' => 'CV',
+                'bio' => 'Bio',
+                'user_id' => 'User',
+                'status' => 'Status',
+                'created' => 'Joined',
+                'last_updated' => 'Updated',
+            ],
         ],
 
         'students' => [

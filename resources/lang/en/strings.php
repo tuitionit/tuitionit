@@ -73,6 +73,10 @@ return [
             'empty' => 'Add all rooms in this location to schedule sessions at them. There should be at least one room at each location.',
         ],
 
+        'teachers' => [
+            'select_user' => 'This teacher already has a user account',
+        ],
+
         'batches' => [
             'select_students' => 'Select students to add to the batch. Start typing the name of a student to search for students.',
         ],
