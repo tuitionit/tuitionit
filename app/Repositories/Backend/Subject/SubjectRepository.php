@@ -41,4 +41,21 @@ class SubjectRepository extends BaseRepository
         // active() is a scope on the UserScope trait
         return $dataTableQuery;
     }
+
+    /**
+     * @param string  $query
+     *
+     * @return mixed
+     */
+    public function searchByName($query)
+    {
+        $searchQuery = $this->query()
+            ->select([
+                'subjects.id',
+                'subjects.name',
+            ])
+            ->where('name', 'LIKE', '%' . $query . '%');
+
+        return $searchQuery;
+    }
 }

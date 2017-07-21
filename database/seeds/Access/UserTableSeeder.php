@@ -34,6 +34,7 @@ class UserTableSeeder extends Seeder
                 'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
+                'type'              => 'administrator',
             ],
             [
                 'name'              => 'Institute Director',
@@ -44,6 +45,7 @@ class UserTableSeeder extends Seeder
                 'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
+                'type'              => 'executive',
             ],
             [
                 'name'              => 'Location Manager',
@@ -54,6 +56,7 @@ class UserTableSeeder extends Seeder
                 'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
+                'type'              => 'manager',
             ],
             [
                 'name'              => 'Teacher',
@@ -64,6 +67,7 @@ class UserTableSeeder extends Seeder
                 'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
+                'type'              => 'teacher',
             ],
             [
                 'name'              => 'Student',
@@ -74,6 +78,7 @@ class UserTableSeeder extends Seeder
                 'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
+                'type'              => 'student',
             ],
             [
                 'name'              => 'Parent',
@@ -84,6 +89,7 @@ class UserTableSeeder extends Seeder
                 'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
+                'type'              => 'parent',
             ],
             [
                 'name'              => 'Default User',
@@ -94,6 +100,7 @@ class UserTableSeeder extends Seeder
                 'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
+                'type'              => 'standard',
             ],
         ];
 

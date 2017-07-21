@@ -210,6 +210,12 @@ return [
                 'user_id' => 'User',
                 'status' => 'Status',
                 'active' => 'Active',
+                'subjects' => 'Subjects',
+
+                'help' => [
+                    'user_id' => 'Select a user account to link this teacher profile.',
+                    'subjects' => 'Select the subjects this teacher will be teaching at your institute.',
+                ],
             ],
 
             'students' => [
@@ -218,6 +224,12 @@ return [
                 'phone' => 'Phone',
                 'status' => 'Status',
                 'active' => 'Active',
+                'user_id' => 'User',
+                'parent_id' => 'Parent',
+
+                'help' => [
+                    'user_id' => 'If this student already has a user account, you may join this profile with '
+                ],
             ],
 
             'subjects' => [

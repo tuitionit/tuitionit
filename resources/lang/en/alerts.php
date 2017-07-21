@@ -56,6 +56,14 @@ return [
             'updated' => 'The room was successfully updated.',
         ],
 
+        'teachers' => [
+            'created' => 'The teacher was successfully created.',
+            'deleted' => 'The teacher was successfully deleted.',
+            'deleted_permanently' => 'The teacher was deleted permanently.',
+            'restored' => 'The teacher was successfully restored.',
+            'updated' => 'The teacher was successfully updated.',
+        ],
+
         'students' => [
             'created' => 'The student was successfully created.',
             'deleted' => 'The student was successfully deleted.',

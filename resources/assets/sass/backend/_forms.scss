@@ -80,3 +80,10 @@
 .icheck > label {
   padding-left: 0;
 }
+
+.select2-container--bootstrap {
+    .select2-selection, .select2-search--dropdown .select2-search__field {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+}

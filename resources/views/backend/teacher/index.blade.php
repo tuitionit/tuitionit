@@ -27,7 +27,6 @@
                 <table id="teachers-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.teachers.table.id') }}</th>
                             <th>{{ trans('labels.backend.teachers.table.name') }}</th>
                             <th>{{ trans('labels.backend.teachers.table.short_name') }}</th>
                             <th>{{ trans('labels.backend.teachers.table.level') }}</th>
@@ -56,11 +55,10 @@
                     data: {status: 1}
                 },
                 columns: [
-                    {data: 'id', name: 'teachers.id'},
-                    {data: 'name', name: 'teachers.name', render: $.fn.dataTable.render.text()},
+                    {data: 'name', name: 'teachers.name'},
                     {data: 'short_name', name: 'teachers.short_name', render: $.fn.dataTable.render.text()},
                     {data: 'level', name: 'teachers.level', render: $.fn.dataTable.render.text()},
-                    {data: 'status', name: 'teachers.status', render: $.fn.dataTable.render.text()},
+                    {data: 'status', name: 'teachers.status'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

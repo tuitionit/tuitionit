@@ -53,7 +53,17 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-        $teacher = Teacher::create($request->all());
+        $data = $request->all();
+
+        if(!access()->allow('manage-institutes')) {
+            $data['institute_id'] = access()->user()->institute_id;
+        }
+
+        $teacher = Teacher::create($data);
+
+        if($teacher && $request->has('subjects')) {
+            $teacher->subjects()->attach($request->input('subjects'));
+        }
 
         return redirect()->route('admin.teachers.index')->withFlashSuccess(trans('alerts.backend.teachers.created'));
     }

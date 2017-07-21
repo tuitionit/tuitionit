@@ -30,6 +30,7 @@ class StoreTeacherRequest extends Request
 		return [
             'title' => 'required',
 			'name' => 'required',
+			'subjects' => 'array',
 		];
 	}
 }

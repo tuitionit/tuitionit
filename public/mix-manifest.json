@@ -1,7 +1,8 @@
 {
-  "/js/frontend.js": "/js/frontend.f83adba52684da7358a6.js",
-  "/js/backend.js": "/js/backend.af8118b5e42f8e332c44.js",
-  "/mix.js": "/mix.247ab120fe7680658924.js",
-  "/css/frontend.css": "/css/frontend.3af0a6cbd7d1d8d042f2a37e97008b7c.css",
-  "/css/backend.css": "/css/backend.5d59009f47c172bbd9afdd1c5da12321.css"
+    "/js/frontend.js": "/js/frontend.js?id=36630cb399dd7a77fb26",
+    "/css/frontend.css": "/css/frontend.css?id=1e86e4905468fbc914d2",
+    "/css/backend.css": "/css/backend.css?id=e8b79efc9c311eb1c808",
+    "/js/backend.js": "/js/backend.js?id=52684d214c3ef69d0c2d",
+    "/css/backend/plugin/select2/select2-bootstrap.min.css": "/css/backend/plugin/select2/select2-bootstrap.min.css?id=b8ec8e1bea84f6c51fcb",
+    "/js/plugins/list.js/list.min.js": "/js/plugins/list.js/list.min.js?id=69b60bc29a0554523767"
 }

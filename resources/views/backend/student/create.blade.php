@@ -22,41 +22,65 @@
             </div><!-- /.box-header -->
 
             <div class="box-body">
-                <div class="form-group {{ $errors->first('index_number', 'has-error') }}">
-                    {{ Form::label('index_number', trans('validation.attributes.backend.students.index_number'), ['class' => 'col-lg-2 control-label']) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group {{ $errors->first('index_number', 'has-error') }}">
+                            {{ Form::label('index_number', trans('validation.attributes.backend.students.index_number'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('index_number', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.index_number')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                            <div class="col-lg-10">
+                                {{ Form::text('index_number', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.index_number')]) }}
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
 
-                <div class="form-group {{ $errors->first('name', 'has-error') }}">
-                    {{ Form::label('name', trans('validation.attributes.backend.students.name'), ['class' => 'col-lg-2 control-label']) }}
+                        <div class="form-group {{ $errors->first('name', 'has-error') }}">
+                            {{ Form::label('name', trans('validation.attributes.backend.students.name'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.name')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                            <div class="col-lg-10">
+                                {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.name')]) }}
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
 
-                <div class="form-group {{ $errors->first('phone', 'has-error') }}">
-                    {{ Form::label('phone', trans('validation.attributes.backend.students.phone'), ['class' => 'col-lg-2 control-label']) }}
+                        <div class="form-group {{ $errors->first('phone', 'has-error') }}">
+                            {{ Form::label('phone', trans('validation.attributes.backend.students.phone'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.phone')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                            <div class="col-lg-10">
+                                {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.phone')]) }}
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
 
+                        <div class="form-group">
+                            {{ Form::label('status', trans('validation.attributes.backend.students.active'), ['class' => 'col-lg-2 control-label']) }}
 
+                            <div class="col-lg-1">
+                                {{ Form::checkbox('status', '1', true) }}
+                            </div><!--col-lg-1-->
+                        </div><!--form control-->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group {{ $errors->first('user_id', 'has-error') }}" id="users">
+                            {{ Form::label('user_id', trans('validation.attributes.backend.students.user_id'), ['class' => 'col-lg-2 control-label']) }}
+
+                            <div class="col-lg-10">
+                                {{ Form::select('user_id', [], null, ['id' => 'user-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.user_id')]) }}
+                                <p class="small help-block">
+                                    {{ trans('validation.attributes.backend.students.help.user_id') }}
+                                </p>
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
+                        <div class="form-group {{ $errors->first('parent_id', 'has-error') }}" id="users">
+                            {{ Form::label('parent_id', trans('validation.attributes.backend.students.user_id'), ['class' => 'col-lg-2 control-label']) }}
+
+                            <div class="col-lg-10">
+                                {{ Form::select('parent_id', [], null, ['id' => 'user-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.parent_id')]) }}
+                                <p class="small help-block">
+                                    {{ trans('validation.attributes.backend.students.help.parent_id') }}
+                                </p>
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
+                    </div>
+                </div>
                 <div class="form-group">
-                    {{ Form::label('status', trans('validation.attributes.backend.students.active'), ['class' => 'col-lg-2 control-label']) }}
-
-                    <div class="col-lg-1">
-                        {{ Form::checkbox('status', '1', true) }}
-                    </div><!--col-lg-1-->
-                </div><!--form control-->
-
-                <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
+                    <div class="col-lg-11 col-lg-offset-1">
                         <div class="pull-left">
                             {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success']) }}
 

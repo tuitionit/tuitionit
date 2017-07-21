@@ -42,4 +42,12 @@ trait TeacherRelationship
     {
         return $this->belongsToMany(Batch::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'subject_teacher');
+    }
 }

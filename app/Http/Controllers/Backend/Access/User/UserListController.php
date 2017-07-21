@@ -33,6 +33,10 @@ class UserListController extends Controller
     {
         $usersQuery = $this->users->searchByName($request->input('name'));
 
+        if($request->has('type')) {
+            $usersQuery->where('type', '=', $request->input('type'));
+        }
+
         $users = $usersQuery->get();
 
         $list = $users->map(function($user) {

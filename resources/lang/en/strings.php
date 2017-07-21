@@ -75,6 +75,7 @@ return [
 
         'teachers' => [
             'select_user' => 'This teacher already has a user account',
+            'select_user_description' => 'Joining teacher profile with a user account will allow teachers to manage their profiles easily.',
         ],
 
         'batches' => [

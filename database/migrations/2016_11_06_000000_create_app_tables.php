@@ -168,6 +168,7 @@ class CreateAppTables extends Migration
             $table->text('address')->nullable();
             $table->text('notes')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->integer('institute_id')->unsigned()->nullable();
             $table->tinyInteger('status')->default(1);
 
@@ -176,8 +177,9 @@ class CreateAppTables extends Migration
         });
 
         Schema::table('students', function(Blueprint $table) {
-            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('set null')->onUpdate('cascade');
  		    $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+ 		    $table->foreign('parent_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('set null')->onUpdate('cascade');
          });
 
         Schema::create('session_groups', function (Blueprint $table) {
