@@ -2,6 +2,11 @@
 
 @section ('title', trans('labels.backend.students.management') . ' | ' . trans('labels.backend.students.create'))
 
+@section('after-styles')
+    {{ Html::style("css/backend/plugin/select2/select2.min.css") }}
+    {{ Html::style("css/backend/plugin/select2/select2-bootstrap.min.css") }}
+@stop
+
 @section('page-header')
     <h1>
         {{ trans('labels.backend.students.management') }}
@@ -57,7 +62,7 @@
                         </div><!--form control-->
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group {{ $errors->first('user_id', 'has-error') }}" id="users">
+                        <div class="form-group {{ $errors->first('user_id', 'has-error') }}">
                             {{ Form::label('user_id', trans('validation.attributes.backend.students.user_id'), ['class' => 'col-lg-2 control-label']) }}
 
                             <div class="col-lg-10">
@@ -67,11 +72,11 @@
                                 </p>
                             </div><!--col-lg-10-->
                         </div><!--form control-->
-                        <div class="form-group {{ $errors->first('parent_id', 'has-error') }}" id="users">
-                            {{ Form::label('parent_id', trans('validation.attributes.backend.students.user_id'), ['class' => 'col-lg-2 control-label']) }}
+                        <div class="form-group {{ $errors->first('parent_id', 'has-error') }}">
+                            {{ Form::label('parent_id', trans('validation.attributes.backend.students.parent_id'), ['class' => 'col-lg-2 control-label']) }}
 
                             <div class="col-lg-10">
-                                {{ Form::select('parent_id', [], null, ['id' => 'user-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.parent_id')]) }}
+                                {{ Form::select('parent_id', [], null, ['id' => 'parent-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.parent_id')]) }}
                                 <p class="small help-block">
                                     {{ trans('validation.attributes.backend.students.help.parent_id') }}
                                 </p>
@@ -103,5 +108,51 @@
 @endsection
 
 @section('after-scripts')
-    {{ Html::script('js/backend/access/users/script.js') }}
+    {{ Html::script("js/backend/plugin/select2/select2.full.min.js") }}
+
+    <script>
+        $(document).ready(function() {
+            $('#user-selector').select2({
+                theme: 'bootstrap',
+                ajax: {
+                    url: "{{ route('admin.users.list', ['type' => 'student']) }}",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            name: params.term,
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        return {
+                            results: data
+                        };
+                    },
+                },
+                width: '100%'
+            });
+
+            $('#parent-selector').select2({
+                theme: 'bootstrap',
+                ajax: {
+                    url: "{{ route('admin.users.list', ['type' => 'parent']) }}",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            name: params.term,
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        return {
+                            results: data
+                        };
+                    },
+                },
+                width: '100%'
+            });
+        });
+    </script>
 @endsection
