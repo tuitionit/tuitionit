@@ -13,12 +13,11 @@
 
         <div class="user">
             <div class="avatar">
-
+                <div class="image-editor">
+                    <div class="cropit-preview"></div>
+                </div>
             </div>
-            <div class="details">
-
-
-            </div>
+            <div class="details"></div>
         </div>
     </div>
     <div class="col-md-5">
