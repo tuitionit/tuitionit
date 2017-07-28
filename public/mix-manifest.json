@@ -1,8 +1,9 @@
 {
     "/js/frontend.js": "/js/frontend.js?id=36630cb399dd7a77fb26",
-    "/css/frontend.css": "/css/frontend.css?id=1e86e4905468fbc914d2",
+    "/css/frontend.css": "/css/frontend.css?id=3aa03aadf70c305929f4",
     "/css/backend.css": "/css/backend.css?id=e8b79efc9c311eb1c808",
     "/js/backend.js": "/js/backend.js?id=52684d214c3ef69d0c2d",
     "/css/backend/plugin/select2/select2-bootstrap.min.css": "/css/backend/plugin/select2/select2-bootstrap.min.css?id=b8ec8e1bea84f6c51fcb",
-    "/js/plugins/list.js/list.min.js": "/js/plugins/list.js/list.min.js?id=69b60bc29a0554523767"
+    "/js/plugins/list.js/list.min.js": "/js/plugins/list.js/list.min.js?id=69b60bc29a0554523767",
+    "/js/plugins/cropit/jquery.cropit.js": "/js/plugins/cropit/jquery.cropit.js?id=aff0110c21331049b753"
 }

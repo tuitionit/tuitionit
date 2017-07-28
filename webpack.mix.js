@@ -29,6 +29,9 @@ mix.copyDirectory('node_modules/fullcalendar/dist', 'public/js/plugins/fullcalen
     // List.js
     .copy('node_modules/list.js/dist/list.min.js', 'public/js/plugins/list.js/list.min.js')
 
+    // Cropit
+    .copy('node_modules/cropit/dist/jquery.cropit.js', 'public/js/plugins/cropit/jquery.cropit.js')
+
     .sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
     .sass('resources/assets/sass/backend/app.scss', 'public/css/backend.css')
     .js([
