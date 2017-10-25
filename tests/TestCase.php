@@ -84,10 +84,18 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
          */
         $this->admin = User::find(1);
         $this->executive = User::find(2);
-        $this->user = User::find(3);
+        $this->manager = User::find(3);
+        $this->teacher = User::find(4);
+        $this->student = User::find(5);
+        $this->parent = User::find(6);
+        $this->user = User::find(7);
         $this->adminRole = Role::find(1);
         $this->executiveRole = Role::find(2);
-        $this->userRole = Role::find(3);
+        $this->managerRole = Role::find(3);
+        $this->teacherRole = Role::find(4);
+        $this->studentRole = Role::find(5);
+        $this->parentRole = Role::find(6);
+        $this->userRole = Role::find(7);
     }
 
     public function tearDown()
