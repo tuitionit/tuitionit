@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\Location;
 
+use App\Models\Location\Location;
 use App\Repositories\BaseRepository;
 
 /**
@@ -10,6 +11,11 @@ use App\Repositories\BaseRepository;
  */
 class LocationRepository extends BaseRepository
 {
+    /**
+     * Associated Repository Model.
+     */
+    const MODEL = Location::class;
+
     /**
      * @param int  $status
      *

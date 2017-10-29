@@ -91,13 +91,6 @@
             @endauth
 
             @role(1)
-            <li class="{{ active_class(Active::checkUriPattern('admin/institutes')) }}">
-                <a href="{{ route('admin.institutes.index') }}">
-                    <i class="fa fa-institution"></i>
-                    <span>{{ trans('menus.backend.sidebar.institutes') }}</span>
-                </a>
-            </li>
-
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>

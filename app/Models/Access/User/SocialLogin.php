@@ -3,12 +3,15 @@
 namespace App\Models\Access\User;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\UsesTenantConnection;
 
 /**
  * Class SocialLogin.
  */
 class SocialLogin extends Model
 {
+    use UsesTenantConnection;
+    
     /**
      * The database table used by the model.
      *

@@ -30,16 +30,8 @@ class StoreLocationRequest extends Request
 	{
 		return [
 			'name' => 'required',
-			'code' => [
-                'required',
-                Rule::unique('locations')->where(function($query) {
-                    if(!access()->allow('manage-institutes')) {
-                        $query->where('institute_id', access()->user()->institute_id);
-                    }
-                }),
-            ],
+			'code' => 'required|unique:tenant.locations,code',
 			'web' => 'nullable|url',
-            'institute_id' => 'manageable_institute',
 		];
 	}
 }

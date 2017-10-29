@@ -43,7 +43,7 @@
 
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
-                            <a href="{{ route('admin.institutes.locations.new', ['institute' => $institute->id]) }}" class="btn btn-sm btn-success">
+                            <a href="{{ route('admin.locations.create') }}" class="btn btn-sm btn-success">
                                 <i class="fa fa-plus"></i>
                                 {{ trans('labels.backend.locations.create') }}
                             </a>
@@ -53,7 +53,7 @@
 
                 <div class="box-body">
                     <ul class="nav nav-pills nav-stacked full-width">
-                        @forelse($institute->locations as $location)
+                        @forelse($locations as $location)
                         <li>
                             <a href="{{ route('admin.locations.show', $location) }}">
                                 <i class="fa fa-map-marker"></i>
@@ -69,7 +69,7 @@
                                 <p>
                                     {{ trans('strings.backend.locations.empty') }}
                                 </p>
-                                <a href="{{ route('admin.institutes.locations.new', ['institute' => $institute->id]) }}" class="btn btn-default">
+                                <a href="{{ route('admin.locations.create') }}" class="btn btn-default">
                                     <i class="fa fa-plus"></i>
                                     {{ trans('labels.backend.locations.create') }}
                                 </a>

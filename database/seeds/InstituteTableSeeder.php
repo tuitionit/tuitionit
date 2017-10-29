@@ -31,6 +31,9 @@ class InstituteTableSeeder extends Seeder
                 'domain' => 'tuitionix',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'username' => 'www',
+                'password' => 'wwwpwd',
+                'database' => 'tuitionix_tenant_tuitionix',
             ]
         ];
 

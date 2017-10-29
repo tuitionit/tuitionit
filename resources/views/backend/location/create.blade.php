@@ -4,13 +4,12 @@
 
 @section('page-header')
     <h1>
-        {{ $institute->name }}
-        <small>{{ trans('labels.backend.locations.create') }}</small>
+        {{ trans('labels.backend.locations.create') }}
     </h1>
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => ['admin.institutes.locations.store', $institute], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::open(['route' => ['admin.locations.store'], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
 
         <div class="box box-success">
             <div class="box-header with-border">
@@ -143,11 +142,7 @@
                         </div><!--pull-left-->
 
                         <div class="pull-right">
-                            @if(access()->allow('manage-institutes'))
-                                {{ link_to_route('admin.institutes.show', trans('buttons.general.cancel'), ['institute' => $institute->id], ['class' => 'btn btn-danger']) }}
-                            @else
-                                {{ link_to_route('admin.institute', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
-                            @endif
+                            {{ link_to_route('admin.institute', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
                         </div><!--pull-right-->
 
                         <div class="clearfix"></div>

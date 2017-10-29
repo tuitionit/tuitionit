@@ -4,11 +4,13 @@ namespace App\Models\Location;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Location\Traits\LocationRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 class Location extends Model
 {
-    use LocationRelationship;
-    
+    use UsesTenantConnection,
+    LocationRelationship;
+
     /**
      * The database table used by the model.
      *
@@ -35,6 +37,5 @@ class Location extends Model
         'phone',
         'web',
         'status',
-        'institute_id'
     ];
 }

@@ -191,6 +191,7 @@ return [
                 'name' => 'Name',
                 'description' => 'Description',
                 'capacity' => 'Capacity',
+                'has_sound' => 'Sounds',
                 'has_blackboard' => 'Blackboard',
                 'has_whiteboard' => 'Whiteboard',
                 'has_projector' => 'Projector',

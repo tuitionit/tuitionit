@@ -5,10 +5,12 @@ namespace App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Student\Traits\StudentAttribute;
 use App\Models\Student\Traits\StudentRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 class Student extends Model
 {
-    use StudentAttribute,
+    use UsesTenantConnection,
+        StudentAttribute,
         StudentRelationship;
 
     /**

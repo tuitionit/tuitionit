@@ -19,14 +19,14 @@ class PermissionRoleSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncate(config('access.permission_role_table'));
+        $this->disableForeignKeys('tenant');
+        $this->truncate(config('access.permission_role_table'), 'tenant');
 
         /*
          * Assign view backend to executive role as example
          */
         Role::find(2)->permissions()->sync([1,2,3,4,5,6,7,8,9,10,11]);
 
-        $this->enableForeignKeys();
+        $this->enableForeignKeys('tenant');
     }
 }

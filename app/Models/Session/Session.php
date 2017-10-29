@@ -5,6 +5,7 @@ namespace App\Models\Session;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Session\Traits\SessionAttribute;
 use App\Models\Session\Traits\SessionRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 /**
  * Class Session
@@ -12,7 +13,8 @@ use App\Models\Session\Traits\SessionRelationship;
  */
 class Session extends Model
 {
-    use SessionAttribute,
+    use UsesTenantConnection,
+        SessionAttribute,
         SessionRelationship;
 
     const TYPE_STANDARD = 'standard';

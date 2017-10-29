@@ -20,8 +20,8 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncateMultiple([config('access.permissions_table'), config('access.permission_role_table')]);
+        $this->disableForeignKeys('tenant');
+        $this->truncateMultiple([config('access.permissions_table'), config('access.permission_role_table')], 'tenant');
 
         /**
          * Don't need to assign any permissions to administrator because the all flag is set to true
@@ -131,8 +131,8 @@ class PermissionTableSeeder extends Seeder
             $permission['updated_at'] = $now;
         }, $now);
 
-        DB::table(config('access.permissions_table'))->insert($permissions);
+        DB::connection('tenant')->table(config('access.permissions_table'))->insert($permissions);
 
-        $this->enableForeignKeys();
+        $this->enableForeignKeys('tenant');
     }
 }

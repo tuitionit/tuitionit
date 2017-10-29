@@ -42,13 +42,9 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Institute $institute)
+    public function create()
     {
-        if(!access()->allow('manage-institutes') && $institute->id != access()->user()->institute_id) {
-            $institute = access()->user()->institute;
-        }
-
-        return view('backend.location.create')->withInstitute($institute);
+        return view('backend.location.create');
     }
 
     /**
@@ -57,18 +53,13 @@ class LocationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Institute $institute, StoreLocationRequest $request)
+    public function store(StoreLocationRequest $request)
     {
         $data = $request->all();
-        $data['institute_id'] = $institute->id;
 
         $location = Location::create($data);
 
-        if(access()->allow('manage-institutes')) {
-            return redirect()->route('admin.institutes.show', $institute->id)->withFlashSuccess(trans('alerts.backend.locations.created'));
-        } else {
-            return redirect()->route('admin.institute')->withFlashSuccess(trans('alerts.backend.locations.created'));
-        }
+        return redirect()->route('admin.institute')->withFlashSuccess(trans('alerts.backend.locations.created'));
     }
 
     /**

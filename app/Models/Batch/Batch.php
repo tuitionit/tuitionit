@@ -5,11 +5,13 @@ namespace App\Models\Batch;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Batch\Traits\BatchAttribute;
 use App\Models\Batch\Traits\BatchRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 class Batch extends Model
 {
     use BatchAttribute,
-        BatchRelationship;
+        BatchRelationship,
+        UsesTenantConnection;
 
     const TYPE_STANDARD = 'standard';
     const TYPE_GROUP = 'group';

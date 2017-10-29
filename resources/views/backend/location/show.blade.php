@@ -14,7 +14,7 @@
 
 @section('page-header')
     <h1>
-        {{ $location->institute->name }}
+        {{ $tenant->name }}
         <small>{{ $location->name }}</small>
     </h1>
 @endsection
@@ -109,6 +109,9 @@
                                         <img src="{{ URL::to('/') }}/img/icons/users.svg" class="icon icon-16">
                                         {{ $room->capacity }}
                                     </span>
+                                    @if($room->has_sound)
+                                        <img src="{{ URL::to('/') }}/img/icons/sound.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.has_sound') }}">
+                                    @endif
                                     @if($room->has_blackboard)
                                         <img src="{{ URL::to('/') }}/img/icons/blackboard.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.has_blackboard') }}">
                                     @endif
