@@ -28,7 +28,7 @@ class StoreSubjectRequest extends Request
 	public function rules()
 	{
 		return [
-			'name' => 'required|unique:subjects,name,NULL,id,deleted_at,NULL,institute_id,' . access()->user()->institute_id,
+			'name' => 'required|unique:tenant.subjects,name',
 			'description' => 'max:500',
 		];
 	}

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend\Batch;
 
 use Carbon\Carbon as Carbon;
 use App\Models\Batch\Batch;
+use App\Models\Course\Course;
 use App\Models\Location\Location;
+use App\Models\Subject\Subject;
 use App\Repositories\Backend\Batch\BatchRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Backend\Batch\Traits\BatchStudents;
@@ -47,20 +49,10 @@ class BatchController extends Controller
     public function create()
     {
         $batch = new Batch();
-        $locations = [];
-        $courses = [];
-        $subjects = [];
 
-        $user = access()->user();
-        if(access()->allow('manage-institutes')) {
-            $locations = Location::all();
-            $courses = Course::all();
-            $subjects = Subject::all();
-        } else if($user->institute) {
-            $locations = $user->institute->locations()->pluck('name', 'id');
-            $courses = $user->institute->courses()->pluck('name', 'id');
-            $subjects = $user->institute->subjects()->pluck('name', 'id');
-        }
+        $locations = Location::all()->pluck('name', 'id');
+        $courses = Course::all()->pluck('name', 'id');
+        $subjects = Subject::all()->pluck('name', 'id');
 
         return view('backend.batch.create')->with(compact('locations', 'courses', 'subjects', 'batch'));
     }

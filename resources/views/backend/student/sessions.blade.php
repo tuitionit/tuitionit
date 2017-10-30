@@ -22,7 +22,7 @@
     </div>
     <div class="col-sm-8 col-md-9">
         <div class="nav-tabs-custom">
-            @include('backend.student.includes.partials.tabs', ['tab' => 'profile', 'student' => $student])
+            @include('backend.student.includes.partials.tabs')
 
             <div class="tab-content">
                 <div class="tab-pane active" id="profile">

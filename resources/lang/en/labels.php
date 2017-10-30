@@ -170,6 +170,7 @@ return [
             'overview' => 'Overview',
             'batches' => 'Batches',
             'cources' => 'Cources',
+            'profile' => 'Profile',
             'reports' => 'Reports',
             'sessions' => 'Sessions',
             'payments' => 'Payments',

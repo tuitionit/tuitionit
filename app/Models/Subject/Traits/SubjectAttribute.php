@@ -109,7 +109,7 @@ trait SubjectAttribute
     public function getActionButtonsAttribute()
     {
         return
-            $this->getShowButtonAttribute().
+            // $this->getShowButtonAttribute().
             $this->getEditButtonAttribute().
             // $this->getStatusButtonAttribute().
             $this->getDeleteButtonAttribute();

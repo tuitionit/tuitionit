@@ -30,14 +30,15 @@ class UpdateLocationRequest extends Request
 	{
 		return [
 			'name' => 'required',
-			'code' => [
+			'code' => 'required|unique:tenant.locations,code,' . $this->location->id,
+            /*[
                 'required',
                 Rule::unique('locations')->where(function($query) {
                     if(!access()->allow('manage-institutes')) {
                         $query->where('institute_id', access()->user()->institute_id);
                     }
                 })->ignore($this->location->id),
-            ],
+            ],*/
 			'web' => 'nullable|url',
             'institute_id' => 'manageable_institute',
 		];
