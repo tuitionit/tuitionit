@@ -213,9 +213,11 @@ class CreateAppTables extends Migration
             $table->timestamp('paid_at')->nullable();
             $table->integer('paid_by')->unsigned()->nullable();
             $table->integer('paid_to')->nullable()->unsigned();
+            $table->integer('student_id')->nullable()->unsigned();
             $table->integer('batch_id')->nullable()->unsigned();
             $table->integer('session_id')->nullable()->unsigned();
             $table->string('payment_method', 20)->nullable()->default('cash');
+            $table->text('notes')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
@@ -224,6 +226,7 @@ class CreateAppTables extends Migration
         Schema::table('payments', function (Blueprint $table) {
             $table->foreign('paid_by')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('paid_to')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('batch_id')->references('id')->on('batches')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('session_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('cascade');
         });

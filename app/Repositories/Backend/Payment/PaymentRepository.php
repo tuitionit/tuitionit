@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Repositories\Backend\Batch;
+namespace App\Repositories\Backend\Payment;
 
 use App\Repositories\BaseRepository;
-use App\Models\Batch\Batch;
+use App\Models\Payment\Payment;
 
 /**
- * Class BatchRepository
- * @package App\Repositories\Backend\Batch
+ * Class PaymentRepository
+ * @package App\Repositories\Backend\Payment
  */
-class BatchRepository extends BaseRepository
+class PaymentRepository extends BaseRepository
 {
     /**
      * Associated Repository Model.
      */
-    const MODEL = Batch::class;
+    const MODEL = Payment::class;
 
     /**
      * @param int  $status
@@ -29,13 +29,13 @@ class BatchRepository extends BaseRepository
          */
         $dataTableQuery = $this->query()
             ->select([
-                'batches.id',
-                'batches.name',
-                'batches.description',
-                'batches.status',
-                'batches.created_at',
-                'batches.updated_at',
-                'batches.deleted_at',
+                'payments.id',
+                'payments.name',
+                'payments.description',
+                'payments.status',
+                'payments.created_at',
+                'payments.updated_at',
+                'payments.deleted_at',
             ]);
 
         return $dataTableQuery;

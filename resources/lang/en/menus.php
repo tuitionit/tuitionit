@@ -77,6 +77,12 @@ return [
             'create' => 'New Batch',
         ],
 
+        'payments' => [
+            'management' => 'Payments',
+            'all' => 'All Payments',
+            'create' => 'Add Payment',
+        ],
+
         'subjects' => [
             'management' => 'Subjects',
             'all' => 'All Subjects',
@@ -94,10 +100,11 @@ return [
             'general'       => 'General',
             'system'        => 'System',
             'institutes'    => 'Institutes',
+            'payments'      => 'Payments',
             'students'      => 'Students',
             'teachers'      => 'Teachers',
             'batches'       => 'Batches',
-            'sessions'       => 'Sessions',
+            'sessions'      => 'Sessions',
             'courses'       => 'Courses',
             'subjects'      => 'Subjects',
         ],

@@ -44,17 +44,17 @@
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/teachers')) }}">
-                <a href="{{ route('admin.teachers.index') }}">
-                    <i class="fa fa-graduation-cap"></i>
-                    <span>{{ trans('menus.backend.sidebar.teachers') }}</span>
-                </a>
-            </li>
-
             <li class="{{ active_class(Active::checkUriPattern('admin/sessions')) }}">
                 <a href="{{ route('admin.sessions.index') }}">
                     <i class="fa fa-clock-o"></i>
                     <span>{{ trans('menus.backend.sidebar.sessions') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/payments*')) }}">
+                <a href="{{ route('admin.payments.index') }}">
+                    <i class="fa fa-usd"></i>
+                    <span>{{ trans('menus.backend.sidebar.payments') }}</span>
                 </a>
             </li>
 
@@ -69,6 +69,13 @@
                 <a href="{{ route('admin.courses.index') }}">
                     <i class="fa fa-clone"></i>
                     <span>{{ trans('menus.backend.sidebar.courses') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/teachers')) }}">
+                <a href="{{ route('admin.teachers.index') }}">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>{{ trans('menus.backend.sidebar.teachers') }}</span>
                 </a>
             </li>
 

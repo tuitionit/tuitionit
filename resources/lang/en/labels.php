@@ -312,6 +312,26 @@ return [
                 'last_updated' => 'Last Updated',
             ],
         ],
+
+        'payment' => [
+            'overview' => 'Overview',
+        ],
+
+        'payments' => [
+            'all' => 'All Payments',
+            'create' => 'Add Payment',
+            'edit' => 'Edit Payment',
+            'management' => 'Payments Management',
+
+            'table' => [
+                'id' => 'ID',
+                'amount' => 'Amount',
+                'type' => 'Type',
+                'paid_by' => 'Paid By',
+                'student' => 'Student',
+                'paid_at' => 'Paid At',
+            ],
+        ],
     ],
 
     'frontend' => [
