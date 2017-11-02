@@ -54,6 +54,20 @@ return [
         ]
     ],
 
+    'payment' => [
+        'type' => [
+            'batch' => 'Batch',
+            'session' => 'Session',
+            'other' => 'Other',
+        ],
+        'payment_method' => [
+            'cash' => 'Cash',
+            'bank' => 'Bank Payment',
+            'cheque' => 'Cheque',
+            'credit_card' => 'Credit Card',
+        ],
+    ],
+
     'backend' => [
         'access' => [
             'roles' => [

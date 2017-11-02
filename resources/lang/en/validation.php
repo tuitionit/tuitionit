@@ -288,6 +288,21 @@ return [
                     'end_date' => 'Eg: 25/12/2017',
                 ],
             ],
+
+            'payments' => [
+                'amount' => 'Amount',
+                'type' => 'Type',
+                'installment' => 'Installment',
+                'month' => 'Month',
+                'paid_at' => 'Paid At',
+                'paid_by' => 'Paid By',
+                'paid_to' => 'Paid To',
+                'student_id' => 'Student',
+                'batch_id' => 'Batch',
+                'session_id' => 'Session',
+                'payment_method' => 'Payment Method',
+                'notes' => 'Notes',
+            ],
         ],
 
         'frontend' => [

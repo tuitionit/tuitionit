@@ -15,9 +15,8 @@ class Payment extends Model
 
     const TYPE_BATCH = 'batch';
     const TYPE_SESSION = 'session';
-    const TYPE_INDIVIDUAL = 'individual';
-    const TYPE_SEMINAR = 'seminar';
-    const TYPE_TEST = 'test';
+    /*const TYPE_SEMINAR = 'seminar';
+    const TYPE_TEST = 'test';*/
     const TYPE_OTHER = 'other';
 
     /**
