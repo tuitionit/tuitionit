@@ -56,7 +56,8 @@ return [
 
     'payment' => [
         'type' => [
-            'batch' => 'Batch',
+            'monthly' => 'Monthly',
+            'installment' => 'Installment',
             'session' => 'Session',
             'other' => 'Other',
         ],
@@ -65,6 +66,7 @@ return [
             'bank' => 'Bank Payment',
             'cheque' => 'Cheque',
             'credit_card' => 'Credit Card',
+            'other' => 'Other',
         ],
     ],
 
@@ -339,10 +341,12 @@ return [
 
             'table' => [
                 'id' => 'ID',
+                'student' => 'Student',
                 'amount' => 'Amount',
                 'type' => 'Type',
+                'installment' => 'Installment',
+                'month' => 'Month',
                 'paid_by' => 'Paid By',
-                'student' => 'Student',
                 'paid_at' => 'Paid At',
             ],
         ],

@@ -33,10 +33,6 @@ class StudentListController extends Controller
     {
         $studentsQuery = $this->students->searchByName($request->input('name'));
 
-        if(!access()->allow('manage-institutes')) {
-            $studentsQuery->where('institute_id', '=', access()->user()->institute_id);
-        }
-
         $students = $studentsQuery->get();
 
         $list = $students->map(function($student) {

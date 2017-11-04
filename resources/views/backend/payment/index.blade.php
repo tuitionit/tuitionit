@@ -30,10 +30,11 @@
                     <thead>
                         <tr>
                             <th>{{ trans('labels.backend.payments.table.id') }}</th>
+                            <th>{{ trans('labels.backend.payments.table.student') }}</th>
                             <th>{{ trans('labels.backend.payments.table.amount') }}</th>
                             <th>{{ trans('labels.backend.payments.table.type') }}</th>
-                            <th>{{ trans('labels.backend.payments.table.paid_by') }}</th>
-                            <th>{{ trans('labels.backend.payments.table.student') }}</th>
+                            <th>{{ trans('labels.backend.payments.table.installment') }}</th>
+                            <th>{{ trans('labels.backend.payments.table.month') }}</th>
                             <th>{{ trans('labels.backend.payments.table.paid_at') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
@@ -60,11 +61,12 @@
                 },
                 columns: [
                     {data: 'id', name: 'payments.id'},
-                    {data: 'name', name: 'payments.name'},
-                    {data: 'description', name: 'payments.description', render: $.fn.dataTable.render.text()},
-                    {data: 'status', name: 'payments.status'},
+                    {data: 'name', name: 'student.name'},
+                    {data: 'amount', name: 'payments.amount'},
+                    {data: 'type', name: 'payments.type'},
+                    {data: 'installment', name: 'payments.installment'},
+                    {data: 'month', name: 'payments.month'},
                     {data: 'created_at', name: 'payments.created_at'},
-                    {data: 'updated_at', name: 'payments.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

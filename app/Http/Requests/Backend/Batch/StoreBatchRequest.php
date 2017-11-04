@@ -36,4 +36,14 @@ class StoreBatchRequest extends Request
 			'end_date' => 'date_format:d/m/Y|after_or_equal:start_date',
 		];
 	}
+
+	/**
+	 * Set the localized / nice names for attributes.
+	 *
+	 * @return array
+	 */
+	public function attributes()
+	{
+		return trans('validation.attributes.backend.batches');
+	}
 }

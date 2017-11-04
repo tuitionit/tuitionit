@@ -259,8 +259,8 @@ return [
                 'active' => 'Active',
 
                 'help' => [
-                    'start_time' => 'Eg: 15/01/2017 09:00',
-                    'end_time' => 'Eg: 25/12/2017 13:00',
+                    'start_time' => 'Eg: 2018-12-25 09:00',
+                    'end_time' => 'Eg: 2018-12-25 13:00',
                 ],
             ],
 
@@ -301,7 +301,13 @@ return [
                 'batch_id' => 'Batch',
                 'session_id' => 'Session',
                 'payment_method' => 'Payment Method',
+                'paid' => 'Paid',
                 'notes' => 'Notes',
+
+                'help' => [
+                    'month' => 'Select the month for this payment.',
+                    'installment' => 'Select the installment number for this payment.',
+                ]
             ],
         ],
 

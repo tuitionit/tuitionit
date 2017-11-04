@@ -43,4 +43,14 @@ class UpdatePaymentRequest extends Request
             'institute_id' => 'manageable_institute',
 		];
 	}
+
+	/**
+	 * Set the localized / nice names for attributes.
+	 *
+	 * @return array
+	 */
+	public function attributes()
+	{
+		return trans('validation.attributes.backend.payments');
+	}
 }

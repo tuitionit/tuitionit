@@ -104,5 +104,13 @@ return [
             'updated' => 'The batch was successfully updated.',
             'students_added' => '{0} No students added or all selected students are already in the batch.|{1} One student added successfully.|[2,*] :count students added successfully.',
         ],
+
+        'payments' => [
+            'created' => 'The payment was successfully added.',
+            'deleted' => 'The payment was successfully deleted.',
+            'deleted_permanently' => 'The payment was deleted permanently.',
+            'restored' => 'The payment was successfully restored.',
+            'updated' => 'The payment was successfully updated.',
+        ],
     ],
 ];

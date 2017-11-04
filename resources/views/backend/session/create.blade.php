@@ -50,7 +50,7 @@
 
                                     <div class="col-lg-8">
                                         <div class="input-group date" id="start-date-picker">
-                                            {{ Form::text('start_time', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
+                                            {{ Form::text('start_time', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD HH:mm', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}']) }}
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
@@ -67,7 +67,7 @@
 
                                     <div class="col-lg-8">
                                         <div class="input-group date" id="end-date-picker">
-                                            {{ Form::text('end_time', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
+                                            {{ Form::text('end_time', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD HH:mm', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}']) }}
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
@@ -194,11 +194,11 @@
     <script>
         $(function() {
             $('#start-date-picker').datetimepicker({
-                format: 'DD/MM/YYYY'
+                format: 'YYYY-MM-DD HH:mm'
             });
 
             $('#end-date-picker').datetimepicker({
-                format: 'DD/MM/YYYY'
+                format: 'YYYY-MM-DD HH:mm'
             });
 
             var startDatePicker = $('#start-date-picker').data('DateTimePicker');

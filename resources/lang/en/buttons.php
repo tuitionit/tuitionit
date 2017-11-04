@@ -37,6 +37,10 @@ return [
                 ],
             ],
         ],
+
+        'payment' => [
+            'add_payment' => 'Add Payment',
+        ],
     ],
 
     'emails' => [

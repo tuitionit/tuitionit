@@ -2,13 +2,11 @@
 
 namespace App\Models\Payment\Traits;
 
-use App\Models\Access\User\User;
 use App\Models\Payment\Payment;
-use App\Models\Course\Course;
-use App\Models\Institute\Institute;
-use App\Models\Location\Location;
+use App\Models\Batch\Batch;
+use App\Models\Session\Session;
 use App\Models\Student\Student;
-use App\Models\Subject\Subject;
+use App\Models\Access\User\User;
 
 /**
  * Class PaymentRelationship.
@@ -16,44 +14,48 @@ use App\Models\Subject\Subject;
 trait PaymentRelationship
 {
     /**
-     * Payment can be belong to only one Institute.
+     * Payment can be belong to only one Student.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function institute()
+    public function student()
     {
-        return $this->belongsTo(Institute::class);
+        return $this->belongsTo(Student::class);
     }
 
     /**
+     * Payment can be linked to a batch
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function location()
+    public function batch()
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(Batch::class);
     }
 
     /**
+     * Payment can be linked to a session
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function course()
+    public function session()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Session::class);
     }
 
     /**
+     * Payment can be done by a user
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function subject()
+    public function payer()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsTo(User::class, 'paid_by');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * Payment can be accepted by a user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function students()
+    public function payee()
     {
-        return $this->belongsToMany(Student::class, 'batch_student', 'batch_id', 'student_id');
+        return $this->belongsTo(User::class, 'paid_to');
     }
 }

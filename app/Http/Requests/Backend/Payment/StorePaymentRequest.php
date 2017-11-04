@@ -17,7 +17,7 @@ class StorePaymentRequest extends Request
 	 */
 	public function authorize()
 	{
-		return access()->allow('manage-subjects');
+		return access()->allow('manage-payments');
 	}
 
 	/**
@@ -28,8 +28,19 @@ class StorePaymentRequest extends Request
 	public function rules()
 	{
 		return [
-			'name' => 'required|unique:tenant.subjects,name',
-			'description' => 'max:500',
+			'student_id' => 'required|integer',
+			'amount' => 'required|numeric',
+			'notes' => 'max:500',
 		];
+	}
+
+	/**
+	 * Set the localized / nice names for attributes.
+	 *
+	 * @return array
+	 */
+	public function attributes()
+	{
+		return trans('validation.attributes.backend.payments');
 	}
 }

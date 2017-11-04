@@ -13,11 +13,18 @@ class Payment extends Model
         PaymentRelationship,
         UsesTenantConnection;
 
-    const TYPE_BATCH = 'batch';
+    const TYPE_MONTHLY = 'monthly';
+    const TYPE_INSTALLMENT = 'installment';
     const TYPE_SESSION = 'session';
     /*const TYPE_SEMINAR = 'seminar';
     const TYPE_TEST = 'test';*/
     const TYPE_OTHER = 'other';
+
+    const PAYMENT_METHOD_CASH = 'cash';
+    const PAYMENT_METHOD_BANK = 'bank';
+    const PAYMENT_METHOD_CHEQUE = 'cheque';
+    const PAYMENT_METHOD_CREDIT_CARD = 'credit_card';
+    const PAYMENT_METHOD_OTHER = 'other';
 
     /**
      * The database table used by the model.
@@ -25,6 +32,19 @@ class Payment extends Model
      * @var string
      */
     protected $table = 'payments';
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'month',
+        'paid_at',
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
     /**
      * The attributes that are mass assignable.

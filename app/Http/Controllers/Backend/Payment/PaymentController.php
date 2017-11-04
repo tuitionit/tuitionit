@@ -6,7 +6,10 @@ use Carbon\Carbon as Carbon;
 use App\Models\Payment\Payment;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
+use App\Models\Session\Session;
+use App\Models\Student\Student;
 use App\Models\Subject\Subject;
+use App\Models\Access\User\User;
 use App\Repositories\Backend\Payment\PaymentRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Payment\ManagePaymentRequest;
@@ -50,8 +53,21 @@ class PaymentController extends Controller
         $locations = Location::all()->pluck('name', 'id');
         $courses = Course::all()->pluck('name', 'id');
         $subjects = Subject::all()->pluck('name', 'id');
+        $student = Student::where('id', request()->old('student_id'))->pluck('name', 'id');
+        $session = Session::where('id', request()->old('session_id'))->pluck('name', 'id');
+        $payer = User::where('id', request()->old('paid_by'))->pluck('name', 'id');
+        $payee = request()->old('paid_to') ? User::where('id', request()->old('paid_to'))->pluck('name', 'id') : [access()->user()->id => access()->user()->name];
 
-        return view('backend.payment.create')->with(compact('locations', 'courses', 'subjects', 'payment'));
+        return view('backend.payment.create')->with(compact(
+            'student',
+            'session',
+            'payer',
+            'payee',
+            'locations',
+            'courses',
+            'subjects',
+            'payment'
+        ));
     }
 
     /**
@@ -63,11 +79,9 @@ class PaymentController extends Controller
     public function store(StorePaymentRequest $request)
     {
         $data = $request->all();
-        $data['start_date'] = Carbon::createFromFormat('d/m/Y', $data['start_date']);
-        $data['end_date'] = Carbon::createFromFormat('d/m/Y', $data['end_date']);
-        if($location = Location::find($data['location_id'])) {
-            $data['institute_id'] = $location->institute_id;
-        }
+
+        $data['month'] = strtotime($data['month']);
+
         $payment = Payment::create($data);
 
         return redirect()->route('admin.payments.index')->withFlashSuccess(trans('alerts.backend.payments.created'));

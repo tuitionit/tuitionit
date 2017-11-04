@@ -32,10 +32,16 @@ class PaymentTableController extends Controller
      */
     public function __invoke(ManagePaymentRequest $request)
     {
-        return Datatables::of($this->payments->getForDataTable($request->get('status')))
-            ->escapeColumns(['name', 'description'])
+        return Datatables::eloquent($this->payments->getForDataTable())
+            ->escapeColumns(['student_id', 'month', 'notes'])
             ->editColumn('name', function($payment) {
-                return link_to_route('admin.payments.show', $payment->name, ['id' => $payment->id]);
+                return link_to_route('admin.payments.show', $payment->student->name, ['id' => $payment->id]);
+            })
+            ->editColumn('type', function ($payment) {
+                return $payment->getTypeLabel();
+            })
+            ->editColumn('month', function ($payment) {
+                return $payment->month ? $payment->month->format('F Y') : null;
             })
             ->editColumn('status', function ($payment) {
                 return $payment->status_label;
