@@ -257,11 +257,26 @@ return [
                 'teacher_comment' => 'Teacher\'s Comments',
                 'status' => 'Status',
                 'active' => 'Active',
+                'repeat' => 'Repeat',
 
                 'help' => [
                     'start_time' => 'Eg: 2018-12-25 09:00',
                     'end_time' => 'Eg: 2018-12-25 13:00',
                 ],
+            ],
+
+            'session_groups' => [
+                'start_date' => 'Start Date',
+                'end_date' => 'End Date',
+                'start' => 'Starts on',
+                'end' => 'Ends',
+                'ends_on' => 'On',
+                'ends_after' => 'After :input sessions',
+                'repeat_type' => 'Repeats',
+                'frequency' => 'Repeat every',
+                'repeat_on' => 'Repeat on',
+                'repeat_by' => 'Repeat by',
+                'count' => '',
             ],
 
             'courses' => [

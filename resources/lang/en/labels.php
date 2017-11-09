@@ -54,6 +54,52 @@ return [
         ]
     ],
 
+    'session' => [
+        'type' => [
+            'standard' => 'Standard',
+            'group' => 'Group',
+            'individual' => 'Individual',
+            'seminar' => 'Seminar',
+            'test' => 'Test',
+            'other' => 'Other',
+        ]
+    ],
+
+    'session_group' => [
+        'repeat_type' => [
+            'daily' => 'Daily',
+            'weekly' => 'Weekly',
+            'monthly' => 'Monthly',
+            'yearly' => 'Yearly',
+        ],
+        'frequency' => [
+            'days' => 'Days',
+            'weeks' => 'Weeks',
+            'months' => 'Months',
+            'years' => 'Years',
+        ],
+        'repeat_on' => [
+            'su' => 'Su',
+            'mo' => 'Mo',
+            'tu' => 'Tu',
+            'we' => 'We',
+            'th' => 'Th',
+            'fr' => 'Fr',
+            'sa' => 'Sa',
+            'sunday' => 'Sunday',
+            'monday' => 'Monday',
+            'tuesday' => 'Tuesday',
+            'wednesday' => 'Wednesday',
+            'thursday' => 'Thursday',
+            'friday' => 'Friday',
+            'saturday' => 'Saturday',
+        ],
+        'repeat_by' => [
+            'day_of_month' => 'Day of month',
+            'day_of_week' => 'Day of week',
+        ],
+    ],
+
     'payment' => [
         'type' => [
             'monthly' => 'Monthly',

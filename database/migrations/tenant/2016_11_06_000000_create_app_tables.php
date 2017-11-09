@@ -141,7 +141,7 @@ class CreateAppTables extends Migration
             $table->increments('id');
             $table->timestamp('start_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('end_date')->nullable()->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->tinyInteger('repeat_type')->nullable(); // daily, weekly, monthly, yearly
+            $table->string('repeat_type')->nullable(); // daily, weekly, monthly, yearly
             $table->tinyInteger('frequency')->nullable()->unsigned();
             $table->string('repeat_on')->nullable();
             $table->string('repeat_by')->nullable();

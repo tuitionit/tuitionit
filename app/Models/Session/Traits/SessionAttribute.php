@@ -13,12 +13,12 @@ trait SessionAttribute
     public function getTypes()
     {
         return [
-            self::TYPE_STANDARD => trans('labels.batch.type.standard'),
-            self::TYPE_GROUP => trans('labels.batch.type.group'),
-            self::TYPE_INDIVIDUAL => trans('labels.batch.type.individual'),
-            self::TYPE_SEMINAR => trans('labels.batch.type.seminar'),
-            self::TYPE_TEST => trans('labels.batch.type.test'),
-            self::TYPE_OTHER => trans('labels.batch.type.other'),
+            self::TYPE_STANDARD => trans('labels.session.type.standard'),
+            self::TYPE_GROUP => trans('labels.session.type.group'),
+            self::TYPE_INDIVIDUAL => trans('labels.session.type.individual'),
+            self::TYPE_SEMINAR => trans('labels.session.type.seminar'),
+            self::TYPE_TEST => trans('labels.session.type.test'),
+            self::TYPE_OTHER => trans('labels.session.type.other'),
         ];
     }
 
@@ -55,7 +55,7 @@ trait SessionAttribute
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.batches.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
+        return '<a href="'.route('admin.sessions.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
     }
 
     /**
@@ -63,7 +63,7 @@ trait SessionAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.batches.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
+        return '<a href="'.route('admin.sessions.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
     }
 
     /**
@@ -72,7 +72,7 @@ trait SessionAttribute
     public function getDeleteButtonAttribute()
     {
         if ($this->id != access()->id()) {
-            return '<a href="'.route('admin.batches.destroy', $this).'"
+            return '<a href="'.route('admin.sessions.destroy', $this).'"
                  data-method="delete"
                  data-trans-button-cancel="'.trans('buttons.general.cancel').'"
                  data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
@@ -88,7 +88,7 @@ trait SessionAttribute
      */
     public function getRestoreButtonAttribute()
     {
-        return '<a href="'.route('admin.batches.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.batches.restore_user').'"></i></a> ';
+        return '<a href="'.route('admin.sessions.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.sessions.restore_user').'"></i></a> ';
     }
 
     /**
@@ -96,7 +96,7 @@ trait SessionAttribute
      */
     public function getDeletePermanentlyButtonAttribute()
     {
-        return '<a href="'.route('admin.batches.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.batches.delete_permanently').'"></i></a> ';
+        return '<a href="'.route('admin.sessions.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.sessions.delete_permanently').'"></i></a> ';
     }
 
     /**

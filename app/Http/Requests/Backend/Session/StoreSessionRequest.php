@@ -32,6 +32,9 @@ class StoreSessionRequest extends Request
 			'description' => 'max:500',
             'type' => 'required',
             'start_time' => 'required|date_format:"Y-m-d H:i"',
+            'end_time' => 'sometimes|date_format:"Y-m-d H:i"|after:start_time',
+            'start_date' => 'required_if:repeat,1|date_format:"Y-m-d"',
+            'end_date' => 'sometimes|date_format:"Y-m-d"|after:start_date',
 		];
 	}
 }
