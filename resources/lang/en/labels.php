@@ -121,7 +121,7 @@ return [
             'roles' => [
                 'create'     => 'Create Role',
                 'edit'       => 'Edit Role',
-                'management' => 'Role Management',
+                'management' => 'Roles',
 
                 'table' => [
                     'number_of_users' => 'Number of Users',
@@ -141,7 +141,7 @@ return [
                 'deactivated'         => 'Deactivated Users',
                 'deleted'             => 'Deleted Users',
                 'edit'                => 'Edit User',
-                'management'          => 'User Management',
+                'management'          => 'Users',
                 'no_permissions'      => 'No Permissions',
                 'no_roles'            => 'No Roles to set.',
                 'permissions'         => 'Permissions',
@@ -195,7 +195,7 @@ return [
             'edit' => 'Edit Institute',
             'active' => 'Active Institutes',
             'inactive' => 'Inactive Institutes',
-            'management' => 'Institutes Management',
+            'management' => 'Institutes',
 
             'table' => [
                 'id' => 'ID',
@@ -247,7 +247,7 @@ return [
             'edit' => 'Edit Teacher',
             'active' => 'Active Teachers',
             'inactive' => 'Inactive Teachers',
-            'management' => 'Teachers Management',
+            'management' => 'Teachers',
 
             'table' => [
                 'id' => 'ID',
@@ -270,7 +270,7 @@ return [
             'edit' => 'Edit Student',
             'active' => 'Active Students',
             'inactive' => 'Inactive Students',
-            'management' => 'Students Management',
+            'management' => 'Students',
 
             'table' => [
                 'id' => 'ID',
@@ -289,7 +289,7 @@ return [
             'edit' => 'Edit Subject',
             'active' => 'Active Subjects',
             'inactive' => 'Inactive Subjects',
-            'management' => 'Subjects Management',
+            'management' => 'Subjects',
 
             'table' => [
                 'id' => 'ID',
@@ -307,7 +307,7 @@ return [
             'edit' => 'Edit Course',
             'active' => 'Active Courses',
             'inactive' => 'Inactive Courses',
-            'management' => 'Courses Management',
+            'management' => 'Courses',
 
             'table' => [
                 'id' => 'ID',
@@ -331,7 +331,7 @@ return [
             'edit' => 'Edit Batch',
             'active' => 'Active Batches',
             'inactive' => 'Inactive Batches',
-            'management' => 'Batches Management',
+            'management' => 'Batches',
 
             'table' => [
                 'id' => 'ID',
@@ -355,7 +355,7 @@ return [
             'edit' => 'Edit Session',
             'active' => 'Active Sessions',
             'inactive' => 'Inactive Sessions',
-            'management' => 'Sessions Management',
+            'management' => 'Sessions',
 
             'table' => [
                 'id' => 'ID',
@@ -383,7 +383,7 @@ return [
             'all' => 'All Payments',
             'create' => 'Add Payment',
             'edit' => 'Edit Payment',
-            'management' => 'Payments Management',
+            'management' => 'Payments',
 
             'table' => [
                 'id' => 'ID',

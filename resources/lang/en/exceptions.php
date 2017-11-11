@@ -47,6 +47,12 @@ return [
                 'update_password_error' => 'There was a problem changing this users password. Please try again.',
             ],
         ],
+
+        'subjects' => [
+            'update_error'  => 'There was a problem updating this subject. Please try again.',
+            'create_error'  => 'There was a problem creating this subject. Please try again.',
+            'delete_error'  => 'There was a problem deleting this subject. Please try again.',
+        ],
     ],
 
     'frontend' => [

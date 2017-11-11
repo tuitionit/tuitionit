@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Events\Backend\Institute;
+namespace App\Events\Backend\Subject;
 
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class InstituteDeleted
- * @package App\Events\Backend\Institute
+ * Class SubjectDeleted
+ * @package App\Events\Backend\Subject
  */
-class InstituteDeleted
+class SubjectDeleted
 {
     use SerializesModels;
 
