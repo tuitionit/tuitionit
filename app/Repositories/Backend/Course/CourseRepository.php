@@ -2,6 +2,11 @@
 
 namespace App\Repositories\Backend\Course;
 
+
+use Illuminate\Database\Eloquent\Model;
+use App\Events\Backend\Course\CourseCreated;
+use App\Events\Backend\Course\CourseDeleted;
+use App\Events\Backend\Course\CourseUpdated;
 use App\Repositories\BaseRepository;
 use App\Models\Course\Course;
 
@@ -40,5 +45,23 @@ class CourseRepository extends BaseRepository
 
         // active() is a scope on the UserScope trait
         return $dataTableQuery;
+    }
+
+    /**
+     * @param Model $course
+     *
+     * @throws GeneralException
+     *
+     * @return bool
+     */
+    public function delete(Model $course)
+    {
+        if ($course->delete()) {
+            event(new CourseDeleted($course));
+
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.courses.delete_error'));
     }
 }

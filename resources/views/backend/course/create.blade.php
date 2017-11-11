@@ -2,13 +2,6 @@
 
 @section ('title', trans('labels.backend.courses.management') . ' | ' . trans('labels.backend.courses.create'))
 
-@section('page-header')
-    <h1>
-        {{ trans('labels.backend.courses.management') }}
-        <small>{{ trans('labels.backend.courses.create') }}</small>
-    </h1>
-@endsection
-
 @section('content')
     <div class="row">
         <div class="col-md-6 col-md-offset-3">

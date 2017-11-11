@@ -104,9 +104,10 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ManageCourseRequest $request, Course $course)
     {
-        //
+        $this->courses->delete($course);
+        return redirect()->route('admin.courses.index')->withFlashSuccess(trans('alerts.backend.courses.deleted'));
     }
 
     /**
