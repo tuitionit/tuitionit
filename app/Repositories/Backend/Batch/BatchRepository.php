@@ -2,6 +2,10 @@
 
 namespace App\Repositories\Backend\Batch;
 
+use Illuminate\Database\Eloquent\Model;
+use App\Events\Backend\Batch\BatchCreated;
+use App\Events\Backend\Batch\BatchDeleted;
+use App\Events\Backend\Batch\BatchUpdated;
 use App\Repositories\BaseRepository;
 use App\Models\Batch\Batch;
 
@@ -28,16 +32,26 @@ class BatchRepository extends BaseRepository
          * be able to differentiate what buttons to show for each row.
          */
         $dataTableQuery = $this->query()
-            ->select([
-                'batches.id',
-                'batches.name',
-                'batches.description',
-                'batches.status',
-                'batches.created_at',
-                'batches.updated_at',
-                'batches.deleted_at',
-            ]);
+            ->select('batches.*');
 
         return $dataTableQuery;
+    }
+
+    /**
+     * @param Model $course
+     *
+     * @throws GeneralException
+     *
+     * @return bool
+     */
+    public function delete(Model $course)
+    {
+        if ($course->delete()) {
+            event(new BatchDeleted($course));
+
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.batches.delete_error'));
     }
 }

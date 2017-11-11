@@ -6,13 +6,6 @@
     {{ Html::style("css/backend/plugin/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css") }}
 @stop
 
-@section('page-header')
-    <h1>
-        {{ trans('labels.backend.batches.management') }}
-        <small>{{ trans('labels.backend.batches.create') }}</small>
-    </h1>
-@endsection
-
 @section('content')
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -66,11 +59,11 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('course', 'has-error') }}">
-                                    {{ Form::label('course', trans('validation.attributes.backend.batches.course'), ['class' => 'col-lg-4 control-label']) }}
+                                <div class="form-group {{ $errors->first('course_id', 'has-error') }}">
+                                    {{ Form::label('course_id', trans('validation.attributes.backend.batches.course_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                     <div class="col-lg-8">
-                                        {{ Form::select('course', $courses, 'standard', ['class' => 'form-control']) }}
+                                        {{ Form::select('course_id', $courses, 'standard', ['class' => 'form-control']) }}
                                     </div><!--col-lg-10-->
                                 </div><!--form control-->
                             </div>
@@ -92,7 +85,7 @@
 
                                     <div class="col-lg-8">
                                         <div class="input-group date" id="start-date-picker">
-                                            {{ Form::text('start_date', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
+                                            {{ Form::text('start_date', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']) }}
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
@@ -109,7 +102,7 @@
 
                                     <div class="col-lg-8">
                                         <div class="input-group date" id="end-date-picker">
-                                            {{ Form::text('end_date', null, ['class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'pattern' => '[0-9]{2}/[0-9]{2}/[0-9]{4}']) }}
+                                            {{ Form::text('end_date', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']) }}
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
@@ -158,11 +151,11 @@
     <script>
         $(function() {
             $('#start-date-picker').datetimepicker({
-                format: 'DD/MM/YYYY'
+                format: 'YYYY-MM-DD'
             });
 
             $('#end-date-picker').datetimepicker({
-                format: 'DD/MM/YYYY'
+                format: 'YYYY-MM-DD'
             });
 
             var startDatePicker = $('#start-date-picker').data('DateTimePicker');

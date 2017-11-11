@@ -291,7 +291,7 @@ return [
                 'description' => 'Description',
                 'type' => 'Type',
                 'location_id' => 'Location',
-                'course' => 'Course',
+                'course_id' => 'Course',
                 'subject' => 'Subject',
                 'start_date' => 'Start Date',
                 'end_date' => 'End Date',
@@ -299,8 +299,8 @@ return [
                 'active' => 'Active',
 
                 'help' => [
-                    'start_date' => 'Eg: 15/01/2017',
-                    'end_date' => 'Eg: 25/12/2017',
+                    'start_date' => 'Eg: 2017-01-15',
+                    'end_date' => 'Eg: 2017-12-25',
                 ],
             ],
 

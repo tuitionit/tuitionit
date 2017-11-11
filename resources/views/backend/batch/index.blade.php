@@ -31,10 +31,11 @@
                         <tr>
                             <th>{{ trans('labels.backend.batches.table.id') }}</th>
                             <th>{{ trans('labels.backend.batches.table.name') }}</th>
-                            <th>{{ trans('labels.backend.batches.table.description') }}</th>
+                            <th>{{ trans('labels.backend.batches.table.start_date') }}</th>
+                            <th>{{ trans('labels.backend.batches.table.end_date') }}</th>
+                            <th>{{ trans('labels.backend.batches.table.course') }}</th>
+                            <th>{{ trans('labels.backend.batches.table.location') }}</th>
                             <th>{{ trans('labels.backend.batches.table.status') }}</th>
-                            <th>{{ trans('labels.backend.batches.table.created') }}</th>
-                            <th>{{ trans('labels.backend.batches.table.last_updated') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -61,10 +62,11 @@
                 columns: [
                     {data: 'id', name: 'batches.id'},
                     {data: 'name', name: 'batches.name'},
-                    {data: 'description', name: 'batches.description', render: $.fn.dataTable.render.text()},
+                    {data: 'start_date', name: 'batches.start_date'},
+                    {data: 'end_date', name: 'batches.end_date'},
+                    {data: 'course', name: 'batches.course'},
+                    {data: 'location', name: 'batches.location'},
                     {data: 'status', name: 'batches.status'},
-                    {data: 'created_at', name: 'batches.created_at'},
-                    {data: 'updated_at', name: 'batches.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

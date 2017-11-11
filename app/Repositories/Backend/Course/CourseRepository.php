@@ -29,7 +29,7 @@ class CourseRepository extends BaseRepository
     public function getForDataTable($status = 1)
     {
         /**
-         * Note: You must return deleted_at or the User getActionButtonsAttribute won't
+         * Note: You must return deleted_at or the Course getActionButtonsAttribute won't
          * be able to differentiate what buttons to show for each row.
          */
         $dataTableQuery = $this->query()
