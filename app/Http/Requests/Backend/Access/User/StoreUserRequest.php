@@ -29,7 +29,7 @@ class StoreUserRequest extends Request
     {
         return [
             'name'     => 'required|max:255',
-            'email'    => ['required', 'email', 'max:255', Rule::unique('users')],
+            'email'    => 'required|email|max:255|unique:tenant.users',
             'password' => 'required|min:6|confirmed',
         ];
     }

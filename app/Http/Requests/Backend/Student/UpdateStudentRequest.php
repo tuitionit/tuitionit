@@ -5,10 +5,10 @@ namespace App\Http\Requests\Backend\Student;
 use App\Http\Requests\Request;
 
 /**
- * Class StoreStudentRequest
+ * Class UpdateStudentRequest
  * @package App\Http\Requests\Backend\Access\User
  */
-class StoreStudentRequest extends Request
+class UpdateStudentRequest extends Request
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class StoreStudentRequest extends Request
 	public function rules()
 	{
 		return [
-            'index_number' => 'required|unique:tenant.students,index_number',
+            'index_number' => 'required|unique:tenant.students,index_number,' . $this->student->id,
 			'name' => 'required',
 		];
 	}

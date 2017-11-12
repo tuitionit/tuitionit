@@ -227,10 +227,12 @@ return [
                 'active' => 'Active',
                 'user_id' => 'User',
                 'parent_id' => 'Parent',
+                'locations' => 'Locations',
 
                 'help' => [
                     'user_id' => 'Select if this student already has a user account. User will be able to check own sessions and reports when linked.',
                     'parent_id' => 'Select a parent for this student profile. Parent will have access to student profile and reports.',
+                    'locations' => 'Select all locations this student attending for classes.',
                 ],
             ],
 

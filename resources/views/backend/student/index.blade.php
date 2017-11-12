@@ -44,13 +44,11 @@
                 <table id="students-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.students.table.id') }}</th>
                             <th>{{ trans('labels.backend.students.table.index_number') }}</th>
                             <th>{{ trans('labels.backend.students.table.name') }}</th>
                             <th>{{ trans('labels.backend.students.table.phone') }}</th>
-                            <th>{{ trans('labels.backend.students.table.status') }}</th>
                             <th>{{ trans('labels.backend.students.table.created') }}</th>
-                            <th>{{ trans('labels.backend.students.table.last_updated') }}</th>
+                            <th>{{ trans('labels.backend.students.table.status') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -75,13 +73,11 @@
                     data: {status: 1}
                 },
                 columns: [
-                    {data: 'id', name: 'students.id'},
                     {data: 'index_number', name: 'students.index_number'},
                     {data: 'name', name: 'students.name'},
                     {data: 'phone', name: 'students.phone', render: $.fn.dataTable.render.text()},
-                    {data: 'status', name: 'students.status'},
                     {data: 'created_at', name: 'students.created_at'},
-                    {data: 'updated_at', name: 'students.updated_at'},
+                    {data: 'status', name: 'students.status'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],
