@@ -38,6 +38,23 @@ class BatchRepository extends BaseRepository
     }
 
     /**
+     * @param string  $query
+     *
+     * @return mixed
+     */
+    public function searchByName($query)
+    {
+        $searchQuery = $this->query()
+            ->select([
+                'batches.id',
+                'batches.name',
+            ])
+            ->where('name', 'LIKE', '%' . $query . '%');
+
+        return $searchQuery;
+    }
+
+    /**
      * @param Model $course
      *
      * @throws GeneralException

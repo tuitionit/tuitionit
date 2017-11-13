@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Backend\Payment;
 
 use Carbon\Carbon as Carbon;
-use App\Models\Payment\Payment;
+use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
+use App\Models\Payment\Payment;
 use App\Models\Session\Session;
 use App\Models\Student\Student;
 use App\Models\Subject\Subject;
@@ -53,12 +54,14 @@ class PaymentController extends Controller
         $locations = Location::all()->pluck('name', 'id');
         $courses = Course::all()->pluck('name', 'id');
         $subjects = Subject::all()->pluck('name', 'id');
+        $batch = Batch::where('id', request()->old('batch_id'))->pluck('name', 'id');
         $student = Student::where('id', request()->old('student_id'))->pluck('name', 'id');
         $session = Session::where('id', request()->old('session_id'))->pluck('name', 'id');
         $payer = User::where('id', request()->old('paid_by'))->pluck('name', 'id');
         $payee = request()->old('paid_to') ? User::where('id', request()->old('paid_to'))->pluck('name', 'id') : [access()->user()->id => access()->user()->name];
 
         return view('backend.payment.create')->with(compact(
+            'batch',
             'student',
             'session',
             'payer',
@@ -106,7 +109,13 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        return view('backend.payment.edit')->withPayment($payment);
+        $batch = request()->old('batch_id') ? Batch::where('id', request()->old('batch_id'))->pluck('name', 'id') : $payment->batch()->pluck('name', 'id');
+        $session = request()->old('session_id') ? Session::where('id', request()->old('session_id'))->pluck('name', 'id') : $payment->session()->pluck('name', 'id');
+        $student = request()->old('student_id') ? Student::where('id', request()->old('student_id'))->pluck('name', 'id') : $payment->student()->pluck('name', 'id');
+        $payer = request()->old('paid_by') ? User::where('id', request()->old('paid_by'))->pluck('name', 'id') : $payment->payer()->pluck('name', 'id');
+        $payee = request()->old('paid_to') ? User::where('id', request()->old('paid_to'))->pluck('name', 'id') : $payment->payee()->pluck('name', 'id');
+
+        return view('backend.payment.edit')->with(compact('payment', 'batch', 'session', 'student', 'payer', 'payee'));
     }
 
     /**
@@ -118,7 +127,12 @@ class PaymentController extends Controller
      */
     public function update(StorePaymentRequest $request, Payment $payment)
     {
-        $payment->update($request->all());
+        $data = $request->all();
+
+        $data['month'] = strtotime($data['month']);
+
+        $payment->update($data);
+        
         return redirect()->route('admin.payments.index')->withFlashSuccess(trans('alerts.backend.payments.updated'));
     }
 

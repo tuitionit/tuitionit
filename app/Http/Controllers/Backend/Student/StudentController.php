@@ -99,18 +99,10 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $user = $student->user ? [[$student->user->id => $student->user->name]] : [];
-        $parent = $student->parent ? [[$student->parent->id => $student->parent->name]] : [];
-
-        if(request()->old('user_id')) {
-            $user = User::where('id', request()->old('user_id'))->pluck('name', 'id');
-        }
-
-        if(request()->old('parent_id')) {
-            $parent = User::where('id', request()->old('parent_id'))->pluck('name', 'id');
-        }
-
+        $user = request()->old('user_id') ? User::where('id', request()->old('user_id'))->pluck('name', 'id') : $student->user()->pluck('name', 'id');
+        $parent = request()->old('parent_id') ? User::where('id', request()->old('parent_id'))->pluck('name', 'id') : $student->parent()->pluck('name', 'id');
         $locations = Location::all()->pluck('name', 'id');
+        
         return view('backend.student.edit')->with(compact('student', 'user', 'parent', 'locations'));
     }
 

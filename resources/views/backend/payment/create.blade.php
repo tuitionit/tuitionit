@@ -99,6 +99,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group {{ $errors->first('batch_id', 'has-error') }}">
+                            {{ Form::label('batch_id', trans('validation.attributes.backend.payments.batch_id'), ['class' => 'col-lg-2 control-label']) }}
+
+                            <div class="col-lg-10">
+                                {{ Form::select('batch_id', $batch, null, ['class' => 'form-control']) }}
+                            </div><!--col-lg-10-->
+                        </div><!--form-group-->
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group {{ $errors->first('paid_by', 'has-error') }}">
@@ -158,6 +166,7 @@
         $(document).ready(function() {
             $('#student_id').select2({
                 theme: 'bootstrap',
+                placeholder: '{{ trans('validation.attributes.backend.payments.student_id') }}',
                 multiple: false,
                 ajax: {
                     url: "{{ route('admin.students.list') }}",
@@ -180,6 +189,7 @@
 
             $('#session_id').select2({
                 theme: 'bootstrap',
+                placeholder: '{{ trans('validation.attributes.backend.payments.session_id') }}',
                 multiple: false,
                 ajax: {
                     url: "{{ route('admin.sessions.list') }}",
@@ -200,8 +210,32 @@
                 width: '100%'
             });
 
+            $('#batch_id').select2({
+                theme: 'bootstrap',
+                placeholder: '{{ trans('validation.attributes.backend.payments.batch_id') }}',
+                allowClear: true,
+                ajax: {
+                    url: "{{ route('admin.batches.list') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            name: params.term,
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        return {
+                            results: data
+                        };
+                    },
+                },
+                width: '100%'
+            });
+
             $('#paid_by').select2({
                 theme: 'bootstrap',
+                placeholder: '{{ trans('validation.attributes.backend.payments.paid_by') }}',
                 multiple: false,
                 ajax: {
                     url: "{{ route('admin.users.list') }}",
@@ -224,6 +258,7 @@
 
             $('#paid_to').select2({
                 theme: 'bootstrap',
+                placeholder: '{{ trans('validation.attributes.backend.payments.paid_to') }}',
                 multiple: false,
                 ajax: {
                     url: "{{ route('admin.users.list') }}",
