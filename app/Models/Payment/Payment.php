@@ -16,8 +16,6 @@ class Payment extends Model
     const TYPE_MONTHLY = 'monthly';
     const TYPE_INSTALLMENT = 'installment';
     const TYPE_SESSION = 'session';
-    /*const TYPE_SEMINAR = 'seminar';
-    const TYPE_TEST = 'test';*/
     const TYPE_OTHER = 'other';
 
     const PAYMENT_METHOD_CASH = 'cash';
@@ -25,6 +23,12 @@ class Payment extends Model
     const PAYMENT_METHOD_CHEQUE = 'cheque';
     const PAYMENT_METHOD_CREDIT_CARD = 'credit_card';
     const PAYMENT_METHOD_OTHER = 'other';
+
+    const STATUS_PENDING = 0;
+    const STATUS_PAID = 1;
+    const STATUS_CANCELLED = 2;
+    const STATUS_REFUNDED = 3;
+    const STATUS_OVERDUE = 4;
 
     /**
      * The database table used by the model.

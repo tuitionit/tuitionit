@@ -16,8 +16,6 @@ trait PaymentAttribute
             self::TYPE_MONTHLY => trans('labels.payment.type.monthly'),
             self::TYPE_INSTALLMENT => trans('labels.payment.type.installment'),
             self::TYPE_SESSION => trans('labels.payment.type.session'),
-            /*self::TYPE_SEMINAR => trans('labels.payment.type.seminar'),
-            self::TYPE_TEST => trans('labels.payment.type.test'),*/
             self::TYPE_OTHER => trans('labels.payment.type.other'),
         ];
     }
@@ -55,13 +53,41 @@ trait PaymentAttribute
     /**
      * @return string
      */
+    public function getStatuses()
+    {
+        return [
+            self::STATUS_PENDING => trans('labels.payment.status.pending'),
+            self::STATUS_PAID => trans('labels.payment.status.paid'),
+            self::STATUS_CANCELLED => trans('labels.payment.status.cancelled'),
+            self::STATUS_REFUNDED => trans('labels.payment.status.refunded'),
+            self::STATUS_OVERDUE => trans('labels.payment.status.overdue'),
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusName()
+    {
+        return $this->getStatuses()[$this->status];
+    }
+
+    /**
+     * @return string
+     */
     public function getStatusLabelAttribute()
     {
-        if ($this->isActive()) {
-            return "<label class='label label-success'>".trans('labels.general.active').'</label>';
+        switch ($this->status) {
+            case self::STATUS_PENDING: $type = 'info' break;
+            case self::STATUS_PAID: $type = 'success' break;
+            case self::STATUS_REFUNDED: $type = 'warning' break;
+            case self::STATUS_OVERDUE: $type = 'danger' break;
+            case self::STATUS_CANCELLED:
+            default:
+                $type = 'default';
         }
 
-        return "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
+        return '<label class="label label-' . $type . '">' . $this->getStatusName() . '</label>';
     }
 
     /**

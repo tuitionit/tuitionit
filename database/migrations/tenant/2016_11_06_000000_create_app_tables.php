@@ -217,6 +217,7 @@ class CreateAppTables extends Migration
             $table->integer('batch_id')->nullable()->unsigned();
             $table->integer('session_id')->nullable()->unsigned();
             $table->string('payment_method', 20)->nullable()->default('cash');
+            $table->tinyInteger('status')->default(0); // 0 = pending, 1 = paid, 2 = cancelled, 3 = refunded
             $table->text('notes')->nullable();
 
             $table->timestamps();
