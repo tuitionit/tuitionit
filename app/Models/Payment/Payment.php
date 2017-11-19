@@ -57,6 +57,9 @@ class Payment extends Model
      */
     protected $fillable = [
         'amount',
+        'discount',
+        'discount_type',
+        'penalty',
         'type',
         'installment',
         'month',

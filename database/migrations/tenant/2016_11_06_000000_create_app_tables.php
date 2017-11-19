@@ -207,6 +207,9 @@ class CreateAppTables extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('amount', 10, 2);
+            $table->decimal('discount', 10, 2)->nullable();
+            $table->tinyInteger('discount_type')->nullable()->default(0)->comment('0 = percentage, 1 = amount');
+            $table->decimal('penalty', 10, 2)->nullable();
             $table->string('type', 20)->nullable();
             $table->integer('installment')->nullable();
             $table->date('month')->nullable();
