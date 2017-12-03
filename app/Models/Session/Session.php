@@ -32,6 +32,19 @@ class Session extends Model
     protected $table = 'sessions';
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'start_time',
+        'end_time',
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

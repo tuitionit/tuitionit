@@ -106,4 +106,14 @@ trait BatchAttribute
             // $this->getStatusButtonAttribute().
             $this->getDeleteButtonAttribute();
     }
+
+    /**
+     * Checks if the batch has the given student registered for it
+     * @param integer $id
+     * @return boolean
+     */
+    public function hasStudent($id)
+    {
+        return $this->students()->wherePivot('student_id', '=', $id)->exists();
+    }
 }

@@ -183,6 +183,30 @@ return [
             ],
         ],
 
+        'attendance' => [
+            'title' => 'Attendance',
+        ],
+
+        'attendances' => [
+            'all' => 'All Attendances',
+            'create' => 'New Institute',
+            'edit' => 'Edit Institute',
+            'active' => 'Active Institutes',
+            'inactive' => 'Inactive Institutes',
+            'management' => 'Attendance',
+            'select_session' => 'Select Session',
+
+            'table' => [
+                'id' => 'ID',
+                'student' => 'Student',
+                'session' => 'Session',
+                'batch' => 'Batch',
+                'marking_method' => 'Marking Method',
+                'in_time' => 'In Time',
+                'out_time' => 'Out Time',
+            ],
+        ],
+
         'institute' => [
             'title' => 'Institute',
             'overview' => 'Overview',

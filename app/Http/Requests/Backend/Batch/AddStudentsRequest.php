@@ -20,9 +20,10 @@ class AddStudentsRequest extends Request
      */
     public function authorize()
     {
-        $batch = $this->route('batch');
-
-        return !!$batch && $this->user()->can('update', $batch);
+        return access()->allow('manage-batches');
+        // $batch = $this->route('batch');
+        //
+        // return !!$batch && $this->user()->can('update', $batch);
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.sessions.management'))
+@section ('title', trans('labels.backend.attendances.management'))
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
@@ -8,18 +8,18 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.sessions.management') }}
+        {{ trans('labels.backend.attendances.management') }}
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.sessions.all') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.attendances.all') }}</h3>
 
             <div class="box-tools pull-right">
                 <div class="pull-right mb-10">
-                    {{ link_to_route('admin.sessions.create', trans('menus.backend.sessions.create'), [], ['class' => 'btn btn-success btn-sm']) }}
+                    {{ link_to_route('admin.attendances.mark', trans('menus.backend.attendances.mark'), [], ['class' => 'btn btn-success btn-sm']) }}
                 </div><!--pull right-->
                 <div class="clearfix"></div>
             </div><!--box-tools pull-right-->
@@ -27,14 +27,14 @@
 
         <div class="box-body">
             <div class="table-responsive">
-                <table id="sessions-table" class="table table-condensed table-hover">
+                <table id="attendances-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.sessions.table.name') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.start_time') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.end_time') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.teacher') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.location') }}</th>
+                            <th>{{ trans('labels.backend.attendances.table.id') }}</th>
+                            <th>{{ trans('labels.backend.attendances.table.student') }}</th>
+                            <th>{{ trans('labels.backend.attendances.table.session') }}</th>
+                            <th>{{ trans('labels.backend.attendances.table.in_time') }}</th>
+                            <th>{{ trans('labels.backend.attendances.table.out_time') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -50,24 +50,23 @@
 
     <script>
         $(function() {
-            $('#sessions-table').DataTable({
+            $('#attendances-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route("admin.sessions.get") }}',
+                    url: '{{ route("admin.attendances.get") }}',
                     type: 'post',
                     data: {status: 1}
                 },
                 columns: [
-                    {data: 'name', name: 'sessions.name'},
-                    {data: 'start_time', name: 'sessions.start_time'},
-                    {data: 'end_time', name: 'sessions.end_time'},
-                    {data: 'teacher', name: 'sessions.teacher'},
-                    {data: 'location', name: 'sessions.location'},
+                    {data: 'id', name: 'attendances.id'},
+                    {data: 'student', name: 'attendances.student'},
+                    {data: 'session', name: 'attendances.session'},
+                    {data: 'in_time', name: 'attendances.in_time'},
+                    {data: 'out_time', name: 'attendances.out_time'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],
-                select: true,
                 searchDelay: 500
             });
         });

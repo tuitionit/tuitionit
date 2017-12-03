@@ -738,7 +738,7 @@ function _init() {
 }(jQuery));
 
 window.setTimeout(function () {
-    $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
+    $(".alert-success:not('.messages .alert-success')").fadeTo(500, 0).slideUp(500, function () {
         $(this).remove();
     });
 }, 5000);

@@ -34,8 +34,13 @@ class SessionTableController extends Controller
     {
         return Datatables::of($this->sessions->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'description'])
-            ->editColumn('name', function($batch) {
-                return link_to_route('admin.batches.show', $batch->name, ['id' => $batch->id]);
+            ->editColumn('name', function($session) {
+                return link_to_route('admin.sessions.show', $session->name, ['id' => $session->id]);
+            })
+            ->addColumn('teacher', function($session) {
+                return isset($session->teacher) ?
+                    link_to_route('admin.teachers.show', $session->teacher->name, ['id' => $session->teacher_id]) :
+                    link_to_route('admin.sessions.edit', trans('strings.backend.general.click_to_select'), ['id' => $session->id]);
             })
             ->addColumn('location', function($session) {
                 return link_to_route('admin.locations.show', $session->location->name, ['id' => $session->location_id]);

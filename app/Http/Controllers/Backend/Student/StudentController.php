@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Student;
 
 use Illuminate\Http\Request;
+use App\Models\Batch\Batch;
 use App\Models\Location\Location;
 use App\Models\Student\Student;
 use App\Models\Access\User\User;
@@ -43,13 +44,15 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $batchId = $request->has('batch') ? $request->input('batch') : null;
+        $batchId = request()->has('batch') ? request()->input('batch') : null;
+        $batchId = request()->old('batch_id') ? request()->old('batch_id') : $batchId;
+        $batch = Batch::find($batchId);
         $user = User::where('id', request()->old('user_id'))->pluck('name', 'id');
         $parent = User::where('id', request()->old('parent_id'))->pluck('name', 'id');
         $locations = Location::all()->pluck('name', 'id');
-        return view('backend.student.create')->with(compact('batchId', 'user', 'parent', 'locations'));
+        return view('backend.student.create')->with(compact('batch', 'user', 'parent', 'locations'));
     }
 
     /**
@@ -102,7 +105,7 @@ class StudentController extends Controller
         $user = request()->old('user_id') ? User::where('id', request()->old('user_id'))->pluck('name', 'id') : $student->user()->pluck('name', 'id');
         $parent = request()->old('parent_id') ? User::where('id', request()->old('parent_id'))->pluck('name', 'id') : $student->parent()->pluck('name', 'id');
         $locations = Location::all()->pluck('name', 'id');
-        
+
         return view('backend.student.edit')->with(compact('student', 'user', 'parent', 'locations'));
     }
 

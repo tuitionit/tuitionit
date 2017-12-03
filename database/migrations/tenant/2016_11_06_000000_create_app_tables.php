@@ -235,6 +235,24 @@ class CreateAppTables extends Migration
             $table->foreign('session_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('cascade');
         });
 
+        Schema::create('attendances', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('student_id')->unsigned();
+            $table->integer('session_id')->nullable()->unsigned();
+            $table->string('marking_method')->nullable()->default('manual');
+            $table->integer('marked_by')->nullable()->unsigned();
+            $table->timestamp('in_time')->nullable();
+            $table->timestamp('out_time')->nullable();
+            $table->string('code')->nullable();
+            $table->text('notes')->nullable();
+        });
+
+        Schema::table('attendances', function (Blueprint $table) {
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('session_id')->references('id')->on('sessions')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('marked_by')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+        });
+
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->text('content');
@@ -412,6 +430,7 @@ class CreateAppTables extends Migration
         Schema::drop('message_user');
         Schema::drop('messages');
         Schema::drop('payments');
+        Schema::drop('attendances');
         Schema::drop('comments');
         Schema::drop('posts');
         Schema::drop('trackers');

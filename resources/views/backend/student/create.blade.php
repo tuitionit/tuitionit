@@ -92,8 +92,8 @@
                         <div class="pull-left">
                             {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success']) }}
 
-                            @if(isset($batch))
-                                <input type="hidden" name="batch_id" value="{{ $batch }}">
+                            @if(!empty($batch))
+                                <input type="hidden" name="batch_id" value="{{ $batch->id }}">
                             @endif
                         </div><!--pull-left-->
 

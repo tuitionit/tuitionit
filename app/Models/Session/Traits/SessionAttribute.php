@@ -110,4 +110,13 @@ trait SessionAttribute
             // $this->getStatusButtonAttribute().
             $this->getDeleteButtonAttribute();
     }
+
+    /**
+     * Returns the attendance count of the session
+     * @return integer
+     */
+    public function getAttendanceAttribute()
+    {
+        return $this->attendances()->count();
+    }
 }

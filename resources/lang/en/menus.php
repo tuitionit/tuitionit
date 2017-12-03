@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 return [
 
@@ -15,7 +15,7 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => 'Access',
 
             'roles' => [
                 'all'        => 'All Roles',
@@ -35,6 +35,16 @@ return [
                 'main'            => 'Users',
                 'view'            => 'View User',
             ],
+        ],
+
+        'attendance' => [
+            'management' => 'Attendance',
+        ],
+
+        'attendances' => [
+            'management' => 'Attendance',
+            'all' => 'All Attendances',
+            'mark' => 'Mark Attendances',
         ],
 
         'institute' => [
@@ -100,6 +110,7 @@ return [
             'general'       => 'General',
             'system'        => 'System',
             'institutes'    => 'Institutes',
+            'attendance'    => 'Attendance',
             'payments'      => 'Payments',
             'students'      => 'Students',
             'teachers'      => 'Teachers',

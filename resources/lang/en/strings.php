@@ -36,6 +36,7 @@ return [
             'minutes'             => ' minutes',
             'search_placeholder'  => 'Search...',
             'timeout'             => 'You were automatically logged out for security reasons since you had no activity in ',
+            'click_to_select'     => 'Click to select',
 
             'see_all' => [
                 'messages'      => 'See all messages',
@@ -80,6 +81,21 @@ return [
 
         'batches' => [
             'select_students' => 'Select students to add to the batch. Start typing the name of a student to search for students.',
+        ],
+
+        'sessions' => [
+            'time_from_to' => ':start - :end',
+        ],
+
+        'attendances' => [
+            'select_session' => 'Select a session to start marking attendance.',
+            'id' => 'Enter student ID',
+            'empty_student_id' => 'Please enter a student ID',
+            'saving' => 'Saving. Please wait...',
+            'failed' => 'Communication error. Please try again!',
+            'student_not_found' => 'Student not found!',
+            'student_not_in_batch' => 'Student not registered for the batch!',
+            'success' => 'Accepted!',
         ],
     ],
 
