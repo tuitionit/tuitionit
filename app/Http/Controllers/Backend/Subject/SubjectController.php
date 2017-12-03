@@ -7,6 +7,7 @@ use App\Repositories\Backend\Subject\SubjectRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Subject\ManageSubjectRequest;
 use App\Http\Requests\Backend\Subject\StoreSubjectRequest;
+use App\Http\Requests\Backend\Subject\UpdateSubjectRequest;
 
 class SubjectController extends Controller
 {
@@ -92,7 +93,7 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreSubjectRequest $request, Subject $subject)
+    public function update(UpdateSubjectRequest $request, Subject $subject)
     {
         $subject->update($request->all());
         return redirect()->route('admin.subjects.index')->withFlashSuccess(trans('alerts.backend.subjects.updated'));
@@ -104,9 +105,10 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ManageSubjectRequest $request, Subject $subject)
     {
-        //
+        $this->subjects->delete($subject);
+        return redirect()->route('admin.subjects.index')->withFlashSuccess(trans('alerts.backend.subjects.deleted'));
     }
 
     /**

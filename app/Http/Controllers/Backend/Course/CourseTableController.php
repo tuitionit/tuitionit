@@ -34,6 +34,9 @@ class CourseTableController extends Controller
     {
         return Datatables::of($this->courses->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'description'])
+            ->editColumn('name', function($course) {
+                return link_to_route('admin.courses.edit', $course->name, ['id' => $course->id]);
+            })
             ->editColumn('status', function ($user) {
                 return $user->status_label;
             })

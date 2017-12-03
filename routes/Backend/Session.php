@@ -12,6 +12,11 @@ Route::group([
          */
         Route::post('sessions/get', 'SessionTableController')->name('sessions.get');
 
+        /*
+         * For Select2
+         */
+        Route::get('sessions/list', 'SessionListController')->name('sessions.list');
+
         // Status
         Route::get('mark/{status}', 'SessionController@mark')->name('sessions.mark')->where(['status' => '[0,1]']);
 

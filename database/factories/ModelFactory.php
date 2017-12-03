@@ -98,3 +98,14 @@ $factory->define(Student::class, function (Generator $faker) {
          'status'   => 1,
      ];
  });
+
+/*
+ * Subject
+ */
+$factory->define(Subject::class, function (Generator $faker) {
+     return [
+         'name'         => $faker->name,
+         'description'  => str_random(100),
+         'status'       => 1,
+     ];
+ });

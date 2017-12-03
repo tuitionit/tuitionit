@@ -18,7 +18,10 @@
             <h3 class="box-title">{{ trans('labels.backend.subjects.all') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.includes.partials.subjects-header-buttons')
+                <div class="pull-right mb-10">
+                    {{ link_to_route('admin.subjects.create', trans('menus.backend.subjects.create'), [], ['class' => 'btn btn-success btn-sm']) }}
+                </div><!--pull right-->
+                <div class="clearfix"></div>
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -31,8 +34,6 @@
                             <th>{{ trans('labels.backend.subjects.table.name') }}</th>
                             <th>{{ trans('labels.backend.subjects.table.description') }}</th>
                             <th>{{ trans('labels.backend.subjects.table.status') }}</th>
-                            <th>{{ trans('labels.backend.subjects.table.created') }}</th>
-                            <th>{{ trans('labels.backend.subjects.table.last_updated') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -58,11 +59,9 @@
                 },
                 columns: [
                     {data: 'id', name: 'subjects.id'},
-                    {data: 'name', name: 'subjects.name', render: $.fn.dataTable.render.text()},
+                    {data: 'name', name: 'subjects.name'},
                     {data: 'description', name: 'subjects.description', render: $.fn.dataTable.render.text()},
                     {data: 'status', name: 'subjects.status'},
-                    {data: 'created_at', name: 'subjects.created_at'},
-                    {data: 'updated_at', name: 'subjects.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

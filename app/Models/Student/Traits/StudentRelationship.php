@@ -2,13 +2,10 @@
 
 namespace App\Models\Student\Traits;
 
-use App\Models\Access\User\User;
 use App\Models\Batch\Batch;
-use App\Models\Course\Course;
-use App\Models\Institute\Institute;
 use App\Models\Location\Location;
 use App\Models\Student\Student;
-use App\Models\Subject\Subject;
+use App\Models\Access\User\User;
 
 /**
  * Class StudentRelationship.
@@ -16,20 +13,38 @@ use App\Models\Subject\Subject;
 trait StudentRelationship
 {
     /**
-     * Student can be belong to only one Institute.
+     * Student can be linked with a User account.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function institute()
+    public function user()
     {
-        return $this->belongsTo(Institute::class);
+        return $this->belongsTo(User::class);
     }
-    
+
+    /**
+     * Student can be linked with a User as parent.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(User::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function locations()
+    {
+        return $this->belongsToMany(Location::class, 'location_student');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function batches()
     {
-        return $this->belongsToMany(Batch::class);
+        return $this->belongsToMany(Batch::class, 'batch_student');
     }
 }

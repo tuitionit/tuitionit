@@ -54,6 +54,27 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
+                                    {{ Form::label('has_sound', trans('validation.attributes.backend.rooms.has_sound'), ['class' => 'col-xs-6 col-sm-4 control-label']) }}
+
+                                    <div class="col-xs-6 col-sm-8">
+                                        {{ Form::checkbox('has_sound', '1') }}
+                                    </div><!--col-lg-1-->
+                                </div><!--form control-->
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ Form::label('has_projector', trans('validation.attributes.backend.rooms.has_projector'), ['class' => 'col-xs-6 col-md-8 control-label']) }}
+
+                                    <div class="col-xs-6 col-md-4">
+                                        {{ Form::checkbox('has_projector', '1') }}
+                                    </div><!--col-lg-1-->
+                                </div><!--form control-->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
                                     {{ Form::label('has_blackboard', trans('validation.attributes.backend.rooms.has_blackboard'), ['class' => 'col-xs-6 col-sm-4 control-label']) }}
 
                                     <div class="col-xs-6 col-sm-8">
@@ -74,13 +95,6 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    {{ Form::label('has_projector', trans('validation.attributes.backend.rooms.has_projector'), ['class' => 'col-xs-6 col-sm-4 control-label']) }}
-
-                                    <div class="col-xs-6 col-sm-8">
-                                        {{ Form::checkbox('has_projector', '1') }}
-                                    </div><!--col-lg-1-->
-                                </div><!--form control-->
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">

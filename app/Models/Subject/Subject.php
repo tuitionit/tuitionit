@@ -4,10 +4,12 @@ namespace App\Models\Subject;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Subject\Traits\SubjectAttribute;
+use App\Models\Traits\UsesTenantConnection;
 
 class Subject extends Model
 {
-    use SubjectAttribute;
+    use UsesTenantConnection,
+        SubjectAttribute;
 
     /**
      * The database table used by the model.

@@ -18,35 +18,17 @@
 @section('content')
 <div class="row">
     <div class="col-sm-4 col-md-3">
-        <div class="box box-primary">
-            <div class="box-body">
-                <img src="{{ URL::to('/') }}/img/student.png" class="profile-user-img img-responsive img-circle" />
-                <h3 class="profile-username text-center">{{ $student->name }}</h3>
-            </div><!-- /.box-body -->
-        </div><!--box-->
+        @include('backend.student.includes.info')
     </div>
     <div class="col-sm-8 col-md-9">
         <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#sessions" data-toggle="tab"><i class="fa fa-clock-o"></i> {{ trans('labels.backend.student.sessions')}}</a>
-                </li>
-                <li class="">
-                    <a href="#reports" data-toggle="tab"><i class="fa fa-clone"></i> {{ trans('labels.backend.student.reports')}}</a>
-                </li>
-                <li class="">
-                    <a href="#batches" data-toggle="tab"><i class="fa fa-users"></i> {{ trans('labels.backend.student.batches')}}</a>
-                </li>
-                <li class="">
-                    <a href="#payments" data-toggle="tab"><i class="fa fa-money"></i> {{ trans('labels.backend.student.payments')}}</a>
-                </li>
-                <li class="">
-                    <a href="#settings" data-toggle="tab"><i class="fa fa-gears"></i> {{ trans('labels.backend.student.settings')}}</a>
-                </li>
-            </ul>
+            @include('backend.student.includes.partials.tabs', ['tab' => 'profile', 'student' => $student])
 
             <div class="tab-content">
-                <div class="tab-pane active" id="sessions">
+                <div class="tab-pane active" id="profile">
+
+                </div>
+                <div class="tab-pane" id="sessions">
                     <div id="sessions-calendar">
 
                     </div>

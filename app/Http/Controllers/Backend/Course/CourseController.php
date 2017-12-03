@@ -101,12 +101,14 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Http\Requests\Backend\Course\ManageCourseRequest $request
+     * @param  \App\Models\Course\Course $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ManageCourseRequest $request, Course $course)
     {
-        //
+        $this->courses->delete($course);
+        return redirect()->route('admin.courses.index')->withFlashSuccess(trans('alerts.backend.courses.deleted'));
     }
 
     /**

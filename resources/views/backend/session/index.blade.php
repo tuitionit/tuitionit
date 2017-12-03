@@ -18,23 +18,9 @@
             <h3 class="box-title">{{ trans('labels.backend.sessions.all') }}</h3>
 
             <div class="box-tools pull-right">
-                <div class="pull-right mb-10 hidden-sm hidden-xs">
+                <div class="pull-right mb-10">
                     {{ link_to_route('admin.sessions.create', trans('menus.backend.sessions.create'), [], ['class' => 'btn btn-success btn-sm']) }}
                 </div><!--pull right-->
-
-                <div class="pull-right mb-10 hidden-lg hidden-md">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ trans('menus.backend.sessions.main') }} <span class="caret"></span>
-                        </button>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li>{{ link_to_route('admin.sessions.create', trans('menus.backend.sessions.create')) }}</li>
-                            <li class="divider"></li>
-                        </ul>
-                    </div><!--btn group-->
-                </div><!--pull right-->
-
                 <div class="clearfix"></div>
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
@@ -73,11 +59,11 @@
                     data: {status: 1}
                 },
                 columns: [
-                    {data: 'index_number', name: 'sessions.name'},
-                    {data: 'name', name: 'sessions.start_time'},
-                    {data: 'phone', name: 'sessions.end_time'},
-                    {data: 'status', name: 'sessions.teacher'},
-                    {data: 'created_at', name: 'sessions.location'},
+                    {data: 'name', name: 'sessions.name'},
+                    {data: 'start_time', name: 'sessions.start_time'},
+                    {data: 'end_time', name: 'sessions.end_time'},
+                    {data: 'teacher', name: 'sessions.teacher'},
+                    {data: 'location', name: 'sessions.location'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

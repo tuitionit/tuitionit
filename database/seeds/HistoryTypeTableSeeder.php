@@ -20,8 +20,8 @@ class HistoryTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncate('history_types');
+        $this->disableForeignKeys('tenant');
+        $this->truncate('history_types', 'tenant');
 
         $types = [
             [
@@ -38,8 +38,8 @@ class HistoryTypeTableSeeder extends Seeder
             ],
         ];
 
-        DB::table('history_types')->insert($types);
+        DB::connection('tenant')->table('history_types')->insert($types);
 
-        $this->enableForeignKeys();
+        $this->enableForeignKeys('tenant');
     }
 }

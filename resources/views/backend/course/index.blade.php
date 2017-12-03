@@ -18,7 +18,7 @@
             <h3 class="box-title">{{ trans('labels.backend.courses.all') }}</h3>
 
             <div class="box-tools pull-right">
-                <div class="pull-right mb-10 hidden-sm hidden-xs">
+                <div class="pull-right mb-10">
                     {{ link_to_route('admin.courses.create', trans('menus.backend.courses.create'), [], ['class' => 'btn btn-success btn-sm']) }}
                 </div><!--pull right-->
             </div><!--box-tools pull-right-->
@@ -33,8 +33,6 @@
                             <th>{{ trans('labels.backend.courses.table.name') }}</th>
                             <th>{{ trans('labels.backend.courses.table.description') }}</th>
                             <th>{{ trans('labels.backend.courses.table.status') }}</th>
-                            <th>{{ trans('labels.backend.courses.table.created') }}</th>
-                            <th>{{ trans('labels.backend.courses.table.last_updated') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -60,11 +58,9 @@
                 },
                 columns: [
                     {data: 'id', name: 'courses.id'},
-                    {data: 'name', name: 'courses.name', render: $.fn.dataTable.render.text()},
+                    {data: 'name', name: 'courses.name'},
                     {data: 'description', name: 'courses.description', render: $.fn.dataTable.render.text()},
                     {data: 'status', name: 'courses.status'},
-                    {data: 'created_at', name: 'courses.created_at'},
-                    {data: 'updated_at', name: 'courses.updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

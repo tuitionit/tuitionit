@@ -191,6 +191,7 @@ return [
                 'name' => 'Name',
                 'description' => 'Description',
                 'capacity' => 'Capacity',
+                'has_sound' => 'Sounds',
                 'has_blackboard' => 'Blackboard',
                 'has_whiteboard' => 'Whiteboard',
                 'has_projector' => 'Projector',
@@ -226,10 +227,12 @@ return [
                 'active' => 'Active',
                 'user_id' => 'User',
                 'parent_id' => 'Parent',
+                'locations' => 'Locations',
 
                 'help' => [
                     'user_id' => 'Select if this student already has a user account. User will be able to check own sessions and reports when linked.',
                     'parent_id' => 'Select a parent for this student profile. Parent will have access to student profile and reports.',
+                    'locations' => 'Select all locations this student attending for classes.',
                 ],
             ],
 
@@ -256,11 +259,26 @@ return [
                 'teacher_comment' => 'Teacher\'s Comments',
                 'status' => 'Status',
                 'active' => 'Active',
+                'repeat' => 'Repeat',
 
                 'help' => [
-                    'start_time' => 'Eg: 15/01/2017 09:00',
-                    'end_time' => 'Eg: 25/12/2017 13:00',
+                    'start_time' => 'Eg: 2018-12-25 09:00',
+                    'end_time' => 'Eg: 2018-12-25 13:00',
                 ],
+            ],
+
+            'session_groups' => [
+                'start_date' => 'Start Date',
+                'end_date' => 'End Date',
+                'start' => 'Starts on',
+                'end' => 'Ends',
+                'ends_on' => 'On',
+                'ends_after' => 'After :input sessions',
+                'repeat_type' => 'Repeats',
+                'frequency' => 'Repeat every',
+                'repeat_on' => 'Repeat on',
+                'repeat_by' => 'Repeat by',
+                'count' => '',
             ],
 
             'courses' => [
@@ -275,7 +293,7 @@ return [
                 'description' => 'Description',
                 'type' => 'Type',
                 'location_id' => 'Location',
-                'course' => 'Course',
+                'course_id' => 'Course',
                 'subject' => 'Subject',
                 'start_date' => 'Start Date',
                 'end_date' => 'End Date',
@@ -283,9 +301,30 @@ return [
                 'active' => 'Active',
 
                 'help' => [
-                    'start_date' => 'Eg: 15/01/2017',
-                    'end_date' => 'Eg: 25/12/2017',
+                    'start_date' => 'Eg: 2017-01-15',
+                    'end_date' => 'Eg: 2017-12-25',
                 ],
+            ],
+
+            'payments' => [
+                'amount' => 'Amount',
+                'type' => 'Type',
+                'installment' => 'Installment',
+                'month' => 'Month',
+                'paid_at' => 'Paid At',
+                'paid_by' => 'Paid By',
+                'paid_to' => 'Paid To',
+                'student_id' => 'Student',
+                'batch_id' => 'Batch',
+                'session_id' => 'Session',
+                'payment_method' => 'Payment Method',
+                'paid' => 'Paid',
+                'notes' => 'Notes',
+
+                'help' => [
+                    'month' => 'Select the month for this payment.',
+                    'installment' => 'Select the installment number for this payment.',
+                ]
             ],
         ],
 

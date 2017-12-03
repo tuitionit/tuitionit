@@ -18,8 +18,8 @@ class UserRoleSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncate(config('access.role_user_table'));
+        $this->disableForeignKeys('tenant');
+        $this->truncate(config('access.role_user_table'), 'tenant');
 
         //Attach admin role to admin user
         $user_model = config('auth.providers.users.model');
@@ -51,6 +51,6 @@ class UserRoleSeeder extends Seeder
         $user_model = new $user_model();
         $user_model::find(6)->attachRole(6);
 
-        $this->enableForeignKeys();
+        $this->enableForeignKeys('tenant');
     }
 }

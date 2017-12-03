@@ -14,8 +14,8 @@
 
 @section('page-header')
     <h1>
-        {{ $location->institute->name }}
-        <small>{{ $location->name }}</small>
+        <i class="fa fa-map-marker fa-fw"></i>
+        {{ $location->name }}
     </h1>
 @endsection
 
@@ -81,8 +81,7 @@
                     </div>
                 </div><!-- /.box-body -->
             </div><!--box-->
-        </div>
-        <div class="col-sm-6 col-md-8">
+
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('labels.backend.locations.rooms') }}</h3>
@@ -109,6 +108,9 @@
                                         <img src="{{ URL::to('/') }}/img/icons/users.svg" class="icon icon-16">
                                         {{ $room->capacity }}
                                     </span>
+                                    @if($room->has_sound)
+                                        <img src="{{ URL::to('/') }}/img/icons/sound.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.has_sound') }}">
+                                    @endif
                                     @if($room->has_blackboard)
                                         <img src="{{ URL::to('/') }}/img/icons/blackboard.svg" class="icon icon-16" title="{{ trans('validation.attributes.backend.rooms.has_blackboard') }}">
                                     @endif
@@ -138,6 +140,9 @@
                     </ul>
                 </div><!-- /.box-body -->
             </div><!--box-->
+        </div>
+        <div class="col-sm-6 col-md-8">
+
         </div>
     </div>
 @stop

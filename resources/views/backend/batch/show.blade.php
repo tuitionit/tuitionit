@@ -10,7 +10,7 @@
 @section('page-header')
     <h1>
         {{ $batch->name }}
-        <small>{{ $batch->name }}</small>
+        <small>{{ $batch->course->name }}</small>
     </h1>
 @endsection
 

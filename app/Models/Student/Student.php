@@ -5,10 +5,12 @@ namespace App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Student\Traits\StudentAttribute;
 use App\Models\Student\Traits\StudentRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 class Student extends Model
 {
-    use StudentAttribute,
+    use UsesTenantConnection,
+        StudentAttribute,
         StudentRelationship;
 
     /**
@@ -23,5 +25,5 @@ class Student extends Model
      *
      * @var array
      */
-    protected $fillable = ['index_number', 'name', 'phone', 'institute_id', 'status'];
+    protected $fillable = ['index_number', 'name', 'phone', 'user_id', 'parent_id', 'status'];
 }

@@ -14,17 +14,19 @@ trait TruncateTable
      *
      * @return bool
      */
-    protected function truncate($table)
+    protected function truncate($table, $connection = 'system')
     {
-        switch (DB::getDriverName()) {
+        $connection = DB::connection($connection);
+
+        switch ($connection->getDriverName()) {
             case 'mysql':
-                return DB::table($table)->truncate();
+                return $connection->table($table)->truncate();
 
             case 'pgsql':
-                return  DB::statement('TRUNCATE TABLE '.$table.' RESTART IDENTITY CASCADE');
+                return $connection->statement('TRUNCATE TABLE '.$table.' RESTART IDENTITY CASCADE');
 
             case 'sqlite':
-                return DB::statement('DELETE FROM '.$table);
+                return $connection->statement('DELETE FROM '.$table);
         }
 
         return false;
@@ -33,10 +35,10 @@ trait TruncateTable
     /**
      * @param array $tables
      */
-    protected function truncateMultiple(array $tables)
+    protected function truncateMultiple(array $tables, $connection = 'system')
     {
         foreach ($tables as $table) {
-            $this->truncate($table);
+            $this->truncate($table, $connection);
         }
     }
 }

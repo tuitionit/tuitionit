@@ -5,10 +5,12 @@ namespace App\Models\Teacher;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Teacher\Traits\TeacherAttribute;
 use App\Models\Teacher\Traits\TeacherRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 class Teacher extends Model
 {
-    use TeacherAttribute,
+    use UsesTenantConnection,
+        TeacherAttribute,
         TeacherRelationship;
 
     const TITLE_MR = 'mr';

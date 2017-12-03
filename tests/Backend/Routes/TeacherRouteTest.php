@@ -3,9 +3,9 @@
 use Tests\BrowserKitTestCase;
 
 /**
- * Class RoomRouteTest.
+ * Class TeacherRouteTest.
  */
-class RoomRouteTest extends BrowserKitTestCase
+class TeacherRouteTest extends BrowserKitTestCase
 {
     public function testAdminRooms()
     {

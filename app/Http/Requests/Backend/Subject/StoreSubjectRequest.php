@@ -28,7 +28,7 @@ class StoreSubjectRequest extends Request
 	public function rules()
 	{
 		return [
-			'name' => 'required',
+			'name' => 'required|unique:tenant.subjects,name',
 			'description' => 'max:500',
 		];
 	}

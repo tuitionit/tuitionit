@@ -54,12 +54,74 @@ return [
         ]
     ],
 
+    'session' => [
+        'type' => [
+            'standard' => 'Standard',
+            'group' => 'Group',
+            'individual' => 'Individual',
+            'seminar' => 'Seminar',
+            'test' => 'Test',
+            'other' => 'Other',
+        ]
+    ],
+
+    'session_group' => [
+        'repeat_type' => [
+            'daily' => 'Daily',
+            'weekly' => 'Weekly',
+            'monthly' => 'Monthly',
+            'yearly' => 'Yearly',
+        ],
+        'frequency' => [
+            'days' => 'Days',
+            'weeks' => 'Weeks',
+            'months' => 'Months',
+            'years' => 'Years',
+        ],
+        'repeat_on' => [
+            'su' => 'Su',
+            'mo' => 'Mo',
+            'tu' => 'Tu',
+            'we' => 'We',
+            'th' => 'Th',
+            'fr' => 'Fr',
+            'sa' => 'Sa',
+            'sunday' => 'Sunday',
+            'monday' => 'Monday',
+            'tuesday' => 'Tuesday',
+            'wednesday' => 'Wednesday',
+            'thursday' => 'Thursday',
+            'friday' => 'Friday',
+            'saturday' => 'Saturday',
+        ],
+        'repeat_by' => [
+            'day_of_month' => 'Day of month',
+            'day_of_week' => 'Day of week',
+        ],
+    ],
+
+    'payment' => [
+        'type' => [
+            'monthly' => 'Monthly',
+            'installment' => 'Installment',
+            'session' => 'Session',
+            'other' => 'Other',
+        ],
+        'payment_method' => [
+            'cash' => 'Cash',
+            'bank' => 'Bank Payment',
+            'cheque' => 'Cheque',
+            'credit_card' => 'Credit Card',
+            'other' => 'Other',
+        ],
+    ],
+
     'backend' => [
         'access' => [
             'roles' => [
                 'create'     => 'Create Role',
                 'edit'       => 'Edit Role',
-                'management' => 'Role Management',
+                'management' => 'Roles',
 
                 'table' => [
                     'number_of_users' => 'Number of Users',
@@ -79,7 +141,7 @@ return [
                 'deactivated'         => 'Deactivated Users',
                 'deleted'             => 'Deleted Users',
                 'edit'                => 'Edit User',
-                'management'          => 'User Management',
+                'management'          => 'Users',
                 'no_permissions'      => 'No Permissions',
                 'no_roles'            => 'No Roles to set.',
                 'permissions'         => 'Permissions',
@@ -121,6 +183,30 @@ return [
             ],
         ],
 
+        'attendance' => [
+            'title' => 'Attendance',
+        ],
+
+        'attendances' => [
+            'all' => 'All Attendances',
+            'create' => 'New Institute',
+            'edit' => 'Edit Institute',
+            'active' => 'Active Institutes',
+            'inactive' => 'Inactive Institutes',
+            'management' => 'Attendance',
+            'select_session' => 'Select Session',
+
+            'table' => [
+                'id' => 'ID',
+                'student' => 'Student',
+                'session' => 'Session',
+                'batch' => 'Batch',
+                'marking_method' => 'Marking Method',
+                'in_time' => 'In Time',
+                'out_time' => 'Out Time',
+            ],
+        ],
+
         'institute' => [
             'title' => 'Institute',
             'overview' => 'Overview',
@@ -133,7 +219,7 @@ return [
             'edit' => 'Edit Institute',
             'active' => 'Active Institutes',
             'inactive' => 'Inactive Institutes',
-            'management' => 'Institutes Management',
+            'management' => 'Institutes',
 
             'table' => [
                 'id' => 'ID',
@@ -170,6 +256,7 @@ return [
             'overview' => 'Overview',
             'batches' => 'Batches',
             'cources' => 'Cources',
+            'profile' => 'Profile',
             'reports' => 'Reports',
             'sessions' => 'Sessions',
             'payments' => 'Payments',
@@ -184,7 +271,7 @@ return [
             'edit' => 'Edit Teacher',
             'active' => 'Active Teachers',
             'inactive' => 'Inactive Teachers',
-            'management' => 'Teachers Management',
+            'management' => 'Teachers',
 
             'table' => [
                 'id' => 'ID',
@@ -207,7 +294,7 @@ return [
             'edit' => 'Edit Student',
             'active' => 'Active Students',
             'inactive' => 'Inactive Students',
-            'management' => 'Students Management',
+            'management' => 'Students',
 
             'table' => [
                 'id' => 'ID',
@@ -226,7 +313,7 @@ return [
             'edit' => 'Edit Subject',
             'active' => 'Active Subjects',
             'inactive' => 'Inactive Subjects',
-            'management' => 'Subjects Management',
+            'management' => 'Subjects',
 
             'table' => [
                 'id' => 'ID',
@@ -244,7 +331,7 @@ return [
             'edit' => 'Edit Course',
             'active' => 'Active Courses',
             'inactive' => 'Inactive Courses',
-            'management' => 'Courses Management',
+            'management' => 'Courses',
 
             'table' => [
                 'id' => 'ID',
@@ -268,12 +355,16 @@ return [
             'edit' => 'Edit Batch',
             'active' => 'Active Batches',
             'inactive' => 'Inactive Batches',
-            'management' => 'Batches Management',
+            'management' => 'Batches',
 
             'table' => [
                 'id' => 'ID',
                 'name' => 'Name',
                 'description' => 'Description',
+                'start_date' => 'Start Date',
+                'end_date' => 'End Date',
+                'course' => 'Course',
+                'location' => 'Location',
                 'status' => 'Status',
                 'created' => 'Created',
                 'last_updated' => 'Last Updated',
@@ -292,7 +383,7 @@ return [
             'edit' => 'Edit Session',
             'active' => 'Active Sessions',
             'inactive' => 'Inactive Sessions',
-            'management' => 'Sessions Management',
+            'management' => 'Sessions',
 
             'table' => [
                 'id' => 'ID',
@@ -309,6 +400,28 @@ return [
                 'status' => 'Status',
                 'created' => 'Created',
                 'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'payment' => [
+            'overview' => 'Overview',
+        ],
+
+        'payments' => [
+            'all' => 'All Payments',
+            'create' => 'Add Payment',
+            'edit' => 'Edit Payment',
+            'management' => 'Payments',
+
+            'table' => [
+                'id' => 'ID',
+                'student' => 'Student',
+                'amount' => 'Amount',
+                'type' => 'Type',
+                'installment' => 'Installment',
+                'month' => 'Month',
+                'paid_by' => 'Paid By',
+                'paid_at' => 'Paid At',
             ],
         ],
     ],

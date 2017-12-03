@@ -20,8 +20,8 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncate(config('access.roles_table'));
+        $this->disableForeignKeys('tenant');
+        $this->truncate(config('access.roles_table'), 'tenant');
 
         $roles = [
             [
@@ -75,8 +75,8 @@ class RoleTableSeeder extends Seeder
             ],
         ];
 
-        DB::table(config('access.roles_table'))->insert($roles);
+        DB::connection('tenant')->table(config('access.roles_table'))->insert($roles);
 
-        $this->enableForeignKeys();
+        $this->enableForeignKeys('tenant');
     }
 }

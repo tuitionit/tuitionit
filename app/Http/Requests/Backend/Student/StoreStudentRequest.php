@@ -28,7 +28,7 @@ class StoreStudentRequest extends Request
 	public function rules()
 	{
 		return [
-            'index_number' => 'required',
+            'index_number' => 'required|unique:tenant.students,index_number',
 			'name' => 'required',
 		];
 	}

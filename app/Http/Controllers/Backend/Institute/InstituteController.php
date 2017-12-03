@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Institute;
 
 use App\Models\Institute\Institute;
+use App\Models\Location\Location;
 use App\Repositories\Backend\Institute\InstituteRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Institute\ManageInstituteRequest;
@@ -75,13 +76,10 @@ class InstituteController extends Controller
      */
     public function overview()
     {
-        $institute = auth()->user()->institute;
-
-        if(!$institute) {
-            return redirect()->route('admin.dashboard')->withFlashSuccess(trans('alerts.backend.institutes.not_linked'));
-        }
-
-        return view('backend.institute.show')->withInstitute($institute);
+        return view('backend.institute.show')->with([
+            'institute' => session('tenant'),
+            'locations' => Location::all()
+        ]);
     }
 
     /**

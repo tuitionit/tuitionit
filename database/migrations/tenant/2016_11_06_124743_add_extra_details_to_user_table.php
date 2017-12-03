@@ -30,9 +30,6 @@ class AddExtraDetailsToUserTable extends Migration
             $table->string('timezone', 40)->nullable();
             $table->tinyInteger('is_online')->nullable();
             $table->timestamp('last_login_time')->nullable();
-            $table->integer('institute_id')->unsigned()->nullable();
-
-            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('set null')->onUpdate('cascade');
         });
     }
 
@@ -44,7 +41,6 @@ class AddExtraDetailsToUserTable extends Migration
     public function down()
     {
         Schema::table('users', function ($table) {
-            $table->dropForeign('users_institute_id_foreign');
 
             $table->dropColumn([
                 'type',
@@ -63,7 +59,6 @@ class AddExtraDetailsToUserTable extends Migration
                 'timezone',
                 'is_online',
                 'last_login_time',
-                'institute_id',
             ]);
         });
     }

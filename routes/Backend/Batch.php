@@ -16,6 +16,11 @@ Route::group([
         Route::get('batches/{batch}/mark/{status}', 'BatchController@mark')->name('batches.mark')->where(['status' => '[0,1]']);
 
         /*
+         * For Select2
+         */
+        Route::get('batches/list', 'BatchListController')->name('batches.list');
+
+        /*
          * Batch Students
          */
         Route::post('batches/{batch}/students/add', 'BatchController@addStudents')->name('batches.students.add');

@@ -12,6 +12,13 @@ class Institute extends Model
         InstituteRelationship;
 
     /**
+     * The database connection used by the model.
+     *
+     * @var string
+     */
+    protected $connection = 'system';
+
+    /**
      * The database table used by the model.
      *
      * @var string

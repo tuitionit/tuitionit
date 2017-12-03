@@ -3,6 +3,7 @@
 namespace App\Models\History;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\UsesTenantConnection;
 
 /**
  * Class HistoryType
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class HistoryType extends Model
 {
+    use UsesTenantConnection;
+    
     /**
      * The database table used by the model.
      *

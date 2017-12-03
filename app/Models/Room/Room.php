@@ -4,11 +4,13 @@ namespace App\Models\Room;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Room\Traits\RoomRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 class Room extends Model
 {
-    use RoomRelationship;
-    
+    use UsesTenantConnection,
+        RoomRelationship;
+
     /**
      * The database table used by the model.
      *
@@ -25,6 +27,7 @@ class Room extends Model
         'name',
         'description',
         'capacity',
+        'has_sound',
         'has_blackboard',
         'has_whiteboard',
         'has_projector',

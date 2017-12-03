@@ -20,8 +20,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncate(config('access.users_table'));
+        $this->disableForeignKeys('tenant');
+        $this->truncate(config('access.users_table'), 'tenant');
 
         //Add the master administrator, user id of 1
         $users = [
@@ -31,7 +31,6 @@ class UserTableSeeder extends Seeder
                 'password'          => bcrypt('1234'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
-                'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
                 'type'              => 'administrator',
@@ -42,7 +41,6 @@ class UserTableSeeder extends Seeder
                 'password'          => bcrypt('1234'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
-                'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
                 'type'              => 'executive',
@@ -53,7 +51,6 @@ class UserTableSeeder extends Seeder
                 'password'          => bcrypt('1234'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
-                'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
                 'type'              => 'manager',
@@ -64,7 +61,6 @@ class UserTableSeeder extends Seeder
                 'password'          => bcrypt('1234'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
-                'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
                 'type'              => 'teacher',
@@ -75,7 +71,6 @@ class UserTableSeeder extends Seeder
                 'password'          => bcrypt('1234'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
-                'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
                 'type'              => 'student',
@@ -86,7 +81,6 @@ class UserTableSeeder extends Seeder
                 'password'          => bcrypt('1234'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
-                'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
                 'type'              => 'parent',
@@ -97,15 +91,14 @@ class UserTableSeeder extends Seeder
                 'password'          => bcrypt('1234'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
-                'institute_id'      => 1,
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
                 'type'              => 'standard',
             ],
         ];
 
-        DB::table(config('access.users_table'))->insert($users);
+        DB::connection('tenant')->table(config('access.users_table'))->insert($users);
 
-        $this->enableForeignKeys();
+        $this->enableForeignKeys('tenant');
     }
 }

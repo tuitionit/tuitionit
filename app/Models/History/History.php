@@ -4,6 +4,7 @@ namespace App\Models\History;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\History\Traits\Relationship\HistoryRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 /**
  * Class History
@@ -11,7 +12,8 @@ use App\Models\History\Traits\Relationship\HistoryRelationship;
  */
 class History extends Model
 {
-    use HistoryRelationship;
+    use UsesTenantConnection,
+        HistoryRelationship;
 
     /**
      * The database table used by the model.

@@ -7,22 +7,15 @@
     {{ Html::style("css/backend/plugin/select2/select2-bootstrap.min.css") }}
 @stop
 
-@section('page-header')
-    <h1>
-        {{ trans('labels.backend.students.management') }}
-        <small>{{ trans('labels.backend.students.create') }}</small>
-    </h1>
-@endsection
-
 @section('content')
     {{ Form::open(['route' => 'admin.students.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
 
+    <div class="col-lg-8 col-lg-offset-2">
         <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ trans('labels.backend.students.create') }}</h3>
 
                 <div class="box-tools pull-right">
-                    @include('backend.includes.partials.students-header-buttons')
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
@@ -66,7 +59,7 @@
                             {{ Form::label('user_id', trans('validation.attributes.backend.students.user_id'), ['class' => 'col-lg-2 control-label']) }}
 
                             <div class="col-lg-10">
-                                {{ Form::select('user_id', [], null, ['id' => 'user-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.user_id')]) }}
+                                {{ Form::select('user_id', $user, null, ['id' => 'user-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.user_id')]) }}
                                 <p class="small help-block">
                                     {{ trans('validation.attributes.backend.students.help.user_id') }}
                                 </p>
@@ -76,9 +69,19 @@
                             {{ Form::label('parent_id', trans('validation.attributes.backend.students.parent_id'), ['class' => 'col-lg-2 control-label']) }}
 
                             <div class="col-lg-10">
-                                {{ Form::select('parent_id', [], null, ['id' => 'parent-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.parent_id')]) }}
+                                {{ Form::select('parent_id', $parent, null, ['id' => 'parent-selector', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.students.parent_id')]) }}
                                 <p class="small help-block">
                                     {{ trans('validation.attributes.backend.students.help.parent_id') }}
+                                </p>
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
+                        <div class="form-group {{ $errors->first('locations', 'has-error') }}">
+                            {{ Form::label('locations', trans('validation.attributes.backend.students.locations'), ['class' => 'col-lg-2 control-label']) }}
+
+                            <div class="col-lg-10">
+                                {{ Form::select('locations[]', $locations, null, ['id' => 'location-selector', 'class' => 'form-control', 'multiple' => true]) }}
+                                <p class="small help-block">
+                                    {{ trans('validation.attributes.backend.students.help.locations') }}
                                 </p>
                             </div><!--col-lg-10-->
                         </div><!--form control-->
@@ -89,8 +92,8 @@
                         <div class="pull-left">
                             {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success']) }}
 
-                            @if(isset($batch))
-                                <input type="hidden" name="batch_id" value="{{ $batch }}">
+                            @if(!empty($batch))
+                                <input type="hidden" name="batch_id" value="{{ $batch->id }}">
                             @endif
                         </div><!--pull-left-->
 
@@ -103,6 +106,7 @@
                 </div><!-- /.form-group -->
             </div><!-- /.box-body -->
         </div><!--box-->
+    </div>
 
     {{ Form::close() }}
 @endsection
@@ -114,6 +118,8 @@
         $(document).ready(function() {
             $('#user-selector').select2({
                 theme: 'bootstrap',
+                placeholder: '{{ trans('validation.attributes.backend.students.user_id') }}',
+                allowClear: true,
                 ajax: {
                     url: "{{ route('admin.users.list', ['type' => 'student']) }}",
                     dataType: 'json',
@@ -135,6 +141,8 @@
 
             $('#parent-selector').select2({
                 theme: 'bootstrap',
+                placeholder: '{{ trans('validation.attributes.backend.students.parent_id') }}',
+                allowClear: true,
                 ajax: {
                     url: "{{ route('admin.users.list', ['type' => 'parent']) }}",
                     dataType: 'json',
@@ -151,6 +159,13 @@
                         };
                     },
                 },
+                width: '100%'
+            });
+
+            $('#location-selector').select2({
+                theme: 'bootstrap',
+                multiple: true,
+                placeholder: '{{ trans('validation.attributes.backend.students.locations') }}',
                 width: '100%'
             });
         });

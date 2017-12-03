@@ -14,17 +14,19 @@
             </div><!--pull-left-->
         </div><!--user-panel-->
 
+        <?php /*
         <!-- search form (Optional) -->
         {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}
         <div class="input-group">
             {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}
 
             <span class="input-group-btn">
-                    <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                  </span><!--input-group-btn-->
+                <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span><!--input-group-btn-->
         </div><!--input-group-->
-    {{ Form::close() }}
-    <!-- /.search form -->
+        {{ Form::close() }}
+        <!-- /.search form -->
+        */ ?>
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
@@ -37,47 +39,78 @@
                 </a>
             </li>
 
+            @permission('manage-students')
             <li class="{{ active_class(Active::checkUriPattern('admin/students*')) }}">
                 <a href="{{ route('admin.students.index') }}">
                     <i class="fa fa-user-o"></i>
                     <span>{{ trans('menus.backend.sidebar.students') }}</span>
                 </a>
             </li>
+            @endauth
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/teachers')) }}">
-                <a href="{{ route('admin.teachers.index') }}">
-                    <i class="fa fa-graduation-cap"></i>
-                    <span>{{ trans('menus.backend.sidebar.teachers') }}</span>
-                </a>
-            </li>
-
+            @permission('manage-sessions')
             <li class="{{ active_class(Active::checkUriPattern('admin/sessions')) }}">
                 <a href="{{ route('admin.sessions.index') }}">
                     <i class="fa fa-clock-o"></i>
                     <span>{{ trans('menus.backend.sidebar.sessions') }}</span>
                 </a>
             </li>
+            @endauth
 
+            @permission('manage-attendances')
+            <li class="{{ active_class(Active::checkUriPattern('admin/attendances*')) }}">
+                <a href="{{ route('admin.attendances.index') }}">
+                    <i class="fa fa-check-circle-o"></i>
+                    <span>{{ trans('menus.backend.sidebar.attendance') }}</span>
+                </a>
+            </li>
+            @endauth
+
+            @permission('manage-payments')
+            <li class="{{ active_class(Active::checkUriPattern('admin/payments*')) }}">
+                <a href="{{ route('admin.payments.index') }}">
+                    <i class="fa fa-usd"></i>
+                    <span>{{ trans('menus.backend.sidebar.payments') }}</span>
+                </a>
+            </li>
+            @endauth
+
+            @permission('manage-batches')
             <li class="{{ active_class(Active::checkUriPattern('admin/batches')) }}">
                 <a href="{{ route('admin.batches.index') }}">
                     <i class="fa fa-users"></i>
                     <span>{{ trans('menus.backend.sidebar.batches') }}</span>
                 </a>
             </li>
+            @endauth
 
+            @permission('manage-courses')
             <li class="{{ active_class(Active::checkUriPattern('admin/courses')) }}">
                 <a href="{{ route('admin.courses.index') }}">
                     <i class="fa fa-clone"></i>
                     <span>{{ trans('menus.backend.sidebar.courses') }}</span>
                 </a>
             </li>
+            @endauth
 
+            @permission('manage-teachers')
+            <li class="{{ active_class(Active::checkUriPattern('admin/teachers')) }}">
+                <a href="{{ route('admin.teachers.index') }}">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>{{ trans('menus.backend.sidebar.teachers') }}</span>
+                </a>
+            </li>
+            @endauth
+
+            @permission('manage-subjects')
             <li class="{{ active_class(Active::checkUriPattern('admin/subjects')) }}">
                 <a href="{{ route('admin.subjects.index') }}">
                     <i class="fa fa-flask"></i>
                     <span>{{ trans('menus.backend.sidebar.subjects') }}</span>
                 </a>
             </li>
+            @endauth
+
 
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
@@ -90,14 +123,7 @@
             </li>
             @endauth
 
-            @role(1)
-            <li class="{{ active_class(Active::checkUriPattern('admin/institutes')) }}">
-                <a href="{{ route('admin.institutes.index') }}">
-                    <i class="fa fa-institution"></i>
-                    <span>{{ trans('menus.backend.sidebar.institutes') }}</span>
-                </a>
-            </li>
-
+            @role(2)
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
@@ -106,12 +132,14 @@
                 </a>
 
                 <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/access/*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/access/*'), 'display: block;') }}">
+                    @permission('manage-users')
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
                         <a href="{{ route('admin.access.user.index') }}">
                             <i class="fa fa-circle-o"></i>
                             <span>{{ trans('labels.backend.access.users.management') }}</span>
                         </a>
                     </li>
+                    @endauth
 
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/role*')) }}">
                         <a href="{{ route('admin.access.role.index') }}">
@@ -123,6 +151,7 @@
             </li>
             @endauth
 
+            @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-list"></i>
@@ -145,6 +174,8 @@
                     </li>
                 </ul>
             </li>
+            @endauth
+
         </ul><!-- /.sidebar-menu -->
     </section><!-- /.sidebar -->
 </aside>

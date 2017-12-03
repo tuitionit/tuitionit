@@ -34,17 +34,17 @@ trait DisableForeignKeys
     /**
      * Disable foreign key checks for current db driver.
      */
-    protected function disableForeignKeys()
+    protected function disableForeignKeys($connection =  'system')
     {
-        DB::statement($this->getDisableStatement());
+        DB::connection($connection)->statement($this->getDisableStatement());
     }
 
     /**
      * Enable foreign key checks for current db driver.
      */
-    protected function enableForeignKeys()
+    protected function enableForeignKeys($connection =  'system')
     {
-        DB::statement($this->getEnableStatement());
+        DB::connection($connection)->statement($this->getEnableStatement());
     }
 
     /**
@@ -52,9 +52,9 @@ trait DisableForeignKeys
      *
      * @return mixed
      */
-    private function getEnableStatement()
+    private function getEnableStatement($connection =  'system')
     {
-        return $this->getDriverCommands()['enable'];
+        return $this->getDriverCommands($connection)['enable'];
     }
 
     /**
@@ -62,9 +62,9 @@ trait DisableForeignKeys
      *
      * @return mixed
      */
-    private function getDisableStatement()
+    private function getDisableStatement($connection =  'system')
     {
-        return $this->getDriverCommands()['disable'];
+        return $this->getDriverCommands($connection)['disable'];
     }
 
     /**
@@ -72,8 +72,8 @@ trait DisableForeignKeys
      *
      * @return mixed
      */
-    private function getDriverCommands()
+    private function getDriverCommands($connection =  'system')
     {
-        return $this->commands[DB::getDriverName()];
+        return $this->commands[DB::connection($connection)->getDriverName()];
     }
 }

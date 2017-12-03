@@ -32,8 +32,18 @@ class StoreBatchRequest extends Request
 			'description' => 'max:500',
 			'type' => 'required',
 			'location_id' => 'required',
-			'start_date' => 'date_format:d/m/Y',
-			'end_date' => 'date_format:d/m/Y|after_or_equal:start_date',
+			'start_date' => 'date_format:Y-m-d',
+			'end_date' => 'date_format:Y-m-d|after_or_equal:start_date',
 		];
+	}
+
+	/**
+	 * Set the localized / nice names for attributes.
+	 *
+	 * @return array
+	 */
+	public function attributes()
+	{
+		return trans('validation.attributes.backend.batches');
 	}
 }

@@ -2,14 +2,13 @@
 
 namespace App\Events\Backend\Institute;
 
-use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 /**
  * Class InstituteDeleted
  * @package App\Events\Backend\Institute
  */
-class InstituteDeleted extends Event
+class InstituteDeleted
 {
     use SerializesModels;
 

@@ -1,51 +1,89 @@
 @extends ('backend.layouts.app')
 
-@section ('title', $institute->name)
+@section ('title', $teacher->name)
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("js/plugins/fullcalendar/fullcalendar.min.css") }}
 @stop
 
 @section('page-header')
     <h1>
-        {{ $institute->name }}
-        <small>{{ $institute->name }}</small>
+        {{ $teacher->name }}
+        <small>{{ $teacher->name }}</small>
     </h1>
 @endsection
 
 @section('content')
-    <div class="box box-success">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.institute.overview') }}</h3>
+<div class="row">
+    <div class="col-sm-4 col-md-3">
+        <div class="box box-primary">
+            <div class="box-body">
+                <img src="{{ URL::to('/') }}/img/student.png" class="profile-user-img img-responsive img-circle" />
+                <h3 class="profile-username text-center">{{ $teacher->name }}</h3>
+            </div><!-- /.box-body -->
+        </div><!--box-->
+    </div>
+    <div class="col-sm-8 col-md-9">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#sessions" data-toggle="tab"><i class="fa fa-clock-o"></i> {{ trans('labels.backend.student.sessions')}}</a>
+                </li>
+                <li class="">
+                    <a href="#reports" data-toggle="tab"><i class="fa fa-clone"></i> {{ trans('labels.backend.student.reports')}}</a>
+                </li>
+                <li class="">
+                    <a href="#batches" data-toggle="tab"><i class="fa fa-users"></i> {{ trans('labels.backend.student.batches')}}</a>
+                </li>
+                <li class="">
+                    <a href="#payments" data-toggle="tab"><i class="fa fa-money"></i> {{ trans('labels.backend.student.payments')}}</a>
+                </li>
+                <li class="">
+                    <a href="#settings" data-toggle="tab"><i class="fa fa-gears"></i> {{ trans('labels.backend.student.settings')}}</a>
+                </li>
+            </ul>
 
-            <div class="box-tools pull-right">
-                @include('backend.includes.partials.institutes-header-buttons')
-            </div><!--box-tools pull-right-->
-        </div><!-- /.box-header -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="sessions">
+                    <div id="sessions-calendar">
 
-        <div class="box-body">
+                    </div>
+                </div>
+                <div class="tab-pane" id="reports">
 
-        </div><!-- /.box-body -->
-    </div><!--box-->
+                </div>
+                <div class="tab-pane" id="batches">
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('labels.backend.institute.locations') }}</h3>
+                </div>
+                <div class="tab-pane" id="payments">
 
-                    <div class="box-tools pull-right">
-                        <div class="pull-right mb-10">
-                            {{ link_to_route('admin.institutes.index', trans('menus.backend.institutes.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
-                            {{ link_to_route('admin.locations.create', trans('menus.backend.institutes.create'), [], ['class' => 'btn btn-success btn-xs']) }}
-                        </div><!--pull right-->
-                    </div><!--box-tools pull-right-->
-                </div><!-- /.box-header -->
+                </div>
+                <div class="tab-pane" id="settings">
 
-                <div class="box-body">
-
-                </div><!-- /.box-body -->
-            </div><!--box-->
+                </div>
+            </div>
         </div>
     </div>
+</div>
+@stop
+
+@section('after-scripts')
+    {{ Html::script("js/plugins/moment/moment.min.js") }}
+    {{ Html::script("js/plugins/fullcalendar/fullcalendar.min.js") }}
+
+    <script>
+        $(function() {
+            $('#sessions-calendar').fullCalendar({
+                header: {
+    				left: 'prev,next today',
+    				center: 'title',
+    				right: 'month,agendaWeek,agendaDay'
+    			},
+    			defaultView: 'agendaWeek',
+    			editable: true,
+            });
+        });
+    </script>
 @stop
