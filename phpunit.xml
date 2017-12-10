@@ -12,7 +12,8 @@
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
-        <env name="DB_CONNECTION" value="sqlite_testing"/>
+        <env name="SYSTEM_DB_CONNECTION" value="tuitionix_system_test"/>
+        <env name="TENANT_DB_CONNECTION" value="tuitionix_tenant_test"/>
         <env name="ENABLE_REGISTRATION" value="true"/>
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="REGISTRATION_CAPTCHA_STATUS" value="false"/>

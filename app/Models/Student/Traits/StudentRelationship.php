@@ -4,6 +4,7 @@ namespace App\Models\Student\Traits;
 
 use App\Models\Batch\Batch;
 use App\Models\Location\Location;
+use App\Models\Session\Session;
 use App\Models\Student\Student;
 use App\Models\Access\User\User;
 

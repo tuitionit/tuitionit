@@ -79,6 +79,10 @@ return [
             'select_user_description' => 'Joining teacher profile with a user account will allow teachers to manage their profiles easily.',
         ],
 
+        'student' => [
+            'joined_on' => 'Joined on: :date',
+        ],
+
         'batches' => [
             'select_students' => 'Select students to add to the batch. Start typing the name of a student to search for students.',
         ],
