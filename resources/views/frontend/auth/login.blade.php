@@ -1,15 +1,33 @@
 @extends('frontend.layouts.app')
 
+@section('after-styles')
+    <style media="screen">
+        .institute-logo {
+            padding: 40px 0;
+        }
+        .institute-logo img {
+            display: block;
+            margin: 0 auto;
+            width: 60px;
+        }
+
+        .login {
+            margin: 0 20px;
+        }
+    </style>
+@stop
+
 @section('content')
 
     <div class="row">
 
         <div class="col-md-8 col-md-offset-2">
 
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.frontend.auth.login_box_title') }}</div>
-
-                <div class="panel-body">
+            <div class="login">
+                <div class="institute-logo">
+                    <img src="{{ asset('/img/logo.png') }}" alt="logo" />
+                </div>
+                <div class="system-login">
 
                     {{ Form::open(['route' => 'frontend.auth.login', 'class' => 'form-horizontal']) }}
 

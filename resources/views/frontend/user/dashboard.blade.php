@@ -3,9 +3,9 @@
 @section('content')
     <div class="row">
         <div class="col-sm-5 col-md-4">
-            <div class="panel panel-primary panel-user">
+            <div class="panel panel-default panel-user">
                 <div class="panel-heading">
-                    <h4 class="panel-title">{{ $logged_in_user->name }}</h4>
+
                 </div>
                 <div class="panel-body">
                     <div class="panel-user-image">
@@ -13,6 +13,7 @@
                     </div>
 
                     <div class="panel-user-details">
+                        <h4 class="text-center user-name">{{ $logged_in_user->name }}</h4>
                         <div class="text-center text-muted">
                             <small>
                                 {{ $logged_in_user->email }}<br/>
@@ -52,11 +53,25 @@
         </div>
 
         <div class="col-sm-7 col-md-8">
+            @role('Student')
+
+            @endauth
+
+            @role('Parent')
+            @endauth
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">My Sessions</h4>
                 </div>
                 <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
                 </div>
             </div>
         </div>
