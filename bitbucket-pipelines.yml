@@ -29,19 +29,19 @@ pipelines:
           - curl -vk http://localhost:8000
           - vendor/bin/phpunit
         services:
-          - system_db
-          - tenant_db
+          - system-db
+          - tenant-db
 
 definitions:
   services:
-    system_db:
+    system-db:
       image: mysql
       environment:
         MYSQL_DATABASE: 'tuitionix_system_test'
         MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
         MYSQL_USER: 'www'
         MYSQL_PASSWORD: 'wwwpwd'
-    tenant_db:
+    tenant-db:
       image: mysql
       environment:
         MYSQL_DATABASE: 'tuitionix_tenant_test'
