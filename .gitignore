@@ -7,7 +7,6 @@
 .idea
 Homestead.json
 Homestead.yaml
-.env
 .DS_Store
 Thumbs.db
 *.sublime-project
