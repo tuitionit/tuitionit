@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 return [
 
@@ -15,7 +15,7 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => 'Access',
 
             'roles' => [
                 'all'        => 'All Roles',
@@ -37,6 +37,68 @@ return [
             ],
         ],
 
+        'attendance' => [
+            'management' => 'Attendance',
+        ],
+
+        'attendances' => [
+            'management' => 'Attendance',
+            'all' => 'All Attendances',
+            'mark' => 'Mark Attendances',
+        ],
+
+        'institute' => [
+            'management' => 'Institute',
+        ],
+
+        'institutes' => [
+            'management' => 'Institutes',
+            'all' => 'All Institutes',
+            'create' => 'New Institute',
+        ],
+
+        'teachers' => [
+            'management' => 'Teachers',
+            'all' => 'All Teachers',
+            'create' => 'New Teacher',
+        ],
+
+        'students' => [
+            'management' => 'Students',
+            'all' => 'All Students',
+            'create' => 'New Student',
+        ],
+
+        'sessions' => [
+            'management' => 'Sessions',
+            'all' => 'All Sessions',
+            'create' => 'New Session',
+        ],
+
+        'courses' => [
+            'management' => 'Courses',
+            'all' => 'All Courses',
+            'create' => 'New Course',
+        ],
+
+        'batches' => [
+            'management' => 'Batches',
+            'all' => 'All Batches',
+            'create' => 'New Batch',
+        ],
+
+        'payments' => [
+            'management' => 'Payments',
+            'all' => 'All Payments',
+            'create' => 'Add Payment',
+        ],
+
+        'subjects' => [
+            'management' => 'Subjects',
+            'all' => 'All Subjects',
+            'create' => 'New Subject',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',
@@ -44,9 +106,18 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard' => 'Dashboard',
-            'general'   => 'General',
-            'system'    => 'System',
+            'dashboard'     => 'Overview',
+            'general'       => 'General',
+            'system'        => 'System',
+            'institutes'    => 'Institutes',
+            'attendance'    => 'Attendance',
+            'payments'      => 'Payments',
+            'students'      => 'Students',
+            'teachers'      => 'Teachers',
+            'batches'       => 'Batches',
+            'sessions'      => 'Sessions',
+            'courses'       => 'Courses',
+            'subjects'      => 'Subjects',
         ],
     ],
 

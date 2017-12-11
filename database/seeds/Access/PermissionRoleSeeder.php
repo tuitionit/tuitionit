@@ -19,14 +19,41 @@ class PermissionRoleSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncate(config('access.permission_role_table'));
+        $this->disableForeignKeys('tenant');
+        $this->truncate(config('access.permission_role_table'), 'tenant');
 
         /*
-         * Assign view backend to executive role as example
+         * Default permissions for executive user
+         * 1    = View Backend
+         * 2    = Manage Institutes
+         * 3    = Manage Locations
+         * 4    = Manage Rooms
+         * 5    = Manage Students
+         * 6    = Manage Teachers
+         * 7    = Manage Subjects
+         * 8    = Manage Sessions
+         * 9    = Manage Courses
+         * 10    = Manage Batches
+         *
          */
-        Role::find(2)->permissions()->sync([1]);
+        Role::find(2)->permissions()->sync([1,2,3,4,5,6,7,8,9,10]);
 
-        $this->enableForeignKeys();
+        /*
+         * Default permissions for manager
+         * 1    = View Backend
+         * 2    = Manage Institutes
+         * 3    = Manage Locations
+         * 4    = Manage Rooms
+         * 5    = Manage Students
+         * 6    = Manage Teachers
+         * 7    = Manage Subjects
+         * 8    = Manage Sessions
+         * 9    = Manage Courses
+         * 10    = Manage Batches
+         *
+         */
+        Role::find(3)->permissions()->sync([1,2,3,4,5,6,7,8,9,10]);
+
+        $this->enableForeignKeys('tenant');
     }
 }

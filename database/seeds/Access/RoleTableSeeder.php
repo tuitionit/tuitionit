@@ -20,8 +20,8 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
-        $this->truncate(config('access.roles_table'));
+        $this->disableForeignKeys('tenant');
+        $this->truncate(config('access.roles_table'), 'tenant');
 
         $roles = [
             [
@@ -39,16 +39,44 @@ class RoleTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'       => 'User',
+                'name'       => 'Manager',
                 'all'        => false,
                 'sort'       => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'name'       => 'Teacher',
+                'all'        => false,
+                'sort'       => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name'       => 'Student',
+                'all'        => false,
+                'sort'       => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name'       => 'Parent',
+                'all'        => false,
+                'sort'       => 6,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name'       => 'User',
+                'all'        => false,
+                'sort'       => 7,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ];
 
-        DB::table(config('access.roles_table'))->insert($roles);
+        DB::connection('tenant')->table(config('access.roles_table'))->insert($roles);
 
-        $this->enableForeignKeys();
+        $this->enableForeignKeys('tenant');
     }
 }

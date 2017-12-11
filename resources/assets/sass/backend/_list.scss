@@ -1,0 +1,25 @@
+.sort {
+    i.asc, i.desc {
+        display: none;
+    }
+
+    &.asc {
+        i.asc {
+            display: inline-block;
+        }
+
+        i.desc {
+            display: none;
+        }
+    }
+
+    &.desc {
+        i.asc {
+            display: none;
+        }
+
+        i.desc {
+            display: inline-block;
+        }
+    }
+}

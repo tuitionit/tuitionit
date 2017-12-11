@@ -36,6 +36,7 @@ return [
             'minutes'             => ' minutes',
             'search_placeholder'  => 'Search...',
             'timeout'             => 'You were automatically logged out for security reasons since you had no activity in ',
+            'click_to_select'     => 'Click to select',
 
             'see_all' => [
                 'messages'      => 'See all messages',
@@ -56,18 +57,50 @@ return [
         ],
 
         'search' => [
+            'type' => 'Type for hints...',
             'empty'      => 'Please enter a search term.',
             'incomplete' => 'You must write your own search logic for this system.',
             'title'      => 'Search Results',
             'results'    => 'Search Results for :query',
         ],
 
-        'welcome' => '<p>This is the AdminLTE theme by <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. This is a stripped down version with only the necessary styles and scripts to get it running. Download the full version to start adding components to your dashboard.</p>
-<p>All the functionality is for show with the exception of the <strong>Access Management</strong> to the left. This boilerplate comes with a fully functional access control library to manage users/roles/permissions.</p>
-<p>Keep in mind it is a work in progress and their may be bugs or other issues I have not come across. I will do my best to fix them as I receive them.</p>
-<p>Hope you enjoy all of the work I have put into this. Please visit the <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> page for more information and report any <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">issues here</a>.</p>
-<p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
-<p>- Anthony Rappa</p>',
+        'welcome' => 'Welcome!',
+
+        'locations' => [
+            'empty' => 'Add locations where your institute has branches. There should be at least one location.',
+        ],
+
+        'rooms' => [
+            'empty' => 'Add all rooms in this location to schedule sessions at them. There should be at least one room at each location.',
+        ],
+
+        'teachers' => [
+            'select_user' => 'This teacher already has a user account',
+            'select_user_description' => 'Joining teacher profile with a user account will allow teachers to manage their profiles easily.',
+        ],
+
+        'student' => [
+            'joined_on' => 'Joined on: :date',
+        ],
+
+        'batches' => [
+            'select_students' => 'Select students to add to the batch. Start typing the name of a student to search for students.',
+        ],
+
+        'sessions' => [
+            'time_from_to' => ':start - :end',
+        ],
+
+        'attendances' => [
+            'select_session' => 'Select a session to start marking attendance.',
+            'id' => 'Enter student ID',
+            'empty_student_id' => 'Please enter a student ID',
+            'saving' => 'Saving. Please wait...',
+            'failed' => 'Communication error. Please try again!',
+            'student_not_found' => 'Student not found!',
+            'student_not_in_batch' => 'Student not registered for the batch!',
+            'success' => 'Accepted!',
+        ],
     ],
 
     'emails' => [

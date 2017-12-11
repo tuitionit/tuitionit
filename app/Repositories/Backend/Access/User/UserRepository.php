@@ -42,6 +42,23 @@ class UserRepository extends BaseRepository
     }
 
     /**
+     * @param string  $query
+     *
+     * @return mixed
+     */
+    public function searchByName($query)
+    {
+        $searchQuery = $this->query()
+            ->select([
+                'users.id',
+                'users.name',
+            ])
+            ->where('name', 'LIKE', '%' . $query . '%');
+
+        return $searchQuery;
+    }
+
+    /**
      * @param        $permissions
      * @param string $by
      *

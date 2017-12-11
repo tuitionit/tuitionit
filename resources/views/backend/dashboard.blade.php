@@ -2,12 +2,14 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
+        {{ $tenant->name }}
         <small>{{ trans('strings.backend.dashboard.title') }}</small>
     </h1>
 @endsection
 
 @section('content')
+    @include('backend.includes.widgets.quick-links')
+
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('strings.backend.dashboard.welcome') }} {{ $logged_in_user->name }}!</h3>

@@ -15,7 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        //
+        \App\Models\Batch\Batch::class => \App\Policies\BatchPolicy::class,
+        \App\Models\Institute\Institute::class => \App\Policies\InstitutePolicy::class,
     ];
 
     /**

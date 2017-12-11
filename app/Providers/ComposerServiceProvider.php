@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use App\Http\Composers\GlobalComposer;
+use App\Http\Composers\QuickLinksComposer;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -33,6 +34,10 @@ class ComposerServiceProvider extends ServiceProvider
         /*
          * Backend
          */
+        View::composer(
+            'backend.includes.widgets.quick-links',
+            QuickLinksComposer::class
+        );
     }
 
     /**

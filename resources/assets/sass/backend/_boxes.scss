@@ -47,6 +47,11 @@
         border-bottom: none;
       }
     }
+
+    &.full-width {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
   }
 
   // fixed height to 300px
@@ -265,6 +270,14 @@
   }
   .box-pane-right {
     @include border-radius(0, 0, 0, $box-border-radius);
+  }
+
+  .nav-stacked {
+    li {
+      i.fa {
+        color: #456;
+      }
+    }
   }
 }
 

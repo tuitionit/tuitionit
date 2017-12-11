@@ -31,12 +31,97 @@ return [
         'toggle_navigation' => 'Toggle Navigation',
     ],
 
+    'teacher' => [
+        'title' => [
+            'mr' => 'Mr.',
+            'mrs' => 'Mrs.',
+            'ms' => 'Ms',
+            'mx' => 'Mx.',
+            'dr' => 'Dr.',
+            'prof' => 'Prof.',
+            'rev' => 'Rev.',
+        ]
+    ],
+
+    'batch' => [
+        'type' => [
+            'standard' => 'Standard',
+            'group' => 'Group',
+            'individual' => 'Individual',
+            'seminar' => 'Seminar',
+            'test' => 'Test',
+            'other' => 'Other',
+        ]
+    ],
+
+    'session' => [
+        'type' => [
+            'standard' => 'Standard',
+            'group' => 'Group',
+            'individual' => 'Individual',
+            'seminar' => 'Seminar',
+            'test' => 'Test',
+            'other' => 'Other',
+        ]
+    ],
+
+    'session_group' => [
+        'repeat_type' => [
+            'daily' => 'Daily',
+            'weekly' => 'Weekly',
+            'monthly' => 'Monthly',
+            'yearly' => 'Yearly',
+        ],
+        'frequency' => [
+            'days' => 'Days',
+            'weeks' => 'Weeks',
+            'months' => 'Months',
+            'years' => 'Years',
+        ],
+        'repeat_on' => [
+            'su' => 'Su',
+            'mo' => 'Mo',
+            'tu' => 'Tu',
+            'we' => 'We',
+            'th' => 'Th',
+            'fr' => 'Fr',
+            'sa' => 'Sa',
+            'sunday' => 'Sunday',
+            'monday' => 'Monday',
+            'tuesday' => 'Tuesday',
+            'wednesday' => 'Wednesday',
+            'thursday' => 'Thursday',
+            'friday' => 'Friday',
+            'saturday' => 'Saturday',
+        ],
+        'repeat_by' => [
+            'day_of_month' => 'Day of month',
+            'day_of_week' => 'Day of week',
+        ],
+    ],
+
+    'payment' => [
+        'type' => [
+            'monthly' => 'Monthly',
+            'installment' => 'Installment',
+            'session' => 'Session',
+            'other' => 'Other',
+        ],
+        'payment_method' => [
+            'cash' => 'Cash',
+            'bank' => 'Bank Payment',
+            'cheque' => 'Cheque',
+            'credit_card' => 'Credit Card',
+            'other' => 'Other',
+        ],
+    ],
+
     'backend' => [
         'access' => [
             'roles' => [
                 'create'     => 'Create Role',
                 'edit'       => 'Edit Role',
-                'management' => 'Role Management',
+                'management' => 'Roles',
 
                 'table' => [
                     'number_of_users' => 'Number of Users',
@@ -56,7 +141,7 @@ return [
                 'deactivated'         => 'Deactivated Users',
                 'deleted'             => 'Deleted Users',
                 'edit'                => 'Edit User',
-                'management'          => 'User Management',
+                'management'          => 'Users',
                 'no_permissions'      => 'No Permissions',
                 'no_roles'            => 'No Roles to set.',
                 'permissions'         => 'Permissions',
@@ -95,6 +180,252 @@ return [
                 ],
 
                 'view' => 'View User',
+            ],
+        ],
+
+        'attendance' => [
+            'title' => 'Attendance',
+        ],
+
+        'attendances' => [
+            'all' => 'All Attendances',
+            'create' => 'New Institute',
+            'edit' => 'Edit Institute',
+            'active' => 'Active Institutes',
+            'inactive' => 'Inactive Institutes',
+            'management' => 'Attendance',
+            'select_session' => 'Select Session',
+
+            'table' => [
+                'id' => 'ID',
+                'student' => 'Student',
+                'session' => 'Session',
+                'batch' => 'Batch',
+                'marking_method' => 'Marking Method',
+                'in_time' => 'In Time',
+                'out_time' => 'Out Time',
+            ],
+        ],
+
+        'institute' => [
+            'title' => 'Institute',
+            'overview' => 'Overview',
+            'locations' => 'Locations',
+        ],
+
+        'institutes' => [
+            'all' => 'All Institutes',
+            'create' => 'New Institute',
+            'edit' => 'Edit Institute',
+            'active' => 'Active Institutes',
+            'inactive' => 'Inactive Institutes',
+            'management' => 'Institutes',
+
+            'table' => [
+                'id' => 'ID',
+                'code' => 'Code',
+                'name' => 'Name',
+                'city' => 'City',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'locations' => [
+            'management' => 'Locations',
+            'create' => 'Add New Location',
+            'edit' => 'Edit Details',
+            'general' => 'General Details',
+            'contact' => 'Contact Details',
+            'overview' => 'Overview',
+            'rooms' => 'Rooms',
+        ],
+
+        'rooms' => [
+            'management' => 'Rooms',
+            'create' => 'Add New Room',
+            'edit' => 'Edit Details',
+            'general' => 'General Details',
+            'contact' => 'Contact Details',
+            'overview' => 'Overview',
+            'rooms' => 'Rooms',
+        ],
+
+        'student' => [
+            'title' => 'Student',
+            'overview' => 'Overview',
+            'batches' => 'Batches',
+            'cources' => 'Cources',
+            'profile' => 'Profile',
+            'reports' => 'Reports',
+            'sessions' => 'Sessions',
+            'payments' => 'Payments',
+            'settings' => 'Settings',
+            'parent' => 'Parent',
+            'batches' => 'Batches',
+            'next_session' => 'Next Session',
+            'next_payment' => 'Next Payment',
+            'upcoming_sessions' => 'Upcoming Sessions',
+            'past_sessions' => 'Past Sessions',
+        ],
+
+        'teachers' => [
+            'all' => 'All Teachers',
+            'create' => 'New Teacher',
+            'edit' => 'Edit Teacher',
+            'active' => 'Active Teachers',
+            'inactive' => 'Inactive Teachers',
+            'management' => 'Teachers',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'short_name' => 'Short Name',
+                'title' => 'Title',
+                'level' => 'Level',
+                'cv' => 'CV',
+                'bio' => 'Bio',
+                'user_id' => 'User',
+                'status' => 'Status',
+                'created' => 'Joined',
+                'last_updated' => 'Updated',
+            ],
+        ],
+
+        'students' => [
+            'all' => 'All Students',
+            'create' => 'New Student',
+            'edit' => 'Edit Student',
+            'active' => 'Active Students',
+            'inactive' => 'Inactive Students',
+            'management' => 'Students',
+
+            'table' => [
+                'id' => 'ID',
+                'index_number' => 'Index No.',
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'status' => 'Status',
+                'created' => 'Joined',
+                'last_updated' => 'Updated',
+            ],
+        ],
+
+        'subjects' => [
+            'all' => 'All Subjects',
+            'create' => 'New Subject',
+            'edit' => 'Edit Subject',
+            'active' => 'Active Subjects',
+            'inactive' => 'Inactive Subjects',
+            'management' => 'Subjects',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'courses' => [
+            'all' => 'All Courses',
+            'create' => 'New Course',
+            'edit' => 'Edit Course',
+            'active' => 'Active Courses',
+            'inactive' => 'Inactive Courses',
+            'management' => 'Courses',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'batch' => [
+            'overview' => 'Overview',
+            'students' => 'Students',
+            'add_students' => 'Add Students',
+        ],
+
+        'batches' => [
+            'all' => 'All Batches',
+            'create' => 'New Batch',
+            'edit' => 'Edit Batch',
+            'active' => 'Active Batches',
+            'inactive' => 'Inactive Batches',
+            'management' => 'Batches',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'start_date' => 'Start Date',
+                'end_date' => 'End Date',
+                'course' => 'Course',
+                'location' => 'Location',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'session' => [
+            'overview' => 'Overview',
+            'students' => 'Students',
+            'attending_students' => 'Attending Students',
+        ],
+
+        'sessions' => [
+            'all' => 'All Sessions',
+            'create' => 'New Session',
+            'edit' => 'Edit Session',
+            'active' => 'Active Sessions',
+            'inactive' => 'Inactive Sessions',
+            'management' => 'Sessions',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'description' => 'Description',
+                'start_time' => 'Start',
+                'end_time' => 'End',
+                'subject' => 'Subject',
+                'room' => 'Room',
+                'location' => 'Location',
+                'teacher' => 'Teacher',
+                'batch' => 'Batch',
+                'course' => 'Course',
+                'status' => 'Status',
+                'created' => 'Created',
+                'last_updated' => 'Last Updated',
+            ],
+        ],
+
+        'payment' => [
+            'overview' => 'Overview',
+        ],
+
+        'payments' => [
+            'all' => 'All Payments',
+            'create' => 'Add Payment',
+            'edit' => 'Edit Payment',
+            'management' => 'Payments',
+
+            'table' => [
+                'id' => 'ID',
+                'student' => 'Student',
+                'amount' => 'Amount',
+                'type' => 'Type',
+                'installment' => 'Installment',
+                'month' => 'Month',
+                'paid_by' => 'Paid By',
+                'paid_at' => 'Paid At',
             ],
         ],
     ],

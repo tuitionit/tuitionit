@@ -4,13 +4,15 @@ namespace App\Models\Access\Permission;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Access\Permission\Traits\Relationship\PermissionRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 /**
  * Class Permission.
  */
 class Permission extends Model
 {
-    use PermissionRelationship;
+    use UsesTenantConnection,
+        PermissionRelationship;
 
     /**
      * The database table used by the model.

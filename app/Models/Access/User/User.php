@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Access\User\Traits\UserSendPasswordReset;
 use App\Models\Access\User\Traits\Attribute\UserAttribute;
 use App\Models\Access\User\Traits\Relationship\UserRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 /**
  * Class User.
@@ -22,21 +23,30 @@ class User extends Authenticatable
         SoftDeletes,
         UserAttribute,
         UserRelationship,
-        UserSendPasswordReset;
+        UserSendPasswordReset,
+        UsesTenantConnection;
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table;
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'status', 'confirmation_code', 'confirmed'];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'status',
+        'confirmation_code',
+        'confirmed',
+        'institute_id'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.

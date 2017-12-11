@@ -1,6 +1,19 @@
+body {
+    font-family: $font-family-lato;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-lato;
+}
+
 .logged-in-as {
   margin:0;
   border-radius:0;
+}
+
+// Box
+.box {
+    padding: 10px 20px;
 }
 
 // Margin/Padding Helpers
@@ -31,4 +44,23 @@ $margin-padding: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
   .pr-#{$mp} {
     padding-right:#{$mp}px !important;
   }
+}
+
+// Content Header
+.content-header {
+    h1 {
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+}
+
+@media(min-width: $screen-md) {
+    .content-wrapper {
+        padding: 10px 20px;
+
+        // Content Header
+        .content-header {
+            margin-bottom: 10px;
+        }
+    }
 }

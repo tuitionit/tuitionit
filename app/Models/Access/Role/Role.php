@@ -7,6 +7,7 @@ use App\Models\Access\Role\Traits\RoleAccess;
 use App\Models\Access\Role\Traits\Scope\RoleScope;
 use App\Models\Access\Role\Traits\Attribute\RoleAttribute;
 use App\Models\Access\Role\Traits\Relationship\RoleRelationship;
+use App\Models\Traits\UsesTenantConnection;
 
 /**
  * Class Role.
@@ -16,7 +17,8 @@ class Role extends Model
     use RoleScope,
         RoleAccess,
         RoleAttribute,
-        RoleRelationship;
+        RoleRelationship,
+        UsesTenantConnection;
 
     /**
      * The database table used by the model.

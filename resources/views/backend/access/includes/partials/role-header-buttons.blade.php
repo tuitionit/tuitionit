@@ -1,6 +1,5 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
-    {{ link_to_route('admin.access.role.index', trans('menus.backend.access.roles.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
-    {{ link_to_route('admin.access.role.create', trans('menus.backend.access.roles.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+    {{ link_to_route('admin.access.role.create', trans('menus.backend.access.roles.create'), [], ['class' => 'btn btn-success btn-sm']) }}
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">

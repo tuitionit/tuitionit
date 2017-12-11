@@ -3,6 +3,7 @@
 namespace App\Models\Access\User\Traits\Relationship;
 
 use App\Models\System\Session;
+use App\Models\Institute\Institute;
 use App\Models\Access\User\SocialLogin;
 
 /**
@@ -21,11 +22,23 @@ trait UserRelationship
     }
 
     /**
+     * A user may logged in with multiple social networks
+     *
      * @return mixed
      */
     public function providers()
     {
         return $this->hasMany(SocialLogin::class);
+    }
+
+    /**
+     * User can be belong to an institute
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function institute()
+    {
+        return $this->belongsTo(Institute::class);
     }
 
     /**
