@@ -81,6 +81,7 @@ return [
 
         'student' => [
             'joined_on' => 'Joined on: :date',
+            'payments_description' => 'All completed payments by student.'
         ],
 
         'batches' => [

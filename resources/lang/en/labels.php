@@ -257,6 +257,7 @@ return [
             'batches' => 'Batches',
             'cources' => 'Cources',
             'profile' => 'Profile',
+            'timeline' => 'Timeline',
             'reports' => 'Reports',
             'sessions' => 'Sessions',
             'payments' => 'Payments',
@@ -267,6 +268,8 @@ return [
             'next_payment' => 'Next Payment',
             'upcoming_sessions' => 'Upcoming Sessions',
             'past_sessions' => 'Past Sessions',
+            'completed_payments' => 'Completed Payments',
+            'pending_payments' => 'Pending Payments',
         ],
 
         'teachers' => [

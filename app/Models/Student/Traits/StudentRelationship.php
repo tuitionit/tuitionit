@@ -4,6 +4,7 @@ namespace App\Models\Student\Traits;
 
 use App\Models\Batch\Batch;
 use App\Models\Location\Location;
+use App\Models\Payment\Payment;
 use App\Models\Session\Session;
 use App\Models\Student\Student;
 use App\Models\Access\User\User;
@@ -47,5 +48,13 @@ trait StudentRelationship
     public function batches()
     {
         return $this->belongsToMany(Batch::class, 'batch_student');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }

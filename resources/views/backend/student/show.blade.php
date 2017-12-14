@@ -25,7 +25,7 @@
             @include('backend.student.includes.partials.tabs', ['tab' => 'profile', 'student' => $student])
 
             <div class="tab-content">
-                <div class="tab-pane active" id="profile">
+                <div class="tab-pane active" id="timeline">
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             @if(isset($student->nextSession))
@@ -77,6 +77,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="tab-pane" id="sessions">
                     <div id="sessions-calendar">
@@ -90,7 +91,57 @@
 
                 </div>
                 <div class="tab-pane" id="payments">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="">
+                                <div class="box-header">
+                                    <h3 class="box-title">{{ trans('labels.backend.student.completed_payments') }}</h3>
+                                </div>
+                                <div class="box-body">
+                                    @if(count($student->payments))
+                                    <ul class="list-group list-group-unbordered">
+                                        @foreach($student->payments as $payment)
+                                        <li class="list-group-item">
+                                            {{ link_to_route('admin.payments.show', $payment->amount, ['payment' => $payment->id]) }}
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="">
+                                <div class="box-header">
+                                    <h3 class="box-title">{{ trans('labels.backend.student.pending_payments') }}</h3>
+                                </div>
+                                <div class="box-body">
+                                    <ul class="list-group list-group-unbordered">
+                                        <li class="list-group-item">
+                                            <a href="#"><strong>Rs. 400 due on 12 Jan 2018</strong></a>
+                                            <div class="pull-right">
+                                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Paid</a>
+                                                <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
+                                            </div>
+                                            <div class="small text-muted">
+                                                Combined mathematics - AL 2018
+                                            </div>
 
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">400</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">400</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">400</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane" id="settings">
 
