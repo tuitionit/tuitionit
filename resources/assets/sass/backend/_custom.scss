@@ -13,7 +13,9 @@ body {
 
 // Box
 .box {
-    padding: 10px 20px;
+    .box-header, .box-body, .box-footer {
+        padding: 15px 20px;
+    }
 }
 
 // Margin/Padding Helpers
@@ -62,5 +64,15 @@ $margin-padding: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
         .content-header {
             margin-bottom: 10px;
         }
+    }
+}
+
+
+// Select 2
+.select2-container--bootstrap {
+    .select2-selection, .select2-selection--single .select2-selection__rendered, .select2-search--dropdown .select2-search__field {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        line-height: 2em;
     }
 }

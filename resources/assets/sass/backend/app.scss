@@ -1,3 +1,4 @@
+
 @import "variable-overrides";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "~font-awesome/scss/font-awesome";
@@ -45,8 +46,6 @@
 //
 // @import "fullcalendar";
 //
-// // List.js
-// @import "list";
 //
 // // Icons
 // @import "icons";
@@ -54,13 +53,17 @@
 // // Skins
 // @import "skins/_all-skins";
 //
-// // Other
-// @import "custom";
 // @import "profile";
 //
 // // Miscellaneous
 // @import "miscellaneous";
 // @import "print";
+
+// Other
+@import "custom";
+
+// List.js
+@import "list";
 
 // Plugins
 @import "../plugin/sweetalert/sweetalert.scss";

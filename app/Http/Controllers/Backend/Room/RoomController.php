@@ -33,7 +33,8 @@ class RoomController extends Controller
      */
     public function index(ManageRoomRequest $request)
     {
-        return view('backend.room.index');
+        // return view('backend.room.index');
+        abort(404);
     }
 
     /**

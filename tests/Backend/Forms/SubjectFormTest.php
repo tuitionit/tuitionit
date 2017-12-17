@@ -22,9 +22,7 @@ class SubjectFormTest extends BrowserKitTestCase
 
     public function testCreateSubjectFailsWithExistingName()
     {
-        $subject = factory(Subject::class)->create([
-            'institute_id' => $this->admin->institute_id
-        ]);
+        $subject = factory(Subject::class)->create();
 
         $this->actingAs($this->admin)
              ->visit('/admin/subjects/create')

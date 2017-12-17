@@ -20,6 +20,7 @@
             <div class="box-tools pull-right">
                 <div class="pull-right mb-10 hidden-sm hidden-xs">
                     {{ link_to_route('admin.payments.create', trans('menus.backend.payments.create'), [], ['class' => 'btn btn-success btn-sm']) }}
+                    <a href="#filters-modal" class="btn btn-sm btn-default" data-toggle="modal"><i class="fa fa-filter"></i></a>
                 </div><!--pull right-->
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
@@ -43,6 +44,26 @@
             </div><!--table-responsive-->
         </div><!-- /.box-body -->
     </div><!--box-->
+
+    <div id="filters-modal" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{ trans('labels.backend.table.filters') }}</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <div class="text-center">
+                        <button type="button" id="#filter" class="btn btn-success">{{ trans('buttons.general.apply_filters') }}</button>
+                        <button type="button" id="#clear-filters" class="btn btn-default">{{ trans('buttons.general.clear_filters') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('after-scripts')

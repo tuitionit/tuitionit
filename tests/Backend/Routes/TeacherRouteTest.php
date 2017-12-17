@@ -9,6 +9,6 @@ class TeacherRouteTest extends BrowserKitTestCase
 {
     public function testAdminRooms()
     {
-        $this->actingAs($this->admin)->visit('/admin/rooms')->see('Rooms')->see($this->admin->name);
+        $this->actingAs($this->admin)->visit('/admin/teachers')->see('Teachers')->see($this->admin->name);
     }
 }

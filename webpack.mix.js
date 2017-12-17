@@ -29,6 +29,9 @@ mix.copyDirectory('node_modules/fullcalendar/dist', 'public/js/plugins/fullcalen
     // List.js
     .copy('node_modules/list.js/dist/list.min.js', 'public/js/plugins/list.js/list.min.js')
 
+    // instascan
+    .copy('resources/assets/js/plugin/instascan/instascan.min.js', 'public/js/plugins/instascan/instascan.min.js')
+
     .sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
     .sass('resources/assets/sass/backend/app.scss', 'public/css/backend.css')
     .js([

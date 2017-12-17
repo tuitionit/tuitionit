@@ -85,6 +85,9 @@ $factory->define(Institute::class, function (Generator $faker) {
          'name'     => $faker->name,
          'code'     => str_random(8),
          'domain'   => str_random(10),
+         'username' => str_random(10),
+         'password' => str_random(10),
+         'database' => str_random(10),
          'status'   => 1,
      ];
  });

@@ -1,8 +1,9 @@
 {
     "/js/frontend.js": "/js/frontend.js?id=b06fdc39997ac3f80c22",
     "/css/frontend.css": "/css/frontend.css?id=1e86e4905468fbc914d2",
-    "/css/backend.css": "/css/backend.css?id=70a8e9d35377f6f27bb3",
+    "/css/backend.css": "/css/backend.css?id=7d0986892061cc564455",
     "/js/backend.js": "/js/backend.js?id=87d07b077d8a31f7ce63",
     "/css/backend/plugin/select2/select2-bootstrap.min.css": "/css/backend/plugin/select2/select2-bootstrap.min.css?id=b8ec8e1bea84f6c51fcb",
-    "/js/plugins/list.js/list.min.js": "/js/plugins/list.js/list.min.js?id=69b60bc29a0554523767"
+    "/js/plugins/list.js/list.min.js": "/js/plugins/list.js/list.min.js?id=69b60bc29a0554523767",
+    "/js/plugins/instascan/instascan.min.js": "/js/plugins/instascan/instascan.min.js?id=4befa7049ff55d6f3992"
 }

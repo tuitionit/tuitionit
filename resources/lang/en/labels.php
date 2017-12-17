@@ -29,6 +29,20 @@ return [
         'none'              => 'None',
         'show'              => 'Show',
         'toggle_navigation' => 'Toggle Navigation',
+        'months' => [
+            'january'   => 'January',
+            'february'  => 'February',
+            'march'     => 'March',
+            'april'     => 'April',
+            'may'       => 'May',
+            'june'      => 'June',
+            'july'      => 'July',
+            'august'    => 'August',
+            'september' => 'September',
+            'october'   => 'October',
+            'november'  => 'November',
+            'december'  => 'December',
+        ],
     ],
 
     'teacher' => [
@@ -117,6 +131,10 @@ return [
     ],
 
     'backend' => [
+        'table' => [
+            'filters' => 'Filters',
+        ],
+
         'access' => [
             'roles' => [
                 'create'     => 'Create Role',

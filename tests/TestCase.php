@@ -34,6 +34,26 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     /**
      * @var
      */
+    protected $manager;
+
+    /**
+     * @var
+     */
+    protected $teacher;
+
+    /**
+     * @var
+     */
+    protected $student;
+
+    /**
+     * @var
+     */
+    protected $parent;
+
+    /**
+     * @var
+     */
     protected $user;
 
     /**
@@ -45,6 +65,26 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      * @var
      */
     protected $executiveRole;
+
+    /**
+     * @var
+     */
+    protected $managerRole;
+
+    /**
+     * @var
+     */
+    protected $teacherRole;
+
+    /**
+     * @var
+     */
+    protected $studentRole;
+
+    /**
+     * @var
+     */
+    protected $parentRole;
 
     /**
      * @var
@@ -73,8 +113,10 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         parent::setUp();
 
         // Set up the database
-        Artisan::call('migrate:refresh');
-        Artisan::call('db:seed');
+        Artisan::call('migrate:refresh', ['--database' => 'system']);
+        Artisan::call('migrate:refresh', ['--database' => 'tenant', '--path' => './database/migrations/tenant']);
+        Artisan::call('db:seed', ['--database' => 'system', '--class' =>'InstituteTableSeeder']);
+        Artisan::call('db:seed', ['--database' => 'tenant']);
 
         // Run the tests in English
         App::setLocale('en');

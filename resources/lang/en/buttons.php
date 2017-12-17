@@ -70,5 +70,7 @@ return [
 
         'save' => 'Save',
         'view' => 'View',
+        'apply_filters' => 'Apply Filters',
+        'clear_filters' => 'Clear Filters',
     ],
 ];

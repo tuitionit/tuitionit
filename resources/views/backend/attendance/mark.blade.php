@@ -39,6 +39,10 @@
         #student .details {
             margin-left: 100px;
         }
+
+        #preview {
+            max-width: 100%;
+        }
     </style>
 @stop
 
@@ -60,6 +64,14 @@
                         </div><!-- /.box-header -->
 
                         <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <video id="preview" src="" autoplay poster="posterimage.jpg">
+
+                                    </video>
+                                </div>
+                            </div>
+
                             <div class="form-group {{ $errors->first('id', 'has-error') }}" id="student-id-form-group">
                                 <div class="col-xs-12">
                                     {{ Form::text('id', null, ['id' => 'student-id', 'class' => 'form-control', 'placeholder' => trans('strings.backend.attendances.id'), 'autocomplete' => 'off']) }}
@@ -139,9 +151,13 @@
 @section('after-scripts')
     {{ Html::script('js/backend/access/users/script.js') }}
     {{ Html::script("js/backend/plugin/select2/select2.full.min.js") }}
+    {{ Html::script("js/plugins/instascan/instascan.min.js") }}
 
     <script>
         $(document).ready(function() {
+            var beep = new Audio('{{ URL::to('/') }}/sounds/success.mp3');
+            var buzz = new Audio('{{ URL::to('/') }}/sounds/error.mp3');
+
             $('#session').select2({
                 data: {{ json_encode($sessions) }},
                 theme: 'bootstrap',
@@ -190,6 +206,7 @@
                         var icon = '';
                         box.attr('class', '').addClass('box');
                         if(data.type == 'success') {
+                            beep.play();
                             $('#total-attendance').text(data.count);
                             icon = '<i class="fa fa-check-circle"></i>';
                             box.addClass('box-success');
@@ -197,6 +214,7 @@
                             $('#student-index').text(data.student.index_number);
                             $('#student').removeClass('hidden');
                         } else {
+                            buzz.play();
                             icon = '<i class="fa fa-times-circle"></i>';
                             box.addClass('box-danger');
                         }
@@ -206,6 +224,7 @@
                             .html(icon + ' ' + data.message);
                     },
                     error: function(xhr, status) {
+                        buzz.play();
                         $('#failed').removeClass('hidden');
                     },
                     complete: function() {
@@ -216,6 +235,25 @@
                 });
 
                 return false;
+            });
+
+            // QR Code Scaning
+            var scanner = new Instascan.Scanner({
+                video: $('#preview').get(0)
+            });
+
+            scanner.addListener('scan', function (content) {
+                $('#student-id').val(content);
+                $('#attendance-form').submit();
+            });
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    console.error('No cameras found.');
+                }
+            }).catch(function (e) {
+                console.error(e);
             });
         });
     </script>

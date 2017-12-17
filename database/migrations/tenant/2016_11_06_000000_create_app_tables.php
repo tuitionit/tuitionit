@@ -417,31 +417,31 @@ class CreateAppTables extends Migration
  */
     public function down()
     {
-        Schema::drop('settings');
-        Schema::drop('batch_user');
-        Schema::drop('batch_student');
-        Schema::drop('course_tracker');
-        Schema::drop('batch_tracker');
-        Schema::drop('tracker_user');
-        Schema::drop('location_user');
-        Schema::drop('location_student');
-        Schema::drop('subject_teacher');
-        Schema::drop('location_teacher');
-        Schema::drop('message_user');
-        Schema::drop('messages');
-        Schema::drop('payments');
-        Schema::drop('attendances');
-        Schema::drop('comments');
-        Schema::drop('posts');
-        Schema::drop('trackers');
-        Schema::drop('sessions');
-        Schema::drop('session_groups');
-        Schema::drop('students');
-        Schema::drop('teachers');
-        Schema::drop('batches');
-        Schema::drop('courses');
-        Schema::drop('subjects');
-        Schema::drop('rooms');
-        Schema::drop('locations');
+        Schema::dropIfExists('settings');
+        Schema::dropIfExists('batch_user');
+        Schema::dropIfExists('batch_student');
+        Schema::dropIfExists('course_tracker');
+        Schema::dropIfExists('batch_tracker');
+        Schema::dropIfExists('tracker_user');
+        Schema::dropIfExists('location_user');
+        Schema::dropIfExists('location_student');
+        Schema::dropIfExists('subject_teacher');
+        Schema::dropIfExists('location_teacher');
+        Schema::dropIfExists('message_user');
+        Schema::dropIfExists('messages');
+        Schema::dropIfExists('payments');
+        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('comments');
+        Schema::dropIfExists('posts');
+        Schema::dropIfExists('trackers');
+        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('session_groups');
+        Schema::dropIfExists('students');
+        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('batches');
+        Schema::dropIfExists('courses');
+        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('locations');
     }
 }
