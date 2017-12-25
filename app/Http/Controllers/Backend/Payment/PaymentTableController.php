@@ -32,7 +32,7 @@ class PaymentTableController extends Controller
      */
     public function __invoke(ManagePaymentRequest $request)
     {
-        return Datatables::eloquent($this->payments->getForDataTable())
+        $data = Datatables::eloquent($this->payments->getForDataTable())
             ->escapeColumns(['student_id', 'month', 'notes'])
             ->editColumn('name', function($payment) {
                 return link_to_route('admin.payments.show', $payment->student->name, ['id' => $payment->id]);
@@ -49,6 +49,10 @@ class PaymentTableController extends Controller
             ->addColumn('actions', function ($payment) {
                 return $payment->action_buttons;
             })
-            ->make(true);
+            // ->make(true);
+            ->getQueryBuilder()
+            ->get();
+
+            dd($data);
     }
 }

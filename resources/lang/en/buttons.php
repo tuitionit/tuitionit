@@ -70,6 +70,7 @@ return [
 
         'save' => 'Save',
         'view' => 'View',
+        'export' => 'Export',
         'apply_filters' => 'Apply Filters',
         'clear_filters' => 'Clear Filters',
     ],

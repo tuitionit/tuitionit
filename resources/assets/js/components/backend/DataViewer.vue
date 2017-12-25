@@ -69,6 +69,7 @@
 </template>
 <script>
   import Vue from 'vue'
+  import InfiniteLoading from 'vue-infinite-loading'
   import axios from 'axios'
   //similar to vue-resource
 

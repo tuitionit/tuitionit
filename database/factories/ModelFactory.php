@@ -5,6 +5,7 @@ use Faker\Generator;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Institute\Institute;
+use App\Models\Payment\Payment;
 use App\Models\Room\Room;
 use App\Models\Session\Session;
 use App\Models\Student\Student;
@@ -88,6 +89,17 @@ $factory->define(Institute::class, function (Generator $faker) {
          'username' => str_random(10),
          'password' => str_random(10),
          'database' => str_random(10),
+         'status'   => 1,
+     ];
+ });
+
+/*
+ * Payment
+ */
+$factory->define(Payment::class, function (Generator $faker) {
+     return [
+         'amount'   => $faker->randomFloat(2),
+         'paid_at'  => Carbon::now(),
          'status'   => 1,
      ];
  });

@@ -6,6 +6,20 @@
 
 require('../bootstrap');
 
+/* Vue Application
+ * ================
+ * Components are dynamically loaded when required.
+ * Available components
+ *  - Chart
+ */
+Vue.component('InfiniteLoading', (resolve) => {
+    require(['vue-infinite-loading'], resolve)
+});
+
+const app = new Vue({
+    el: '#app'
+});
+
 /* globals AdminLTEOptions: false */
 /* globals FastClick: false */
 

@@ -14,19 +14,6 @@ return [
     */
 
     'backend' => [
-        'access' => [
-            'users' => [
-                'delete_user_confirm'  => 'Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.',
-                'if_confirmed_off'     => '(If confirmed is off)',
-                'restore_user_confirm' => 'Restore this user to its original state?',
-            ],
-        ],
-
-        'dashboard' => [
-            'title'   => 'Administrative Dashboard',
-            'welcome' => 'Welcome',
-        ],
-
         'general' => [
             'all_rights_reserved' => 'All Rights Reserved.',
             'are_you_sure'        => 'Are you sure you want to do this?',
@@ -37,6 +24,7 @@ return [
             'search_placeholder'  => 'Search...',
             'timeout'             => 'You were automatically logged out for security reasons since you had no activity in ',
             'click_to_select'     => 'Click to select',
+            'export_to_csv'       => 'Export to CSV. Open and edit the exported file with Excel.',
 
             'see_all' => [
                 'messages'      => 'See all messages',
@@ -65,6 +53,32 @@ return [
         ],
 
         'welcome' => 'Welcome!',
+
+        'dashboard' => [
+            'title'   => 'Administrative Dashboard',
+            'welcome' => 'Welcome',
+            'courses' => 'Courses',
+            'batches' => 'Batches',
+            'sessions' => 'Sessions',
+            'students' => 'Students',
+            'teachers' => 'Teachers',
+        ],
+
+        'charts' => [
+            'income_over_year' => 'Income Over Year',
+            'income' => 'Income',
+            'students_attendance' => 'Students Attendance',
+            'students_registered_for_sessions' => 'Total student sessions',
+            'students_attended_for_sessions' => 'Monthly attendance',
+        ],
+
+        'access' => [
+            'users' => [
+                'delete_user_confirm'  => 'Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.',
+                'if_confirmed_off'     => '(If confirmed is off)',
+                'restore_user_confirm' => 'Restore this user to its original state?',
+            ],
+        ],
 
         'locations' => [
             'empty' => 'Add locations where your institute has branches. There should be at least one location.',

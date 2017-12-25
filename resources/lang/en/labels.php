@@ -131,6 +131,18 @@ return [
     ],
 
     'backend' => [
+        'dashboard' => [
+            'add_new' => 'Add New',
+            'student' => 'Student',
+            'session' => 'Session',
+            'payment' => 'Payment',
+            'batch' => 'Batch',
+            'course' => 'Course',
+            'teacher' => 'Teacher',
+            'location' => 'Location',
+            'room' => 'Room',
+        ],
+
         'table' => [
             'filters' => 'Filters',
         ],
