@@ -21,7 +21,7 @@
                 <div class="pull-right mb-10 hidden-sm hidden-xs">
                     {{ link_to_route('admin.payments.create', trans('menus.backend.payments.create'), [], ['class' => 'btn btn-success btn-sm']) }}
                     {{-- <a href="#filters-modal" class="btn btn-sm btn-default" data-toggle="modal"><i class="fa fa-filter"></i></a> --}}
-                    <a href="#csv" class="btn btn-sm btn-default" data-toggle="tooltip" title="{{ trans('strings.backend.general.export_to_csv') }}"><i class="fa fa-table"></i> {{ trans('buttons.general.export') }}</a>
+                    <a href="" id="export-csv" class="btn btn-sm btn-default" data-toggle="tooltip" title="{{ trans('strings.backend.general.export_to_csv') }}"><i class="fa fa-table"></i> {{ trans('buttons.general.export') }}</a>
                 </div><!--pull right-->
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
@@ -70,10 +70,11 @@
 @section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+    {{ Html::script("js/plugins/jquery-filedownload/jquery.fileDownload.min.js") }}
 
     <script>
         $(function() {
-            $('#payments-table').DataTable({
+            var table = $('#payments-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
