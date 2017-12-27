@@ -4,6 +4,8 @@
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css") }}
+    {{ Html::style("css/backend/plugin/datatables/buttons.bootstrap.min.css") }}
 @stop
 
 @section('page-header')
@@ -21,12 +23,12 @@
                 <div class="pull-right mb-10 hidden-sm hidden-xs">
                     {{ link_to_route('admin.payments.create', trans('menus.backend.payments.create'), [], ['class' => 'btn btn-success btn-sm']) }}
                     {{-- <a href="#filters-modal" class="btn btn-sm btn-default" data-toggle="modal"><i class="fa fa-filter"></i></a> --}}
-                    <a href="" id="export-csv" class="btn btn-sm btn-default" data-toggle="tooltip" title="{{ trans('strings.backend.general.export_to_csv') }}"><i class="fa fa-table"></i> {{ trans('buttons.general.export') }}</a>
                 </div><!--pull right-->
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
         <div class="box-body">
+            <?php /*
             <div class="table-responsive">
                 <table id="payments-table" class="table table-condensed table-hover">
                     <thead>
@@ -43,6 +45,8 @@
                     </thead>
                 </table>
             </div><!--table-responsive-->
+            */ ?>
+            {!! $dataTable->table() !!}
         </div><!-- /.box-body -->
     </div><!--box-->
 
@@ -70,7 +74,9 @@
 @section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
-    {{ Html::script("js/plugins/jquery-filedownload/jquery.fileDownload.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables.buttons.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/buttons.bootstrap.min.js") }}
+    {{ Html::script("/vendor/datatables/buttons.server-side.js") }}
 
     <script>
         $(function() {
@@ -97,4 +103,5 @@
             });
         });
     </script>
+    {!! $dataTable->scripts() !!}
 @stop

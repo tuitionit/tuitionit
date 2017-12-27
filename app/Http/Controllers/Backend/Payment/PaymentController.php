@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Payment;
 
 use Carbon\Carbon as Carbon;
+use App\DataTables\PaymentsDataTable;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
@@ -37,9 +38,9 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManagePaymentRequest $request)
+    public function index(ManagePaymentRequest $request, PaymentsDataTable $dataTable)
     {
-        return view('backend.payment.index');
+        return $dataTable->render('backend.payment.index');
     }
 
     /**
@@ -132,7 +133,7 @@ class PaymentController extends Controller
         $data['month'] = strtotime($data['month']);
 
         $payment->update($data);
-        
+
         return redirect()->route('admin.payments.index')->withFlashSuccess(trans('alerts.backend.payments.updated'));
     }
 
