@@ -16,6 +16,21 @@ class PaymentsDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
+            ->editColumn('student.name', function($payment) {
+                return isset($payment->student) ?
+                    link_to_route('admin.students.show', $payment->student->name, ['id' => $payment->student_id]) :
+                    link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']);
+            })
+            ->editColumn('batch.name', function($payment) {
+                return isset($payment->batch) ?
+                    link_to_route('admin.batches.show', $payment->batch->name, ['id' => $payment->batch_id]) :
+                    link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']);
+            })
+            ->editColumn('payee.name', function($payment) {
+                return isset($payment->payee) ?
+                    link_to_route('admin.users.show', $payment->payee->name, ['id' => $payment->paid_to]) :
+                    link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']);
+            })
             ->addColumn('action', function(Payment $payment) {
                 return $payment->action_buttons;
             });
@@ -29,7 +44,10 @@ class PaymentsDataTable extends DataTable
      */
     public function query(Payment $model)
     {
-        return $model->newQuery()->select('id', 'amount', 'paid_at', 'created_at', 'updated_at');
+        return $model->newQuery()
+            ->with(['student', 'batch', 'payee'])
+            ->select('payments.*');
+            // ->join('students', 'payments.student_id', '=', 'students.id');
     }
 
     /**
@@ -54,11 +72,14 @@ class PaymentsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+            // 'id',
+            'student.name',
             'amount',
+            'batch.name',
+            'payee.name',
             'paid_at',
-            'created_at',
-            'updated_at'
+            // 'created_at',
+            // 'updated_at'
         ];
     }
 
