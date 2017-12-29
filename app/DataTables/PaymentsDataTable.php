@@ -15,21 +15,25 @@ class PaymentsDataTable extends DataTable
      */
     public function dataTable($query)
     {
+        $export = $this->request->get('action', null) != null;
         return datatables($query)
-            ->editColumn('student.name', function($payment) {
-                return isset($payment->student) ?
-                    link_to_route('admin.students.show', $payment->student->name, ['id' => $payment->student_id]) :
-                    link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']);
+            ->editColumn('student.name', function($payment) use($export) {
+                return isset($payment->student)
+                    ? ($export ? $payment->student->name : link_to_route('admin.students.show', $payment->student->name, ['id' => $payment->student_id]))
+                    : ($export ? '' : link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']));
             })
-            ->editColumn('batch.name', function($payment) {
-                return isset($payment->batch) ?
-                    link_to_route('admin.batches.show', $payment->batch->name, ['id' => $payment->batch_id]) :
-                    link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']);
+            ->editColumn('type', function($payment) {
+                return $payment->getTypeLabel();
             })
-            ->editColumn('payee.name', function($payment) {
-                return isset($payment->payee) ?
-                    link_to_route('admin.users.show', $payment->payee->name, ['id' => $payment->paid_to]) :
-                    link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']);
+            ->editColumn('batch.name', function($payment) use($export) {
+                return isset($payment->batch)
+                    ? ($export ? $payment->batch->name : link_to_route('admin.batches.show', $payment->batch->name, ['id' => $payment->batch_id]))
+                    : ($export ? '' : link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']));
+            })
+            ->editColumn('payee.name', function($payment) use($export) {
+                return isset($payment->payee)
+                    ? ($export ? $payment->payee->name : link_to_route('admin.users.show', $payment->payee->name, ['id' => $payment->paid_to]))
+                    : ($export ? '' : link_to_route('admin.payments.edit', trans('strings.backend.general.click_to_select'), ['id' => $payment->id], ['class' => 'btn btn-xs btn-default']));
             })
             ->addColumn('action', function(Payment $payment) {
                 return $payment->action_buttons;
@@ -60,7 +64,7 @@ class PaymentsDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '80px', 'printable' => false, 'exportable' => false])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -75,6 +79,7 @@ class PaymentsDataTable extends DataTable
             // 'id',
             'student.name',
             'amount',
+            'type',
             'batch.name',
             'payee.name',
             'paid_at',
