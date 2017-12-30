@@ -36,9 +36,16 @@ mix.copyDirectory('node_modules/fullcalendar/dist', 'public/js/plugins/fullcalen
     .copy('resources/assets/js/plugin/instascan/instascan.min.js', 'public/js/plugins/instascan/instascan.min.js')
 
     // DataTables
-    .copy('node_modules/datatables.net-buttons/js/dataTables.buttons.min.js', 'public/js/backend/plugin/datatables/dataTables.buttons.min.js')
-    .copy('node_modules/datatables.net-buttons-bs/js/buttons.bootstrap.min.js', 'public/js/backend/plugin/datatables/buttons.bootstrap.min.js')
-    .copy('node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.min.css', 'public/css/backend/plugin/datatables/buttons.bootstrap.min.css')
+    .scripts([
+        'node_modules/datatables.net/js/jquery.dataTables.js',
+        'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
+        'node_modules/datatables.net-buttons/js/dataTables.buttons.js',
+        'node_modules/datatables.net-buttons-bs/js/buttons.bootstrap.js'
+    ], 'public/js/backend/plugin/datatables/datatables.js')
+    .styles([
+        'node_modules/datatables.net-bs/css/dataTables.bootstrap.css',
+        'node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.css',
+    ], 'public/css/backend/plugin/datatables/datatables.css')
 
     .sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
     .sass('resources/assets/sass/backend/app.scss', 'public/css/backend.css')

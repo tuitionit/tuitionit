@@ -47,7 +47,7 @@
                                 </div><!--pull-left-->
 
                                 <div class="pull-right">
-                                    {{ link_to_route('admin.subjects.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
+                                    {{ link_to_route('admin.institute', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
                                 </div><!--pull-right-->
 
                                 <div class="clearfix"></div>

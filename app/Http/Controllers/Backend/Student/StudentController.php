@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Student;
 
 use Illuminate\Http\Request;
+use App\DataTables\StudentDataTable;
 use App\Models\Batch\Batch;
 use App\Models\Location\Location;
 use App\Models\Student\Student;
@@ -34,9 +35,9 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageStudentRequest $request)
+    public function index(ManageStudentRequest $request, StudentDataTable $dataTable)
     {
-        return view('backend.student.index');
+        return $dataTable->render('backend.student.index');
     }
 
     /**

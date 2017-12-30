@@ -7,7 +7,6 @@
     "/js/plugins/chart.js/Chart.min.js": "/js/plugins/chart.js/Chart.min.js?id=3b2fd01c6f541703143a",
     "/js/plugins/list.js/list.min.js": "/js/plugins/list.js/list.min.js?id=69b60bc29a0554523767",
     "/js/plugins/instascan/instascan.min.js": "/js/plugins/instascan/instascan.min.js?id=4befa7049ff55d6f3992",
-    "/js/backend/plugin/datatables/dataTables.buttons.min.js": "/js/backend/plugin/datatables/dataTables.buttons.min.js?id=ef66b6c574a0c5e99fae",
-    "/js/backend/plugin/datatables/buttons.bootstrap.min.js": "/js/backend/plugin/datatables/buttons.bootstrap.min.js?id=1a87fa81aa1a02f5db6c",
-    "/css/backend/plugin/datatables/buttons.bootstrap.min.css": "/css/backend/plugin/datatables/buttons.bootstrap.min.css?id=14f51ff83a01a40778e7"
+    "/js/backend/plugin/datatables/datatables.js": "/js/backend/plugin/datatables/datatables.js?id=2588b4448eae2e22e0d6",
+    "/css/backend/plugin/datatables/datatables.css": "/css/backend/plugin/datatables/datatables.css?id=ecafedef36131f691efa"
 }

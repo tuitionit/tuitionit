@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Subject;
 
 use App\Models\Subject\Subject;
+use App\DataTables\SubjectDataTable;
 use App\Repositories\Backend\Subject\SubjectRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Subject\ManageSubjectRequest;
@@ -30,9 +31,10 @@ class SubjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageSubjectRequest $request)
+    public function index(ManageSubjectRequest $request, SubjectDataTable $dataTable)
     {
-        return view('backend.subject.index');
+        return redirect()->route('admin.institute');
+        // return $dataTable->render('backend.subject.index');
     }
 
     /**
@@ -55,13 +57,9 @@ class SubjectController extends Controller
     {
         $data = $request->all();
 
-        if(!access()->allow('manage-institutes')) {
-            $data['institute_id'] = access()->user()->institute_id;
-        }
-
         $subject = Subject::create($data);
 
-        return redirect()->route('admin.subjects.index')->withFlashSuccess(trans('alerts.backend.subjects.created'));
+        return redirect()->route('admin.institute')->withFlashSuccess(trans('alerts.backend.subjects.created'));
     }
 
     /**
@@ -96,7 +94,7 @@ class SubjectController extends Controller
     public function update(UpdateSubjectRequest $request, Subject $subject)
     {
         $subject->update($request->all());
-        return redirect()->route('admin.subjects.index')->withFlashSuccess(trans('alerts.backend.subjects.updated'));
+        return redirect()->route('admin.institute')->withFlashSuccess(trans('alerts.backend.subjects.updated'));
     }
 
     /**

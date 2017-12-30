@@ -241,6 +241,8 @@ return [
             'title' => 'Institute',
             'overview' => 'Overview',
             'locations' => 'Locations',
+            'subjects' => 'Subjects',
+            'settings' => 'General Settings',
         ],
 
         'institutes' => [

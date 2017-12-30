@@ -47,13 +47,7 @@
                                 </div><!--form control-->
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group {{ $errors->first('location_id', 'has-error') }}">
-                                    {{ Form::label('location_id', trans('validation.attributes.backend.batches.location_id'), ['class' => 'col-lg-4 control-label']) }}
 
-                                    <div class="col-lg-8">
-                                        {{ Form::select('location_id', $locations, 'standard', ['class' => 'form-control']) }}
-                                    </div><!--col-lg-10-->
-                                </div><!--form control-->
                             </div>
                         </div>
 
@@ -68,6 +62,14 @@
                                 </div><!--form control-->
                             </div>
                             <div class="col-md-6">
+                                <div class="form-group {{ $errors->first('location_id', 'has-error') }}">
+                                    {{ Form::label('location_id', trans('validation.attributes.backend.batches.location_id'), ['class' => 'col-lg-4 control-label']) }}
+
+                                    <div class="col-lg-8">
+                                        {{ Form::select('location_id', $locations, 'standard', ['class' => 'form-control']) }}
+                                    </div><!--col-lg-10-->
+                                </div><!--form control-->
+                                <?php /*
                                 <div class="form-group {{ $errors->first('subject', 'has-error') }}">
                                     {{ Form::label('subject', trans('validation.attributes.backend.batches.subject'), ['class' => 'col-lg-4 control-label']) }}
 
@@ -75,6 +77,7 @@
                                         {{ Form::select('subject', $subjects, 'standard', ['class' => 'form-control']) }}
                                     </div><!--col-lg-10-->
                                 </div><!--form control-->
+                                */ ?>
                             </div>
                         </div>
 

@@ -15,8 +15,26 @@ class StudentDataTable extends DataTable
      */
     public function dataTable($query)
     {
+        $export = $this->request->get('action', null) != null;
         return datatables($query)
-            ->addColumn('action', 'student.action');
+        ->rawColumns(['status', 'action'])
+        ->editColumn('index_number', function($student) use($export) {
+            return $export ? $student->index_number : link_to_route('admin.students.show', $student->index_number, ['id' => $student->id]);
+        })
+        ->editColumn('name', function($student) use($export) {
+            return $export ? $student->name : link_to_route('admin.students.show', $student->name, ['id' => $student->id]);
+        })
+        ->editColumn('parent.name', function($student) use($export) {
+            return isset($student->parent)
+                ? ($export ? $student->parent->name : link_to_route('admin.users.show', $student->parent->name, ['id' => $student->parent_id]))
+                : ($export ? '' : link_to_route('admin.students.edit', trans('strings.backend.general.click_to_select'), ['id' => $student->id], ['class' => 'btn btn-xs btn-default']));
+        })
+        ->editColumn('status', function($student) use($export) {
+            return $export ? $student->status_label : $student->status_html_label;
+        })
+        ->addColumn('action', function($student) {
+            return $student->action_buttons;
+        });
     }
 
     /**
@@ -27,7 +45,9 @@ class StudentDataTable extends DataTable
      */
     public function query(Student $model)
     {
-        return $model->newQuery()->select('id', 'add-your-columns-here', 'created_at', 'updated_at');
+        return $model->newQuery()
+            ->with(['user', 'parent'])
+            ->select('students.*');
     }
 
     /**
@@ -40,7 +60,7 @@ class StudentDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '80px', 'printable' => false, 'exportable' => false])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -52,10 +72,12 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
-            'add your columns',
+            'index_number',
+            'name',
+            'phone',
             'created_at',
-            'updated_at'
+            'parent.name',
+            'status',
         ];
     }
 
