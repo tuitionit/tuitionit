@@ -17,6 +17,21 @@ class SessionRepository extends BaseRepository
     const MODEL = Session::class;
 
     /**
+     * Returns the sessions between given dates
+     *
+     * @param mixed $start
+     * @param mixed $end
+     *
+     * @return mixed
+     */
+    public function getBetween($start, $end)
+    {
+        return $this->query()
+            ->whereBetween('start_time', [$start, $end])
+            ->get();
+    }
+
+    /**
      * @param int  $status
      *
      * @return mixed

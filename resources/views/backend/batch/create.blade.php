@@ -6,20 +6,21 @@
     {{ Html::style("css/backend/plugin/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css") }}
 @stop
 
+@section('page-header')
+    <h1>
+        {{ trans('labels.backend.batches.create') }}
+    </h1>
+@endsection
+
 @section('content')
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            {{ Form::open(['route' => 'admin.batches.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::open(['route' => 'admin.batches.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+        <div class="box box-success box-form">
+            <div class="box-header">
+            </div><!-- /.box-header -->
 
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">{{ trans('labels.backend.batches.create') }}</h3>
-
-                        <div class="box-tools pull-right">
-                        </div><!--box-tools pull-right-->
-                    </div><!-- /.box-header -->
-
-                    <div class="box-body">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
                         <div class="form-group {{ $errors->first('name', 'has-error') }}">
                             {{ Form::label('name', trans('validation.attributes.backend.batches.name'), ['class' => 'col-lg-2 control-label']) }}
 
@@ -125,26 +126,26 @@
                                 {{ Form::checkbox('status', '1', true) }}
                             </div><!--col-lg-1-->
                         </div><!--form control-->
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
 
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <div class="pull-left">
-                                    {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success']) }}
-                                </div><!--pull-left-->
-
-                                <div class="pull-right">
-                                    {{ link_to_route('admin.batches.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
-                                </div><!--pull-right-->
-
-                                <div class="clearfix"></div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-4 col-md-offset-2 col-lg-2 col-lg-offset-6">
+                                {{ link_to_route('admin.batches.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
                             </div>
-                        </div><!-- /.form-group -->
-                    </div><!-- /.box-body -->
-                </div><!--box-->
-
-            {{ Form::close() }}
-        </div>
-    </div>
+                            <div class="col-xs-6 col-md-6 col-lg-4">
+                                {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-block']) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-footer -->
+        </div><!--box-->
+    {{ Form::close() }}
 @endsection
 
 @section('after-scripts')

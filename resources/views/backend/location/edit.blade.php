@@ -12,7 +12,7 @@
 @section('content')
     {{ Form::model($location, ['route' => ['admin.locations.update', $location], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'put']) }}
 
-    <div class="box box-success">
+    <div class="box box-success box-form">
         <div class="box-header with-border">
             <div class="row">
                 <div class="col-md-6">
@@ -135,21 +135,22 @@
                     </div><!--form control-->
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-lg-11 col-lg-offset-1">
-                    <div class="pull-left">
-                        {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success']) }}
-                    </div><!--pull-left-->
-
-                    <div class="pull-right">
-                        {{ link_to_route('admin.locations.show', trans('buttons.general.cancel'), ['id' => $location->id], ['class' => 'btn btn-danger']) }}
-                    </div><!--pull-right-->
-
-                    <div class="clearfix"></div>
-                </div>
-            </div><!-- /.form-group -->
         </div><!-- /.box-body -->
+
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-7">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-2 col-md-offset-6">
+                            {{ link_to_route('admin.institute', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success btn-block']) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.box-footer -->
     </div><!--box-->
 
 

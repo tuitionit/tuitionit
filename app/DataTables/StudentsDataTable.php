@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Models\Student\Student;
 use Yajra\DataTables\Services\DataTable;
 
-class StudentDataTable extends DataTable
+class StudentsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -60,7 +60,12 @@ class StudentDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px', 'printable' => false, 'exportable' => false])
+                    ->addAction([
+                        'title' => trans('labels.general.actions'),
+                        'width' => '80px',
+                        'printable' => false,
+                        'exportable' => false,
+                    ])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -72,12 +77,24 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'index_number',
-            'name',
-            'phone',
-            'created_at',
-            'parent.name',
-            'status',
+            'index_number' => [
+                'title' => trans('labels.backend.students.table.index_number'),
+            ],
+            'name' => [
+                'title' => trans('labels.backend.students.table.name'),
+            ],
+            'phone' => [
+                'title' => trans('labels.backend.students.table.phone'),
+            ],
+            'created_at' => [
+                'title' => trans('labels.backend.students.table.created'),
+            ],
+            'parent.name' => [
+                'title' => trans('labels.backend.students.table.parent'),
+            ],
+            'status' => [
+                'title' => trans('labels.backend.students.table.status'),
+            ],
         ];
     }
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Teacher;
 
+use App\DataTables\TeachersDataTable;
 use App\Models\Teacher\Teacher;
+use App\Models\Access\User\User;
 use App\Repositories\Backend\Teacher\TeacherRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Teacher\ManageTeacherRequest;
@@ -29,9 +31,9 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageTeacherRequest $request)
+    public function index(ManageTeacherRequest $request, TeachersDataTable $dataTable)
     {
-        return view('backend.teacher.index');
+        return $dataTable->render('backend.teacher.index');
     }
 
     /**
@@ -87,7 +89,8 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return view('backend.teacher.edit')->withTeacher($teacher);
+        $user = request()->old('user_id') ? User::where('id', request()->old('user_id'))->pluck('name', 'id') : $teacher->user()->pluck('name', 'id');
+        return view('backend.teacher.edit')->with(compact('teacher', 'user'));
     }
 
     /**

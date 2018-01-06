@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Batch;
 
 use Carbon\Carbon as Carbon;
+use App\DataTables\BatchesDataTable;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
@@ -36,9 +37,9 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageBatchRequest $request)
+    public function index(ManageBatchRequest $request, BatchesDataTable $dataTable)
     {
-        return view('backend.batch.index');
+        return $dataTable->render('backend.batch.index');
     }
 
     /**

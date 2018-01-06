@@ -52,7 +52,7 @@
             <div class="col-md-6 col-lg-4 col-md-offset-3 col-lg-offset-4">
                 {{ Form::open(['route' => ['admin.attendances.store', 'session' => $session->id], 'id' => 'attendance-form', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
 
-                    <div class="box box-default" id="attendance-box">
+                    <div class="box box-default with-border" id="attendance-box">
                         <div class="box-header with-border">
                             <h3 class="box-title">{{ $session->name  }}</h3>
                             <div class="small text-muted">{{ $session->batch->name }}</div>
@@ -115,7 +115,7 @@
             </div>
         @else
             <div class="col-md-6 col-lg-4 col-md-offset-3 col-lg-offset-4">
-                <div class="box box-success">
+                <div class="box box-success with-border">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{ trans('labels.backend.attendances.select_session') }}</h3>
 

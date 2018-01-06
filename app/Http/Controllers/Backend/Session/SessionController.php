@@ -181,7 +181,15 @@ class SessionController extends Controller
      */
     public function edit(Session $session)
     {
-        return view('backend.session.edit')->withSession($session);
+        $sessionGroup = isset($session->group) ? $session->group : new SessionGroup();
+        $locations = Location::all()->pluck('name', 'id');
+        $rooms = Room::all()->pluck('name', 'id');
+        $batches = Batch::all()->pluck('name', 'id');
+        $courses = Course::all()->pluck('name', 'id');
+        $subjects = Subject::all()->pluck('name', 'id');
+        $teachers = Teacher::all()->pluck('name', 'id');
+
+        return view('backend.session.edit')->with(compact('session', 'sessionGroup', 'locations', 'rooms', 'batches', 'courses', 'subjects', 'teachers'));
     }
 
     /**

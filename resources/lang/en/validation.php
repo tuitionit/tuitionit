@@ -259,7 +259,7 @@ return [
                 'teacher_comment' => 'Teacher\'s Comments',
                 'status' => 'Status',
                 'active' => 'Active',
-                'repeat' => 'Repeat',
+                'repeat' => 'Repeat this session',
 
                 'help' => [
                     'start_time' => 'Eg: 2018-12-25 09:00',
@@ -325,6 +325,10 @@ return [
                     'month' => 'Select the month for this payment.',
                     'installment' => 'Select the installment number for this payment.',
                 ]
+            ],
+
+            'attendance' => [
+                'session' => 'Session'
             ],
         ],
 

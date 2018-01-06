@@ -20,7 +20,7 @@ return [
      * yellow
      * yellow-light
      */
-    'theme' => 'black-light',
+    'theme' => 'black',
 
     /*
      * Layout for the Admin LTE backend theme

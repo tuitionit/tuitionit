@@ -17,6 +17,7 @@ class PaymentsDataTable extends DataTable
     {
         $export = $this->request->get('action', null) != null;
         return datatables($query)
+            ->rawColumns(['status', 'action'])
             ->editColumn('student.name', function($payment) use($export) {
                 return isset($payment->student)
                     ? ($export ? $payment->student->name : link_to_route('admin.students.show', $payment->student->name, ['id' => $payment->student_id]))
@@ -61,11 +62,18 @@ class PaymentsDataTable extends DataTable
      */
     public function html()
     {
+        $params = $this->getBuilderParameters();
+        $params['language'] = trans('datatables');
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px', 'printable' => false, 'exportable' => false])
-                    ->parameters($this->getBuilderParameters());
+                    ->addAction([
+                        'title' => trans('labels.general.actions'),
+                        'width' => '80px',
+                        'printable' => false,
+                        'exportable' => false,
+                    ])
+                    ->parameters($params);
     }
 
     /**
@@ -77,14 +85,24 @@ class PaymentsDataTable extends DataTable
     {
         return [
             // 'id',
-            'student.name',
-            'amount',
-            'type',
-            'batch.name',
-            'payee.name',
-            'paid_at',
-            // 'created_at',
-            // 'updated_at'
+            'student.name' => [
+                'title' => trans('labels.backend.payments.table.student'),
+            ],
+            'amount' => [
+                'title' => trans('labels.backend.payments.table.amount'),
+            ],
+            'type' => [
+                'title' => trans('labels.backend.payments.table.type'),
+            ],
+            'batch.name' => [
+                'title' => trans('labels.backend.payments.table.batch'),
+            ],
+            'payee.name' => [
+                'title' => trans('labels.backend.payments.table.payee'),
+            ],
+            'paid_at' => [
+                'title' => trans('labels.backend.payments.table.paid_at'),
+            ],
         ];
     }
 

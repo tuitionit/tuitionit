@@ -57,12 +57,12 @@ return [
      * Default html builder parameters.
      */
     'parameters' => [
-        'dom'     => '<"top"Bf>rt<"text-center text-muted small"i><"row"<"col-sm-4"l><"col-sm-8"p>><"clear">', //Blfrtip
+        'dom'     => '<"box box-success box-table"<"box-header with-border"<"pull-left"f><"pull-right"B>><"box-body"rt<"text-center text-muted small"i><"row"<"col-sm-4"l><"col-sm-8"p>>>><"clear">', //Blfrtip
         'scrollY' => '400px',
         'scrollCollapse' => true,
         'order'   => [[0, 'desc']],
         'buttons' => [
-            // 'create',
+            'create',
             'export',
             'print',
             'reset',
