@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Attendance;
 
 use Carbon\Carbon as Carbon;
+use App\DataTables\AttendancesDataTable;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
@@ -37,9 +38,9 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageAttendanceRequest $request)
+    public function index(ManageAttendanceRequest $request, AttendancesDataTable $dataTable)
     {
-        return view('backend.attendance.index');
+        return $dataTable->render('backend.attendance.index');
     }
 
     /**
