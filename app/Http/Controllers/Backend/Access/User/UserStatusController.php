@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use App\DataTables\UsersDataTable;
+use App\DataTables\Scopes\DeactivatedUsers;
+use App\DataTables\Scopes\DeletedUsers;
 use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Access\User\UserRepository;
@@ -30,9 +33,9 @@ class UserStatusController extends Controller
      *
      * @return mixed
      */
-    public function getDeactivated(ManageUserRequest $request)
+    public function getDeactivated(ManageUserRequest $request, UsersDataTable $dataTable)
     {
-        return view('backend.access.deactivated');
+        return $dataTable->addScope(new DeactivatedUsers)->render('backend.access.deactivated');
     }
 
     /**
@@ -40,9 +43,9 @@ class UserStatusController extends Controller
      *
      * @return mixed
      */
-    public function getDeleted(ManageUserRequest $request)
+    public function getDeleted(ManageUserRequest $request, UsersDataTable $dataTable)
     {
-        return view('backend.access.deleted');
+        return $dataTable->addScope(new DeletedUsers)->render('backend.access.deleted');
     }
 
     /**

@@ -4,25 +4,19 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.create') }}</small>
+        {{ trans('labels.backend.access.users.create') }}
     </h1>
 @endsection
 
 @section('content')
     {{ Form::open(['route' => 'admin.access.user.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    <div class="box box-success box-form">
+        <div class="box-header">
+        </div><!-- /.box-header -->
 
-    <div class="col-lg-8 col-lg-offset-2">
-        <div class="box box-success">
-            <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('labels.backend.access.users.create') }}</h3>
-
-                <div class="box-tools pull-right">
-
-                </div><!--box-tools pull-right-->
-            </div><!-- /.box-header -->
-
-            <div class="box-body">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -130,25 +124,24 @@
                         </div><!--form control-->
                     </div>
                 </div>
-            </div><!-- /.box-body -->
+            </div>
+        </div><!-- /.box-body -->
 
-            <div class="box-footer">
-                <div class="row">
-                    <div class="col-lg-11 col-lg-offset-1">
-                        <div class="row">
-                            <div class="col-xs-6 col-md-2 col-md-offset-6">
-                                {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
-                            </div>
-                            <div class="col-xs-6 col-md-4">
-                                {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-block']) }}
-                            </div>
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-2 col-md-offset-6">
+                            {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-block']) }}
                         </div>
                     </div>
                 </div>
-            </div><!-- /.box-footer -->
-        </div><!--box-->
-    </div>
-
+            </div>
+        </div><!-- /.box-footer -->
+    </div><!--box-->
     {{ Form::close() }}
 @endsection
 

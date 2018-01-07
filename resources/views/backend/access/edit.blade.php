@@ -11,17 +11,13 @@
 
 @section('content')
     {{ Form::model($user, ['route' => ['admin.access.user.update', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
+    <div class="box box-warning box-form">
+        <div class="box-header">
+        </div><!-- /.box-header -->
 
-    <div class="col-lg-8 col-lg-offset-2">
-        <div class="box box-success">
-            <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('labels.backend.access.users.edit') }}</h3>
-
-                <div class="box-tools pull-right">
-                </div><!--box-tools pull-right-->
-            </div><!-- /.box-header -->
-
-            <div class="box-body">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -106,30 +102,30 @@
                         @endif
                     </div>
                 </div><!-- /.row -->
-            </div><!-- /.box-body -->
+            </div>
+        </div><!-- /.box-body -->
 
-            <div class="box-footer">
-                <div class="row">
-                    <div class="col-lg-11 col-lg-offset-1">
-                        <div class="row">
-                            <div class="col-xs-6 col-md-2 col-md-offset-6">
-                                {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
-                            </div>
-                            <div class="col-xs-6 col-md-4">
-                                {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success btn-block']) }}
-                            </div>
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-2 col-md-offset-6">
+                            {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-warning btn-block']) }}
                         </div>
                     </div>
                 </div>
-            </div><!-- /.box-footer -->
-        </div><!--box-->
-    </div>
+            </div>
+        </div><!-- /.box-footer -->
+    </div><!--box-->
 
-        @if ($user->id == 1)
-            {{ Form::hidden('status', 1) }}
-            {{ Form::hidden('confirmed', 1) }}
-            {{ Form::hidden('assignees_roles[]', 1) }}
-        @endif
+    @if ($user->id == 1)
+        {{ Form::hidden('status', 1) }}
+        {{ Form::hidden('confirmed', 1) }}
+        {{ Form::hidden('assignees_roles[]', 1) }}
+    @endif
 
     {{ Form::close() }}
 @endsection

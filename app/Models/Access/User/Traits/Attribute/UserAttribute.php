@@ -28,11 +28,17 @@ trait UserAttribute
      */
     public function getStatusLabelAttribute()
     {
-        if ($this->isActive()) {
-            return "<label class='label label-success'>".trans('labels.general.active').'</label>';
-        }
+        return $this->isActive() ? trans('labels.general.active') : trans('labels.general.inactive');
+    }
 
-        return "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
+    /**
+     * @return string
+     */
+    public function getStatusHtmlLabelAttribute()
+    {
+        return $this->isActive()
+            ? "<label class='label label-success'>".trans('labels.general.active').'</label>'
+            : "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
     }
 
     /**
@@ -40,11 +46,17 @@ trait UserAttribute
      */
     public function getConfirmedLabelAttribute()
     {
-        if ($this->isConfirmed()) {
-            return "<label class='label label-success'>".trans('labels.general.yes').'</label>';
-        }
+        return $this->isConfirmed() ? trans('labels.general.yes') : trans('labels.general.no');
+    }
 
-        return "<label class='label label-danger'>".trans('labels.general.no').'</label>';
+    /**
+     * @return string
+     */
+    public function getConfirmedHtmlLabelAttribute()
+    {
+        return $this->isConfirmed()
+            ? "<label class='label label-success'>".trans('labels.general.yes').'</label>'
+            : "<label class='label label-danger'>".trans('labels.general.no').'</label>';
     }
 
     /**

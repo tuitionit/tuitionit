@@ -36,6 +36,9 @@ mix.copyDirectory('node_modules/fullcalendar/dist', 'public/js/plugins/fullcalen
     .copy('resources/assets/js/plugin/instascan/instascan.min.js', 'public/js/plugins/instascan/instascan.min.js')
 
     // DataTables
+    .copy('node_modules/admin-lte-sass/plugins/datatables/jquery.dataTables.min.js', 'public/js/backend/plugin/datatables/jquery.dataTables.min.js')
+    .copy('node_modules/admin-lte-sass/plugins/datatables/dataTables.bootstrap.min.js', 'public/js/backend/plugin/datatables/dataTables.bootstrap.min.js')
+    .copy('node_modules/datatables.net-bs/css/dataTables.bootstrap.css', 'public/css/backend/plugin/datatables/dataTables.bootstrap.min.css') // find a minified version
     .scripts([
         'node_modules/datatables.net/js/jquery.dataTables.js',
         'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
