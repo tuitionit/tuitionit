@@ -178,7 +178,7 @@ return [
 
                 'table' => [
                     'confirmed'      => 'Confirmed',
-                    'created'        => 'Created',
+                    'created'        => 'Registered',
                     'email'          => 'E-mail',
                     'id'             => 'ID',
                     'last_updated'   => 'Last Updated',

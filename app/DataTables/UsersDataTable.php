@@ -66,7 +66,12 @@ class UsersDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '171px'])
+                    ->addAction([
+                        'title' => trans('labels.general.actions'),
+                        'width' => '171px',
+                        'printable' => false,
+                        'exportable' => false,
+                    ])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -78,13 +83,27 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
-            'name',
-            'email',
-            'confirmed',
-            'roles',
-            'created_at',
-            'updated_at'
+            'id' => [
+                'title' => trans('labels.backend.access.users.table.id'),
+            ],
+            'name' => [
+                'title' => trans('labels.backend.access.users.table.name'),
+            ],
+            'email' => [
+                'title' => trans('labels.backend.access.users.table.email'),
+            ],
+            'confirmed' => [
+                'title' => trans('labels.backend.access.users.table.confirmed'),
+            ],
+            'roles' => [
+                'title' => trans('labels.backend.access.users.table.roles'),
+            ],
+            'created_at' => [
+                'title' => trans('labels.backend.access.users.table.created'),
+            ],
+            'updated_at' => [
+                'title' => trans('labels.backend.access.users.table.last_updated'),
+            ]
         ];
     }
 
