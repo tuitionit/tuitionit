@@ -140,12 +140,14 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Http\Requests\Backend\Payment\ManagePaymentRequest $request
+     * @param  \App\Models\Payment\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ManagePaymentRequest $request, Payment $payment)
     {
-        //
+        $this->payments->delete($payment);
+        return redirect()->route('admin.payments.index')->withFlashSuccess(trans('alerts.backend.payments.deleted'));
     }
 
     /**
