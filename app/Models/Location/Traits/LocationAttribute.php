@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Subject\Traits;
+namespace App\Models\Location\Traits;
 
 /**
- * Class SubjectAttribute.
+ * Class LocationAttribute.
  */
-trait SubjectAttribute
+trait LocationAttribute
 {
     /**
      * @return string
@@ -38,7 +38,7 @@ trait SubjectAttribute
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.subjects.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
+        return '<a href="'.route('admin.locations.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
     }
 
     /**
@@ -46,7 +46,7 @@ trait SubjectAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.subjects.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
+        return '<a href="'.route('admin.locations.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
     }
 
     /**
@@ -57,17 +57,17 @@ trait SubjectAttribute
         if ($this->id != access()->id()) {
             switch ($this->status) {
                 case 0:
-                    return '<a href="'.route('admin.subjects.mark', [
+                    return '<a href="'.route('admin.locations.mark', [
                         $this,
                         1,
-                    ]).'" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.subjects.activate').'"></i></a> ';
+                    ]).'" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.locations.activate').'"></i></a> ';
                 // No break
 
                 case 1:
-                    return '<a href="'.route('admin.subjects.mark', [
+                    return '<a href="'.route('admin.locations.mark', [
                         $this,
                         0,
-                    ]).'" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.subjects.deactivate').'"></i></a> ';
+                    ]).'" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.locations.deactivate').'"></i></a> ';
                 // No break
 
                 default:
@@ -84,12 +84,12 @@ trait SubjectAttribute
      */
     public function getDeleteButtonAttribute()
     {
-        return '<a href="'.route('admin.subjects.destroy', $this).'"
+        return '<a href="'.route('admin.locations.destroy', $this).'"
              data-method="delete"
              data-trans-button-cancel="'.trans('buttons.general.cancel').'"
              data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
              data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-             class="btn btn-block btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i> '.trans('buttons.backend.subject.delete').'</a> ';
+             class="btn btn-block btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i> '.trans('buttons.backend.location.delete').'</a> ';
     }
 
     /**
@@ -97,7 +97,7 @@ trait SubjectAttribute
      */
     public function getRestoreButtonAttribute()
     {
-        return '<a href="'.route('admin.subjects.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.subjects.restore_user').'"></i></a> ';
+        return '<a href="'.route('admin.locations.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.locations.restore_user').'"></i></a> ';
     }
 
     /**
@@ -105,7 +105,7 @@ trait SubjectAttribute
      */
     public function getDeletePermanentlyButtonAttribute()
     {
-        return '<a href="'.route('admin.subjects.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.subjects.delete_permanently').'"></i></a> ';
+        return '<a href="'.route('admin.locations.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.locations.delete_permanently').'"></i></a> ';
     }
 
     /**

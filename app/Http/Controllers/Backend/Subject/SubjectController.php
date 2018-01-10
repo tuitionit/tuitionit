@@ -106,7 +106,7 @@ class SubjectController extends Controller
     public function destroy(ManageSubjectRequest $request, Subject $subject)
     {
         $this->subjects->delete($subject);
-        return redirect()->route('admin.subjects.index')->withFlashSuccess(trans('alerts.backend.subjects.deleted'));
+        return redirect()->route('admin.institute')->withFlashSuccess(trans('alerts.backend.subjects.deleted'));
     }
 
     /**

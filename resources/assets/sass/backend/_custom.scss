@@ -24,6 +24,13 @@ body {
         padding: 15px 20px;
     }
 
+    .box-body {
+        &.no-lr-padding {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
     &.box-table, &.box-calendar {
         .box-body {
             padding: 0;

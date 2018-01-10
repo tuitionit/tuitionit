@@ -149,6 +149,12 @@
         </div><!-- /.box-footer -->
     </div><!--box-->
     {{ Form::close() }}
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-6 col-lg-4">
+            {!! $location->delete_button !!}
+        </div>
+    </div>
 @endsection
 
 @section('after-scripts')

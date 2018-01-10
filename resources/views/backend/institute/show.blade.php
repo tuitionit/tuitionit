@@ -53,7 +53,7 @@
                             </div><!--box-tools pull-right-->
                         </div><!-- /.box-header -->
 
-                        <div class="box-body">
+                        <div class="box-body no-lr-padding">
                             <ul class="nav nav-pills nav-stacked full-width">
                                 @forelse($locations as $location)
                                 <li>
@@ -99,7 +99,7 @@
                             </div><!--box-tools pull-right-->
                         </div><!-- /.box-header -->
 
-                        <div class="box-body">
+                        <div class="box-body no-lr-padding">
                             <ul class="nav nav-pills nav-stacked full-width">
                                 @forelse($subjects as $subject)
                                 <li>

@@ -27,6 +27,14 @@ return [
             ],
         ],
 
+        'location' => [
+            'delete' => 'Delete this location',
+        ],
+
+        'subject' => [
+            'delete' => 'Delete this subject',
+        ],
+
         'batch' => [
             'add_students' => 'Add Students',
             'add_selected_students' => 'Add Selected Students',
