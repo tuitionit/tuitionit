@@ -219,10 +219,8 @@ return [
 
         'attendances' => [
             'all' => 'All Attendances',
-            'create' => 'New Institute',
-            'edit' => 'Edit Institute',
-            'active' => 'Active Institutes',
-            'inactive' => 'Inactive Institutes',
+            'mark' => 'Mark Attendance',
+            'edit' => 'Edit Attendance',
             'management' => 'Attendance',
             'select_session' => 'Select Session',
 

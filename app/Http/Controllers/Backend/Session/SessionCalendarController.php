@@ -45,7 +45,7 @@ class SessionCalendarController extends Controller
                 'start' => $session->start_time->toDateTimeString(),
                 'end' => $session->end_time->toDateTimeString(),
                 'url' => route('admin.sessions.edit', $session),
-                'editable' => true,
+                'editable' => false,
             ];
         });
     }

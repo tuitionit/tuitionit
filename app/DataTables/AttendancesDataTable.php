@@ -58,6 +58,10 @@ class AttendancesDataTable extends DataTable
      */
     public function html()
     {
+        $params = $this->getBuilderParameters();
+        unset($params['buttons'][array_search('create', $params['buttons'])]);
+        array_unshift($params['buttons'], 'mark');
+        // dd($params);
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
@@ -67,7 +71,7 @@ class AttendancesDataTable extends DataTable
                         'printable' => false,
                         'exportable' => false,
                     ])
-                    ->parameters($this->getBuilderParameters());
+                    ->parameters($params);
     }
 
     /**
@@ -104,5 +108,10 @@ class AttendancesDataTable extends DataTable
     protected function filename()
     {
         return 'Attendance_' . date('YmdHis');
+    }
+
+    public function mark()
+    {
+
     }
 }

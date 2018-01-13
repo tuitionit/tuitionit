@@ -20,5 +20,17 @@
     {{ Html::script("js/backend/plugin/datatables/datatables.js") }}
     {{ Html::script("/vendor/datatables/buttons.server-side.js") }}
 
+    <script type="text/javascript">
+        $.fn.DataTable.ext.buttons.mark = {
+            className: 'buttons-mark',
+            text: function (dt) {
+                return '<i class="fa fa-check-circle-o"></i> ' + dt.i18n('buttons.mark', 'Mark Attendance');
+            },
+
+            action: function (e, dt, button, config) {
+                window.location = '{{ route('admin.attendances.mark') }}';
+            }
+        };
+    </script>
     {!! $dataTable->scripts() !!}
 @stop

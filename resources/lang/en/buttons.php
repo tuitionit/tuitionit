@@ -27,6 +27,10 @@ return [
             ],
         ],
 
+        'session' => [
+            'create' => 'Create new session',
+        ],
+
         'location' => [
             'delete' => 'Delete this location',
         ],

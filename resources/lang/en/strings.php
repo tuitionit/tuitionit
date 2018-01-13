@@ -108,6 +108,7 @@ return [
 
         'attendances' => [
             'select_session' => 'Select a session to start marking attendance.',
+            'no_sessions' => 'No sessions scheduled for today. Create new session to start marking attendance.',
             'id' => 'Enter student ID',
             'empty_student_id' => 'Please enter a student ID',
             'saving' => 'Saving. Please wait...',

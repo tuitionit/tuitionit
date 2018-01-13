@@ -61,7 +61,7 @@
                         <ul class="nav nav-stacked list">
                             @foreach($batch->students as $student)
                             <li>
-                                <a href="{{ route('admin.students.show', ['id' => $student->id]) }}"><i class="fa fa-user"></i> {{ $student->name }}</a>
+                                <a href="{{ route('admin.students.show', ['id' => $student->id]) }}"><i class="fa fa-user"></i> <span class="name">{{ $student->name }}</span></a>
                             </li>
                             @endforeach
                         </ul>

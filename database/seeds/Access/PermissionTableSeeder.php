@@ -122,6 +122,14 @@ class PermissionTableSeeder extends Seeder
             'display_name' => 'Manage Batches',
         ];
 
+        /**
+         * Payment permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-payments',
+            'display_name' => 'Manage Payments',
+        ];
+
         $now = Carbon::now();
 
         array_walk($permissions, function(&$permission, $key, $now)
