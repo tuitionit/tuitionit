@@ -17,6 +17,7 @@ class Session extends Model
         SessionAttribute,
         SessionRelationship;
 
+    const TYPE_BATCH = 'batch';
     const TYPE_STANDARD = 'standard';
     const TYPE_GROUP = 'group';
     const TYPE_INDIVIDUAL = 'individual';

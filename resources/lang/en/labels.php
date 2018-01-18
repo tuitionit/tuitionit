@@ -414,6 +414,10 @@ return [
             'overview' => 'Overview',
             'students' => 'Students',
             'attending_students' => 'Attending Students',
+            'update_repeating_sessions' => 'Update repeating session',
+            'apply_to_this_session' => 'Apply to this session only.',
+            'apply_to_this_and_future_sessions' => 'Apply to this and future sessions.',
+            'apply_to_all_sessions' => 'Apply to all sessions.',
         ],
 
         'sessions' => [

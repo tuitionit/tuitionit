@@ -13,6 +13,7 @@ trait SessionAttribute
     public function getTypes()
     {
         return [
+            self::TYPE_BATCH => trans('labels.session.type.batch'),
             self::TYPE_STANDARD => trans('labels.session.type.standard'),
             self::TYPE_GROUP => trans('labels.session.type.group'),
             self::TYPE_INDIVIDUAL => trans('labels.session.type.individual'),

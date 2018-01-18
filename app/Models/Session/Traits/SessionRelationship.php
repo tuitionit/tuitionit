@@ -25,7 +25,7 @@ trait SessionRelationship
      */
     public function group()
     {
-        return $this->belongsTo(SessionGroup::class);
+        return $this->belongsTo(SessionGroup::class, 'session_group_id');
     }
 
     /**

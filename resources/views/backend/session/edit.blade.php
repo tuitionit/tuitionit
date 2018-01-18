@@ -44,7 +44,7 @@
 @endsection
 
 @section('content')
-    {{ Form::model($session, ['route' => ['admin.sessions.store', $session], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::model($session, ['route' => ['admin.sessions.store', $session], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'session-form']) }}
     <div class="box box-warning box-form">
         <div class="box-header">
 
@@ -105,37 +105,23 @@
                         </div>
                     </div>
 
+                    <?php /*
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('type', 'has-error') }}">
                                 {{ Form::label('type', trans('validation.attributes.backend.sessions.type'), ['class' => 'col-lg-4 control-label']) }}
 
                                 <div class="col-lg-8">
-                                    {{ Form::select('type', $session->getTypes(), 'standard', ['class' => 'form-control']) }}
+                                    {{ Form::select('type', $session->getTypes(), null, ['class' => 'form-control']) }}
                                 </div><!--col-lg-10-->
                             </div><!--form-group-->
                         </div>
-                        <div class="col-md-6">
-
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('course_id', 'has-error') }}">
-                                {{ Form::label('course', trans('validation.attributes.backend.sessions.course_id'), ['class' => 'col-lg-4 control-label']) }}
+                                {{ Form::label('course_id', trans('validation.attributes.backend.sessions.course_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                 <div class="col-lg-8">
-                                    {{ Form::select('course', $courses, 'standard', ['class' => 'form-control']) }}
-                                </div><!--col-lg-10-->
-                            </div><!--form-group-->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group {{ $errors->first('subject_id', 'has-error') }}">
-                                {{ Form::label('subject_id', trans('validation.attributes.backend.sessions.subject_id'), ['class' => 'col-lg-4 control-label']) }}
-
-                                <div class="col-lg-8">
-                                    {{ Form::select('subject_id', $subjects, 'standard', ['class' => 'form-control']) }}
+                                    {{ Form::select('course_id', $courses, null, ['class' => 'form-control']) }}
                                 </div><!--col-lg-10-->
                             </div><!--form-group-->
                         </div>
@@ -147,20 +133,15 @@
                                 {{ Form::label('location_id', trans('validation.attributes.backend.sessions.location_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                 <div class="col-lg-8">
-                                    {{ Form::select('location_id', $locations, 'standard', ['class' => 'form-control']) }}
+                                    {{ Form::select('location_id', $locations, null, ['class' => 'form-control']) }}
                                 </div><!--col-lg-10-->
                             </div><!--form-group-->
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group {{ $errors->first('room_id', 'has-error') }}">
-                                {{ Form::label('room_id', trans('validation.attributes.backend.sessions.room_id'), ['class' => 'col-lg-4 control-label']) }}
 
-                                <div class="col-lg-8">
-                                    {{ Form::select('room_id', $rooms, 'standard', ['class' => 'form-control']) }}
-                                </div><!--col-lg-10-->
-                            </div><!--form-group-->
                         </div>
                     </div>
+                    */ ?>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -168,7 +149,28 @@
                                 {{ Form::label('batch_id', trans('validation.attributes.backend.sessions.batch_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                 <div class="col-lg-8">
-                                    {{ Form::select('batch_id', $batches, 'standard', ['class' => 'form-control']) }}
+                                    {{ Form::select('batch_id', $batches, null, ['class' => 'form-control']) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form-group-->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->first('subject_id', 'has-error') }}">
+                                {{ Form::label('subject_id', trans('validation.attributes.backend.sessions.subject_id'), ['class' => 'col-lg-4 control-label']) }}
+
+                                <div class="col-lg-8">
+                                    {{ Form::select('subject_id', $subjects, null, ['class' => 'form-control']) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form-group-->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->first('room_id', 'has-error') }}">
+                                {{ Form::label('room_id', trans('validation.attributes.backend.sessions.room_id'), ['class' => 'col-lg-4 control-label']) }}
+
+                                <div class="col-lg-8">
+                                    {{ Form::select('room_id', $rooms, null, ['class' => 'form-control']) }}
                                 </div><!--col-lg-10-->
                             </div><!--form-group-->
                         </div>
@@ -219,7 +221,7 @@
 
                         <div class="col-xs-6 col-lg-8">
                             <div class="pretty p-default">
-                                {{ Form::checkbox('repeat', '1', false, ['id' => 'repeat']) }}
+                                {{ Form::checkbox('repeat', '1', $repeating, ['id' => 'repeat']) }}
                                 <div class="state p-primary">
                                     <label for="repeat">
                                         <span class="hidden-lg">{{ trans('validation.attributes.backend.sessions.repeat') }}</span>
@@ -229,7 +231,7 @@
                         </div><!--col-lg-1-->
                     </div><!--form-group-->
 
-                    <div id="repeat-options" class="{{ old('repeat') ? '' : 'hidden' }}">
+                    <div id="repeat-options" class="{{ $repeating ? '' : 'hidden' }}">
                         <div class="form-group">
                             {{ Form::label('repeat_type', trans('validation.attributes.backend.session_groups.repeat_type'), ['class' => 'col-lg-4 control-label']) }}
 
@@ -311,7 +313,7 @@
 
                             <div class="col-lg-8">
                                 <div class="input-group date" id="start-on-date-picker">
-                                    {{ Form::text('start_date', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']) }}
+                                    {{ Form::text('group[start_date]', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']) }}
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </span>
@@ -330,7 +332,7 @@
                                     </div>
                                     <div class="ends-on-date">
                                         <div class="input-group date" id="end-on-date-picker">
-                                            {{ Form::text('end_date', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']) }}
+                                            {{ Form::text('group[end_date]', null, ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD', 'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}']) }}
                                             <span class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
@@ -340,7 +342,7 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         {{ Form::radio('end', 'after', old('end') == 'after', ['id' => 'ends-after']) }}
-                                        <span>{!! trans('validation.attributes.backend.session_groups.ends_after', ['input' => Form::text('count', old('count'), ['class' => 'form-control', 'id' => 'count', 'disabled' => (!old('end') || old('end') == 'on')])]) !!}</span>
+                                        <span>{!! trans('validation.attributes.backend.session_groups.ends_after', ['input' => Form::text('group[count]', old('count'), ['class' => 'form-control', 'id' => 'count', 'disabled' => (!old('end') || old('end') == 'on')])]) !!}</span>
                                     </div>
                                 </div>
                             </div><!--col-lg-10-->
@@ -358,13 +360,58 @@
                             {{ link_to_route('admin.sessions.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-warning btn-block']) }}
+                            <a href="#session-update-method" data-toggle="modal" class="btn btn-warning btn-block">{{ trans('buttons.general.crud.update') }}</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div><!-- /.box-footer -->
     </div><!--box-->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="session-update-method">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{ trans('labels.backend.session.update_repeating_sessions') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <div class="form-group">
+                                <div class="pretty p-default p-round">
+                                    {{ Form::radio('apply_to', 'this_month', !old('apply_to') || old('apply_to') == 'this_session', ['id' => 'apply-to-this-session']) }}
+                                    <div class="state p-primary">
+                                        <label for="apply-to-this-session">{{ trans('labels.backend.session.apply_to_this_session') }}</label>
+                                    </div>
+                                </div>
+                            </div><!--form-group-->
+                            <div class="form-group">
+                                <div class="pretty p-default p-round">
+                                    {{ Form::radio('apply_to', 'this_and_future_sessions', old('apply_to') && old('apply_to') == 'this_and_future_sessions', ['id' => 'apply-to-this-and-future-sessions']) }}
+                                    <div class="state p-primary">
+                                        <label for="apply-to-this-and-future-sessions">{{ trans('labels.backend.session.apply_to_this_and_future_sessions') }}</label>
+                                    </div>
+                                </div>
+                            </div><!--form-group-->
+                            <div class="form-group">
+                                <div class="pretty p-default p-round">
+                                    {{ Form::radio('apply_to', 'all_sessions', old('apply_to') && old('apply_to') == 'all_sessions', ['id' => 'apply-to-all-sessions']) }}
+                                    <div class="state p-primary">
+                                        <label for="apply-to-all-sessions">{{ trans('labels.backend.session.apply_to_all_sessions') }}</label>
+                                    </div>
+                                </div>
+                            </div><!--form-group-->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-warning']) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{ Form::close() }}
 @endsection
 
@@ -438,6 +485,10 @@
                     endOnDatePicker.disable();
                     $('#count').prop('disabled', false);
                 }
+            });
+
+            $('#session-form').on('submit', function() {
+
             });
         });
     </script>

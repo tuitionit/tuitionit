@@ -87,4 +87,8 @@ Run `npm run dev` or `npm run watch` for building the code while development
 
 ## Deployment
 
-`TODO`
+### Deploy with GIT
+
+- [Setting up nginx on VPS](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-centos-7)
+- [Setting up nginx server blocks](https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-on-centos-7) - Virtual hosts
+- [Deploy to VPS with GIT](https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps)

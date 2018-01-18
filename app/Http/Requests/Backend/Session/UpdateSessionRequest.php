@@ -5,10 +5,10 @@ namespace App\Http\Requests\Backend\Session;
 use App\Http\Requests\Request;
 
 /**
- * Class StoreSessionRequest
+ * Class UpdateSessionRequest
  * @package App\Http\Requests\Backend\Access\User
  */
-class StoreSessionRequest extends Request
+class UpdateSessionRequest extends Request
 {
 	/**
 	 * Determine if the user is authorized to make this request.

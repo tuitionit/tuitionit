@@ -105,6 +105,7 @@
                         </div>
                     </div>
 
+                    <?php /*
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('type', 'has-error') }}">
@@ -116,26 +117,11 @@
                             </div><!--form-group-->
                         </div>
                         <div class="col-md-6">
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
                             <div class="form-group {{ $errors->first('course_id', 'has-error') }}">
-                                {{ Form::label('course', trans('validation.attributes.backend.sessions.course_id'), ['class' => 'col-lg-4 control-label']) }}
+                                {{ Form::label('course_id', trans('validation.attributes.backend.sessions.course_id'), ['class' => 'col-lg-4 control-label']) }}
 
                                 <div class="col-lg-8">
-                                    {{ Form::select('course', $courses, 'standard', ['class' => 'form-control']) }}
-                                </div><!--col-lg-10-->
-                            </div><!--form-group-->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group {{ $errors->first('subject_id', 'has-error') }}">
-                                {{ Form::label('subject_id', trans('validation.attributes.backend.sessions.subject_id'), ['class' => 'col-lg-4 control-label']) }}
-
-                                <div class="col-lg-8">
-                                    {{ Form::select('subject_id', $subjects, 'standard', ['class' => 'form-control']) }}
+                                    {{ Form::select('course_id', $courses, 'standard', ['class' => 'form-control']) }}
                                 </div><!--col-lg-10-->
                             </div><!--form-group-->
                         </div>
@@ -152,15 +138,10 @@
                             </div><!--form-group-->
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group {{ $errors->first('room_id', 'has-error') }}">
-                                {{ Form::label('room_id', trans('validation.attributes.backend.sessions.room_id'), ['class' => 'col-lg-4 control-label']) }}
 
-                                <div class="col-lg-8">
-                                    {{ Form::select('room_id', $rooms, 'standard', ['class' => 'form-control']) }}
-                                </div><!--col-lg-10-->
-                            </div><!--form-group-->
                         </div>
                     </div>
+                    */ ?>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -169,6 +150,27 @@
 
                                 <div class="col-lg-8">
                                     {{ Form::select('batch_id', $batches, 'standard', ['class' => 'form-control']) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form-group-->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->first('subject_id', 'has-error') }}">
+                                {{ Form::label('subject_id', trans('validation.attributes.backend.sessions.subject_id'), ['class' => 'col-lg-4 control-label']) }}
+
+                                <div class="col-lg-8">
+                                    {{ Form::select('subject_id', $subjects, 'standard', ['class' => 'form-control']) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form-group-->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->first('room_id', 'has-error') }}">
+                                {{ Form::label('room_id', trans('validation.attributes.backend.sessions.room_id'), ['class' => 'col-lg-4 control-label']) }}
+
+                                <div class="col-lg-8">
+                                    {{ Form::select('room_id', $rooms, 'standard', ['class' => 'form-control']) }}
                                 </div><!--col-lg-10-->
                             </div><!--form-group-->
                         </div>
