@@ -2,7 +2,7 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
+        {{ $tenant->name }}
         <small>{{ trans('strings.backend.dashboard.title') }}</small>
     </h1>
 @endsection

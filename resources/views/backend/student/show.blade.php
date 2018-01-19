@@ -26,7 +26,57 @@
 
             <div class="tab-content">
                 <div class="tab-pane active" id="profile">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            @if(isset($student->nextSession))
+                            <div class="box box-solid box-warning">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-clock-o"></i>
+                                    <h3 class="box-title">{{ trans('labels.backend.student.next_session') }}</h3>
+                                </div>
+                                <div class="box-body">
+                                    <h4>{{ $student->nextSession->name }}</h4>
+                                    <div class="">
+                                        <strong>{{ trans('strings.backend.sessions.time_from_to', ['start' => $student->nextSession->start_time->format('h:i A'), 'end' => $student->nextSession->end_time->format('h:i A')]) }}</strong> | {{ $student->nextSession->start_time->format('d M Y') }}
+                                    </div>
+                                </div>
+                                <div class="box-footer no-bg">
+                                    <a href="#" class="btn btn-sm">View all sessions...</a>
+                                </div>
+                            </div>
+                            @else
+                            <div class="box box-solid box-default">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-clock-o"></i>
+                                    <h3 class="box-title">{{ trans('labels.backend.student.next_session') }}</h3>
+                                </div>
+                                <div class="box-body">
+                                    No Sessions
+                                </div>
+                                <div class="box-footer">
 
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="box box-solid box-danger">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-usd"></i>
+                                    <h3 class="box-title">{{ trans('labels.backend.student.next_payment') }}</h3>
+                                </div>
+                                <div class="box-body">
+                                    <h4>1200 LKR</h4>
+                                    <div class="">
+                                        <strong>Due on</strong> 30 Feb 2018
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <a href="#" class="btn btn-sm">View all payments...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane" id="sessions">
                     <div id="sessions-calendar">

@@ -147,7 +147,7 @@ return [
                     'name'                    => 'Name',
                     'other_permissions'       => 'Other Permissions',
                     'password'                => 'Password',
-                    'password_confirmation'   => 'Password Confirmation',
+                    'password_confirmation'   => 'Confirm Password',
                     'send_confirmation_email' => 'Send Confirmation E-mail',
                     'address' => 'Address',
                     'city' => 'City',

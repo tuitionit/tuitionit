@@ -1,10 +1,12 @@
 <?php
 
+use Carbon\Carbon;
 use Faker\Generator;
-use App\Models\Session\Session;
+use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Institute\Institute;
 use App\Models\Room\Room;
+use App\Models\Session\Session;
 use App\Models\Student\Student;
 use App\Models\Subject\Subject;
 use App\Models\Location\Location;
@@ -91,21 +93,44 @@ $factory->define(Institute::class, function (Generator $faker) {
  * Student
  */
 $factory->define(Student::class, function (Generator $faker) {
-     return [
-         'name'     => $faker->name,
-         'code'     => str_random(8),
-         'domain'   => str_random(10),
-         'status'   => 1,
-     ];
- });
+    return [
+        'index_number'  => $faker->unique()->randomDigit,
+        'name'          => $faker->name,
+        'status'        => 1,
+    ];
+});
 
 /*
  * Subject
  */
 $factory->define(Subject::class, function (Generator $faker) {
-     return [
-         'name'         => $faker->name,
-         'description'  => str_random(100),
-         'status'       => 1,
-     ];
+    return [
+        'name'         => $faker->name,
+        'description'  => str_random(100),
+        'status'       => 1,
+    ];
+});
+
+/*
+ * Batch
+ */
+$factory->define(Batch::class, function (Generator $faker) {
+    return [
+        'name'         => str_random(20),
+        'description'  => str_random(100)
+    ];
+});
+
+/*
+ * Session
+ */
+$factory->define(Session::class, function (Generator $faker) {
+    return [
+        'name'         => str_random(20),
+        'description'  => str_random(100),
+        'type'         => Session::TYPE_STANDARD,
+        'start_time'   => Carbon::now(),
+        'end_time'     => Carbon::now()->addHours(3),
+        'status'       => 1,
+    ];
  });

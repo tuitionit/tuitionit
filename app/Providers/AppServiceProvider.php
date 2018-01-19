@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Log;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -16,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Log::getMonolog()->popHandler();
+        Log::useDailyFiles(storage_path('/logs/laravel-').php_sapi_name().'.log');
+
         /*
          * Application locale defaults for various components
          *

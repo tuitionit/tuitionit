@@ -2,11 +2,32 @@
 
 namespace App\Models\Student\Traits;
 
+use DB;
+use Carbon\Carbon;
+use App\Models\Session\Session;
+
 /**
  * Class StudentAttribute.
  */
 trait StudentAttribute
 {
+
+    /**
+     * @return string
+     */
+    public function getNextSessionAttribute()
+    {
+        return Session::query()
+            ->select('sessions.*')
+            ->join('batch_student', 'batch_student.batch_id', '=', 'sessions.batch_id')
+            ->join('students', 'students.id', '=', 'batch_student.student_id')
+            ->where([
+                ['students.id', '=', $this->id],
+                ['start_time', '>', Carbon::now()],
+            ])
+            ->orderBy('start_time')
+            ->first();
+    }
 
     /**
      * @return string
