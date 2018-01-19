@@ -102,14 +102,14 @@
             </li>
             @endauth
 
-            @permission('manage-subjects')
+            <?php /*
             <li class="{{ active_class(Active::checkUriPattern('admin/subjects')) }}">
                 <a href="{{ route('admin.subjects.index') }}">
                     <i class="fa fa-flask"></i>
                     <span>{{ trans('menus.backend.sidebar.subjects') }}</span>
                 </a>
             </li>
-            @endauth
+            */ ?>
 
 
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>

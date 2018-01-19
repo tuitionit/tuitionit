@@ -3,12 +3,14 @@
 namespace App\Models\Location;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Location\Traits\LocationAttribute;
 use App\Models\Location\Traits\LocationRelationship;
 use App\Models\Traits\UsesTenantConnection;
 
 class Location extends Model
 {
     use UsesTenantConnection,
+    LocationAttribute,
     LocationRelationship;
 
     /**

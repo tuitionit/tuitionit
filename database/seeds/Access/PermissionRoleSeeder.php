@@ -36,7 +36,7 @@ class PermissionRoleSeeder extends Seeder
          * 10    = Manage Batches
          *
          */
-        Role::find(2)->permissions()->sync([1,2,3,4,5,6,7,8,9,10]);
+        Role::find(2)->permissions()->sync([1,2,3,4,5,6,7,8,9,10,11]);
 
         /*
          * Default permissions for manager
@@ -52,7 +52,7 @@ class PermissionRoleSeeder extends Seeder
          * 10    = Manage Batches
          *
          */
-        Role::find(3)->permissions()->sync([1,2,3,4,5,6,7,8,9,10]);
+        Role::find(3)->permissions()->sync([1,2,3,4,5,6,7,8,9,10,11]);
 
         $this->enableForeignKeys('tenant');
     }

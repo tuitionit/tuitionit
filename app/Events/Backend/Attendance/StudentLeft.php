@@ -5,10 +5,10 @@ namespace App\Events\Backend\Attendance;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class AttendanceLeft
+ * Class StudentLeft
  * @package App\Events\Backend\Attendance
  */
-class AttendanceLeft
+class StudentLeft
 {
     use SerializesModels;
 

@@ -3,7 +3,7 @@
 @section ('title', trans('labels.backend.subjects.management'))
 
 @section('after-styles')
-    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("css/backend/plugin/datatables/datatables.css") }}
 @stop
 
 @section('page-header')
@@ -26,26 +26,16 @@
         </div><!-- /.box-header -->
 
         <div class="box-body">
-            <div class="table-responsive">
-                <table id="subjects-table" class="table table-condensed table-hover">
-                    <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.subjects.table.id') }}</th>
-                            <th>{{ trans('labels.backend.subjects.table.name') }}</th>
-                            <th>{{ trans('labels.backend.subjects.table.description') }}</th>
-                            <th>{{ trans('labels.backend.subjects.table.status') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div><!--table-responsive-->
+            {!! $dataTable->table() !!}
         </div><!-- /.box-body -->
     </div><!--box-->
 @stop
 
 @section('after-scripts')
-    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
-    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/datatables.js") }}
+    {{ Html::script("/vendor/datatables/buttons.server-side.js") }}
+
+    {!! $dataTable->scripts() !!}
 
     <script>
         $(function() {

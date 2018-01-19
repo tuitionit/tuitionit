@@ -3,7 +3,7 @@
 @section ('title', trans('labels.backend.sessions.management'))
 
 @section('after-styles')
-    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("js/plugins/fullcalendar/fullcalendar.min.css") }}
 @stop
 
 @section('page-header')
@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <div class="box box-success">
+    <div class="box box-success box-calendar">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('labels.backend.sessions.all') }}</h3>
 
@@ -26,50 +26,29 @@
         </div><!-- /.box-header -->
 
         <div class="box-body">
-            <div class="table-responsive">
-                <table id="sessions-table" class="table table-condensed table-hover">
-                    <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.sessions.table.name') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.start_time') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.end_time') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.teacher') }}</th>
-                            <th>{{ trans('labels.backend.sessions.table.location') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div><!--table-responsive-->
+            <div id="sessions-calendar">
+
+            </div><!-- fullcalendar -->
         </div><!-- /.box-body -->
     </div><!--box-->
 @stop
 
 @section('after-scripts')
-    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
-    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+{{ Html::script("js/plugins/moment/moment.min.js") }}
+{{ Html::script("js/plugins/fullcalendar/fullcalendar.min.js") }}
 
-    <script>
-        $(function() {
-            $('#sessions-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: '{{ route("admin.sessions.get") }}',
-                    type: 'post',
-                    data: {status: 1}
-                },
-                columns: [
-                    {data: 'name', name: 'sessions.name'},
-                    {data: 'start_time', name: 'sessions.start_time'},
-                    {data: 'end_time', name: 'sessions.end_time'},
-                    {data: 'teacher', name: 'sessions.teacher'},
-                    {data: 'location', name: 'sessions.location'},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
-                order: [[0, "asc"]],
-                select: true,
-                searchDelay: 500
-            });
+<script>
+    $(function() {
+        $('#sessions-calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay,listMonth'
+            },
+            defaultView: 'agendaWeek',
+            editable: true,
+            events: '{{ route("admin.sessions.fetch") }}'
         });
-    </script>
+    });
+</script>
 @stop

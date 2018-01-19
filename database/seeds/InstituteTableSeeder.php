@@ -28,7 +28,7 @@ class InstituteTableSeeder extends Seeder
             [
                 'name' => 'Tuitionix',
                 'code' => 'TUITIONIX',
-                'domain' => 'tuitionix',
+                'domain' => 'http://localhost:8000',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'username' => 'www',
@@ -38,7 +38,7 @@ class InstituteTableSeeder extends Seeder
             [
                 'name' => 'Vijaya',
                 'code' => 'VIJAYA',
-                'domain' => 'http://vijaya',
+                'domain' => 'https://vijaya',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'username' => 'vijaya',

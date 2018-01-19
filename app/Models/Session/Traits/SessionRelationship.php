@@ -9,6 +9,7 @@ use App\Models\Course\Course;
 use App\Models\Location\Location;
 use App\Models\Student\Student;
 use App\Models\Session\Session;
+use App\Models\Session\SessionGroup;
 use App\Models\Subject\Subject;
 use App\Models\Teacher\Teacher;
 
@@ -17,6 +18,16 @@ use App\Models\Teacher\Teacher;
  */
 trait SessionRelationship
 {
+    /**
+     * Session can be belong to only one Batch.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function group()
+    {
+        return $this->belongsTo(SessionGroup::class);
+    }
+
     /**
      * Session can be belong to only one Batch.
      *

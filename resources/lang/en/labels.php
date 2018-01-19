@@ -29,6 +29,20 @@ return [
         'none'              => 'None',
         'show'              => 'Show',
         'toggle_navigation' => 'Toggle Navigation',
+        'months' => [
+            'january'   => 'January',
+            'february'  => 'February',
+            'march'     => 'March',
+            'april'     => 'April',
+            'may'       => 'May',
+            'june'      => 'June',
+            'july'      => 'July',
+            'august'    => 'August',
+            'september' => 'September',
+            'october'   => 'October',
+            'november'  => 'November',
+            'december'  => 'December',
+        ],
     ],
 
     'teacher' => [
@@ -117,6 +131,22 @@ return [
     ],
 
     'backend' => [
+        'dashboard' => [
+            'add_new' => 'Add New',
+            'student' => 'Student',
+            'session' => 'Session',
+            'payment' => 'Payment',
+            'batch' => 'Batch',
+            'course' => 'Course',
+            'teacher' => 'Teacher',
+            'location' => 'Location',
+            'room' => 'Room',
+        ],
+
+        'table' => [
+            'filters' => 'Filters',
+        ],
+
         'access' => [
             'roles' => [
                 'create'     => 'Create Role',
@@ -148,7 +178,7 @@ return [
 
                 'table' => [
                     'confirmed'      => 'Confirmed',
-                    'created'        => 'Created',
+                    'created'        => 'Registered',
                     'email'          => 'E-mail',
                     'id'             => 'ID',
                     'last_updated'   => 'Last Updated',
@@ -189,10 +219,8 @@ return [
 
         'attendances' => [
             'all' => 'All Attendances',
-            'create' => 'New Institute',
-            'edit' => 'Edit Institute',
-            'active' => 'Active Institutes',
-            'inactive' => 'Inactive Institutes',
+            'mark' => 'Mark Attendance',
+            'edit' => 'Edit Attendance',
             'management' => 'Attendance',
             'select_session' => 'Select Session',
 
@@ -211,6 +239,8 @@ return [
             'title' => 'Institute',
             'overview' => 'Overview',
             'locations' => 'Locations',
+            'subjects' => 'Subjects',
+            'settings' => 'General Settings',
         ],
 
         'institutes' => [
@@ -257,6 +287,7 @@ return [
             'batches' => 'Batches',
             'cources' => 'Cources',
             'profile' => 'Profile',
+            'timeline' => 'Timeline',
             'reports' => 'Reports',
             'sessions' => 'Sessions',
             'payments' => 'Payments',
@@ -267,6 +298,8 @@ return [
             'next_payment' => 'Next Payment',
             'upcoming_sessions' => 'Upcoming Sessions',
             'past_sessions' => 'Past Sessions',
+            'completed_payments' => 'Completed Payments',
+            'pending_payments' => 'Pending Payments',
         ],
 
         'teachers' => [
@@ -306,6 +339,7 @@ return [
                 'name' => 'Name',
                 'phone' => 'Phone',
                 'status' => 'Status',
+                'parent' => 'Parent',
                 'created' => 'Joined',
                 'last_updated' => 'Updated',
             ],
@@ -365,6 +399,7 @@ return [
                 'id' => 'ID',
                 'name' => 'Name',
                 'description' => 'Description',
+                'type' => 'Type',
                 'start_date' => 'Start Date',
                 'end_date' => 'End Date',
                 'course' => 'Course',
@@ -422,9 +457,11 @@ return [
                 'student' => 'Student',
                 'amount' => 'Amount',
                 'type' => 'Type',
+                'batch' => 'Batch',
                 'installment' => 'Installment',
                 'month' => 'Month',
                 'paid_by' => 'Paid By',
+                'payee' => 'Payee',
                 'paid_at' => 'Paid At',
             ],
         ],

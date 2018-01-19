@@ -25,5 +25,20 @@
                 ./tests
             </directory>
         </testsuite>
+        <testsuite name="Frontend">
+            <directory suffix="Test.php">
+                ./tests/Frontend
+            </directory>
+        </testsuite>
+        <testsuite name="Backend">
+            <directory suffix="Test.php">
+                ./tests/Backend
+            </directory>
+        </testsuite>
+        <testsuite name="Backend Access">
+            <directory suffix="Test.php">
+                ./tests/Backend/Access
+            </directory>
+        </testsuite>
     </testsuites>
 </phpunit>

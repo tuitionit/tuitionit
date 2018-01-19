@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\Role;
 
+use App\DataTables\RolesDataTable;
 use App\Models\Access\Role\Role;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Access\Role\RoleRepository;
@@ -40,9 +41,9 @@ class RoleController extends Controller
      *
      * @return mixed
      */
-    public function index(ManageRoleRequest $request)
+    public function index(ManageRoleRequest $request, RolesDataTable $dataTable)
     {
-        return view('backend.access.roles.index');
+        return $dataTable->render('backend.access.roles.index');
     }
 
     /**

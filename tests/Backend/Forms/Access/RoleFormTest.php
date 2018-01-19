@@ -69,7 +69,7 @@ class RoleFormTest extends BrowserKitTestCase
              ->seePageIs('/admin/access/role')
              ->see('The role was successfully created.')
              ->seeInDatabase(config('access.roles_table'), ['name' => 'Test Role', 'all' => 0])
-             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 4]);
+             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 8]);
 
         Event::assertDispatched(RoleCreated::class);
     }
@@ -130,13 +130,13 @@ class RoleFormTest extends BrowserKitTestCase
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 3])
-             ->visit('/admin/access/role/3/edit')
+             ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 4])
+             ->visit('/admin/access/role/4/edit')
              ->check('permissions[1]')
              ->press('Update')
              ->seePageIs('/admin/access/role')
              ->see('The role was successfully updated.')
-             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 3]);
+             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 4]);
 
         Event::assertDispatched(RoleUpdated::class);
     }
@@ -144,9 +144,9 @@ class RoleFormTest extends BrowserKitTestCase
     public function testUpdateRoleRequiresPermission()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/role/3/edit')
+             ->visit('/admin/access/role/7/edit')
              ->press('Update')
-             ->seePageIs('/admin/access/role/3/edit')
+             ->seePageIs('/admin/access/role/7/edit')
              ->see('You must select at least one permission for this role.');
     }
 

@@ -29,8 +29,8 @@ class StoreInstituteRequest extends Request
 	{
 		return [
 			'name' => 'required',
-			'code' => 'required|unique:institutes',
-			'domain' => 'required|unique:institutes',
+			'code' => 'required|unique:system.institutes',
+			'domain' => 'required|unique:system.institutes',
 		];
 	}
 }

@@ -14,7 +14,7 @@ return [
      | ------------------------------------------------------------------------------------------------
      */
     'pattern'       => [
-        'prefix'    => Filesystem::PATTERN_PREFIX,    // 'laravel-'
+        'prefix'    => Filesystem::PATTERN_PREFIX . php_sapi_name() . '-',    // 'laravel-'
         'date'      => Filesystem::PATTERN_DATE,      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
         'extension' => Filesystem::PATTERN_EXTENSION, // '.log'
     ],

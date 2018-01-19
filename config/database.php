@@ -75,7 +75,7 @@ return [
         ], */
 
         'system' => [
-            'driver' => 'mysql',
+            'driver' => env('DB_DRIVER', 'mysql'),
             'host' => env('SYSTEM_DB_HOST', '127.0.0.1'),
             'port' => env('SYSTEM_DB_PORT', '3306'),
             'database' => env('SYSTEM_DB_DATABASE', 'system'),
@@ -90,7 +90,7 @@ return [
         ],
 
         'tenant' => [
-            'driver' => 'mysql',
+            'driver' => env('DB_DRIVER', 'mysql'),
             'host' => env('TENANT_DB_HOST', '127.0.0.1'),
             'port' => env('TENANT_DB_PORT', '3306'),
             'database' => env('TENANT_DB_DATABASE', 'tenant'),

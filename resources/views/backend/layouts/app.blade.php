@@ -43,7 +43,7 @@
     <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">
         @include('includes.partials.logged-in-as')
 
-        <div class="wrapper">
+        <div class="wrapper" id="app">
             @include('backend.includes.header')
             @include('backend.includes.sidebar')
 

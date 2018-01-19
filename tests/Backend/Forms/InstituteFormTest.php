@@ -32,7 +32,7 @@ class InstituteFormTest extends BrowserKitTestCase
              ->visit('/admin/institutes/create')
              ->type('Tuitionix', 'name')
              ->type('TUITIONIX', 'code')
-             ->type('tuitionix', 'domain')
+             ->type('http://localhost:8000', 'domain')
              ->press('Create')
              ->seePageIs('/admin/institutes/create')
              ->see('The code has already been taken.');
@@ -44,7 +44,7 @@ class InstituteFormTest extends BrowserKitTestCase
              ->visit('/admin/institutes/create')
              ->type('Tuitionix', 'name')
              ->type('TUITIONIX', 'code')
-             ->type('tuitionix', 'domain')
+             ->type('http://localhost:8000', 'domain')
              ->press('Create')
              ->seePageIs('/admin/institutes/create')
              ->see('The domain has already been taken.');
@@ -71,7 +71,7 @@ class InstituteFormTest extends BrowserKitTestCase
              ->visit($editUrl)
              ->type('Tuitionix', 'name')
              ->type('TUITIONIX', 'code')
-             ->type('tuitionix', 'domain')
+             ->type('http://localhost:8000', 'domain')
              ->press('Update')
              ->seePageIs($editUrl)
              ->see('The code has already been taken.');
@@ -85,7 +85,7 @@ class InstituteFormTest extends BrowserKitTestCase
              ->visit($editUrl)
              ->type('Tuitionix', 'name')
              ->type('TUITIONIX', 'code')
-             ->type('tuitionix', 'domain')
+             ->type('http://localhost:8000', 'domain')
              ->press('Update')
              ->seePageIs($editUrl)
              ->see('The domain has already been taken.');

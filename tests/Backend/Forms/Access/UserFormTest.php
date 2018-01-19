@@ -67,8 +67,8 @@ class UserFormTest extends BrowserKitTestCase
              ->seePageIs('/admin/access/user')
              ->see('The user was successfully created.')
              ->seeInDatabase(config('access.users_table'), ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 1])
-             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 2])
-             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 3]);
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 8, 'role_id' => 2])
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 8, 'role_id' => 3]);
 
         Event::assertDispatched(UserCreated::class);
     }
@@ -102,8 +102,8 @@ class UserFormTest extends BrowserKitTestCase
              ->seePageIs('/admin/access/user')
              ->see('The user was successfully created.')
              ->seeInDatabase(config('access.users_table'), ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 0])
-             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 2])
-             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 3]);
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 8, 'role_id' => 2])
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 8, 'role_id' => 3]);
 
         // Get the user that was inserted into the database
         $user = User::where('email', $email)->first();
@@ -117,10 +117,12 @@ class UserFormTest extends BrowserKitTestCase
 
     public function testCreateUserFailsIfEmailExists()
     {
+        $user = factory(User::class)->create();
+
         $this->actingAs($this->admin)
              ->visit('/admin/access/user/create')
              ->type('User', 'name')
-             ->type('user@user.com', 'email')
+             ->type($user->email, 'email')
              ->type('123456', 'password')
              ->type('123456', 'password_confirmation')
              ->press('Create')

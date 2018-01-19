@@ -20,6 +20,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
+                <?php /*
                 @if (config('locale.status') && count(config('locale.languages')) > 1)
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -70,6 +71,7 @@
                         </li>
                     </ul>
                 </li><!-- /.tasks-menu -->
+                */ ?>
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

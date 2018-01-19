@@ -38,6 +38,26 @@ abstract class BrowserKitTestCase extends BaseTestCase
     /**
      * @var
      */
+    protected $manager;
+
+    /**
+     * @var
+     */
+    protected $teacher;
+
+    /**
+     * @var
+     */
+    protected $student;
+
+    /**
+     * @var
+     */
+    protected $parent;
+
+    /**
+     * @var
+     */
     protected $user;
 
     /**
@@ -49,6 +69,26 @@ abstract class BrowserKitTestCase extends BaseTestCase
      * @var
      */
     protected $executiveRole;
+
+    /**
+     * @var
+     */
+    protected $managerRole;
+
+    /**
+     * @var
+     */
+    protected $teacherRole;
+
+    /**
+     * @var
+     */
+    protected $studentRole;
+
+    /**
+     * @var
+     */
+    protected $parentRole;
 
     /**
      * @var
@@ -65,8 +105,10 @@ abstract class BrowserKitTestCase extends BaseTestCase
         $this->baseUrl = config('app.url', 'http://l5boilerplate.dev');
 
         // Set up the database
-        Artisan::call('migrate:refresh');
-        Artisan::call('db:seed');
+        Artisan::call('migrate:refresh', ['--database' => 'system']);
+        Artisan::call('migrate:refresh', ['--database' => 'tenant', '--path' => './database/migrations/tenant']);
+        Artisan::call('db:seed', ['--database' => 'system', '--class' =>'InstituteTableSeeder']);
+        Artisan::call('db:seed', ['--database' => 'tenant']);
 
         // Run the tests in English
         App::setLocale('en');
@@ -76,10 +118,18 @@ abstract class BrowserKitTestCase extends BaseTestCase
          */
         $this->admin = User::find(1);
         $this->executive = User::find(2);
-        $this->user = User::find(3);
+        $this->manager = User::find(3);
+        $this->teacher = User::find(4);
+        $this->student = User::find(5);
+        $this->parent = User::find(6);
+        $this->user = User::find(7);
         $this->adminRole = Role::find(1);
         $this->executiveRole = Role::find(2);
-        $this->userRole = Role::find(3);
+        $this->managerRole = Role::find(3);
+        $this->teacherRole = Role::find(4);
+        $this->studentRole = Role::find(5);
+        $this->parentRole = Role::find(6);
+        $this->userRole = Role::find(7);
     }
 
     public function tearDown()

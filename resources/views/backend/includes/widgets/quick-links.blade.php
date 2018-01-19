@@ -10,8 +10,11 @@
     </div><!-- /.box-header -->
 
     <div class="box-body">
-        @foreach($links as $link)
-            <a href="{{ route($link['route']) }}">{{ $link['name'] }}</a>
-        @endforeach
+        <div class="list-group">
+            <a href="{{ route('admin.attendances.mark') }}" class="list-group-item">
+                <i class="fa fa-check-circle-o"></i>
+                {{ trans('buttons.backend.attendance.mark_attendance') }}
+            </a>
+        </div>
     </div>
 </div>

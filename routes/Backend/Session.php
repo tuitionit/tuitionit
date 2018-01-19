@@ -13,6 +13,11 @@ Route::group([
         Route::post('sessions/get', 'SessionTableController')->name('sessions.get');
 
         /*
+         * For FullCalendar
+         */
+        Route::get('sessions/fetch', 'SessionCalendarController')->name('sessions.fetch');
+
+        /*
          * For Select2
          */
         Route::get('sessions/list', 'SessionListController')->name('sessions.list');

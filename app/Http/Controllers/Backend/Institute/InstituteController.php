@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Institute;
 
 use App\Models\Institute\Institute;
 use App\Models\Location\Location;
+use App\Models\Subject\Subject;
 use App\Repositories\Backend\Institute\InstituteRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Institute\ManageInstituteRequest;
@@ -78,7 +79,8 @@ class InstituteController extends Controller
     {
         return view('backend.institute.show')->with([
             'institute' => session('tenant'),
-            'locations' => Location::all()
+            'locations' => Location::all(),
+            'subjects' => Subject::all()
         ]);
     }
 

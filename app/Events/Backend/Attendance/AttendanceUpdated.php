@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Events\Backend\Subject;
+namespace App\Events\Backend\Attendance;
 
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class SubjectUpdated
- * @package App\Events\Backend\Subject
+ * Class AttendanceUpdated
+ * @package App\Events\Backend\Attendance
  */
-class SubjectUpdated
+class AttendanceUpdated
 {
     use SerializesModels;
 
     /**
-     * @var $institute
+     * @var $attendance
      */
-    public $institute;
+    public $attendance;
 
     /**
-     * @param $institute
+     * @param $attendance
      */
-    public function __construct($institute)
+    public function __construct($attendance)
     {
-        $this->institute = $institute;
+        $this->attendance = $attendance;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories\Backend\Payment;
 
 use DB;
+use App\Events\Backend\Payment\PaymentDeleted;
 use App\Repositories\BaseRepository;
 use App\Models\Payment\Payment;
 
@@ -53,5 +54,23 @@ class PaymentRepository extends BaseRepository
 
 
         return $dataTableQuery;
+    }
+
+    /**
+     * @param \App\Models\Payment\Payment $payment
+     *
+     * @throws GeneralException
+     *
+     * @return bool
+     */
+    public function delete(Payment $payment)
+    {
+        if ($payment->delete()) {
+            event(new PaymentDeleted($payment));
+
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.payments.delete_error'));
     }
 }

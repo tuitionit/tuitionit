@@ -14,11 +14,11 @@ class InstituteRouteTest extends BrowserKitTestCase
 
     public function testAdminInstitute()
     {
-        $this->actingAs($this->executive)->visit('/admin/institute')->see('Institute Details')->see($this->executive->name);
+        $this->actingAs($this->executive)->visit('/admin/institute')->see('Locations')->see($this->executive->name);
     }
 
     public function testCreateInstitute()
     {
-        $this->actingAs($this->admin)->visit('/admin/access/user/create')->see('Create User');
+        $this->actingAs($this->admin)->visit('/admin/institutes/create')->see('New Institute');
     }
 }
