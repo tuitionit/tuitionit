@@ -1,64 +1,63 @@
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#frontend-navbar-collapse">
-                <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            {{ link_to_route('frontend.index', $tenant->name, [], ['class' => 'navbar-brand']) }}
-        </div><!--navbar-header-->
-
-        <div class="collapse navbar-collapse" id="frontend-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>{{ link_to_route('frontend.macros', trans('navs.frontend.macros')) }}</li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                @if ($logged_in_user)
-                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
-                @endif
-
-                @if ($logged_in_user)
-                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.reports')) }}</li>
-                @endif
-
-                @if (config('locale.status') && count(config('locale.languages')) > 1)
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ trans('menus.language-picker.language') }}
-                            <span class="caret"></span>
-                        </a>
-
-                        @include('includes.partials.lang')
-                    </li>
-                @endif
-
-                @if (! $logged_in_user)
-                    <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
-
-                    @if (config('access.users.registration'))
-                        <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
+<div class="uk-navbar-container tu-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below" >
+    <div class="uk-container">
+        <nav class="uk-navbar" uk-navbar>
+            <div class="uk-navbar-left">
+                {{ link_to_route('frontend.index', $tenant->name, [], ['class' => 'uk-navbar-item uk-logo']) }}
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav uk-visible@m" id="top-nav">
+                    @if ($logged_in_user)
+                        <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
                     @endif
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ $logged_in_user->name }} <span class="caret"></span>
-                        </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            @permission('view-backend')
-                                <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
-                            @endauth
+                    <?php /*
+                    @if ($logged_in_user)
+                        <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.reports')) }}</li>
+                    @endif
 
-                            <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account')) }}</li>
-                            <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
-        </div><!--navbar-collapse-->
-    </div><!--container-->
-</nav>
+                    @if (config('locale.status') && count(config('locale.languages')) > 1)
+                        <li>
+                            <a href="#" class="uk-parent">
+                                {{ trans('menus.language-picker.language') }}
+                                <span class="caret"></span>
+                            </a>
+
+                            <div class="uk-navbar-dropdown">
+                                @include('includes.partials.lang')
+                            </div>
+                        </li>
+                    @endif
+
+                    <li>{{ link_to_route('frontend.macros', trans('navs.frontend.macros')) }}</li>
+                    */ ?>
+
+                    @if (! $logged_in_user)
+                        <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
+
+                        @if (config('access.users.registration'))
+                            <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
+                        @endif
+                    @else
+                        <li>
+                            <a href="#" aria-expanded="false">
+                                {{ $logged_in_user->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav" role="menu">
+                                    @permission('view-backend')
+                                        <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
+                                    @endauth
+
+                                    <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account')) }}</li>
+                                    <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
+                </ul>
+                <div uk-togglee="target: #offcanvas" uk-navbar-toggle-icon class="uk-navbar-toggle uk-hidden@m"></div>
+            </div>
+        </nav>
+    </div>
+</div>

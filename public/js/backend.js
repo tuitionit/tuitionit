@@ -41748,13 +41748,23 @@ module.exports = function(module) {
 /***/ "./resources/assets/js/backend/app.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
+/* WEBPACK VAR INJECTION */(function(global) {/**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
  * building robust, powerful web applications using Vue and Laravel.
  */
 
 __webpack_require__("./resources/assets/js/bootstrap.js");
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+global.$ = global.jQuery = __webpack_require__("./node_modules/jquery/dist/jquery.js");
+
+__webpack_require__("./node_modules/bootstrap-sass/assets/javascripts/bootstrap.js");
 
 /* Vue Application
  * ================
@@ -42485,24 +42495,15 @@ window.setTimeout(function () {
         $(this).remove();
     });
 }, 5000);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
 /***/ "./resources/assets/js/bootstrap.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {
+
 window._ = __webpack_require__("./node_modules/lodash/lodash.js");
-
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-global.$ = global.jQuery = __webpack_require__("./node_modules/jquery/dist/jquery.js");
-
-__webpack_require__("./node_modules/bootstrap-sass/assets/javascripts/bootstrap.js");
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -42539,7 +42540,6 @@ window.axios.defaults.headers.common = {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 

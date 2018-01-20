@@ -4,25 +4,17 @@
 
 // Variables
 // @import "variables";
-@import "sandstone_variables";
-
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import "sandstone";
 
 // Font Awesome
 @import "~font-awesome/scss/font-awesome";
-
-// Helpers
-@import "../helpers";
+*/
 
 // Global
 @import "global";
-@import "panel";
 
 // Pages
 @import "pages/dashboard";
-*/
+
 // Plugins
 @import "../plugin/toastr/toastr.scss";
 @import "../plugin/sweetalert/sweetalert.scss";
