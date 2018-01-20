@@ -68,10 +68,10 @@
                     <span class="info-box-number">{{ $totalStudents }}</span>
 
                     <div class="progress">
-                        <div class="progress-bar" style="width: {{ ($thisMonthStudents / $totalStudents) * 100 }}%"></div>
+                        <div class="progress-bar" style="width: {{ $totalStudents ? ($thisMonthStudents / $totalStudents) * 100 : 0 }}%"></div>
                     </div>
                     <span class="progress-description">
-                        {{ round(($thisMonthStudents / $totalStudents) * 100, 2) }}% increase in this month
+                        {{ $totalStudents ? round(($thisMonthStudents / $totalStudents) * 100, 2) : 0 }}% increase in this month
                     </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -85,10 +85,10 @@
                     <span class="info-box-number">{{ $totalSessions }}</span>
 
                     <div class="progress">
-                        <div class="progress-bar" style="width: {{ ($thisMonthStudents / $totalStudents) * 100 }}%"></div>
+                        <div class="progress-bar" style="width: {{ $totalStudents ? ($thisMonthStudents / $totalStudents) * 100 : 0 }}%"></div>
                     </div>
                     <span class="progress-description">
-                        {{ round(($thisMonthSessions / $totalSessions) * 100, 2) }}% increase in this month
+                        {{ $totalStudents ? round(($thisMonthSessions / $totalSessions) * 100, 2) : 0 }}% increase in this month
                     </span>
                 </div>
                 <!-- /.info-box-content -->
