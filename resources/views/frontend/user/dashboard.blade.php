@@ -2,138 +2,78 @@
 
 @section('content')
     <div class="row">
+        <div class="col-sm-5 col-md-4">
+            <div class="panel panel-default panel-user">
+                <div class="panel-heading">
 
-        <div class="col-xs-12">
+                </div>
+                <div class="panel-body">
+                    <div class="panel-user-image">
+                        <img class="img-responsive img-circle" src="{{ $logged_in_user->picture }}" alt="Profile picture">
+                    </div>
+
+                    <div class="panel-user-details">
+                        <h4 class="text-center user-name">{{ $logged_in_user->name }}</h4>
+                        <div class="text-center text-muted">
+                            <small>
+                                {{ $logged_in_user->email }}<br/>
+                                Joined {{ $logged_in_user->created_at->format('F jS, Y') }}<br/><br/>
+                            </small>
+                        </div>
+                        <div class="text-center">
+                            {{ link_to_route('frontend.user.account', trans('navs.frontend.user.account'), [], ['class' => 'btn btn-primary btn-sm']) }}
+
+                            @permission('view-backend')
+                                {{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration'), [], ['class' => 'btn btn-danger btn-sm']) }}
+                            @endauth
+                        </div>
+
+                        <div class="warning-emblem">
+                            <i class="fa fa-exclamation"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-4 text-center">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge badge-warning">34</span>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <i class="fa fa-dollar"></i>
+                            <span class="badge badge-danger">124</span>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <i class="fa fa-calendar-o"></i>
+                            <span class="badge badge-danger">23</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-7 col-md-8">
+            @role('Student')
+
+            @endauth
+
+            @role('Parent')
+            @endauth
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('navs.frontend.dashboard') }}</div>
-
+                <div class="panel-heading">
+                    <h4 class="panel-title">My Sessions</h4>
+                </div>
                 <div class="panel-body">
-
-                    <div class="row">
-
-                        <div class="col-md-4 col-md-push-8">
-
-                            <ul class="media-list">
-                                <li class="media">
-                                    <div class="media-left">
-                                        <img class="media-object" src="{{ $logged_in_user->picture }}" alt="Profile picture">
-                                    </div><!--media-left-->
-
-                                    <div class="media-body">
-                                        <h4 class="media-heading">
-                                            {{ $logged_in_user->name }}<br/>
-                                            <small>
-                                                {{ $logged_in_user->email }}<br/>
-                                                Joined {{ $logged_in_user->created_at->format('F jS, Y') }}
-                                            </small>
-                                        </h4>
-
-                                        {{ link_to_route('frontend.user.account', trans('navs.frontend.user.account'), [], ['class' => 'btn btn-info btn-xs']) }}
-
-                                        @permission('view-backend')
-                                            {{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration'), [], ['class' => 'btn btn-danger btn-xs']) }}
-                                        @endauth
-                                    </div><!--media-body-->
-                                </li><!--media-->
-                            </ul><!--media-list-->
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4>Sidebar Item</h4>
-                                </div><!--panel-heading-->
-
-                                <div class="panel-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.
-                                </div><!--panel-body-->
-                            </div><!--panel-->
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4>Sidebar Item</h4>
-                                </div><!--panel-heading-->
-
-                                <div class="panel-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.
-                                </div><!--panel-body-->
-                            </div><!--panel-->
-                        </div><!--col-md-4-->
-
-                        <div class="col-md-8 col-md-pull-4">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4>Item</h4>
-                                        </div><!--panel-heading-->
-
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.</p>
-                                        </div><!--panel-body-->
-                                    </div><!--panel-->
-                                </div><!--col-xs-12-->
-                            </div><!--row-->
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4>Item</h4>
-                                        </div><!--panel-heading-->
-
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.</p>
-                                        </div><!--panel-body-->
-                                    </div><!--panel-->
-                                </div><!--col-md-6-->
-
-                                <div class="col-md-6">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4>Item</h4>
-                                        </div><!--panel-heading-->
-
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.</p>
-                                        </div><!--panel-body-->
-                                    </div><!--panel-->
-                                </div><!--col-md-6-->
-
-                                <div class="col-md-6">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4>Item</h4>
-                                        </div><!--panel-heading-->
-
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.</p>
-                                        </div><!--panel-body-->
-                                    </div><!--panel-->
-                                </div><!--col-md-6-->
-
-                                <div class="col-md-6">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4>Item</h4>
-                                        </div><!--panel-heading-->
-
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.</p>
-                                        </div><!--panel-body-->
-                                    </div><!--panel-->
-                                </div><!--col-md-6-->
-
-                            </div><!--row-->
-
-                        </div><!--col-md-8-->
-
-                    </div><!--row-->
-
-                </div><!--panel body-->
-
-            </div><!-- panel -->
-
-        </div><!-- col-md-10 -->
-
+                    <ul class="list-group">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div><!-- row -->
 @endsection

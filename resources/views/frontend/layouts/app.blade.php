@@ -9,9 +9,12 @@
         <title>@yield('title', $tenant->name)</title>
 
         <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="description" content="@yield('meta_description', 'Institute and Student Data Management System')">
+        <meta name="author" content="@yield('meta_author', 'Tuitionix')">
         @yield('meta')
+
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/css/uikit.min.css" />
 
         <!-- Styles -->
         @yield('before-styles')
@@ -33,16 +36,22 @@
             ]); ?>
         </script>
     </head>
-    <body id="app-layout">
-        <div id="app">
+    <body id="app-layout" class="@yield('body-class', '')">
+        <div id="app" class="uk-offcanvas-content">
             @include('includes.partials.logged-in-as')
             @include('frontend.includes.nav')
 
-            <div class="container">
-                @include('includes.partials.messages')
+            <div class="uk-container uk-container-lrage tu-main-container">
+                <div class="tu-alerts">
+                    @include('includes.partials.messages')
+                </div>
                 @yield('content')
             </div><!-- container -->
         </div><!--#app-->
+
+        <!-- UIkit JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js"></script>
 
         <!-- Scripts -->
         @yield('before-scripts')

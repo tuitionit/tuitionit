@@ -55,7 +55,7 @@ mix.copyDirectory('node_modules/fullcalendar/dist', 'public/js/plugins/fullcalen
     .js([
         'resources/assets/js/frontend/app.js',
         'resources/assets/js/plugin/sweetalert/sweetalert.min.js',
-        'resources/assets/js/plugins.js'
+        // 'resources/assets/js/plugins.js'
     ], 'public/js/frontend.js')
     .js([
         'resources/assets/js/backend/app.js',
