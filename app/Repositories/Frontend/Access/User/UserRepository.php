@@ -66,7 +66,7 @@ class UserRepository extends BaseRepository
      */
     public function getEmailForPasswordToken($token)
     {
-        $rows = DB::table(config('auth.passwords.users.table'))->get();
+        $rows = DB::connection('tenant')->table(config('auth.passwords.users.table'))->get();
 
         foreach ($rows as $row) {
             if (password_verify($token, $row->token)) {

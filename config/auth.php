@@ -97,6 +97,7 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
+            'connection' => 'tenant',
             'expire' => 60,
         ],
     ],

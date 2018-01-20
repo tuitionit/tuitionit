@@ -1,54 +1,22 @@
 @extends('frontend.layouts.app')
 
+@section ('body-class', 'with-bg')
+
 @section('after-styles')
     <style media="screen">
-        body {
-            background-color: #2B3F52;
-        }
-
-        .tu-navbar-container {
-            background: transparent !important;
-        }
-        
-        .uk-navbar-item.uk-logo {
-            color: #AAA;
-        }
-
-        .uk-navbar-item.uk-logo:hover {
-            color: #FFF;
-        }
-
-        .institute-logo {
-            padding: 40px 0;
-        }
-        .institute-logo img {
-            display: block;
-            margin: 0 auto;
-            width: 120px;
-        }
-
-        .login-container {
-            background: white url('img/login-bg.jpg') no-repeat 50% 85%;
-            border-radius: 6px;
-            overflow: hidden;
-            margin: 60px auto 40px;
-            max-width: 360px;
-        }
-
-        .login-container .login {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px 40px;
-        }
     </style>
 @stop
 
 @section('content')
     <div class="uk-container uk-container-small">
-        <div class="uk-card login-container">
-            <div class="login">
+        <div class="uk-card form-container">
+            <div class="login uk-card-body">
                 <div class="institute-logo">
                     <img src="{{ asset('/img/logo.png') }}" alt="logo" />
                 </div>
+
+                <h3 class="uk-card-title">{{ trans('labels.frontend.auth.login_box_title') }}</h3>
+
                 <div class="system-login">
                     {{ Form::open(['route' => 'frontend.auth.login', 'class' => 'form-horizontal']) }}
 

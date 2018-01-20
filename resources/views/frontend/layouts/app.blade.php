@@ -41,8 +41,10 @@
             @include('includes.partials.logged-in-as')
             @include('frontend.includes.nav')
 
-            <div class="uk-container uk-container-lrage">
-                @include('includes.partials.messages')
+            <div class="uk-container uk-container-lrage tu-main-container">
+                <div class="tu-alerts">
+                    @include('includes.partials.messages')
+                </div>
                 @yield('content')
             </div><!-- container -->
         </div><!--#app-->

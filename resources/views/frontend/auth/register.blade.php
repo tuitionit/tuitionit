@@ -1,48 +1,39 @@
 @extends('frontend.layouts.app')
 
+@section ('body-class', 'with-bg')
+
 @section('content')
-    <div class="row">
+    <div class="uk-container uk-container-small">
+        <div class="uk-card form-container">
+            <div class="register uk-card-body">
+                <div class="institute-logo">
+                    <img src="{{ asset('/img/logo.png') }}" alt="logo" />
+                </div>
 
-        <div class="col-md-8 col-md-offset-2">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.frontend.auth.register_box_title') }}</div>
+                <h3 class="uk-card-title">{{ trans('labels.frontend.auth.register_box_title') }}</h3>
 
                 <div class="panel-body">
-
                     {{ Form::open(['route' => 'frontend.auth.register', 'class' => 'form-horizontal']) }}
 
                     <div class="uk-margin">
-                        {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::input('name', 'name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
-                        </div><!--col-md-6-->
+                        {{ Form::input('name', 'name', null, ['class' => 'uk-input', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
                     </div><!--uk-margin-->
 
                     <div class="uk-margin">
-                        {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
-                        </div><!--col-md-6-->
+                        {{ Form::input('email', 'email', null, ['class' => 'uk-input', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                     </div><!--uk-margin-->
 
                     <div class="uk-margin">
-                        {{ Form::label('password', trans('validation.attributes.frontend.password'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.password')]) }}
-                        </div><!--col-md-6-->
+                        {{ Form::input('password', 'password', null, ['class' => 'uk-input', 'placeholder' => trans('validation.attributes.frontend.password')]) }}
                     </div><!--uk-margin-->
 
                     <div class="uk-margin">
-                        {{ Form::label('password_confirmation', trans('validation.attributes.frontend.password_confirmation'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::input('password', 'password_confirmation', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.password_confirmation')]) }}
-                        </div><!--col-md-6-->
+                        {{ Form::input('password', 'password_confirmation', null, ['class' => 'uk-input', 'placeholder' => trans('validation.attributes.frontend.password_confirmation')]) }}
                     </div><!--uk-margin-->
 
                     @if (config('access.captcha.registration'))
                         <div class="uk-margin">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="">
                                 {!! Form::captcha() !!}
                                 {{ Form::hidden('captcha_status', 'true') }}
                             </div><!--col-md-6-->
@@ -50,20 +41,14 @@
                     @endif
 
                     <div class="uk-margin">
-                        <div class="col-md-6 col-md-offset-4">
-                            {{ Form::submit(trans('labels.frontend.auth.register_button'), ['class' => 'btn btn-primary']) }}
-                        </div><!--col-md-6-->
+                        {{ Form::submit(trans('labels.frontend.auth.register_button'), ['class' => 'uk-button uk-button-primary uk-width-1-1']) }}
                     </div><!--uk-margin-->
 
                     {{ Form::close() }}
-
-                </div><!-- panel body -->
-
-            </div><!-- panel -->
-
-        </div><!-- col-md-8 -->
-
-    </div><!-- row -->
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('after-scripts')

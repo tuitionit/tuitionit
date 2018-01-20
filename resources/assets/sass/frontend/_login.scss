@@ -1,0 +1,73 @@
+body.with-bg {
+    background-color: #2B3F52;
+
+    .tu-navbar-container {
+        background: transparent !important;
+    }
+
+    .tu-main-container {
+        margin-top: 40px;
+    }
+
+    .uk-navbar-item.uk-logo {
+        color: #AAA;
+
+        &:hover {
+            color: #FFF;
+        }
+    }
+
+    .institute-logo {
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 120px;
+        }
+    }
+
+    .form-container {
+        background: white url('/img/login-bg.jpg') no-repeat 50% 85%;
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 20px auto 40px;
+        max-width: 360px;
+
+        .login, .register, .rest-password {
+            background: rgba(255, 255, 255, 0.9);
+
+            h3 {
+                color: #999;
+                text-align: center;
+            }
+        }
+    }
+
+    // Alerts
+    .tu-alerts {
+        margin: 0 auto;
+        max-width: 360px;
+
+        .uk-alert{
+            border-radius: 6px;
+            position: relative;
+
+            &:after {
+                background-color: inherit;
+                bottom: -10px;
+                content: '';
+                display: block;
+                height: 20px;
+                position: absolute;
+                right: 20px;
+                transform: rotate(45deg);
+                width: 20px;
+            }
+
+            &.uk-alert-danger {
+                background: $with-bg-alert-danger-background;
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+    }
+}
