@@ -88,7 +88,7 @@
                         <div class="progress-bar" style="width: {{ $totalStudents ? ($thisMonthStudents / $totalStudents) * 100 : 0 }}%"></div>
                     </div>
                     <span class="progress-description">
-                        {{ $totalStudents ? round(($thisMonthSessions / $totalSessions) * 100, 2) : 0 }}% increase in this month
+                        {{ $totalSessions ? round(($thisMonthSessions / $totalSessions) * 100, 2) : 0 }}% increase in this month
                     </span>
                 </div>
                 <!-- /.info-box-content -->
