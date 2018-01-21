@@ -44,7 +44,7 @@
 @endsection
 
 @section('content')
-    {{ Form::model($session, ['route' => ['admin.sessions.store', $session], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'session-form']) }}
+    {{ Form::model($session, ['route' => ['admin.sessions.update', $session], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'put', 'id' => 'session-form']) }}
     <div class="box box-warning box-form">
         <div class="box-header">
 

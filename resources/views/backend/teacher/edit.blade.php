@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    {{ Form::model($teacher, ['route' => ['admin.teachers.store', $teacher], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::model($teacher, ['route' => ['admin.teachers.store', $teacher], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'put']) }}
 
     <div class="box box-warning box-form">
         <div class="box-header">
