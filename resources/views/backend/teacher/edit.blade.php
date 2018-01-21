@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    {{ Form::model($teacher, ['route' => ['admin.teachers.store', $teacher], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'put']) }}
+    {{ Form::model($teacher, ['route' => ['admin.teachers.update', $teacher], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'put']) }}
 
     <div class="box box-warning box-form">
         <div class="box-header">
@@ -40,7 +40,7 @@
                                 {{ Form::label('title', trans('validation.attributes.backend.teachers.title'), ['class' => 'col-lg-2 control-label']) }}
 
                                 <div class="col-lg-10">
-                                    {{ Form::select('title', $teacher->getTitles(), '', ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.teachers.title')]) }}
+                                    {{ Form::select('title', $teacher->getTitles(), null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.teachers.title')]) }}
                                 </div><!--col-lg-10-->
                             </div><!--form control-->
 
