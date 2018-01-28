@@ -18,16 +18,16 @@ class TeachersDataTable extends DataTable
         $export = $this->request->get('action', null) != null;
         return datatables($query)
             ->rawColumns(['status', 'action'])
-            ->editColumn('name', function($teacher) use($export) {
+            ->editColumn('name', function ($teacher) use ($export) {
                 return $export ? $teacher->name : link_to_route('admin.teachers.edit', $teacher->name, ['id' => $teacher->id]);
             })
-            ->editColumn('short_name', function($teacher) use($export) {
+            ->editColumn('short_name', function ($teacher) use ($export) {
                 return $export ? $teacher->short_name : link_to_route('admin.teachers.edit', $teacher->short_name, ['id' => $teacher->id]);
             })
-            ->editColumn('status', function($teacher) use($export) {
+            ->editColumn('status', function ($teacher) use ($export) {
                 return $export ? $teacher->status_label : $teacher->status_html_label;
             })
-            ->addColumn('action', function($teacher) {
+            ->addColumn('action', function ($teacher) {
                 return $teacher->action_buttons;
             });
     }

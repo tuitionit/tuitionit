@@ -10,27 +10,27 @@ use App\Http\Requests\Request;
  */
 class FetchSessionsRequest extends Request
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return access()->allow('manage-sessions');
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return access()->allow('manage-sessions');
+    }
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
-			'start' => 'date',
-			'end' => 'date',
-			'timezone' => 'timezone',
-		];
-	}
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'start' => 'date',
+            'end' => 'date',
+            'timezone' => 'timezone',
+        ];
+    }
 }

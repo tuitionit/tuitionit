@@ -35,7 +35,7 @@ class SessionListController extends Controller
 
         $sessions = $sessionsQuery->get();
 
-        $list = $sessions->map(function($session) {
+        $list = $sessions->map(function ($session) {
             return ['id' => $session->id, 'text' => $session->name];
         });
 

@@ -72,11 +72,11 @@ class StudentController extends Controller
 
         // add locations
         $locations = $request->get('locations', []);
-        if(!empty($locations)) {
+        if (!empty($locations)) {
             $student->locations()->sync($locations);
         }
 
-        if($request->has('batch_id')) {
+        if ($request->has('batch_id')) {
             $student->batches()->syncWithoutDetaching([$request->input('batch_id')]);
             return redirect()->route('admin.batches.show', ['id' => $request->input('batch_id')])->withFlashSuccess(trans('alerts.backend.students.created'));
         }
@@ -125,7 +125,7 @@ class StudentController extends Controller
 
         // add / remove locations
         $locations = $request->get('locations', []);
-        if(!empty($locations)) {
+        if (!empty($locations)) {
             $student->locations()->sync($locations);
         }
 

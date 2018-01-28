@@ -73,4 +73,27 @@ class PaymentRepository extends BaseRepository
 
         throw new GeneralException(trans('exceptions.backend.payments.delete_error'));
     }
+
+    /**
+     * Returns the total of payments received in each month for a given year
+     * @param integer $year
+     * @return mixed
+     */
+    public function monthlyEarningsOfYear($year = null)
+    {
+        if ($year == null) {
+            $year = date('Y');
+        }
+
+        return $this->query()
+            ->select(
+                DB::raw('SUM(`amount`) as amount'),
+                DB::raw((DB::connection()->getDriverName() == 'sqlite'
+                    ? 'CAST(STRFTIME("%m", `paid_at`) AS INTEGER)'
+                    : 'MONTH(`paid_at`)') . ' AS `paid_month`')
+            )
+            ->whereBetween('paid_at', [$year . '-01-01 00:00:00', $year . '-12-31 23:59:59'])
+            ->groupBy('paid_month')
+            ->get();
+    }
 }

@@ -18,10 +18,10 @@ class RolesDataTable extends DataTable
         $export = $this->request->get('action', null) != null;
         return datatables($query)
             ->rawColumns(['permissions', 'status', 'action'])
-            ->editColumn('name', function($role) use($export) {
+            ->editColumn('name', function ($role) use ($export) {
                 return $export ? $role->name : link_to_route('admin.access.role.edit', $role->name, ['id' => $role->id]);
             })
-            ->editColumn('permissions', function($role) use($export) {
+            ->editColumn('permissions', function ($role) use ($export) {
                 if ($role->all) {
                     return $export
                         ? trans('labels.general.all')
@@ -32,13 +32,13 @@ class RolesDataTable extends DataTable
                     ? ($export ? implode(' / ', $permissions) : implode('<br/>', $permissions))
                     : ($export ? trans('labels.general.none') : '<span class="label label-danger">'.trans('labels.general.none').'</span>');
             })
-            ->editColumn('users', function($role) use($export) {
+            ->editColumn('users', function ($role) use ($export) {
                 return $role->users->count();
             })
-            ->editColumn('sort', function($role) use($export) {
+            ->editColumn('sort', function ($role) use ($export) {
                 return $role->sort;
             })
-            ->addColumn('action', function($role) {
+            ->addColumn('action', function ($role) {
                 return $role->action_buttons;
             });
     }

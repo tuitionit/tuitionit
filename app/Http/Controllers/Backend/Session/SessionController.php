@@ -62,7 +62,16 @@ class SessionController extends Controller
         $subjects = Subject::all()->pluck('name', 'id');
         $teachers = Teacher::all()->pluck('name', 'id');
 
-        return view('backend.session.create')->with(compact('session', 'sessionGroup', 'locations', 'rooms', 'batches', 'courses', 'subjects', 'teachers'));
+        return view('backend.session.create')->with(compact(
+            'session',
+            'sessionGroup',
+            'locations',
+            'rooms',
+            'batches',
+            'courses',
+            'subjects',
+            'teachers'
+        ));
     }
 
     /**
@@ -106,7 +115,7 @@ class SessionController extends Controller
         $teachers = Teacher::all()->pluck('name', 'id');
 
         $repeating = isset($session->group);
-        $course = $session->course()->pluck('name','id');
+        $course = $session->course()->pluck('name', 'id');
 
         return view('backend.session.edit')
             ->with(compact(
@@ -173,15 +182,23 @@ class SessionController extends Controller
     {
         $input = $request->all();
 
-        if($request->input('repeat', false) && $request->has('repeat_type')) {
-            $startTime = $request->has('start_time') ? new Carbon($request->input('start_time')) : null;
-            $endTime = $request->has('end_time') ? new Carbon($request->input('end_time')) : $startTime->copy()->addHours(1);
+        if ($request->input('repeat', false) && $request->has('repeat_type')) {
+            $startTime = $request->has('start_time')
+                ? new Carbon($request->input('start_time'))
+                : null;
+            $endTime = $request->has('end_time')
+                ? new Carbon($request->input('end_time'))
+                : $startTime->copy()->addHours(1);
             $repeatType = $request->input('repeat_type');
             $frequency = $request->input('frequency', 1);
             $repeatOn = $request->input('repeat_on', []);
             $repeatBy = $request->input('repeat_by');
-            $repeatStartDate = $request->has('start_date') ? new Carbon($request->input('start_date')) : null;
-            $repeatEndDate = $request->has('end_date') ? new Carbon($request->input('end_date')) : null;
+            $repeatStartDate = $request->has('start_date')
+                ? new Carbon($request->input('start_date'))
+                : null;
+            $repeatEndDate = $request->has('end_date')
+                ? new Carbon($request->input('end_date'))
+                : null;
             $count = $request->input('count', 1);
             $end = $request->input('end', $count >= 1 ? 'after' : 'on');
             $duration = $startTime->diff($endTime);
@@ -210,23 +227,35 @@ class SessionController extends Controller
             $sessions = [];
 
             switch ($repeatType) {
-                case 'daily': $addOffset = 'addDays'; break;
-                case 'weekly': $addOffset = 'addWeeks'; break;
-                case 'monthly': $addOffset = 'addMonths'; break;
-                case 'yearly': $addOffset = 'addYears'; break;
-                default: $addOffset = null; break;
+                case 'daily':
+                    $addOffset = 'addDays';
+                    break;
+                case 'weekly':
+                    $addOffset = 'addWeeks';
+                    break;
+                case 'monthly':
+                    $addOffset = 'addMonths';
+                    break;
+                case 'yearly':
+                    $addOffset = 'addYears';
+                    break;
+                default:
+                    $addOffset = null;
+                    break;
             }
 
             // count is transformed into repeat end date
-            if(($end == 'after' || !$repeatEndDate) && $count > 1) {
+            if (($end == 'after' || !$repeatEndDate) && $count > 1) {
                 $repeatEndDate = $repeatStartDate->copy()->$addOffset($frequency * $count);
             }
 
-            if($repeatEndDate) {
+            if ($repeatEndDate) {
                 while ($startTime->lt($repeatEndDate)) {
                     $sessionData = $data;
-                    if($repeatType == 'weekly' && !empty($repeatOn)) {
-                        $startOfWeek = $startTime->dayOfWeek != Carbon::SUNDAY ? $startTime->copy()->modify('last sunday') : $startTime->copy();
+                    if ($repeatType == 'weekly' && !empty($repeatOn)) {
+                        $startOfWeek = $startTime->dayOfWeek != Carbon::SUNDAY
+                            ? $startTime->copy()->modify('last sunday')
+                            : $startTime->copy();
                         foreach ($repeatOn as $day) {
                             $sessionStartTime = $startOfWeek->copy()->addDays($day);
                             $sessionData['start_time'] = $sessionStartTime->toDateTimeString();
@@ -234,15 +263,20 @@ class SessionController extends Controller
 
                             $sessions[] = $sessionData;
                         }
-                    } elseif($repeatType == 'monthly' && $repeatBy == 'dow') {
-                        $sessionStartTime = $startTime->copy()->startOfMonth()->subDay()->modify($modifier . ' ' . $dayOfWeek);
+                    } elseif ($repeatType == 'monthly' && $repeatBy == 'dow') {
+                        $sessionStartTime = $startTime->copy()
+                            ->startOfMonth()
+                            ->subDay()
+                            ->modify($modifier . ' ' . $dayOfWeek);
                         $sessionData['start_time'] = $sessionStartTime->toDateTimeString();
                         $sessionData['end_time'] = $sessionStartTime->add($duration)->toDateTimeString();
 
                         $sessions[] = $sessionData;
                     } else {
                         $sessionData['start_time'] = $startTime->toDateTimeString();
-                        $sessionData['end_time'] = $startTime->copy()->add($duration)->toDateTimeString();
+                        $sessionData['end_time'] = $startTime->copy()
+                            ->add($duration)
+                            ->toDateTimeString();
 
                         $sessions[] = $sessionData;
                     }
@@ -250,8 +284,6 @@ class SessionController extends Controller
                     $startTime->$addOffset($frequency);
                 }
             }
-
-            // dd($sessions);
 
             DB::connection('tenant')->table('sessions')->insert($sessions);
 

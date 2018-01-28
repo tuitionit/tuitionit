@@ -54,8 +54,7 @@ class DashboardController extends Controller
         PaymentRepository $payments,
         SessionRepository $sessions,
         StudentRepository $students
-    )
-    {
+    ) {
         $this->batches = $batches;
         $this->courses = $courses;
         $this->payments = $payments;

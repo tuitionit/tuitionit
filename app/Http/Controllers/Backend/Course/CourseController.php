@@ -55,7 +55,7 @@ class CourseController extends Controller
     {
         $data = $request->all();
 
-        if(!access()->allow('manage-institutes')) {
+        if (!access()->allow('manage-institutes')) {
             $data['institute_id'] = access()->user()->institute_id;
         }
 

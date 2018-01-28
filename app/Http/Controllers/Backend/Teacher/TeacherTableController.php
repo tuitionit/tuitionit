@@ -34,7 +34,7 @@ class TeacherTableController extends Controller
     {
         return Datatables::of($this->teachers->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'email'])
-            ->editColumn('name', function($teacher) {
+            ->editColumn('name', function ($teacher) {
                 return link_to_route('admin.teachers.show', $teacher->name, ['id' => $teacher->id]);
             })
             ->editColumn('status', function ($teacher) {

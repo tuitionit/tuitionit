@@ -38,7 +38,7 @@ class SessionCalendarController extends Controller
 
         $sessions = $this->sessions->getBetween($start, $end);
 
-        return $sessions->map(function($session, $key) {
+        return $sessions->map(function ($session, $key) {
             return [
                 'id' => $session->id,
                 'title' => $session->name,

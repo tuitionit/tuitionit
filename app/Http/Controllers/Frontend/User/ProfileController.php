@@ -36,7 +36,7 @@ class ProfileController extends Controller
     public function avatar(UpdateProfileRequest $request)
     {
         // save the image
-        if($request->has('picture')) {
+        if ($request->has('picture')) {
             $content = Canvas::toImage($request->input('picture'));
             Storage::disk('public')->put('img/sources/' . $source->id . '/avatar.png', $content);
         }
@@ -59,7 +59,7 @@ class ProfileController extends Controller
         }
 
         // save the image
-        if($request->has('picture')) {
+        if ($request->has('picture')) {
             $content = Canvas::toImage($request->input('picture'));
             Storage::disk('public')->put('img/sources/' . $source->id . '/avatar.png', $content);
         }

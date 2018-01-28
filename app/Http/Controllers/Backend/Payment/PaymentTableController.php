@@ -34,7 +34,7 @@ class PaymentTableController extends Controller
     {
         return Datatables::eloquent($this->payments->getForDataTable())
             ->escapeColumns(['student_id', 'month', 'notes'])
-            ->editColumn('name', function($payment) {
+            ->editColumn('name', function ($payment) {
                 return link_to_route('admin.payments.show', $payment->student->name, ['id' => $payment->id]);
             })
             ->editColumn('type', function ($payment) {

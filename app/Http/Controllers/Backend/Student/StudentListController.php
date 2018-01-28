@@ -35,7 +35,7 @@ class StudentListController extends Controller
 
         $students = $studentsQuery->get();
 
-        $list = $students->map(function($student) {
+        $list = $students->map(function ($student) {
             return ['id' => $student->id, 'text' => $student->name];
         });
 

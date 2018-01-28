@@ -57,13 +57,13 @@ class TeacherController extends Controller
     {
         $data = $request->all();
 
-        if(!access()->allow('manage-institutes')) {
+        if (!access()->allow('manage-institutes')) {
             $data['institute_id'] = access()->user()->institute_id;
         }
 
         $teacher = Teacher::create($data);
 
-        if($teacher && $request->has('subjects')) {
+        if ($teacher && $request->has('subjects')) {
             $teacher->subjects()->attach($request->input('subjects'));
         }
 

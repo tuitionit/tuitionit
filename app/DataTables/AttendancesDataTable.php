@@ -18,12 +18,12 @@ class AttendancesDataTable extends DataTable
         $export = $this->request->get('action', null) != null;
         return datatables($query)
             ->rawColumns(['status', 'action'])
-            ->editColumn('student.name', function($attendance) use($export) {
+            ->editColumn('student.name', function ($attendance) use ($export) {
                 return isset($attendance->student)
                     ? ($export ? $attendance->student->name : link_to_route('admin.students.show', $attendance->student->name, ['id' => $attendance->student_id]))
                     : '';
             })
-            ->editColumn('session.name', function($attendance) use($export) {
+            ->editColumn('session.name', function ($attendance) use ($export) {
                 return isset($attendance->session)
                     ? ($export ? $attendance->session->name : link_to_route('admin.sessions.show', $attendance->session->name, ['id' => $attendance->session_id]))
                     : '';
@@ -33,7 +33,7 @@ class AttendancesDataTable extends DataTable
                     ? ($export ? $attendance->batch->name : link_to_route('admin.batches.show', $attendance->batch->name, ['id' => $attendance->batch_id]))
                     : '';
             })*/
-            ->addColumn('action', function(Attendance $attendance) {
+            ->addColumn('action', function (Attendance $attendance) {
                 return $attendance->action_buttons;
             });
     }
@@ -112,6 +112,5 @@ class AttendancesDataTable extends DataTable
 
     public function mark()
     {
-
     }
 }

@@ -10,27 +10,27 @@ use App\Http\Requests\Request;
  */
 class StoreRoomRequest extends Request
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return access()->allow('manage-rooms');
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return access()->allow('manage-rooms');
+    }
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
-			'name' => 'required',
-			'description' => 'max:500',
-			'capacity' => 'required|integer',
-		];
-	}
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name' => 'required',
+            'description' => 'max:500',
+            'capacity' => 'required|integer',
+        ];
+    }
 }

@@ -57,7 +57,7 @@ class AttendanceController extends Controller
             // ->pluck('name', 'id');
             ->get();
 
-        $sessions = empty($sessionsOfDay) ? [] : $sessionsOfDay->map(function($session) {
+        $sessions = empty($sessionsOfDay) ? [] : $sessionsOfDay->map(function ($session) {
             return [
                 'id' => $session->id,
                 'text' => $session->name,
@@ -85,9 +85,9 @@ class AttendanceController extends Controller
             'count' => $session->attendance,
         ];
 
-        if($student) {
-            if($session->batch->hasStudent($student->id)) {
-                if(!$attendance = Attendance::where([
+        if ($student) {
+            if ($session->batch->hasStudent($student->id)) {
+                if (!$attendance = Attendance::where([
                     ['student_id', '=', $student->id],
                     ['session_id', '=', $session->id],
                 ])->first()) {
@@ -100,7 +100,7 @@ class AttendanceController extends Controller
                     ]);
                 }
 
-                if($attendance) {
+                if ($attendance) {
                     $output['type'] = 'success';
                     $output['message'] = trans('strings.backend.attendances.success');
                     $output['count'] = $session->attendance;

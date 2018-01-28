@@ -10,26 +10,26 @@ use App\Http\Requests\Request;
  */
 class UpdateSubjectRequest extends Request
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return access()->allow('manage-subjects');
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return access()->allow('manage-subjects');
+    }
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
-			'name' => 'required|unique:tenant.subjects,name,' . $this->subject->id,
-			'description' => 'max:500',
-		];
-	}
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name' => 'required|unique:tenant.subjects,name,' . $this->subject->id,
+            'description' => 'max:500',
+        ];
+    }
 }

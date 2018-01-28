@@ -17,10 +17,10 @@ class SubjectDataTable extends DataTable
     {
         return datatables($query)
         ->rawColumns(['status', 'action'])
-        ->editColumn('status', function($subject) {
+        ->editColumn('status', function ($subject) {
             return $subject->status_label;
         })
-        ->addColumn('action', function(Subject $subject) {
+        ->addColumn('action', function (Subject $subject) {
             return $subject->action_buttons;
         });
     }

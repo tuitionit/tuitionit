@@ -11,26 +11,26 @@ use Illuminate\Validation\Rule;
  */
 class UpdatePaymentRequest extends Request
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return access()->allow('manage-locations');
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return access()->allow('manage-locations');
+    }
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
-			'name' => 'required',
-			'code' => 'required|unique:tenant.locations,code,' . $this->location->id,
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name' => 'required',
+            'code' => 'required|unique:tenant.locations,code,' . $this->location->id,
             /*[
                 'required',
                 Rule::unique('locations')->where(function($query) {
@@ -39,18 +39,18 @@ class UpdatePaymentRequest extends Request
                     }
                 })->ignore($this->location->id),
             ],*/
-			'web' => 'nullable|url',
+            'web' => 'nullable|url',
             'institute_id' => 'manageable_institute',
-		];
-	}
+        ];
+    }
 
-	/**
-	 * Set the localized / nice names for attributes.
-	 *
-	 * @return array
-	 */
-	public function attributes()
-	{
-		return trans('validation.attributes.backend.payments');
-	}
+    /**
+     * Set the localized / nice names for attributes.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('validation.attributes.backend.payments');
+    }
 }

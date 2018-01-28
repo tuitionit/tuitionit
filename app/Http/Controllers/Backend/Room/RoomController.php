@@ -59,7 +59,8 @@ class RoomController extends Controller
         $data['location_id'] = $location->id;
         $room = Room::create($data);
 
-        return redirect()->route('admin.locations.show', $location->id)->withFlashSuccess(trans('alerts.backend.rooms.created'));
+        return redirect()->route('admin.locations.show', $location->id)
+            ->withFlashSuccess(trans('alerts.backend.rooms.created'));
     }
 
     /**
@@ -96,7 +97,8 @@ class RoomController extends Controller
         $data = $request->all();
 
         $room->update($data);
-        return redirect()->route('admin.locations.show', $room->location_id)->withFlashSuccess(trans('alerts.backend.rooms.updated'));
+        return redirect()->route('admin.locations.show', $room->location_id)
+            ->withFlashSuccess(trans('alerts.backend.rooms.updated'));
     }
 
     /**

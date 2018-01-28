@@ -34,7 +34,7 @@ class SubjectTableController extends Controller
     {
         return Datatables::of($this->subjects->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'description'])
-            ->editColumn('name', function($subject) {
+            ->editColumn('name', function ($subject) {
                 return link_to_route('admin.subjects.edit', $subject->name, ['id' => $subject->id]);
             })
             ->editColumn('status', function ($user) {

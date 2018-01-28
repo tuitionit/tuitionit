@@ -18,27 +18,27 @@ class UsersDataTable extends DataTable
         $export = $this->request->get('action', null) != null;
         return datatables($query)
         ->rawColumns(['confirmed', 'roles', 'status', 'action'])
-        ->editColumn('id', function($user) use($export) {
+        ->editColumn('id', function ($user) use ($export) {
             return $export ? $user->id : link_to_route('admin.users.show', $user->id, ['id' => $user->id]);
         })
-        ->editColumn('name', function($user) use($export) {
+        ->editColumn('name', function ($user) use ($export) {
             return $export ? $user->name : link_to_route('admin.users.show', $user->name, ['id' => $user->id]);
         })
-        ->editColumn('parent.name', function($user) use($export) {
+        ->editColumn('parent.name', function ($user) use ($export) {
             return isset($user->parent)
                 ? ($export ? $user->parent->name : link_to_route('admin.users.show', $user->parent->name, ['id' => $user->parent_id]))
                 : ($export ? '' : link_to_route('admin.users.edit', trans('strings.backend.general.click_to_select'), ['id' => $user->id], ['class' => 'btn btn-xs btn-default']));
         })
-        ->editColumn('confirmed', function($user) use($export) {
+        ->editColumn('confirmed', function ($user) use ($export) {
             return $export ? $user->confirmed_label : $user->confirmed_html_label;
         })
-        ->editColumn('roles', function($user) use($export) {
+        ->editColumn('roles', function ($user) use ($export) {
             $roles = $user->roles->pluck('name')->toArray();
             return $user->roles->count()
                 ? ($export ? implode(' / ', $roles) : implode('<br/>', $roles))
                 : ($export ? trans('labels.general.none') : link_to_route('admin.users.edit', trans('strings.backend.general.click_to_select'), ['id' => $user->id], ['class' => 'btn btn-xs btn-default']));
         })
-        ->addColumn('action', function($user) {
+        ->addColumn('action', function ($user) {
             return $user->action_buttons;
         });
     }
