@@ -4,8 +4,8 @@ pipeline {
         stage('build') {
             steps {
                 sh 'php --version'
-                sh 'pwd'
-                sh './vendor/bin/phpunit'
+                echo pwd()
+                sh "${pwd()}/vendor/bin/phpunit"
             }
         }
     }
