@@ -7,6 +7,14 @@ pipeline {
             }
         }
 
+        stage('config') {
+            steps {
+                configFileProvider(configFile(fileId: 'tuitionix-test-env', 'TUITIONIX_ENV')) {
+                    copy new File('./.env') << new File($TUITIONIX_ENV)
+                }
+            }
+        }
+
         stage('composer_install') {
             steps {
                 sh 'composer install'
