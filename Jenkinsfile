@@ -10,7 +10,7 @@ pipeline {
         stage('config') {
             steps {
                 configFileProvider(configFile(fileId: 'tuitionix-test-env', 'TUITIONIX_ENV')) {
-                    # new File('./.env') << new File($TUITIONIX_ENV)
+                    // new File('./.env') << new File($TUITIONIX_ENV)
                     sh 'cp $TUITIONIX_ENV ./.env'
                 }
             }
