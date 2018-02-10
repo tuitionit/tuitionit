@@ -18,11 +18,12 @@ trait BatchStudents
      * @param \App\Models\Batch\Batch
      *
      */
-    function addStudents(Batch $batch, AddStudentsRequest $request)
+    public function addStudents(Batch $batch, AddStudentsRequest $request)
     {
         $result = $batch->students()->syncWithoutDetaching($request->input('students'));
 
-        return redirect()->route('admin.batches.show', ['id' => $batch->id])->withFlashSuccess(trans_choice('alerts.backend.batches.students_added', count($result['attached'])));
+        return redirect()->route('admin.batches.show', ['id' => $batch->id])
+            ->withFlashSuccess(trans_choice('alerts.backend.batches.students_added', count($result['attached'])));
     }
 
     /**
@@ -31,10 +32,11 @@ trait BatchStudents
      * @param \App\Models\Batch\Batch
      *
      */
-    function removeStudents(Batch $batch, RemoveStudentsReqeuest $request)
+    public function removeStudents(Batch $batch, RemoveStudentsReqeuest $request)
     {
         $result = $batch->students()->detach($request->input('students'));
 
-        return redirect()->route('admin.batch.show', ['id' => $batch->id])->withFlashSuccess(trans_choice('alerts.backend.batch.students_added', count($result['attached'])));
+        return redirect()->route('admin.batch.show', ['id' => $batch->id])
+            ->withFlashSuccess(trans_choice('alerts.backend.batch.students_added', count($result['attached'])));
     }
 }

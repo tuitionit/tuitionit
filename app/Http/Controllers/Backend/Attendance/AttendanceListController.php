@@ -35,7 +35,7 @@ class AttendanceListController extends Controller
 
         $attendances = $attendancesQuery->get();
 
-        $list = $attendances->map(function($batch) {
+        $list = $attendances->map(function ($batch) {
             return ['id' => $batch->id, 'text' => $batch->name];
         });
 

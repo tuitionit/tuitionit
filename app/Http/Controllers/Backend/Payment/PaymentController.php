@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Payment;
 
 use Carbon\Carbon as Carbon;
+use App\DataTables\PaymentsDataTable;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
@@ -37,9 +38,9 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManagePaymentRequest $request)
+    public function index(ManagePaymentRequest $request, PaymentsDataTable $dataTable)
     {
-        return view('backend.payment.index');
+        return $dataTable->render('backend.payment.index');
     }
 
     /**
@@ -132,19 +133,21 @@ class PaymentController extends Controller
         $data['month'] = strtotime($data['month']);
 
         $payment->update($data);
-        
+
         return redirect()->route('admin.payments.index')->withFlashSuccess(trans('alerts.backend.payments.updated'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Http\Requests\Backend\Payment\ManagePaymentRequest $request
+     * @param  \App\Models\Payment\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ManagePaymentRequest $request, Payment $payment)
     {
-        //
+        $this->payments->delete($payment);
+        return redirect()->route('admin.payments.index')->withFlashSuccess(trans('alerts.backend.payments.deleted'));
     }
 
     /**

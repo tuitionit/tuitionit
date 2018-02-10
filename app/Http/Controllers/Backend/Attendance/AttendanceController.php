@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Attendance;
 
 use Carbon\Carbon as Carbon;
+use App\DataTables\AttendancesDataTable;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
@@ -37,9 +38,9 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageAttendanceRequest $request)
+    public function index(ManageAttendanceRequest $request, AttendancesDataTable $dataTable)
     {
-        return view('backend.attendance.index');
+        return $dataTable->render('backend.attendance.index');
     }
 
     /**
@@ -56,7 +57,7 @@ class AttendanceController extends Controller
             // ->pluck('name', 'id');
             ->get();
 
-        $sessions = empty($sessionsOfDay) ? [] : $sessionsOfDay->map(function($session) {
+        $sessions = empty($sessionsOfDay) ? [] : $sessionsOfDay->map(function ($session) {
             return [
                 'id' => $session->id,
                 'text' => $session->name,
@@ -84,9 +85,9 @@ class AttendanceController extends Controller
             'count' => $session->attendance,
         ];
 
-        if($student) {
-            if($session->batch->hasStudent($student->id)) {
-                if(!$attendance = Attendance::where([
+        if ($student) {
+            if ($session->batch->hasStudent($student->id)) {
+                if (!$attendance = Attendance::where([
                     ['student_id', '=', $student->id],
                     ['session_id', '=', $session->id],
                 ])->first()) {
@@ -99,7 +100,7 @@ class AttendanceController extends Controller
                     ]);
                 }
 
-                if($attendance) {
+                if ($attendance) {
                     $output['type'] = 'success';
                     $output['message'] = trans('strings.backend.attendances.success');
                     $output['count'] = $session->attendance;

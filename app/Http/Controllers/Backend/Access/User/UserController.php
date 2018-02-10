@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use App\DataTables\UsersDataTable;
+use App\DataTables\Scopes\ActiveUsers;
 use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Institute\InstituteRepository;
@@ -47,9 +49,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(ManageUserRequest $request)
+    public function index(ManageUserRequest $request, UsersDataTable $dataTable)
     {
-        return view('backend.access.index');
+        return $dataTable->addScope(new ActiveUsers)->render('backend.access.index');
     }
 
     /**

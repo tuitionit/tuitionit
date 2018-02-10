@@ -16,8 +16,9 @@ trait TenantConnector
     {
         DB::purge('tenant');
 
-        if(!empty($institute->host))
+        if (!empty($institute->host)) {
             Config::set('database.connections.tenant.host', $institute->host);
+        }
 
         Config::set('database.connections.tenant.database', $institute->database);
         Config::set('database.connections.tenant.username', $institute->username);

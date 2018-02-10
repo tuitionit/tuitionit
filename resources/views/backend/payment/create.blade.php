@@ -9,19 +9,14 @@
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            {{ Form::open(['route' => 'admin.payments.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::open(['route' => 'admin.payments.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+        <div class="box box-success box-form">
+            <div class="box-header">
+            </div><!-- /.box-header -->
 
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">{{ trans('labels.backend.payments.create') }}</h3>
-
-                        <div class="box-tools pull-right">
-                        </div><!--box-tools pull-right-->
-                    </div><!-- /.box-header -->
-
-                    <div class="box-body">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
                         <div class="form-group {{ $errors->first('student_id', 'has-error') }}">
                             {{ Form::label('student_id', trans('validation.attributes.backend.payments.student_id'), ['class' => 'col-lg-2 control-label']) }}
 
@@ -135,26 +130,26 @@
                                 {{ Form::textarea('notes', null, ['rows' => 2, 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.payments.notes')]) }}
                             </div><!--col-lg-10-->
                         </div><!--form-group-->
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
 
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <div class="pull-left">
-                                    {{ Form::submit(trans('buttons.backend.payment.add_payment'), ['class' => 'btn btn-success']) }}
-                                </div><!--pull-left-->
-
-                                <div class="pull-right">
-                                    {{ link_to_route('admin.payments.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger']) }}
-                                </div><!--pull-right-->
-
-                                <div class="clearfix"></div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-2 col-md-offset-6">
+                                {{ link_to_route('admin.payments.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-default btn-block']) }}
                             </div>
-                        </div><!-- /.form-group -->
-                    </div><!-- /.box-body -->
-                </div><!--box-->
-
-            {{ Form::close() }}
-        </div>
-    </div>
+                            <div class="col-xs-6 col-md-4">
+                                {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-block']) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-footer -->
+        </div><!--box-->
+    {{ Form::close() }}
 @endsection
 
 @section('after-scripts')

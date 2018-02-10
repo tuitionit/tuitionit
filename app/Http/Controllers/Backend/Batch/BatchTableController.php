@@ -34,14 +34,18 @@ class BatchTableController extends Controller
     {
         return Datatables::of($this->batches->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'description'])
-            ->editColumn('name', function($batch) {
+            ->editColumn('name', function ($batch) {
                 return link_to_route('admin.batches.show', $batch->name, ['id' => $batch->id]);
             })
-            ->editColumn('course', function($batch) {
-                return isset($batch->course) ? link_to_route('admin.courses.show', $batch->course->name, ['id' => $batch->course_id]) : '-';
+            ->editColumn('course', function ($batch) {
+                return isset($batch->course)
+                    ? link_to_route('admin.courses.show', $batch->course->name, ['id' => $batch->course_id])
+                    : '-';
             })
-            ->editColumn('location', function($batch) {
-                return isset($batch->location) ? link_to_route('admin.locations.show', $batch->location->name, ['id' => $batch->location_id]) : '-';
+            ->editColumn('location', function ($batch) {
+                return isset($batch->location)
+                    ? link_to_route('admin.locations.show', $batch->location->name, ['id' => $batch->location_id])
+                    : '-';
             })
             ->editColumn('status', function ($batch) {
                 return $batch->status_label;

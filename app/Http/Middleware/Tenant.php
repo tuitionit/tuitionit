@@ -34,12 +34,13 @@ class Tenant
      * @param \Closure
      * @return mixed
      */
-    public function handle($request, Closure $next) {
+    public function handle($request, Closure $next)
+    {
         $domain = $request->root();
         // dd($domain);
         $institute = Institute::where('domain', $domain)->first();
 
-        if(!$institute) {
+        if (!$institute) {
             throw new Exception("Unknown Institute", 1);
         }
 

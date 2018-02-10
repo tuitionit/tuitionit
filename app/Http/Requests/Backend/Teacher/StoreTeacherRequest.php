@@ -10,27 +10,27 @@ use App\Http\Requests\Request;
  */
 class StoreTeacherRequest extends Request
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return access()->allow('manage-teachers');
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return access()->allow('manage-teachers');
+    }
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
             'title' => 'required',
-			'name' => 'required',
-			'subjects' => 'array',
-		];
-	}
+            'name' => 'required',
+            'subjects' => 'array',
+        ];
+    }
 }

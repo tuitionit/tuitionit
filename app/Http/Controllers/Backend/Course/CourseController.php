@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Course;
 
+use App\DataTables\CoursesDataTable;
 use App\Models\Course\Course;
 use App\Repositories\Backend\Course\CourseRepository;
 use App\Http\Controllers\Controller;
@@ -29,9 +30,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageCourseRequest $request)
+    public function index(ManageCourseRequest $request, CoursesDataTable $dataTable)
     {
-        return view('backend.course.index');
+        return $dataTable->render('backend.course.index');
     }
 
     /**
@@ -54,7 +55,7 @@ class CourseController extends Controller
     {
         $data = $request->all();
 
-        if(!access()->allow('manage-institutes')) {
+        if (!access()->allow('manage-institutes')) {
             $data['institute_id'] = access()->user()->institute_id;
         }
 

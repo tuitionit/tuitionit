@@ -6,6 +6,30 @@
 
 require('../bootstrap');
 
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+global.$ = global.jQuery = require('jquery');
+
+require('bootstrap-sass');
+
+/* Vue Application
+ * ================
+ * Components are dynamically loaded when required.
+ * Available components
+ *  - Chart
+ */
+Vue.component('InfiniteLoading', (resolve) => {
+    require(['vue-infinite-loading'], resolve)
+});
+
+const app = new Vue({
+    el: '#app'
+});
+
 /* globals AdminLTEOptions: false */
 /* globals FastClick: false */
 

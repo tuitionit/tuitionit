@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Student;
 
 use Illuminate\Http\Request;
+use App\DataTables\StudentsDataTable;
 use App\Models\Batch\Batch;
 use App\Models\Location\Location;
 use App\Models\Student\Student;
@@ -34,9 +35,9 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManageStudentRequest $request)
+    public function index(ManageStudentRequest $request, StudentsDataTable $dataTable)
     {
-        return view('backend.student.index');
+        return $dataTable->render('backend.student.index');
     }
 
     /**
@@ -71,11 +72,11 @@ class StudentController extends Controller
 
         // add locations
         $locations = $request->get('locations', []);
-        if(!empty($locations)) {
+        if (!empty($locations)) {
             $student->locations()->sync($locations);
         }
 
-        if($request->has('batch_id')) {
+        if ($request->has('batch_id')) {
             $student->batches()->syncWithoutDetaching([$request->input('batch_id')]);
             return redirect()->route('admin.batches.show', ['id' => $request->input('batch_id')])->withFlashSuccess(trans('alerts.backend.students.created'));
         }
@@ -124,7 +125,7 @@ class StudentController extends Controller
 
         // add / remove locations
         $locations = $request->get('locations', []);
-        if(!empty($locations)) {
+        if (!empty($locations)) {
             $student->locations()->sync($locations);
         }
 

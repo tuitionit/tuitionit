@@ -18,10 +18,14 @@
     </div><!-- /.box-body -->
 </div><!--box-->
 
-<div class="box box-primary">
+<div class="box box-primary collapsed-box">
     <div class="box-header">
         <i class="fa fa-users"></i>
         <h3 class="box-title">{{ trans('labels.backend.student.batches') }}</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+            </button>
+        </div>
     </div>
     <div class="box-body">
         @if($student->batches)

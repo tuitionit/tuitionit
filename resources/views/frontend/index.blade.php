@@ -1,12 +1,18 @@
 @extends('frontend.layouts.app')
 
 @section('content')
+    <div class="uk-container ul-container-small">
+        <div class="uk-margin-large-top uk-text-center">
+            <h3>{{ trans('strings.frontend.welcome_to', ['place' => app_name()]) }}</h3>
+            @if (! $logged_in_user)
+            {{ link_to_route('frontend.auth.login', trans('navs.frontend.login'), [], ['class' => 'uk-button uk-button-primary']) }}
+            @endif
+        </div>
+    </div>
+
+    <?php /*
     <div class="row">
-
-        <example></example>
-
         <div class="col-xs-12">
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-home"></i> {{ trans('navs.general.home') }}
@@ -16,7 +22,6 @@
                     {{ trans('strings.frontend.welcome_to', ['place' => app_name()]) }}
                 </div>
             </div><!-- panel -->
-
         </div><!-- col-md-10 -->
 
         @role('Administrator')
@@ -179,4 +184,5 @@
         </div><!-- col-md-10 -->
 
     </div><!--row-->
+    */ ?>
 @endsection

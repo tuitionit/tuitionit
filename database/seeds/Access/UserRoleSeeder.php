@@ -31,25 +31,30 @@ class UserRoleSeeder extends Seeder
         $user_model = new $user_model();
         $user_model::find(2)->attachRole(2);
 
-        //Attach user role to manager user
+        //Attach manager role to manager user
         $user_model = config('auth.providers.users.model');
         $user_model = new $user_model();
         $user_model::find(3)->attachRole(3);
 
-        //Attach user role to teacher user
+        //Attach teacher role to teacher user
         $user_model = config('auth.providers.users.model');
         $user_model = new $user_model();
         $user_model::find(4)->attachRole(4);
 
-        //Attach user role to student user
+        //Attach student role to student user
         $user_model = config('auth.providers.users.model');
         $user_model = new $user_model();
         $user_model::find(5)->attachRole(5);
 
-        //Attach user role to parent user
+        //Attach parent role to parent user
         $user_model = config('auth.providers.users.model');
         $user_model = new $user_model();
         $user_model::find(6)->attachRole(6);
+
+        //Attach user role to user user
+        $user_model = config('auth.providers.users.model');
+        $user_model = new $user_model();
+        $user_model::find(7)->attachRole(7);
 
         $this->enableForeignKeys('tenant');
     }

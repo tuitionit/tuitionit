@@ -35,10 +35,10 @@ class StudentTableController extends Controller
     {
         return Datatables::of($this->students->getForDataTable($request->get('status')))
             ->escapeColumns(['name', 'email'])
-            ->editColumn('index_number', function($student) {
+            ->editColumn('index_number', function ($student) {
                 return link_to_route('admin.students.show', $student->index_number, ['id' => $student->id]);
             })
-            ->editColumn('name', function($student) {
+            ->editColumn('name', function ($student) {
                 return link_to_route('admin.students.show', $student->name, ['id' => $student->id]);
             })
             ->editColumn('status', function ($student) {

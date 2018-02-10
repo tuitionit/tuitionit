@@ -78,10 +78,18 @@ trait PaymentAttribute
     public function getStatusLabelAttribute()
     {
         switch ($this->status) {
-            case self::STATUS_PENDING: $type = 'info'; break;
-            case self::STATUS_PAID: $type = 'success'; break;
-            case self::STATUS_REFUNDED: $type = 'warning'; break;
-            case self::STATUS_OVERDUE: $type = 'danger'; break;
+            case self::STATUS_PENDING:
+                $type = 'info';
+                break;
+            case self::STATUS_PAID:
+                $type = 'success';
+                break;
+            case self::STATUS_REFUNDED:
+                $type = 'warning';
+                break;
+            case self::STATUS_OVERDUE:
+                $type = 'danger';
+                break;
             case self::STATUS_CANCELLED:
             default:
                 $type = 'default';

@@ -33,13 +33,13 @@ class SubjectListController extends Controller
     {
         $subjectsQuery = $this->subjects->searchByName($request->input('name'));
 
-        if(!access()->allow('manage-institutes')) {
+        if (!access()->allow('manage-institutes')) {
             $subjectsQuery->where('institute_id', '=', access()->user()->institute_id);
         }
 
         $subjects = $subjectsQuery->get();
 
-        $list = $subjects->map(function($subject) {
+        $list = $subjects->map(function ($subject) {
             return ['id' => $subject->id, 'text' => $subject->name];
         });
 

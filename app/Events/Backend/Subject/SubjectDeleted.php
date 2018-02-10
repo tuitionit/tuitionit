@@ -13,15 +13,15 @@ class SubjectDeleted
     use SerializesModels;
 
     /**
-     * @var $institute
+     * @var $subject
      */
-    public $institute;
+    public $subject;
 
     /**
-     * @param $institute
+     * @param $subject
      */
-    public function __construct($institute)
+    public function __construct($subject)
     {
-        $this->institute = $institute;
+        $this->subject = $subject;
     }
 }

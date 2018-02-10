@@ -9,8 +9,8 @@
         <title>@yield('title', $tenant->name)</title>
 
         <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="description" content="@yield('meta_description', 'Institute and Student Data Management System')">
+        <meta name="author" content="@yield('meta_author', 'Tuitionix')">
         @yield('meta')
 
         <!-- Styles -->
@@ -43,7 +43,7 @@
     <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">
         @include('includes.partials.logged-in-as')
 
-        <div class="wrapper">
+        <div class="wrapper" id="app">
             @include('backend.includes.header')
             @include('backend.includes.sidebar')
 

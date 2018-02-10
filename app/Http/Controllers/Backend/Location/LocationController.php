@@ -100,11 +100,13 @@ class LocationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Http\Requests\Backend\Location\ManageLocationRequest $request
+     * @param  \App\Models\Location\Location $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ManageLocationRequest $request, Location $location)
     {
-        //
+        $this->locations->delete($location);
+        return redirect()->route('admin.institute')->withFlashSuccess(trans('alerts.backend.locations.deleted'));
     }
 }

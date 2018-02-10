@@ -35,7 +35,7 @@ class BatchListController extends Controller
 
         $batches = $batchesQuery->get();
 
-        $list = $batches->map(function($batch) {
+        $list = $batches->map(function ($batch) {
             return ['id' => $batch->id, 'text' => $batch->name];
         });
 

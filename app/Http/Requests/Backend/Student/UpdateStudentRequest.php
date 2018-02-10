@@ -10,26 +10,26 @@ use App\Http\Requests\Request;
  */
 class UpdateStudentRequest extends Request
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return access()->allow('manage-students');
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return access()->allow('manage-students');
+    }
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
             'index_number' => 'required|unique:tenant.students,index_number,' . $this->student->id,
-			'name' => 'required',
-		];
-	}
+            'name' => 'required',
+        ];
+    }
 }

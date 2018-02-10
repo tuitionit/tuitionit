@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Backend\Course;
 
-
 use Illuminate\Database\Eloquent\Model;
 use App\Events\Backend\Course\CourseCreated;
 use App\Events\Backend\Course\CourseDeleted;

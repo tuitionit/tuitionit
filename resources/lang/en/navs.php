@@ -20,6 +20,7 @@ return [
 
     'frontend' => [
         'dashboard' => 'Dashboard',
+        'reports' => 'Reports',
         'login'     => 'Login',
         'macros'    => 'Macros',
         'register'  => 'Register',

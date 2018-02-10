@@ -64,13 +64,13 @@ class SubjectRepository extends BaseRepository
     }
 
     /**
-     * @param Model $subject
+     * @param \App\Models\Subject\Subject $subject
      *
      * @throws GeneralException
      *
      * @return bool
      */
-    public function delete(Model $subject)
+    public function delete(Subject $subject)
     {
         if ($subject->delete()) {
             event(new SubjectDeleted($subject));

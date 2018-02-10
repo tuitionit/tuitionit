@@ -7,17 +7,22 @@ namespace App\Models\Subject\Traits;
  */
 trait SubjectAttribute
 {
-
     /**
      * @return string
      */
     public function getStatusLabelAttribute()
     {
-        if ($this->isActive()) {
-            return "<label class='label label-success'>".trans('labels.general.active').'</label>';
-        }
+        return $this->isActive() ? trans('labels.general.active') : trans('labels.general.inactive');
+    }
 
-        return "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
+    /**
+     * @return string
+     */
+    public function getStatusHtmlLabelAttribute()
+    {
+        return $this->isActive()
+            ? "<label class='label label-success'>".trans('labels.general.active').'</label>'
+            : "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
     }
 
     /**
@@ -84,7 +89,7 @@ trait SubjectAttribute
              data-trans-button-cancel="'.trans('buttons.general.cancel').'"
              data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
              data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-             class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a> ';
+             class="btn btn-block btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i> '.trans('buttons.backend.subject.delete').'</a> ';
     }
 
     /**

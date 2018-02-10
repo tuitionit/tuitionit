@@ -27,6 +27,18 @@ return [
             ],
         ],
 
+        'session' => [
+            'create' => 'Create new session',
+        ],
+
+        'location' => [
+            'delete' => 'Delete this location',
+        ],
+
+        'subject' => [
+            'delete' => 'Delete this subject',
+        ],
+
         'batch' => [
             'add_students' => 'Add Students',
             'add_selected_students' => 'Add Selected Students',
@@ -70,5 +82,8 @@ return [
 
         'save' => 'Save',
         'view' => 'View',
+        'export' => 'Export',
+        'apply_filters' => 'Apply Filters',
+        'clear_filters' => 'Clear Filters',
     ],
 ];

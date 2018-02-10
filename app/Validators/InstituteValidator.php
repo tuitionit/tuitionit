@@ -11,7 +11,7 @@ class InstituteValidator
 {
     function manageable($attribute, $value, $parameters, $validator)
     {
-        if(access()->allow('manage-institutes')) {
+        if (access()->allow('manage-institutes')) {
             return true;
         }
 

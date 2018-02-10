@@ -13,6 +13,7 @@ trait SessionAttribute
     public function getTypes()
     {
         return [
+            self::TYPE_BATCH => trans('labels.session.type.batch'),
             self::TYPE_STANDARD => trans('labels.session.type.standard'),
             self::TYPE_GROUP => trans('labels.session.type.group'),
             self::TYPE_INDIVIDUAL => trans('labels.session.type.individual'),
@@ -35,11 +36,17 @@ trait SessionAttribute
      */
     public function getStatusLabelAttribute()
     {
-        if ($this->isActive()) {
-            return "<label class='label label-success'>".trans('labels.general.active').'</label>';
-        }
+        return $this->isActive() ? trans('labels.general.active') : trans('labels.general.inactive');
+    }
 
-        return "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
+    /**
+     * @return string
+     */
+    public function getStatusHtmlLabelAttribute()
+    {
+        return $this->isActive()
+            ? "<label class='label label-success'>".trans('labels.general.active').'</label>'
+            : "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
     }
 
     /**

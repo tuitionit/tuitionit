@@ -14,7 +14,7 @@ return [
 
     'backend' => [
         'quick_links' => [
-            'title' => 'Quick Links',
+            'title' => 'Quick Actions',
         ],
     ],
 ];

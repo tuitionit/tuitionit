@@ -34,10 +34,10 @@ class AttendanceTableController extends Controller
     {
         return Datatables::eloquent($this->payments->getForDataTable())
             ->escapeColumns(['student_id', 'month', 'notes'])
-            ->editColumn('student', function($attendance) {
+            ->editColumn('student', function ($attendance) {
                 return link_to_route('admin.students.show', $attendance->student->name, ['id' => $attendance->student_id]);
             })
-            ->editColumn('session', function($attendance) {
+            ->editColumn('session', function ($attendance) {
                 return link_to_route('admin.sessions.show', $attendance->session->name, ['id' => $attendance->session_id]);
             })
             ->editColumn('type', function ($attendance) {
