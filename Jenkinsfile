@@ -24,7 +24,7 @@ pipeline {
 
         stage('php_lint') {
             steps {
-                sh 'find . -name "*.php" -print0 | xargs -0 -n1 php -l'
+                sh 'find . -type d \( -path ./vendor -o -path ./node_modules \) -prune -o -name "*.php" -print0 | xargs -0 -n1 php -l'
             }
         }
 
