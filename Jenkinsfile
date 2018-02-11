@@ -4,16 +4,7 @@ pipeline {
         stage('env_check') {
             steps {
                 sh 'php --version'
-                sh 'which php'
-            }
-        }
-
-        stage('config') {
-            steps {
-                configFileProvider([configFile(fileId: 'tuitionix-test-env', variable: 'TUITIONIX_ENV')]) {
-                    // new File('./.env') << new File($TUITIONIX_ENV)
-                    sh 'cp $TUITIONIX_ENV ./.env'
-                }
+                // TODO: check if the DBs exists
             }
         }
 
