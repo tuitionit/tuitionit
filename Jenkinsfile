@@ -4,6 +4,7 @@ pipeline {
         stage('env_check') {
             steps {
                 sh 'php --version'
+                sh 'which php'
             }
         }
 
