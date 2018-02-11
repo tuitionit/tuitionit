@@ -33,7 +33,7 @@ class InstituteTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
                 'username' => 'www',
                 'password' => 'wwwpwd',
-                'database' => 'tuitionix_tenant_tuitionix',
+                'database' => 'tuitionix_tenant_test',
             ],
             [
                 'name' => 'Vijaya',
