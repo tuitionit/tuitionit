@@ -23,7 +23,7 @@ abstract class BrowserKitTestCase extends BaseTestCase
      *
      * @var string
      */
-    protected $baseUrl = 'http://l5boilerplate.dev';
+    protected $baseUrl = 'http://localhost:8000';
 
     /**
      * @var
@@ -102,7 +102,7 @@ abstract class BrowserKitTestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->baseUrl = config('app.url', 'http://l5boilerplate.dev');
+        $this->baseUrl = config('app.url', 'http://localhost:8000');
 
         // Set up the database
         Artisan::call('migrate:refresh', ['--database' => 'system']);
