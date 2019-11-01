@@ -34,6 +34,8 @@ class PermissionRoleSeeder extends Seeder
          * 8    = Manage Sessions
          * 9    = Manage Courses
          * 10    = Manage Batches
+         * 11   = Manage Payments
+         * 12   = Manage Assignments
          *
          */
         Role::find(2)->permissions()->sync([1,2,3,4,5,6,7,8,9,10,11]);
@@ -49,7 +51,9 @@ class PermissionRoleSeeder extends Seeder
          * 7    = Manage Subjects
          * 8    = Manage Sessions
          * 9    = Manage Courses
-         * 10    = Manage Batches
+         * 10   = Manage Batches
+         * 11   = Manage Payments
+         * 12   = Manage Assignments
          *
          */
         Role::find(3)->permissions()->sync([1,2,3,4,5,6,7,8,9,10,11]);

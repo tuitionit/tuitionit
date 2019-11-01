@@ -22,7 +22,7 @@ class AttendanceTableController extends Controller
      */
     public function __construct(AttendanceRepository $attendances)
     {
-        $this->payments = $attendances;
+        $this->attendances = $attendances;
     }
 
     /**
@@ -32,7 +32,7 @@ class AttendanceTableController extends Controller
      */
     public function __invoke(ManageAttendanceRequest $request)
     {
-        return Datatables::eloquent($this->payments->getForDataTable())
+        return Datatables::eloquent($this->attendances->getForDataTable())
             ->escapeColumns(['student_id', 'month', 'notes'])
             ->editColumn('student', function ($attendance) {
                 return link_to_route('admin.students.show', $attendance->student->name, ['id' => $attendance->student_id]);

@@ -235,6 +235,24 @@ return [
             ],
         ],
 
+        'assignments' => [
+            'all' => 'All Assignments',
+            'mark' => 'Mark Assignment',
+            'edit' => 'Edit Assignment',
+            'management' => 'Assignments',
+            'select_session' => 'Select Session',
+
+            'table' => [
+                'id' => 'ID',
+                'student' => 'Student',
+                'session' => 'Session',
+                'batch' => 'Batch',
+                'marking_method' => 'Marking Method',
+                'in_time' => 'In Time',
+                'out_time' => 'Out Time',
+            ],
+        ],
+
         'institute' => [
             'title' => 'Institute',
             'overview' => 'Overview',

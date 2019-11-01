@@ -47,6 +47,12 @@ return [
             'mark' => 'Mark Attendances',
         ],
 
+        'assignments' => [
+            'management' => 'Assignments',
+            'all' => 'All Assignments',
+            'score' => 'Enter Scores',
+        ],
+
         'institute' => [
             'management' => 'Institute',
         ],
@@ -111,6 +117,7 @@ return [
             'system'        => 'System',
             'institutes'    => 'Institutes',
             'attendance'    => 'Attendance',
+            'assignments'    => 'Assignments',
             'payments'      => 'Payments',
             'students'      => 'Students',
             'teachers'      => 'Teachers',
