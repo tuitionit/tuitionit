@@ -38,7 +38,7 @@
                     <div class="box-tools pull-right">
                         <div class="pull-right mb-10">
                             <a href="#add-students-modal" data-toggle="modal" data-target="#add-students-modal" class="btn btn-sm btn-primary">{{ trans('buttons.backend.batch.add_students') }}</a>
-                            {{ link_to_route('admin.students.create', trans('buttons.backend.batch.new_student'), ['batch' => $batch->id], ['class' => 'btn btn-success btn-sm']) }}
+                            {{ link_to_route('admin.students.create', trans('buttons.backend.batch.new_student'), [$batch->id], ['class' => 'btn btn-success btn-sm']) }}
                         </div><!--pull right-->
                     </div><!--box-tools pull-right-->
                 </div><!-- /.box-header -->
@@ -61,7 +61,7 @@
                         <ul class="nav nav-stacked list">
                             @foreach($batch->students as $student)
                             <li>
-                                <a href="{{ route('admin.students.show', ['id' => $student->id]) }}"><i class="fa fa-user"></i> <span class="name">{{ $student->name }}</span></a>
+                                <a href="{{ route('admin.students.show', [$student->id]) }}"><i class="fa fa-user"></i> <span class="name">{{ $student->name }}</span></a>
                             </li>
                             @endforeach
                         </ul>
@@ -81,7 +81,7 @@
 
                 <div class="modal-body">
                     <div class="">
-                        {{ Form::open(['route' => ['admin.batches.students.add', 'id' => $batch->id], 'id' => 'add-students-form','class' => 'form', 'role' => 'form', 'method' => 'post']) }}
+                        {{ Form::open(['route' => ['admin.batches.students.add', $batch->id], 'id' => 'add-students-form','class' => 'form', 'role' => 'form', 'method' => 'post']) }}
                         <div class="form-group">
                             <p class="help-block small text-muted">{{ trans('strings.backend.batches.select_students') }}</p>
                             <select id="student-selector" class="form-control" placeholder="{{ trans('strings.backend.search.type') }}" name="students[]"></select>

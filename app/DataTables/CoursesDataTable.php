@@ -19,12 +19,12 @@ class CoursesDataTable extends DataTable
         return datatables($query)
             ->rawColumns(['status', 'action'])
             ->editColumn('name', function ($course) use ($export) {
-                return $export ? $course->name : link_to_route('admin.courses.edit', $course->name, ['id' => $course->id]);
+                return $export ? $course->name : link_to_route('admin.courses.edit', $course->name, [$course->id]);
             })
             ->editColumn('parent.name', function ($student) use ($export) {
                 return isset($student->parent)
-                    ? ($export ? $student->parent->name : link_to_route('admin.users.show', $student->parent->name, ['id' => $student->parent_id]))
-                    : ($export ? '' : link_to_route('admin.students.edit', trans('strings.backend.general.click_to_select'), ['id' => $student->id], ['class' => 'btn btn-xs btn-default']));
+                    ? ($export ? $student->parent->name : link_to_route('admin.users.show', $student->parent->name, [$student->parent_id]))
+                    : ($export ? '' : link_to_route('admin.students.edit', trans('strings.backend.general.click_to_select'), [$student->id], ['class' => 'btn btn-xs btn-default']));
             })
             ->editColumn('status', function ($course) use ($export) {
                 return $export ? $course->status_label : $course->status_html_label;

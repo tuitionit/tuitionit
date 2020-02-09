@@ -50,8 +50,8 @@ class CreateAssignmentsTable extends Migration
         });
 
         Schema::table('assignment_student', function (Blueprint $table) {
-            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

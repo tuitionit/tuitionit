@@ -20,12 +20,12 @@ class AssignmentsDataTable extends DataTable
             ->rawColumns(['status', 'action'])
             ->editColumn('student.name', function ($assignment) use ($export) {
                 return isset($assignment->student)
-                    ? ($export ? $assignment->student->name : link_to_route('admin.students.show', $assignment->student->name, ['id' => $assignment->student_id]))
+                    ? ($export ? $assignment->student->name : link_to_route('admin.students.show', $assignment->student->name, [$assignment->student_id]))
                     : '';
             })
             ->editColumn('session.name', function ($assignment) use ($export) {
                 return isset($assignment->session)
-                    ? ($export ? $assignment->session->name : link_to_route('admin.sessions.show', $assignment->session->name, ['id' => $assignment->session_id]))
+                    ? ($export ? $assignment->session->name : link_to_route('admin.sessions.show', $assignment->session->name, [$assignment->session_id]))
                     : '';
             })
             /*->editColumn('batch.name', function($assignment) use($export) {

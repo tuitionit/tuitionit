@@ -20,12 +20,12 @@ class AttendancesDataTable extends DataTable
             ->rawColumns(['status', 'action'])
             ->editColumn('student.name', function ($attendance) use ($export) {
                 return isset($attendance->student)
-                    ? ($export ? $attendance->student->name : link_to_route('admin.students.show', $attendance->student->name, ['id' => $attendance->student_id]))
+                    ? ($export ? $attendance->student->name : link_to_route('admin.students.show', $attendance->student->name, [$attendance->student_id]))
                     : '';
             })
             ->editColumn('session.name', function ($attendance) use ($export) {
                 return isset($attendance->session)
-                    ? ($export ? $attendance->session->name : link_to_route('admin.sessions.show', $attendance->session->name, ['id' => $attendance->session_id]))
+                    ? ($export ? $attendance->session->name : link_to_route('admin.sessions.show', $attendance->session->name, [$attendance->session_id]))
                     : '';
             })
             /*->editColumn('batch.name', function($attendance) use($export) {

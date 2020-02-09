@@ -32,7 +32,7 @@
         <ul class="list-group list-group-unbordered">
             @foreach($student->batches as $batch)
             <li class="list-group-item">
-                {{ link_to_route('admin.batches.show', $batch->name, ['id' => $batch->id]) }}
+                {{ link_to_route('admin.batches.show', $batch->name, [$batch->id]) }}
                 <span class="pull-right text-muted">{{ $batch->course->name }}</span>
             </li>
             @endforeach

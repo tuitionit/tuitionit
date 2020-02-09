@@ -45,7 +45,7 @@
                     {{ Form::close() }}
 
                     <div class="row text-center">
-                        {!! $socialite_links !!}
+                        {!! $socialiteLinks !!}
                     </div>
                 </div>
             </div>

@@ -19,20 +19,20 @@ class BatchesDataTable extends DataTable
         return datatables($query)
             ->rawColumns(['status', 'action'])
             ->editColumn('name', function ($batch) use ($export) {
-                return $export ? $batch->name : link_to_route('admin.batches.show', $batch->name, ['id' => $batch->id]);
+                return $export ? $batch->name : link_to_route('admin.batches.show', $batch->name, [$batch->id]);
             })
             ->editColumn('type', function ($batch) {
                 return $batch->getTypeLabel();
             })
             ->editColumn('course.name', function ($batch) use ($export) {
                 return isset($batch->course)
-                    ? ($export ? $batch->course->name : link_to_route('admin.batches.show', $batch->course->name, ['id' => $batch->course_id]))
-                    : ($export ? '' : link_to_route('admin.batches.edit', trans('strings.backend.general.click_to_select'), ['id' => $batch->id], ['class' => 'btn btn-xs btn-default']));
+                    ? ($export ? $batch->course->name : link_to_route('admin.batches.show', $batch->course->name, [$batch->course_id]))
+                    : ($export ? '' : link_to_route('admin.batches.edit', trans('strings.backend.general.click_to_select'), [$batch->id], ['class' => 'btn btn-xs btn-default']));
             })
             ->editColumn('location.name', function ($batch) use ($export) {
                 return isset($batch->location)
-                    ? ($export ? $batch->location->name : link_to_route('admin.batches.show', $batch->location->name, ['id' => $batch->location_id]))
-                    : ($export ? '' : link_to_route('admin.locations.edit', trans('strings.backend.general.click_to_select'), ['id' => $batch->id], ['class' => 'btn btn-xs btn-default']));
+                    ? ($export ? $batch->location->name : link_to_route('admin.batches.show', $batch->location->name, [$batch->location_id]))
+                    : ($export ? '' : link_to_route('admin.locations.edit', trans('strings.backend.general.click_to_select'), [$batch->id], ['class' => 'btn btn-xs btn-default']));
             })
             ->editColumn('status', function ($batch) use ($export) {
                 return $export ? $batch->status_label : $batch->status_html_label;
