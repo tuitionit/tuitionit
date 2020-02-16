@@ -28,7 +28,11 @@ class StoreAssignmentRequest extends Request
     public function rules()
     {
         return [
-            'id' => 'required',
+            'name' => 'required',
+            'description' => 'max:1000',
+            'type' => 'required',
+            'start_time' => 'required|date_format:"Y-m-d H:i"',
+            'end_time' => 'sometimes|date_format:"Y-m-d H:i"|after:start_time',
         ];
     }
 }

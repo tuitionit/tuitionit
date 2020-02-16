@@ -10,6 +10,28 @@ trait AssignmentAttribute
     /**
      * @return string
      */
+    public function getTypes()
+    {
+        return [
+            self::TYPE_EXAM => trans('labels.assignment.type.exam'),
+            self::TYPE_LAB => trans('labels.assignment.type.lab'),
+            self::TYPE_PROJECT => trans('labels.assignment.type.project'),
+            self::TYPE_REPORT => trans('labels.assignment.type.report'),
+            self::TYPE_OTHER => trans('labels.assignment.type.other'),
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeLabel()
+    {
+        return $this->getTypes()[$this->type];
+    }
+
+    /**
+     * @return string
+     */
     public function getStatusLabelAttribute()
     {
         return $this->isActive() ? trans('labels.general.active') : trans('labels.general.inactive');

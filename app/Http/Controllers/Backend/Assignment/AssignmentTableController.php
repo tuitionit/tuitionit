@@ -33,18 +33,18 @@ class AssignmentTableController extends Controller
     public function __invoke(ManageAssignmentRequest $request)
     {
         return Datatables::eloquent($this->assignments->getForDataTable())
-            ->escapeColumns(['student_id', 'month', 'notes'])
-            ->editColumn('student', function ($assignment) {
-                return link_to_route('admin.students.show', $assignment->student->name, ['id' => $assignment->student_id]);
-            })
-            ->editColumn('session', function ($assignment) {
-                return link_to_route('admin.sessions.show', $assignment->session->name, ['id' => $assignment->session_id]);
+            ->escapeColumns(['location_id', 'room_id', 'course_id', 'batch_id', 'subject_id'])
+            ->editColumn('name', function ($assignment) {
+                return link_to_route('admin.assignments.show', $assignment->name, [$assignment->id]);
             })
             ->editColumn('type', function ($assignment) {
                 return $assignment->typeLabel;
             })
-            ->editColumn('in_time', function ($assignment) {
-                return $assignment->in_time ? $assignment->in_time : null;
+            ->editColumn('start_time', function ($assignment) {
+                return $assignment->start_time ? $assignment->start_time : null;
+            })
+            ->editColumn('end_time', function ($assignment) {
+                return $assignment->end_time ? $assignment->end_time : null;
             })
             ->editColumn('status', function ($assignment) {
                 return $assignment->status_label;

@@ -10,7 +10,7 @@
     <h1>
         {{ trans('labels.backend.payments.management') }}
     </h1>
-@endsection
+@stop
 
 @section('content')
     {!! $dataTable->table() !!}

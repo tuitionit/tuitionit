@@ -19,7 +19,6 @@
             <h3 class="box-title">{{ trans('labels.backend.assignment.overview') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.includes.partials.assignments-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 

@@ -10,7 +10,7 @@
     <h1>
         {{ trans('labels.backend.assignments.management') }}
     </h1>
-@endsection
+@stop
 
 @section('content')
     {!! $dataTable->table() !!}

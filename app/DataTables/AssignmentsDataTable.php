@@ -18,21 +18,15 @@ class AssignmentsDataTable extends DataTable
         $export = $this->request->get('action', null) != null;
         return datatables($query)
             ->rawColumns(['status', 'action'])
-            ->editColumn('student.name', function ($assignment) use ($export) {
-                return isset($assignment->student)
-                    ? ($export ? $assignment->student->name : link_to_route('admin.students.show', $assignment->student->name, [$assignment->student_id]))
-                    : '';
+            ->editColumn('name', function ($assignment) use ($export) {
+                return $export ? $assignment->name : link_to_route('admin.assignments.show', $assignment->name, [$assignment->id]);
             })
-            ->editColumn('session.name', function ($assignment) use ($export) {
-                return isset($assignment->session)
-                    ? ($export ? $assignment->session->name : link_to_route('admin.sessions.show', $assignment->session->name, [$assignment->session_id]))
-                    : '';
+            ->editColumn('type', function ($assignment) {
+                return $assignment->getTypeLabel();
             })
-            /*->editColumn('batch.name', function($assignment) use($export) {
-                return isset($assignment->batch)
-                    ? ($export ? $assignment->batch->name : link_to_route('admin.batches.show', $assignment->batch->name, ['id' => $assignment->batch_id]))
-                    : '';
-            })*/
+            ->editColumn('course_id', function ($assignment) {
+                return $assignment->relationLoaded('course') ? $assignment->course->name : null;
+            })
             ->addColumn('action', function (Assignment $assignment) {
                 return $assignment->action_buttons;
             });
@@ -47,7 +41,7 @@ class AssignmentsDataTable extends DataTable
     public function query(Assignment $model)
     {
         return $model->newQuery()
-            ->with(['student', 'session'])
+            ->with(['subject', 'course'])
             ->select('assignments.*');
     }
 
@@ -59,19 +53,17 @@ class AssignmentsDataTable extends DataTable
     public function html()
     {
         $params = $this->getBuilderParameters();
-        unset($params['buttons'][array_search('create', $params['buttons'])]);
-        array_unshift($params['buttons'], 'mark');
-        // dd($params);
+
         return $this->builder()
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->addAction([
-                        'title' => trans('labels.general.actions'),
-                        'width' => '80px',
-                        'printable' => false,
-                        'exportable' => false,
-                    ])
-                    ->parameters($params);
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->addAction([
+                'title' => trans('labels.general.actions'),
+                'width' => '80px',
+                'printable' => false,
+                'exportable' => false,
+            ])
+            ->parameters($params);
     }
 
     /**
@@ -82,21 +74,21 @@ class AssignmentsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'student.name' => [
-                'title' => trans('labels.backend.assignments.table.student'),
+            'name' => [
+                'title' => trans('labels.backend.assignments.table.name'),
             ],
-            'session.name' => [
-                'title' => trans('labels.backend.assignments.table.session'),
+            'type' => [
+                'title' => trans('labels.backend.assignments.table.type'),
             ],
-            /*'batch.name' => [
-                'title' => trans('labels.backend.assignments.table.batch'),
-            ],*/
-            'in_time' => [
-                'title' => trans('labels.backend.assignments.table.in_time'),
+            'start_time' => [
+                'title' => trans('labels.backend.assignments.table.start'),
             ],
-            'out_time' => [
-                'title' => trans('labels.backend.assignments.table.out_time'),
-            ]
+            'end_time' => [
+                'title' => trans('labels.backend.assignments.table.end'),
+            ],
+            'course.name' => [
+                'title' => trans('labels.backend.assignments.table.course'),
+            ],
         ];
     }
 

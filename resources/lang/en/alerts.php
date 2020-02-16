@@ -112,5 +112,13 @@ return [
             'restored' => 'The payment was successfully restored.',
             'updated' => 'The payment was successfully updated.',
         ],
+
+        'assignments' => [
+            'created' => 'The assignment was successfully created.',
+            'deleted' => 'The assignment was successfully deleted.',
+            'deleted_permanently' => 'The assignment was deleted permanently.',
+            'restored' => 'The assignment was successfully restored.',
+            'updated' => 'The assignment was successfully updated.',
+        ],
     ],
 ];

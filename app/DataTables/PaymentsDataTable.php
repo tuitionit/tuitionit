@@ -65,15 +65,15 @@ class PaymentsDataTable extends DataTable
         $params = $this->getBuilderParameters();
         $params['language'] = trans('datatables');
         return $this->builder()
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->addAction([
-                        'title' => trans('labels.general.actions'),
-                        'width' => '80px',
-                        'printable' => false,
-                        'exportable' => false,
-                    ])
-                    ->parameters($params);
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->addAction([
+                'title' => trans('labels.general.actions'),
+                'width' => '80px',
+                'printable' => false,
+                'exportable' => false,
+            ])
+            ->parameters($params);
     }
 
     /**

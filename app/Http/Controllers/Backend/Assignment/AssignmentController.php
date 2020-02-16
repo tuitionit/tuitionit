@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Backend\Assignment;
 
 use Carbon\Carbon as Carbon;
 use App\DataTables\AssignmentsDataTable;
+use App\Models\Assignment\Assignment;
 use App\Models\Batch\Batch;
 use App\Models\Course\Course;
 use App\Models\Location\Location;
-use App\Models\Assignment\Assignment;
+use App\Models\Room\Room;
 use App\Models\Session\Session;
 use App\Models\Student\Student;
 use App\Models\Subject\Subject;
+use App\Models\Teacher\Teacher;
 use App\Models\Access\User\User;
 use App\Repositories\Backend\Assignment\AssignmentRepository;
 use App\Http\Controllers\Controller;
@@ -44,29 +46,30 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Show the form for marking the assignment.
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function mark()
+    public function create()
     {
         $assignment = new Assignment();
-        $session = Session::find(request()->get('session', 0));
-        $sessionsOfDay = ($session && $session->exists) ? null : Session::with(['batch', 'teacher'])
-            ->whereBetween('start_time', [Carbon::now()->startOfday()->toDateTimeString(), Carbon::now()->endOfday()->toDateTimeString()])
-            // ->pluck('name', 'id');
-            ->get();
 
-        $sessions = empty($sessionsOfDay) ? [] : $sessionsOfDay->map(function ($session) {
-            return [
-                'id' => $session->id,
-                'text' => $session->name,
-                'batch' => $session->batch->name,
-                'time' => trans('strings.backend.sessions.time_from_to', ['start' => $session->start_time->format('h:i A'), 'end' => $session->end_time->format('h:i A')]),
-            ];
-        });
+        $locations = Location::all()->pluck('name', 'id');
+        $rooms = Room::all()->pluck('name', 'id');
+        $batches = Batch::all()->pluck('name', 'id');
+        $courses = Course::all()->pluck('name', 'id');
+        $subjects = Subject::all()->pluck('name', 'id');
+        $teachers = Teacher::all()->pluck('short_name', 'id');
 
-        return view('backend.assignment.mark')->with(compact('assignment', 'session', 'sessions'));
+        return view('backend.assignment.create')->with(compact(
+            'assignment',
+            'locations',
+            'rooms',
+            'batches',
+            'courses',
+            'subjects',
+            'teachers'
+        ));
     }
 
     /**
@@ -77,42 +80,12 @@ class AssignmentController extends Controller
      */
     public function store(StoreAssignmentRequest $request, Session $session)
     {
-        $student = Student::find($request->get('id'));
-        $output = [
-            'student' => $student,
-            'type' => 'error',
-            'message' => '',
-            'count' => $session->assignment,
-        ];
+        $data = $request->all();
+        // $data['start_date'] = Carbon::createFromFormat('d/m/Y', $data['start_date']);
+        // $data['end_date'] = Carbon::createFromFormat('d/m/Y', $data['end_date']);
+        $assignment = Assignment::create($data);
 
-        if ($student) {
-            if ($session->batch->hasStudent($student->id)) {
-                if (!$assignment = Assignment::where([
-                    ['student_id', '=', $student->id],
-                    ['session_id', '=', $session->id],
-                ])->first()) {
-                    $assignment = Assignment::create([
-                        'student_id' => $student->id,
-                        'session_id' => $session->id,
-                        'marking_method' => Assignment::MARKING_METHOD_MANUAL,
-                        'marked_by' => access()->user()->id,
-                        'in_time' => Carbon::now(),
-                    ]);
-                }
-
-                if ($assignment) {
-                    $output['type'] = 'success';
-                    $output['message'] = trans('strings.backend.assignments.success');
-                    $output['count'] = $session->assignment;
-                }
-            } else {
-                $output['message'] = trans('strings.backend.assignments.student_not_in_batch');
-            }
-        } else {
-            $output['message'] = trans('strings.backend.assignments.student_not_found');
-        }
-
-        return $output;
+        return redirect()->route('admin.assignments.index')->withFlashSuccess(trans('alerts.backend.assignments.created'));
     }
 
     /**
