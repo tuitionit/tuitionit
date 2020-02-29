@@ -130,6 +130,14 @@ class PermissionTableSeeder extends Seeder
             'display_name' => 'Manage Payments',
         ];
 
+        /**
+         * Assignment permissions
+         */
+        $permissions[] = [
+            'name' => 'manage-assignments',
+            'display_name' => 'Manage Assignments',
+        ];
+
         $now = Carbon::now();
 
         array_walk($permissions, function(&$permission, $key, $now)

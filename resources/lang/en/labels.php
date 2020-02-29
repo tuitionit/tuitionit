@@ -130,6 +130,16 @@ return [
         ],
     ],
 
+    'assignment' => [
+        'type' => [
+            'exam' => 'Exam',
+            'lab' => 'Lab',
+            'project' => 'Project',
+            'report' => 'Report',
+            'other' => 'Other',
+        ]
+    ],
+
     'backend' => [
         'dashboard' => [
             'add_new' => 'Add New',
@@ -232,6 +242,24 @@ return [
                 'marking_method' => 'Marking Method',
                 'in_time' => 'In Time',
                 'out_time' => 'Out Time',
+            ],
+        ],
+
+        'assignments' => [
+            'all' => 'All Assignments',
+            'create' => 'New Assignment',
+            'edit' => 'Edit Assignment',
+            'management' => 'Assignments',
+            'select_session' => 'Select Session',
+
+            'table' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'type' => 'Type',
+                'start' => 'Start',
+                'end' => 'End',
+                'course' => 'Course',
+                'status' => 'Status',
             ],
         ],
 

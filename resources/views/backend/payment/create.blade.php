@@ -8,6 +8,12 @@
     {{ Html::style("css/backend/plugin/select2/select2-bootstrap.min.css") }}
 @stop
 
+@section('page-header')
+    <h1>
+        {{ trans('labels.backend.payments.create') }}
+    </h1>
+@endsection
+
 @section('content')
     {{ Form::open(['route' => 'admin.payments.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
         <div class="box box-success box-form">

@@ -330,6 +330,29 @@ return [
             'attendance' => [
                 'session' => 'Session'
             ],
+
+
+            'assignments' => [
+                'name' => 'Name',
+                'description' => 'Description',
+                'type' => 'Type',
+                'start_time' => 'Start Time',
+                'end_time' => 'End Time',
+                'subject_id' => 'Subject',
+                'room_id' => 'Room',
+                'location_id' => 'Location',
+                'teacher_id' => 'Teacher',
+                'batch_id' => 'Batch',
+                'course_id' => 'Course',
+                'is_template' => 'Template?',
+                'teacher_comment' => 'Teacher\'s Comments',
+                'status' => 'Status',
+
+                'help' => [
+                    'start_time' => 'Eg: ' . date('Y-m-d') . ' 09:00',
+                    'end_time' => 'Eg: ' . date('Y-m-d') . ' 13:00',
+                ],
+            ],
         ],
 
         'frontend' => [

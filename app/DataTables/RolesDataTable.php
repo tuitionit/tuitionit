@@ -19,7 +19,7 @@ class RolesDataTable extends DataTable
         return datatables($query)
             ->rawColumns(['permissions', 'status', 'action'])
             ->editColumn('name', function ($role) use ($export) {
-                return $export ? $role->name : link_to_route('admin.access.role.edit', $role->name, ['id' => $role->id]);
+                return $export ? $role->name : link_to_route('admin.access.role.edit', $role->name, [$role->id]);
             })
             ->editColumn('permissions', function ($role) use ($export) {
                 if ($role->all) {

@@ -19,15 +19,15 @@ class StudentsDataTable extends DataTable
         return datatables($query)
         ->rawColumns(['status', 'action'])
         ->editColumn('index_number', function ($student) use ($export) {
-            return $export ? $student->index_number : link_to_route('admin.students.show', $student->index_number, ['id' => $student->id]);
+            return $export ? $student->index_number : link_to_route('admin.students.show', $student->index_number, [$student->id]);
         })
         ->editColumn('name', function ($student) use ($export) {
-            return $export ? $student->name : link_to_route('admin.students.show', $student->name, ['id' => $student->id]);
+            return $export ? $student->name : link_to_route('admin.students.show', $student->name, [$student->id]);
         })
         ->editColumn('parent.name', function ($student) use ($export) {
             return isset($student->parent)
-                ? ($export ? $student->parent->name : link_to_route('admin.users.show', $student->parent->name, ['id' => $student->parent_id]))
-                : ($export ? '' : link_to_route('admin.students.edit', trans('strings.backend.general.click_to_select'), ['id' => $student->id], ['class' => 'btn btn-xs btn-default']));
+                ? ($export ? $student->parent->name : link_to_route('admin.users.show', $student->parent->name, [$student->parent_id]))
+                : ($export ? '' : link_to_route('admin.students.edit', trans('strings.backend.general.click_to_select'), [$student->id], ['class' => 'btn btn-xs btn-default']));
         })
         ->editColumn('status', function ($student) use ($export) {
             return $export ? $student->status_label : $student->status_html_label;

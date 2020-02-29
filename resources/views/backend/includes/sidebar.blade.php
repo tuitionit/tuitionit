@@ -66,6 +66,15 @@
             </li>
             @endauth
 
+            @permission('manage-assignments')
+            <li class="{{ active_class(Active::checkUriPattern('admin/assignments*')) }}">
+                <a href="{{ route('admin.assignments.index') }}">
+                    <i class="fa fa-check-circle-o"></i>
+                    <span>{{ trans('menus.backend.sidebar.assignments') }}</span>
+                </a>
+            </li>
+            @endauth
+
             @permission('manage-payments')
             <li class="{{ active_class(Active::checkUriPattern('admin/payments*')) }}">
                 <a href="{{ route('admin.payments.index') }}">
