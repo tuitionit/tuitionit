@@ -1,4 +1,4 @@
-# Tuitionix
+# Tuitionit
 
 The tuition management system.
 
@@ -54,6 +54,7 @@ php artisan key:generate
 Run database migrations for System DB
 ```
 php artisan migrate --database=system
+```
 
 Run database migrations for Tenant DB
 ```
