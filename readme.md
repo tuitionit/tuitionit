@@ -4,7 +4,7 @@ The tuition management system.
 
 ## Installation
 
-** Prerequisites **
+**Prerequisites**
 
 Installing and running this platform has the following system and software requirements.
 
@@ -24,13 +24,13 @@ Following tools are required for development in addition to the above requiremen
  - [NodeJS](https://nodejs.org)
  - [Gulp](https://github.com/gulp)
 
-** Clone git repository **
+**Clone git repository**
 
 ```
 git clone https://amisaranga@bitbucket.org/amisaranga/tuitionix.git
 ```
 
-** Install dependencies **
+**Install dependencies**
 
 ```
 composer install
@@ -39,7 +39,7 @@ composer install
 npm install
 ```
 
-** Initial set up **
+**Initial set up**
 
 Create `.env` file
 ```
@@ -69,7 +69,7 @@ Seed the system database with tenant data
 php artisan db:seed --database=tenant
 ```
 
-** Set up [Laravel Passport](https://laravel.com/docs/5.3/passport) **
+**Set up [Laravel Passport](https://laravel.com/docs/5.3/passport)**
 
 ```
 php artisan passport:install
@@ -80,7 +80,7 @@ Publish package specific files to the app
 php artisan vendor:publish
 ```
 
-** Building **
+**Building**
 
 Run `npm run dev` or `npm run watch` for building the code while development
 
