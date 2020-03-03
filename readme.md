@@ -24,10 +24,10 @@ Following tools are required for development in addition to the above requiremen
  - [NodeJS](https://nodejs.org)
  - [Gulp](https://github.com/gulp)
 
-**Clone git repository**
+**Clone this repository**
 
 ```
-git clone https://amisaranga@bitbucket.org/amisaranga/tuitionix.git
+git clone https://github.com/tuitionit/tuitionit.git
 ```
 
 **Install dependencies**
